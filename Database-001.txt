@@ -1,0 +1,34 @@
+CMD-prompt:- lsnrctl status
+------------------------------------------------------------------------------------------------------------
+SQL (Structured Query Language) is a standard language for execute queries , retrieve data , accessing and manipulating databases ,
+SQL is an ANSI/ISO standard
+
+RDBMS (Relational Database Management System) is the basis for SQL , and for all modern database systems such as MS SQL Server, IBM DB2, Oracle, MySQL, and Microsoft Access.
+The data in RDBMS is stored in database objects called tables. A table is a collection of related data entries .
+
+//CREATE DATABASE databasename;
+
+//SHOW DATABASES;
+
+//DROP DATABASE databasename;
+
+//BACKUP DATABASE databasename
+TO DISK = 'filepath';
+WITH DIFFERENTIAL;
+
+Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.
+A differential back up only backs up the parts of the database that have changed since the last full database backup.
+
+
+//CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+
+//The SELECT statement is used to select data from a database.
+
+SELECT column1, column2, ...
+FROM table_name;

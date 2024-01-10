@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------
+
+//How can we give input parameters to queries for database component ?
+
+--> 
+
+Select query text:-
+values(:key1 , :key2 , :key3) ;      // this is placeholder :key
+
+input parameter:-
+{
+  key1: payload.keyName ,            
+  key2: payload.keyName , 
+  key3: payload.keyName
+}
+
+------------------------------------------------------------------
+// Database call give us java base response as outcome ---> to solve this we need to set variable component
+in flow and then save payload is variable..
+

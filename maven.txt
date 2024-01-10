@@ -1,0 +1,7 @@
+///////////////////////////////////////////////////////////////////////////
+
+
+//maven is built tool which is provided by apache maven , by maven we package , maintain project .
+when we create maven project  , maven local repositery are created and it fetch file from remote repositry into local repo ..
+ pom file contain <plugins> and <dependency> it control project .
+plugin contain configuration and dependency for downloading third party library..
