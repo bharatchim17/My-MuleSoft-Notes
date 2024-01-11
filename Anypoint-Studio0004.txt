@@ -1,1 +1,81 @@
-h
+
+//Mule Palette:-
+
+// *HTTP:-
+1.Basic security filter
+2.Listner
+3.Load static resources
+
+//*Core:-
+
+1. Batch
+2. Components
+3. Endpoints
+4. Error Handling
+5. Flow Control
+6. Scopes
+7. Transformers
+
+//*Sockets:-
+1. Listner
+2. Send
+3. Send and receive
+------------------------------------------------------------------------------------------
+
+//When http listner source receives an http request , source triggers flow by using request data.
+//Host:- indicates where request are received , host can be hostname such as localhost , www.mulesoft.com  or ip address such as 175.0.0.1.
+//Port:- indicates where request are listened/received.
+//Protocols:- indicates protocols for communication example:- http/https/TLS. 
+
+//Schedular component enables us to trigger flow when time-based condition is met. it use same timezone as machine on which mule is running.
+if application running in cloudHub then schedular conforms to UTC timezone.
+1. Frequency:- at which schedular triggers flow.
+2. Start delay:- is ammount of time to wait before triggering flow..
+3. Time Unit :- for values of Frequency and Start Delay. values are: second , minute , days , hours.
+
+
+Selector Expressions for Mule Errors:-
+
+1. #[error.description]
+2. #[error.detailedDescription]
+3. #[error.errorType]
+4. #[error.cause]
+5. #[error.errorMessage]
+6. #[error.childErrors]
+
+---------------------------------------------------------------------------------------
+//Error types :-
+
+Any and Critical
+
+Any :- 
+1. unknown 
+2. transformation
+3. routing
+4. connectivity ----- has one type 1.retry_exhausted
+5. expression
+6. security     ----- security has two types 1.Client_Security & 2.Server_Security
+
+Critical :-
+1. fatal
+2.overload
+
+-----------------------------------------------------------------------------------------
+
+
+// in java there is try catch statement when error occure in try statement it will be 
+catch it in catch statement , like these function anypoint studio provide 
+it by right click wrap in --> try scope...
+
+//every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
+
+-------------------------------------------------------------------------------------------------------------------
+//Set variables(core):-  
+This component creates or updated variables for later use in flow .
+variables stored in global variables called vars.
+
+
+//Logger:- helps to monitor and debug Mule application. we can logg Error message , status notification etc.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

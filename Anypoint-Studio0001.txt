@@ -119,6 +119,9 @@ Integration tool called as ESB tool when it provides below features:-
   - Enrichments (process of concatenation of data with each other..)
 
 -----------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//We can do validation in two ways :- By using validation module connectors and by using
+RAML while , Designing API's.
 
 
