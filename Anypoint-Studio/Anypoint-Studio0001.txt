@@ -1,0 +1,185 @@
+-------------------------------------------------------------------------------------------------------------
+
+//How request & response data passed :-
+
+Request headers: 
+ - Headers ---> 200 Okay/Success , 400 Bad-request , 500 server-error
+ - URI parms  ---> /{}  
+ - Query params ---> ? key = Value  
+
+request body:
+ - JSON payload
+ - XML  payload
+
+
+ Mule event contin messages structure :- Request headers goes into attributes & request body goes into payload.. 
+
+                                   |
+                                   |   
+                Mule event source  |  Mule event processors
+                                   |
+                                   |
+                                   |
+                                
+
+
+//Mule event:- is immutable , so every changes to an instance of mule events result in creation of new instance. also , 
+it contains core information processed by runtime and it follows configured application logic.
+Mule event contains:-
+
+1.mule message:- contains message i.e. payload and attributes.   
+
+//attributes contains queries (attributes.queryparams.key) ,uri parameters also known as
+ resource parameters (attributes.uriparams.key) and we put placeholder {key} in sub-path..
+ headers (attributes.headers.'content-type')..to fetch ID attributes of payload.@id  
+
+2.variables:- are Mule event metadata that use in flow. 
+
+
+//Message source:- such as http listner , schedular , new/updated file component.
+message source triggers generation of mule event and dispatches that event to flow..
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+//MEL is lightweight mule-specific expression language that you can access and evaluate data in payload , properties and variables. #[payload]
+
+//payload contains body of the message , for example content of file , record from database or response from rest or web service..
+
+//Database conector :- Allows us to interact with relation database , such as MySQL ,Oracle , ms SQL , it provides set of operations on database tables, as well as executing SQL queries and store procedures.
+
+
+// Root element is optional in Json where as, in XML is mandatory and in CSV is not required..
+
+-------------------------------------------------------------------------------------------------------------------------
+// Mule ESB is a lightweight java-based enterprise service bus (ESB) and integration platform
+that allows developers to connect Applications together quickly and easily , enabling them to 
+exchange data .
+
+Benefits:-
+ - Reduced development time
+ - Cloud enablement
+ - Designing  API's 
+ - API Management
+
+ //Mule has two version community and enterprise.
+
+---------------------------------------------------------------------------------------------
+ //Integration:- The process of making data transfer between multiple systems is known
+ as integration.
+
+ //Integration ways/Types of integration :-
+ 1. JMS (PUB SUB model)
+ 2. Webservices (REST & SOAP)
+ 3. SFTP
+ 4. Database
+ 5. System based connectors (Saleforce , SAP , Amezon etc)
+
+---------------------------------------------------------------------------------------------
+
+//Package Explorer:-
+
+src/main/mule   ---> Contain mule configuration file .xml
+src/test/munit  ---> contain M-unit test cases of src/main/mule 
+
+src/main/resources ---> contain log4j2.xml , wsdl file , ssl file & API
+        - log4j2   ---> contain login for log component
+        -  API     ---> contain RAML files
+
+src/main/java   ---> contain mule java file
+src/test/java   ---> contain test of java file in src/main/java
+
+src/main/resource --->  under example or schema  folder we get , payload for inbounds/Outbound  
+src/test/resource ---> contain test of the file in src/main/resource
+
+-------------------------------------------------------------------------------------------
+
+//Web Services:-
+A web service is program which runs in server and whose results are shareable over network/integration
+to make data transfer between Applications. Examples:SOAP(development:3%) & REST(development:94%)..
+
+// Uniform.Resource.Locator:-
+http/https-protocol://host:port/base-path/sub-path
+
+//We should not use same ports for multiple configuration when configurations 
+are running together in one Applications or in one server.
+
+//Export file ---> Right click on file  ---> Export ---> Mule ---> Deployable Archive..
+//Import file ---> File --->  Package mule Application (.jar) 
+
+----------------------------------------------------------------------------------
+
+//ESB integration tool :-
+
+Integration tool called as ESB tool when it provides below features:-
+
+  - Components to orchestrate integrations (Drag and Drop components.)
+  - transformations (Transform done by components and dataweave logic.)
+  - Enrichments (process of concatenation of data with each other.)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//How can we give input parameters to queries for database component ?
+
+--> 
+
+Select query text:-
+values(:key1 , :key2 , :key3) ;      // this is placeholder :key
+
+input parameter:-
+{
+  key1: payload.keyName ,            
+  key2: payload.keyName , 
+  key3: payload.keyName
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Database call give us java base response as outcome and payload will be vanished after going to DB ---> to solve this we need to set variable component
+in flow or save payload as variable..
+
+// In database case ID is of auto generated  which is primary key. but , same payload can come multiple times
+so , we need to give max(case_id) to DB which will give us the latest case id .. we use select operation in anypoint studio for this task
+ write in select query-text:- select max (case_id) as case_id from TABLE where Key_1 = :Key_Name 
+and in inputs parameters:- Key_Name: vars.Variable_Name.Key_1
+
+
+//After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
+ to avoide this there are two ways:
+
+ 1. We can make use of auto generated keys features on top of database...
+Database(Insert-operation) component ---> Advance ---> Auto generated keys = true | Auto generated key columnNames = edit inline ---> + provide ---> columnNames = Value: case_ID
+//To read payload in java-stream objects ---> evaluate: write(payload , "application/json")
+
+ 2. We can write a stored procedures which will take all fields as input and insert into the database , then return us generated case_id..
+
+Database(stored-procedure) component ---> General ---> inout parameters = none | output parameters = edit inline ---> + provide ---> output parameter = key: case_id & type: Integer
+
+---------------------------------------------------------------------------------
+// We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
+  The correlationID can find multiple logs and transactionID will find exact transaction log.
+
+    The correlation-ID :  Client chosen value can be duplicate among the request but , that should be value from the input.. 
+ if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
+syntax to fetch :-
+attributes.headers.'x-correlation-id' default ""
+
+   The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to correlationID
+ Whereas mulesoft can able to generate its its own transaction ID it will maintain in each log.
+// uuid() :- is mulesoft function that will , generate unique ID .
+syntax to fetch :-
+attributes.headers.'x-transaction-id' default uuid()
+ ------------------------------------------------------------------------------------------
+// To point any value or expression dynamically over SQL query text :-  
+#["$(vars.Dynamic_Query)"]
+---------------------------------------------------------------------
+To apply connection pulling:- 
+--goto--> 
+Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
+--configure--> Max pool size: | Min pool size:  | Acquire increment: ---> ok & save .
+
+------------------------------------------------------------------------------------------- 
+// We can do validation in two ways :- By using validation module connectors and by using
+RAML while , Designing API's.
+---------------------------------------------
+
