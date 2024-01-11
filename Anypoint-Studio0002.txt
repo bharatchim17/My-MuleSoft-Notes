@@ -1,62 +1,41 @@
+-----------------------------------------------------------------------------------
+//Error handling:-
+The process of handling errors in flow and responding back user friendly messages 
+instead of system error messages is known as error handling.
+
+Selector Expressions for Mule Errors:-
+1. #[error.description]
+2. #[error.detailedDescription]
+3. #[error.errorType]
+4. #[error.cause]
+5. #[error.errorMessage]
+6. #[error.childErrors]
+
+---------------------------------------------------------------------------------------
+//Error types :-
+
+Any and Critical
+
+Any :- 
+1. unknown 
+2. transformation
+3. routing
+4. connectivity ----- has one type 1.retry_exhausted
+5. expression
+6. security     ----- security has two types 1.Client_Security & 2.Server_Security
+
+Critical :-
+1. fatal
+2.overload
+
+//Error type is combination of : name_space: identifier
+
 -----------------------------------------------------------------------------------------
 
-//How can we give input parameters to queries for database component ?
 
---> 
+// in java there is try catch statement when error occure in try statement it will be 
+catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in --> try scope)..
 
-Select query text:-
-values(:key1 , :key2 , :key3) ;      // this is placeholder :key
+//every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
 
-input parameter:-
-{
-  key1: payload.keyName ,            
-  key2: payload.keyName , 
-  key3: payload.keyName
-}
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// Database call give us java base response as outcome and payload will be vanished after going to DB ---> to solve this we need to set variable component
-in flow or save payload as variable..
-
-// In database case ID is of auto generated  which is primary key. but , same payload can come multiple times
-so , we need to give max(case_id) to DB which will give us the latest case id .. we use select operation in anypoint studio for this task
- write in select query-text:- select max (case_id) as case_id from TABLE where Key_1 = :Key_Name 
-and in inputs parameters:- Key_Name: vars.Variable_Name.Key_1
-
-
-//After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
- to avoide this there are two ways:
-
- 1. We can make use of auto generated keys features on top of database...
-Database(Insert-operation) component ---> Advance ---> Auto generated keys = true | Auto generated key columnNames = edit inline ---> + provide ---> columnNames = Value: case_ID
-//To read payload in java-stream objects ---> evaluate: write(payload , "application/json")
-
- 2. We can write a stored procedures which will take all fields as input and insert into the database , then return us generated case_id..
-
-Database(stored-procedure) component ---> General ---> inout parameters = none | output parameters = edit inline ---> + provide ---> output parameter = key: case_id & type: Integer
-
----------------------------------------------------------------------------------
-// We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
-  The correlationID can find multiple logs and transactionID will find exact transaction log.
-
-    The correlation-ID :  Client chosen value can be duplicate among the request but , that should be value from the input.. 
- if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
-syntax to fetch :-
-attributes.headers.'x-correlation-id' default ""
-
-   The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to correlationID
- Whereas mulesoft can able to generate its its own transaction ID it will maintain in each log.
-// uuid() :- is mulesoft function that will , generate unique ID .
-syntax to fetch :-
-attributes.headers.'x-transaction-id' default uuid()
- ------------------------------------------------------------------------------------------
-// To point any value or expression dynamically over SQL query text :-  
-#["$(vars.Dynamic_Query)"]
----------------------------------------------------------------------
-To apply connection pulling:- 
---goto--> 
-Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
---configure--> Max pool size: | Min pool size:  | Acquire increment: ---> ok & save .
-
-------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------

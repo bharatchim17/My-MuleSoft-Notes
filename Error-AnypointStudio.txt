@@ -13,7 +13,7 @@ payload
 //Error Ocure :- No listener found for endpoints /base_path/sub_path %0A
 
 Solution:- 
-1. check url
+1. check/re-enter url 
 2. Test http configuration
 3. Remove empty spaces in postman's URL and payload..
 
@@ -138,8 +138,8 @@ also , refresh metadata.
 
 //Error Ocure:- mvn Clean Package-nsu-DskipMunitTests has encountered problem.
 Solution:-
-1.Restart
-2.Delete-project
+1. Restart
+2. Change the work-space 
 
 
 ------------------------------------------------------------------------------------

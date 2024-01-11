@@ -34,42 +34,7 @@ if application running in cloudHub then schedular conforms to UTC timezone.
 3. Time Unit :- for values of Frequency and Start Delay. values are: second , minute , days , hours.
 
 
-Selector Expressions for Mule Errors:-
 
-1. #[error.description]
-2. #[error.detailedDescription]
-3. #[error.errorType]
-4. #[error.cause]
-5. #[error.errorMessage]
-6. #[error.childErrors]
-
----------------------------------------------------------------------------------------
-//Error types :-
-
-Any and Critical
-
-Any :- 
-1. unknown 
-2. transformation
-3. routing
-4. connectivity ----- has one type 1.retry_exhausted
-5. expression
-6. security     ----- security has two types 1.Client_Security & 2.Server_Security
-
-Critical :-
-1. fatal
-2.overload
-
------------------------------------------------------------------------------------------
-
-
-// in java there is try catch statement when error occure in try statement it will be 
-catch it in catch statement , like these function anypoint studio provide 
-it by right click wrap in --> try scope...
-
-//every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
-
--------------------------------------------------------------------------------------------------------------------
 //Set variables(core):-  
 This component creates or updated variables for later use in flow .
 variables stored in global variables called vars.

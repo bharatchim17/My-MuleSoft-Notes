@@ -40,8 +40,7 @@ Mule event contains:-
 message source triggers generation of mule event and dispatches that event to flow..
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 //MEL is lightweight mule-specific expression language that you can access and evaluate data in payload , properties and variables. #[payload]
 
@@ -114,14 +113,73 @@ are running together in one Applications or in one server.
 
 Integration tool called as ESB tool when it provides below features:-
 
-  - Components to orchestrate integrations (Drag and Drop components..)
-  - transformations (Transform done by components and dataweave logic..)
-  - Enrichments (process of concatenation of data with each other..)
+  - Components to orchestrate integrations (Drag and Drop components.)
+  - transformations (Transform done by components and dataweave logic.)
+  - Enrichments (process of concatenation of data with each other.)
 
------------------------------------------------------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//We can do validation in two ways :- By using validation module connectors and by using
-RAML while , Designing API's.
+//How can we give input parameters to queries for database component ?
 
+--> 
+
+Select query text:-
+values(:key1 , :key2 , :key3) ;      // this is placeholder :key
+
+input parameter:-
+{
+  key1: payload.keyName ,            
+  key2: payload.keyName , 
+  key3: payload.keyName
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Database call give us java base response as outcome and payload will be vanished after going to DB ---> to solve this we need to set variable component
+in flow or save payload as variable..
+
+// In database case ID is of auto generated  which is primary key. but , same payload can come multiple times
+so , we need to give max(case_id) to DB which will give us the latest case id .. we use select operation in anypoint studio for this task
+ write in select query-text:- select max (case_id) as case_id from TABLE where Key_1 = :Key_Name 
+and in inputs parameters:- Key_Name: vars.Variable_Name.Key_1
+
+
+//After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
+ to avoide this there are two ways:
+
+ 1. We can make use of auto generated keys features on top of database...
+Database(Insert-operation) component ---> Advance ---> Auto generated keys = true | Auto generated key columnNames = edit inline ---> + provide ---> columnNames = Value: case_ID
+//To read payload in java-stream objects ---> evaluate: write(payload , "application/json")
+
+ 2. We can write a stored procedures which will take all fields as input and insert into the database , then return us generated case_id..
+
+Database(stored-procedure) component ---> General ---> inout parameters = none | output parameters = edit inline ---> + provide ---> output parameter = key: case_id & type: Integer
+
+---------------------------------------------------------------------------------
+// We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
+  The correlationID can find multiple logs and transactionID will find exact transaction log.
+
+    The correlation-ID :  Client chosen value can be duplicate among the request but , that should be value from the input.. 
+ if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
+syntax to fetch :-
+attributes.headers.'x-correlation-id' default ""
+
+   The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to correlationID
+ Whereas mulesoft can able to generate its its own transaction ID it will maintain in each log.
+// uuid() :- is mulesoft function that will , generate unique ID .
+syntax to fetch :-
+attributes.headers.'x-transaction-id' default uuid()
+ ------------------------------------------------------------------------------------------
+// To point any value or expression dynamically over SQL query text :-  
+#["$(vars.Dynamic_Query)"]
+---------------------------------------------------------------------
+To apply connection pulling:- 
+--goto--> 
+Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
+--configure--> Max pool size: | Min pool size:  | Acquire increment: ---> ok & save .
+
+------------------------------------------------------------------------------------------- 
+// We can do validation in two ways :- By using validation module connectors and by using
+RAML while , Designing API's.
+---------------------------------------------
 
