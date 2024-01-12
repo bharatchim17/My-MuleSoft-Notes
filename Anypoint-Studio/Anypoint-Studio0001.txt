@@ -42,7 +42,7 @@ message source triggers generation of mule event and dispatches that event to fl
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
-//MEL is lightweight mule-specific expression language that you can access and evaluate data in payload , properties and variables. #[payload]
+//MEL is lightweight mule-specific expression language that you can access and evaluate data in payload , properties and variables. #[payload/vars/attributes]
 
 //payload contains body of the message , for example content of file , record from database or response from rest or web service..
 
