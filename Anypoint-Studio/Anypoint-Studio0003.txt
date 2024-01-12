@@ -13,11 +13,11 @@ it has:-
                                    |   
                 Mule event source  |  Mule event processors
                                    |        
-                                   |        + 
-                                   |
-                                   |    Error_Handling
+                                   | 
+                                   +
+                               Error_Handling
        
-                                   |
+                                   
 
  The flow has event source called as main flow
 
