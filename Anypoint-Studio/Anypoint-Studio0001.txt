@@ -148,7 +148,7 @@ and in inputs parameters:- Key_Name: vars.Variable_Name.Key_1
  to avoide this there are two ways:
 
  1. We can make use of auto generated keys features on top of database...
-Database(Insert-operation) component ---> Advance ---> Auto generated keys = true | Auto generated key columnNames = edit inline ---> + provide ---> columnNames = Value: case_ID
+Database(Insert-operation) component ---> Advance ---> Auto generated keys = true | Auto generated key columnNames = edit inline ---> + --provide--> columnNames = Value: case_ID
 //To read payload in java-stream objects ---> evaluate: write(payload , "application/json")
 
  2. We can write a stored procedures which will take all fields as input and insert into the database , then return us generated case_id..
