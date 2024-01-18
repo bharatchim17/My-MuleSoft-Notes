@@ -1,0 +1,157 @@
+---------------------------------------------------------------------------------------------
+//Anypoint platform capabilities:-
+Anypoint platform is web application ,a graphical user interface allows us to do cloud
+ operations on deployed mule applications..
+
+* CONTROL PLANE 
+1. Anypoint Design Centre:-
+  - Flow Designer
+  - API Designer
+  - Visual API Designer   
+
+2. Anypoint Management Centre:-
+   - Runtime Manager
+   - API Manager
+   - Access Management
+   - Analytics
+
+3. Anypoint Exchange:-
+    - Exchange portal
+
+* RUNTIME PLANE 
+4. runtime engine
+5. Anypoint Connectors
+6. Runtimes Services
+
+
+
+----------------------------------------------------------------------------------
+Organization:-      TATA
+      |
+      |
+Business groups:-   1.TATA Motors  2.TATA Steel   3.TATA Motors
+      |
+      |
+Environments:-      1.Development   2.Quality-Assurance  3.Production
+
+//API's are individual to each Business group , they can't be accessd one from another.
+----------------------------------------------------------------------------------------
+
+//RAML Terminology:-
+
+1.REST API URL :-
+ http://localhost:8081/Domain_Name/v1/cases
+    
+    here: 
+    Base URI :-  http://localhost:8081/Domain_Name
+    Resource :- v1/cases
+
+2.HTTP Methods :-
+GET, POST, PUT, DELETE
+
+3.Input :-
+headers , body
+
+4.Content type :-
+application/json, application/xml
+
+5.Response headers:-
+200 OK , 400 Bad Reqest , 500 Server Error
+
+6.Response body :-
+application/json , application/xml
+
+-------------------------------------------------------------------------------------------------
+//Fragments in RAML:-
+Fragments:- API fragments are reusable components of RAML to make the Design and build 
+of reusable API even quicker and easier.
+
+API Fragments:- has two types
+1. Local
+2. Global 
+
+//Fragments Types:-
+
+-------------
+
+1.Traits:- here, you can edit query_params , headers fragments
+
+In Traits_fragment:-
+
+ Key-1_Name:
+  partIn-root-fragment_paste-here
+ Key-2_Name:
+  partIn-root-fragment_paste-here  
+ 
+
+---Below_baseUri-in root_file---
+
+traits:
+ Key-1_Name: !include paste_pathOf-- Traits_file-1
+ Key-2_Name: !include paste_pathOf-- Traits_file-2
+
+
+--mention_As--
+
+is: [Key-1_Name , Key-2_Name]
+
+--------------------------------
+2.Resource-Type
+--------------------------------
+3.Library:- Is collection of data-types
+
+Q.How library refer to raml ?
+
+In Library_fragment:-
+
+usage: Tittle_for usage 
+types:
+Key_Name:
+partIn-root-fragment_paste-here
+
+
+---Below_baseUri-in root_file---
+
+uses:
+  Key_Name: --paste_pathOf-- Library_file
+
+---mention-inType--
+type: Key_Name.Paste_
+
+------------------------------
+4.Data-Type:- here, you can edit types 
+---mention-inType---> type: !include copy_path of file which is in datatype_folder
+
+5.User-Documentation
+
+6.Example:- here, you can edit example
+---mention-inExample---> example: !include copy_path of file which is in example_folder
+
+7.Annotation-Type
+--------------------------------------
+8.security_Schemes:-
+Whenever we develop a REST_service we apply Security on top of rest APIs.
+Security can achieve in several ways, among that we use cofigure SQL certificates on mobile ,
+applications or either individually through application or through muleSoft runtime dedicated load
+balancer , so that those services will be exposed as HTTPS services.
+
+Apart from that, we also apply security policies on top of these APIs.
+Those are like basic authentification, client ID enforcement(injected through headers) and oAuth security policies.
+
+
+In Security_fragment:-
+type: basic authentification/oAuth2.0
+description/describedBy:
+
+---Below_baseUri-in root_file---
+
+securitySchemes:
+--Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
+
+
+--mention_As--
+securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
+
+
+
+-------------------------------------------------------
