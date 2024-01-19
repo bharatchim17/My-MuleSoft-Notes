@@ -72,7 +72,7 @@ git ls-files --> show files in staging Area
 git rm --cached file_Name --> will delete all files from staging area..
 
 ----------------------------------------------------------------
-//Don't use:-
+//Don't use regular:-
 
    git rm file_Name --> will , delete files from all stages.
    git rm -r .      --> will , delete files from all stages.
