@@ -1,0 +1,26 @@
+//Anypoint-Exchange:- is repository which provides all Connectors to muleSoft.
+//Templates:- are reusable project structures , we can create applications by using Templates.
+
+//API-Life-Cycle:-
+ 
+                      Design
+                        |
+                        |
+                    Development
+                        |
+                        |
+                    Manual Unit Testing
+                        |
+                        |
+                    Munit-Testing
+                        |
+                        |
+                    Manual Deployment
+                        |
+                        |
+                    CICD Deployment 
+                        |
+                        |
+                    API Management
+----------------------------------------------------------------
+                
