@@ -96,7 +96,19 @@ traits:
 is: [Key-1_Name , Key-2_Name]
 
 --------------------------------
-2.Resource-Type
+2.Resource-Type here you can edit Methods
+
+---Below_baseUri-in root_file---  
+resourcetypes:
+ Key_Name: !include paste_pathOf-- Type_file
+
+---mention-inType--
+type: Key_Name
+  
+     or
+     |
+     |
+---mention-inType---> type: !include copy_path of file which is in datatype_folder
 --------------------------------
 3.Library:- Is collection of data-types
 
@@ -120,13 +132,37 @@ type: Key_Name.Paste_
 
 ------------------------------
 4.Data-Type:- here, you can edit types 
+
+---Below_baseUri-in root_file---  
+
+types:
+ Key_Name: !include paste_pathOf-- Type_file
+
+---mention-inType--
+type: Key_Name
+     |
+     |
+     or
+     |
+     |
 ---mention-inType---> type: !include copy_path of file which is in datatype_folder
 
+--------------------------------------
 5.User-Documentation
-
+---------------------------------------
 6.Example:- here, you can edit example
----mention-inExample---> example: !include copy_path of file which is in example_folder
+In Example folder_file 
+example: |
+---mention-inExample---> example: file_Name
+     
+     |
+     |
+     or
+     |
+     |
 
+---mention-inExample---> example: !include copy_path of file which is in example_folder
+------------------------------------
 7.Annotation-Type
 --------------------------------------
 8.security_Schemes:-
