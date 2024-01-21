@@ -39,3 +39,5 @@ catch it in catch statement , like these function anypoint studio provided try s
 //every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
 
 -------------------------------------------------------------------------------------------------------------------
+//On Error Continue:- Considers the request transaction as Success-response and response back to the event source..
+//On Error Propagate:- Considers the request transaction as Error-response  and response back to the event source..
