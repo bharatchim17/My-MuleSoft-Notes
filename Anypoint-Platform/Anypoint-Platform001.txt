@@ -60,8 +60,85 @@ application/json, application/xml
 
 6.Response body :-
 application/json , application/xml
+-----------------------------------------------------------------------------------------
+//RAML is a language for the definition of HTTP-based APIs that embody most or all 
+of the principles of Representational State Transfer (REST).
+RAML is a human & machine-readable language for the definition of a RESTful 
+application programming interface (API).
 
+This document is organized as follows:-
+-Basic Information
+-Data Types
+-Resources
+-Methods
+-Responses
+-Resource Types and Traits
+-Security
+-Annotations
+-Includes, Libraries, Overlays, and Extensions
+------------------------------------------------------------------------------------
+
+//A template URI refers to a URI parameter, which is a variable element, enclosed 
+in curly brackets ({}) inside a relative URI of a resource.
+
+//title:- Label for the API.
+
+//version:- API version
+
+//baseUri:-  baseUri node specifies a URI as an identifier for the API as a whole.
+
+//baseUriParameters:- The baseUriParameters node has the same semantics and therefore
+ MUST follow the same structure as the uriParameters.
+
+//protocols:-  [ HTTP, HTTPS ]
+
+//mediaType:- it's Default Media Types for example:- [ application/json , application/xml ]  --or--  application/json
+
+//documentation:-  reference documentation for the API. Such documents can clarify how the API works or provide technical
+and business context. it contains title & content..
+
+types:
+
+//traits:- A trait, like a method, can provide method-level nodes such as a description,
+ headers, query string parameters, and responses. 
+
+//resourceTypes:-  A resource type , can specify security schemes,
+ methods, and other nodes. 
+
+
+//annotationTypes:-  Annotation types, like data types, can extend other data types,
+ but annotation types themselves can neither be extended nor used 
+ anywhere data types can be used.
+
+(annotationName):-  An annotation is a map having a key that wrap in parentheses() 
+is the annotation name, and the value is an instance of that annotation.
+
+//securitySchemes:- Most REST APIs have one or more mechanisms to secure data access, 
+identify requests, and determine access level and data visibility.
+RAML supports the following built-in security scheme types:-	
+OAuth 1.0: 
+OAuth 2.0	
+Basic Authentication	
+Digest Authentication	
+Pass Through	
+x-{other}
+
+
+securedBy:- The value assigned to the securedBy node MUST be a list of any of the 
+security schemes previously defined in the securitySchemes.
+
+//uses:- Imported external libraries for use within the API.
+
+//relativeUri:- The resources of the API, identified as relative URIs that begin with a slash (/).
+A resource node is one that begins with the slash and is either at the root of the API definition or a child of a resource node. For example, /users and /{groupId}.
+
+//usage:- resource type or trait provides instructions about how and when the resource type or trait SHOULD be used. 
+
+//description:- Human-friendly description of the API.
+
+//schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 , always use types ..
 -------------------------------------------------------------------------------------------------
+
 //Fragments in RAML:-
 Fragments:- API fragments are reusable components of RAML to make the Design and build 
 of reusable API even quicker and easier.
@@ -187,7 +264,4 @@ securitySchemes:
 
 --mention_As--
 securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
-
-
-
--------------------------------------------------------
+----------------------------------------------------------------------------------------------------
