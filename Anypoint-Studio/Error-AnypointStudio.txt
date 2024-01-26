@@ -143,3 +143,7 @@ Solution:-
 
 
 ------------------------------------------------------------------------------------
+//Error Ocure:- Tooling instance is not available
+Solution:-  
+Window ---> preference ---> Tooling --click--> 
+Check status/Restart Studio Services 
