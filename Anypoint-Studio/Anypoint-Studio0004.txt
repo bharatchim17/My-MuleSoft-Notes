@@ -41,6 +41,14 @@ variables stored in global variables called vars.
 
 
 //Logger:- helps to monitor and debug Mule application. we can logg Error message , status notification etc.
+-----------------------------------------------------------------------------------------------------------------------
+//Java Messaging Service (JMS) Publisher
+  - In integration world after webservices , the JMS publish subscribe model used mostly 
+ to make asynchronous integrations..
+  
+JMS Queue
+Publisher ---> Queue ---> Subscribe
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+JMS Topic 
 
+Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber

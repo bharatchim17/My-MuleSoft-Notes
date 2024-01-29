@@ -141,9 +141,12 @@ Solution:-
 1. Restart
 2. Change the work-space 
 
-
 ------------------------------------------------------------------------------------
 //Error Ocure:- Tooling instance is not available
 Solution:-  
 Window ---> preference ---> Tooling --click--> 
 Check status/Restart Studio Services 
+---------------------------------------------------------
+//Error Ocure:- connect ECONNREFUSED 127.0.0.1:8081
+Solution:-  
+
