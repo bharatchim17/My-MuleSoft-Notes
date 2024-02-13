@@ -76,24 +76,19 @@ code management and need not to touch applications on configurations property ch
 
 1. Create property(.properties) file or yaml_file(.yaml) in src/main/resources.
    
-            http.port = 8081             
+    OracleDatabase:
+            host: "localhost"
+            port: "1521"
+            userName: "system"
+            password: "chimbh17"
+            serviceName: "XEPDB1"
 
-            db.Key_Name.host =
-            db.Key_Name.port =
-            db.Key_Name.username  =
-            db.Key_Name.password  =
-            db.Key_Name.service  =
+     httpListener:
+          port: "6061"
+          host: "localhost"
+          readTimeOut: "30000"
+          basePath: "/learnmulesoft" 
 
-
-            http:
-            port: "8081"
-            db:
-            Key_Name:
-                host: " "
-                port: " "
-                username:  " "
-                password:  " "
-                serviceName:  " "
   
 2. Create "configuration properties" global element.
 ---> load the file
@@ -101,17 +96,13 @@ code management and need not to touch applications on configurations property ch
 
 3/4. Use ${key} expression extract the Property from Property file or yaml file..
 
-        //In HTTP Listner config:
-
-        port:  ${http.port}
-
         //In Database config:
-
-        host = ${ db.Key_Name.host}
-        port =  ${db.Key_Name.port}
-        username = ${db.Key_Name.username}
-        password = ${db.Key_Name.password}
-        service name  = ${db.Key_Name.service}
+            host =  ${OracleDatabase.host}
+            port =  ${OracleDatabase.port}
+            username = ${OracleDatabase.userName}
+            password = ${OracleDatabase.password}
+            service name = ${OracleDatabase.serviceName}
+  
 
 
 
@@ -122,21 +113,18 @@ code management and need not to touch applications on configurations property ch
 
 
 1. Create property(.properties) file or yaml_file(.yaml) in src/main/resources.
-
-     http:
-            port: "8081"
-            db:
-            Key_Name:
-                host: " "
-                port: " "
-                username:  " "
-                password:  "![paste_generated-password]"
-                serviceName:  " "
+            OracleDatabase:
+                  host: "localhost"
+                  port: "1521"
+                  userName: "system"
+                  password:  "![paste_generated-password]"
+                  serviceName: "XEPDB1"
+                
 
 2.Encrypt password property values:-
 https://secure-properties-api.us-e1.cloudhub.io/
 
-   - Choose 16 digits encryption key:  abcdef0123456789
+   - Choose 16 digits encryption key:-  abcdef0123456789
    - Use alogorithm and mode to encrypt password using above key
 
 3. Create "Mule secure configuration property" global element.
@@ -144,17 +132,13 @@ https://secure-properties-api.us-e1.cloudhub.io/
 
 4/5. Use ${secure::key} expression extract the Property from Property file or yaml file..
 
-//In HTTP Listner config:
-
-        port:  ${secure::http.port}
-
  //In Database config:
-
-        host = ${secure::db.Key_Name.host}
-        port =  ${secure::db.Key_Name.port}
-        username = ${secure::db.Key_Name.username}
-        password = ${secure::db.Key_Name.password}
-        service name  = ${secure::db.Key_Name.service}
+ 
+        host = ${secure::OracleDatabase.host}
+        port =  ${secure::OracleDatabase.port}
+        username = ${secure::OracleDatabase.userName}
+        password = ${secure::OracleDatabase.password}
+        service name  = ${secure::OracleDatabase.serviceName}
 
 
 5/4. Use Mule::p('secure::key') dataweave script to extract in dataweave(--Click--> fx)
@@ -163,20 +147,22 @@ https://secure-properties-api.us-e1.cloudhub.io/
 
 --------------------------------------------------------------------------------------
 //Environment:-
-            Dev 
+            DEV 
             PROD 
             TEST 
             UAT
 //Load property files dynamically by environment:-
 
-global element tab ---> secure properties config ---> file: ${env}.yaml  key: ${enc.key}
+global element tab ---> secure properties config ---> file: ${env}.yaml  key: ${enc.key} 
+global property ---> name: env |  value: dev  
 
 --right_click-on_project---> Run As ---> Mule Application (configure) ---> Arguments--->
 program Arguments:
--Denv = dev/test
--Denc.key = paste_key_here
+-Denv=dev/test
+-Denc.key=paste_key_here
 ----------------------------------------------------------------------------------
 //Runtime to cloudHub 1.0
+
 Right_click on project ---> deploy to cloudHub ---> deploy to cloudHub
 
 //worker size:- is memory example --> 0.2 vCores 1GB memory..
@@ -224,7 +210,7 @@ each request have been approved to consume the API.
 
 1. register client application on API in exchange.
 
-2. specifies from where in the request to extract values:
+2. specifies from where in the request to extract values.
 
   - HTTP Basic Authentification Header: Requires credentials as part of the authorization header.
  The application consuming the API must use the basic Authentification scheme to send the 
@@ -240,7 +226,7 @@ You can configure multiple limits with window sizes ranging from milliseconds to
 1. Apply configuration to all API method & resources.
 2. Apply configuration to specific API method & resources.
 ---------------------------------------------------------------------------------------
-//Rate limiting - SLA based policy:-
+//Rate limiting SLA based policy:-
 The rate limiting policy is combination of rate limiting and client id enforcement that enables you to 
 limit the number of request specified by the level of access granted to the requesting application.
  1. Apply configuration to all API method & resources

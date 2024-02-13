@@ -159,7 +159,7 @@ Database(stored-procedure) component ---> General ---> inout parameters = none |
 // We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
   The correlationID can find multiple logs and transactionID will find exact transaction log.
 
-    The correlation-ID :  Client chosen value can be duplicate among the request but , that should be value from the input.. 
+    The correlation-ID : Client chosen value can be duplicate among the request but , that should be value from the input.. 
  if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
 syntax to fetch :-
 attributes.headers.'x-correlation-id' default ""
@@ -181,5 +181,5 @@ Global-configuration-element ---> Database-config ---> Advance Tab --set--> pool
 ------------------------------------------------------------------------------------------- 
 // We can do validation in two ways :- By using validation module connectors and by using
 RAML while , Designing API's.
----------------------------------------------
+---------------------------------------------------------------------
 
