@@ -253,3 +253,9 @@ A differential back up only backs up the parts of the database that have changed
 
 SELECT column1, column2, ...
 FROM table_name;
+------------------------------------------------------------------------
+SOQL (Salesforce Object Query Language) is query language used in Salesforce to retrieve data from
+the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) queries but are specifically
+designed for querying Salesforce Objects.
+Query syntax:-
+SELECT <List Of Fields> FROM <Object API Name> WHERE <Filter Condition>

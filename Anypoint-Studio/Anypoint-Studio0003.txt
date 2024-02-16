@@ -64,5 +64,44 @@ We can do this by wrapping the flow reference component in an async component.
 regular flows; there is no “synchronous flow” component. 
 
 ----------------------------------------------------------------------------------------
+//Streaming API
+Streaming API enables Streaming of events using push technology and provides subscription mechanism for receiving events in near real time..
+The Streaming API subscription mechanism supports multiple types of events , including PushTopic events , generic events , platform events and change Data capture events.. 
+
+//Push technology , also called the publish/subscribe model , transfers information that is initiated from server to client..
+--------------------------------------------------------------------------------------------------------------------------------------
+//Assert Equals
+The Assert Equals processor allows you to run assertions in order to validate the state 
+of Mule Event's content. This is processor can be used to validate Mule Event after production code runs. 
+
+//Assert That Event processor 
+The Assert That event processor allows you to run assertions to validate the state of 
+Mule event's content. You can use the Assert that processor to validate the mule event after 
+the production code runs..
+Assert that processor uses set of dataweave function called Munit matchers to define assertion conditions 
+for any value in an expression.. 
+//Assert Expression 
+The Assert expression processor allows you evaluate Dataweave expression that asserts state
+of Mule Event's content..This processor can be used to validate mule event after production code runs , 
+using Dataweave assertion library..
+
+//Spy Event processor
+The spy processor allows you to spy what happens before and after an event processor is called.. 
+----------------------------------------------------------------------------------------
+//Munit:-
+Munit is Mule application framework that allows you to easily build automated tests for your 
+integrations and APIs. it provides a full suite of integration and unit test capabilites and is fully integrated with Maven surefire for 
+integration with your continuous deployment environment...
+ 
+with Munit you can:
+- Create your test by writing mule code
+- Mock processors
+- spy any processor 
+- verify processor calls
+- Enable or ignore particular tests
+- Tag tests
+- check visual coverage in studio 
+- generate coverage reports
+--------------------------------------------------------------------------------------------
 
 
