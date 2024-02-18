@@ -199,8 +199,11 @@ Mulesoft has provided API management in two areas:
  Is the process of allowing API manager application to discover the application is running in
  the runtime using instance , ID is known as auto discovery..
  To enable auto discovery follow below steps:
+ 1. create auto discovery global element using API instance id.
+ 2. provide below runtime properties:
   - Organization buisness group client_id
   - Organization buisness group client_secret
+ 
 
 ----------------------------------------------------------------------------------------------------
 //Client id enforcement  policy:-
@@ -210,7 +213,7 @@ each request have been approved to consume the API.
 
 1. register client application on API in exchange.
 
-2. specifies from where in the request to extract values.
+2. specifies from where in the request to extract values:
 
   - HTTP Basic Authentification Header: Requires credentials as part of the authorization header.
  The application consuming the API must use the basic Authentification scheme to send the 
@@ -231,6 +234,10 @@ The rate limiting policy is combination of rate limiting and client id enforceme
 limit the number of request specified by the level of access granted to the requesting application.
  1. Apply configuration to all API method & resources
  2. Apply configuration to specific API method & resources
+ //steps:
+ 1. Add SLA tiers
+ 2. Create client Applications
+ 3. Apply rate limiting SLA based policy 
 -------------------------------------------------------------------------------------------
 JSON & XML threat protection policy:-
 
