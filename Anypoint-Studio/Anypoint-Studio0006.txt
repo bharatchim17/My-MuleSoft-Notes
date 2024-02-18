@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------
+//Munit:-
+Munit is Mule application framework that allows you to easily build automated tests for your 
+integrations and APIs. it provides a full suite of integration and unit test capabilites and is fully integrated with Maven surefire for 
+integration with your continuous deployment environment...
+ 
+with Munit you can:
+- Create your test by writing mule code
+- Mock processors
+- spy any processor 
+- verify processor calls
+- Enable or ignore particular tests
+- Tag tests
+- check visual coverage in studio 
+- generate coverage reports
+--------------------------------------------------------------------------------------------
+
+

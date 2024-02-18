@@ -1,4 +1,4 @@
-
+-------------------------------------------------------------------------
 //Mule Palette:-
 
 // *HTTP:-
@@ -52,3 +52,4 @@ Publisher ---> Queue ---> Subscribe
 JMS Topic 
 
 Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber
+-------------------------------------------------------------------------------------------

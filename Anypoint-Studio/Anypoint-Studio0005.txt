@@ -1,0 +1,48 @@
+-----------------------------------------------------------------------------------
+//Error handling:-
+The process of handling errors in flow and responding back user friendly messages 
+instead of system error messages is known as error handling.
+
+Selector Expressions for Mule Errors:-
+1. #[error.description]
+2. #[error.detailedDescription]
+3. #[error.errorType]
+4. #[error.cause]
+5. #[error.errorMessage]
+6. #[error.childErrors]
+
+---------------------------------------------------------------------------------------
+//Error types :-
+
+Any and Critical
+
+Any :- 
+1. unknown 
+2. transformation
+3. routing
+4. connectivity ----- has one type 1.retry_exhausted
+5. expression
+6. security     ----- security has two types 1.Client_Security & 2.Server_Security
+
+Critical :-
+1. fatal
+2.overload
+
+//Error type is combination of : name_space: identifier
+
+-----------------------------------------------------------------------------------------
+
+
+// in java there is try catch statement when error occure in try statement it will be 
+catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in --> try scope)..
+
+//every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
+
+--------------------------------------------------------------------------------------------------
+//On Error Continue:- Considers the request transaction as Success-response and 
+response back to the response section of  response back to the error section of listner..
+..
+//On Error Propagate:- Considers the request transaction as Error-response  and
+ response back to the error section of listner..
+//When we have API kit router with HTTP listner , we should use /* at the end of sub-path
+---------------------------------------------------------------------------------------------------
