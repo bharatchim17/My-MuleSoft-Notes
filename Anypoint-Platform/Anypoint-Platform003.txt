@@ -1,0 +1,24 @@
+//What is datatype..?
+A data type describes the data expected in an API or returned by the API..
+Datatype describes data in an API and add rules to validate data against type declaration..
+there are two types of datatype 1. built-in datatype 2. custom data types
+--------------------------------------------------------
+//What are facets in RAML?
+Types can define two types of members: properties and facets. Both are inherited. 
+Properties are regular, object oriented properties. Facets are special configurations. You specialize types based on characteristics of facet values.
+use for adding some constraints/special configuration..
+
+Common facets for all type declarations:
+-  default , description , enum , example
+
+Some are specific to type:
+- Object:  properties , minProperties , maxProperties etc
+- Array:   uniqueItems , minItems , maxItems
+- String:  pattern , minlength , maxlength 
+- integer: minimum , maximum , format , multipleOf
+
+//enum facet used to specify the possible values for the room type..
+----------------------------------------------------------------------
+//What are fragments in RAML?
+fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
+These fragments can be data types, traits, resource categories, and many others.

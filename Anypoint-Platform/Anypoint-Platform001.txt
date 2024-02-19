@@ -170,7 +170,7 @@ traits:
 
 is: [Key-1_Name , Key-2_Name]
 
---------------------------------
+--------------------------------------------------------------
 2.Resource-Type here you can edit Methods
 
 ---Below_baseUri-in root_file---  
@@ -205,39 +205,37 @@ uses:
 ---mention-inType--
 type: Key_Name.Paste_
 
-------------------------------
-4.Data-Type:- here, you can edit types 
+---------------------------------------------------------------------------------
+4. Data-Type:- 
 
----Below_baseUri-in root_file---  
-
+//In root_file
 types:
- Key_Name: !include paste_pathOf-- Type_file
+Key_Name: !include paste_path
 
----mention-inType--
+//mention-underBody
+body:
+Key_Name
+
+//mention-inType
 type: Key_Name
-     |
-     |
-     or
-     |
-     |
----mention-inType---> type: !include copy_path of file which is in datatype_folder
+
+    
+//mention-inType
+ type: !include copy_path of file which is in datatype_folder
 
 --------------------------------------
 5.User-Documentation
----------------------------------------
-6.Example:- here, you can edit example
-In Example folder_file 
-example: |
----mention-inExample---> example: file_Name
-     
-     |
-     |
-     or
-     |
-     |
+-----------------------------------------------------------------
+6.Example:- 
+//In Example folder_file 
+example: |  <---or---> value:
 
----mention-inExample---> example: !include copy_path of file which is in example_folder
-------------------------------------
+//mention as 
+example: file_Name
+
+//mention
+example: !include copy_path of file which is in example_folder
+-------------------------------------------------------------------
 7.Annotation-Type
 --------------------------------------
 8.security_Schemes:-
