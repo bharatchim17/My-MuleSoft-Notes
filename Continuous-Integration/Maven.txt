@@ -1,3 +1,4 @@
+------------------------------------------------------------------
 //Maven
 maven is project Management tool that is based on POM (Project Object Model)...
 it's used for project build , dependancy and documentation..
@@ -10,3 +11,73 @@ it's used for project build , dependancy and documentation..
 - dependancy
 - repositories
 - plugin repositories
+------------------------------------------------------------------------------
+Local repositery <----project.xml/maven.xml/Maven--http--> remote repository
+
+//To install a JAR in the local repository use the following command:
+https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html
+
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> 
+-DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging>
+
+//Maven pom.xml deals with remote repository and local repositery and when ever we install 
+custom jar that will be install to local repositery (.m2)..
+
+//<E:\nexus-3.65.0-02\bin> ---> cmd 
+nexus.exe /run
+-------------------------------------------------------------
+//Step001:  add dependancy in pom.xml
+<dependancy>
+<groupId>com.oracle</groupId>
+<artifactId>ojdbc6</artifactId>
+<version>11.2.0.2.0</version>
+</dependancy>
+
+//Step002:  add dependancy in pom.xml
+<repository>
+<id>repository_name_from_nexus</id>
+<name>nexus_repo_createdName</name>
+<url>url_of_the_Nexus_repo</url>
+</repository>
+
+//Step003: In apache maven setting.xml and location is .m2
+<server>
+<id>repository_name_from_nexus</id>
+<userName>Nexus_userName</userName>
+<password>Nexus_password</password>
+</server>
+
+//Step004:  restart studio
+--------------------------------------------------------------------------------------
+
+
+https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
+
+//Before you can deploy to CloudHub using the Mule Maven plugin
+If you are using the HTTP Listener as source for your flow, you need to set it's host 
+to 0.0.0.0 and it's port to ${http.port}
+
+//add in plugin:
+
+    <cloudHubDeployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <muleVersion>write_mule_version_here</muleVersion>
+      <username>anypoint_platform_user_name</username>
+      <password>anypoint_platform_user_password</password>
+      <applicationName>dev-project_name</applicationName>
+      <environment>write_sandbox/production</environment>
+      <region>us_east_1</region>
+      <workers>1</workers>
+      <workerType>MICRO/SMALL/MEDIUM</workerType>
+      <objectStoreV2>true</objectStoreV2>
+      <properties>
+     <http.port>8081</http.port>
+     <env>dev</env>
+     <api.id>2518</api.id>
+      </properties>
+    </cloudHubDeployment>
+
+//To deploy: mvn clean package deploy -DmuleDeploy
+//To un-deploy: mvn mule:undeploy
+-----------------------------------------------------------------
+profiles:
