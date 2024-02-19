@@ -23,8 +23,6 @@ Anypoint platform is web application ,a graphical user interface allows us to do
 5. Anypoint Connectors
 6. Runtimes Services
 
-
-
 ----------------------------------------------------------------------------------
 Organization:-      TATA
       |

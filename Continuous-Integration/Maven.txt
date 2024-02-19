@@ -1,0 +1,12 @@
+//Maven
+maven is project Management tool that is based on POM (Project Object Model)...
+it's used for project build , dependancy and documentation..
+
+//What basic pom.xml contains..?
+- project build name details
+- properties
+- plugins
+- plugins to build the Project
+- dependancy
+- repositories
+- plugin repositories

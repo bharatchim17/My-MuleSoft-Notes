@@ -12,3 +12,5 @@ Is---> .json:- https://jsonformatter.org/json-to-jsonschema
 //For xml to xsd
 Is---> .xsd paste it in source (minOccurs=1 is mandatory & minOccurs= 0 is not mandatory) :-  https://www.liquid-technologies.com/online-xml-to-xsd-converter
 
+HTTP Status Codes:-
+https://www.restapitutorial.com/httpstatuscodes.html

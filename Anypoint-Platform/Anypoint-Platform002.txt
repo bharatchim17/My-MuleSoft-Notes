@@ -23,4 +23,90 @@
                         |
                     API Management
 ----------------------------------------------------------------
-                
+ 
+//Q. List different types of api ..?
+//Q. What is stateless ..?
+//Q. What is idompotent ..?
+
+//Design principles of REST APIs 
+- HTTP as application protocol
+- resource Based 
+- representation
+- uniform interface
+- stateless
+
+//resources
+- Nouns
+it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
+resources has two types:  1. Collection 2. Nested..
+//what is differece between collection resource and Nested resource ?
+In collection resource delete methode avoided in majority projects , in nested methode delete methode use in uri parameter
+
+resource representation can be in different formats - XML , JSON etc , representations exchanged between consumer and provider..
+
+//MediaType has two types:  1. Default  2. explicit 
+------------------------------------------------------------------------
+
+//Request contains:
+        - body
+        - headers
+        - mediaType
+        - uri_parameters
+        - query_parameters
+//request body must be required in post and patch method it not required in get and delete methode..
+
+//Response contains:
+        - HTTP status code
+        - mediaType
+        - body
+        - headers
+//response body not required in post and patch methode  it's required in get and delete methode but we can use anyway..
+----------------------------------------------------------------------------------------------
+1xx information:
+    - 100 continue
+    - 101 switching protocols
+    - 102 processing (webDAV)
+
+2xx success:
+    - 200 Ok 
+    - 201 created
+    - 202 accepted
+    - 203 Non-authoritive information
+    - 204 No Content
+    - 205 reset content
+
+3xx redirection:
+    - 300 multiple choices
+    - 301 moved permanently 
+    - 302 found
+    - 303 see others
+    - 304 not modified
+    - 305 use proxy
+
+4xx client-error:
+    - 400 bad request
+    - 401 unauthorized
+    - 402 payment required
+    - 403 forbidden
+    - 404 not found
+    - 405 method not allowed
+
+5xx server-error:
+- 500 internal server error
+- 501 not implemented
+- 502 bad gateway
+- 503 service unavilable
+- 504 gateway timeout
+- 505 http version not supported
+
+-----------------------------------------------------------------------
+//Request Headers has two types:
+1. Accept       ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
+2. Content-type ---e.g.-->  POST(collection resources) / PATCH(nested resources)
+
+//Response Headers has two types:
+1. Content-type  ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
+2. Location     ---e.g.-->  POST(collection resources) 
+
+We use Error-response as content-type in project as per requirement
+
