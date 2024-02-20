@@ -81,4 +81,43 @@ if application running in cloudHub then schedular conforms to UTC timezone.
 1. Frequency:- at which schedular triggers flow.
 2. Start delay:- is ammount of time to wait before triggering flow..
 3. Time Unit :- for values of Frequency and Start Delay. values are: second , minute , days , hours.
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+//What is API ..?
+API stands for application programming interface . it's set of rule and protocols that allows
+different software applications to communicate and interact with each other..
+
+//SOAP APIs: These APIs use simple object Access protocol. client and server exchange
+Messages using XML. this is less flexible API that was more popular in past.
+//REST API: These are most popular and flexible in term of data format and can support 
+various media types. the client sends request to server as data.. the server uses this
+client input to start internal function and return output data back to client..
+- HTTP methods: GET,POST,PUT,DELETE 
+- Stateless: does not store information of client 
+- Resources: REST APIs are built around resources , which represent entities or object 
+being exposed by API...
+
+//What is mulesoft ?
+mulesoft is software company that provides an integration platform called anypoint 
+platform.
+mulesoft provides anypoint platform to take an API through its complete Development
+lifecycle.
+mulesoft anypoint platforms offers a range of tools and capabilities to support
+integration efforts for example: design centre , exchange , anypoint studio , runtime manager,
+api manager , anypoint monitoring etc..
+//What is API integration..?
+integration is process of combining two or more things to create a whole..
+integration allows information to be shared between the connected systems..
+//Why integration?
+Because digital transformation is no longer an option, but a necessity..
+customers expect fast , digital and on-demand experiences..
+The more digital transformation initiatives that need to be implemented , the wider 
+delivery gap gets. the central piller to solve this huge challenge is to understand 
+how integration drives digital transformation..
+//Why mulesoft for api integration?
+- robust integration capabilities
+- API-Led connectivity
+- extensive Connectors ecosystem 
+- hybrid integration
+- scalability and performance 
+- Developer productivity
+- monitoring and management

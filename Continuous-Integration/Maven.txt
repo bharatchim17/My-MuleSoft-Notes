@@ -151,6 +151,7 @@ To un-deploy: mvn mule:undeploy
 -------------------------------------------------------------------------------------
 //Injecting maven POM properties via settings.xml:
 
+//In settings.xml
 <profiles>
 <profile>
 <id>dev/prod</id>

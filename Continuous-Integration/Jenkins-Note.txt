@@ -27,4 +27,67 @@ Jenkins Master (Server)
 Jenkins slave (local machine)
 
 ------------------------------------------------------------------------------------------
-//1.11.01
+//CICD workflow-
+continuous integration: continuous integration is practice that drive development
+teams to implement small changes and check in code to version control repositories 
+Frequently.
+continuous delivery/continuous deployment: continuous deployment automates the 
+deployment processs from version control. Developer need not put efforts to deploy..
+
+//Jenkins jobs:
+We create jenkins jobs to automate deployment from SCM tool/version control to servers.
+After check in code to SCM tool like GITHUB happened then job get's the source code from
+SCM tool..
+We can create jenkins job Pipelines in two ways:
+1. Scripted Pipeline
+2. Declarative Pipeline
+configure pipeline to build , execute Munit test and deploy..
+-------------------------------------------------------------------------
+
+
+//Two ways to trigger jenkins jobs automatically:
+1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit push.
+//go to settings ---> Webhooks
+payload url: https://paste_hoste_here/github-webhooks/
+just push event (active)
+//In jenkin project
+build environment: select github hook trigger for GITScm polling..
+
+2. Polling: jenkins polls in regular schedules.
+//In jenkin project
+build environment: select build perodically
+https://crontab.cronhub.io/
+-----------------------------------------------------------------------------------------
+//Jenkins pipeline allows us to define set of stages while continuous deployment,
+we can define stages to execute continuous deployment stage by stage..
+Declarative Checkout SCM ---> Build ---> Test ---> Deployment
+
+//Step1: Choose pipeline
+Defination: Pipeline script from SCM
+Choose SCM : git
+Script path: Jenkinsfile
+//Step2: create Jenkinsfile in studio  https://alc.workshops.mulesoft.com/alc-workshop/4.5.0/module7/module7_lab4.html
+
+//Step3: provide maven plugin in pom.xml https://docs.mulesoft.com/munit/latest/munit-maven-plugin
+<plugin>
+      <groupId>com.mulesoft.munit.tools</groupId>
+      <artifactId>munit-maven-plugin</artifactId>
+      <version>${munit.version}</version>
+      <executions>
+        <execution>
+          <id>test</id>
+          <phase>test</phase>
+          <goals>
+            <goal>test</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+
+ MUnit provides a Maven plugin that enables you to run your MUnit tests as part of
+  your continuous integration environment...
+
+//Step4: Download maven plugin in jenkins tool..
+----------------------------------------------------------------------------------------
+
+
