@@ -72,12 +72,105 @@ to 0.0.0.0 and it's port to ${http.port}
       <objectStoreV2>true</objectStoreV2>
       <properties>
      <http.port>8081</http.port>
+     </properties>
+    </cloudHubDeployment>
+
+
+//In pom.xml path:
+To deploy: mvn clean package deploy -DmuleDeploy
+To un-deploy: mvn mule:undeploy
+--------------------------------------------------------------------------------------
+
+//profiles maven plugin to multiple environments: 
+                                       https://docs.mulesoft.com/mule-gateway/mule-gateway-org-credentials-mule4
+
+anypoint.platform.client_id=XXXXXXXX
+anypoint.platform.client_secret=XXXXXXXX
+anypoint.platform.base_uri=https://eu1.anypoint.mulesoft.com
+anypoint.platform.analytics_base_uri=https://analytics-ingest.eu1.anypoint.mulesoft.com
+
+<anypoint.platform.client_id> 7714c6ba94af4e9590b3b03743d40edd </anypoint.platform.client_id>
+<anypoint.platform.client_secret> 
+43938114d3044012908CAE12f999Bd41 </anypoint.platform.client_secret>
+<anypoint.platform.base_uri> https://anypoint.mulesoft.com </anypoint.platform.base_uri>
+<anypoint.platform.analytics_base_uri> https://analytics-ingest.anypoint.mulesoft.com </anypoint.platform.analytics_base_uri>
+
+//paste it in properties of pom.xml as given below:
+
+ <cloudHubDeployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <muleVersion>write_mule_version_here</muleVersion>
+      <username>anypoint_platform_user_name</username>
+      <password>anypoint_platform_user_password</password>
+      <applicationName>dev-project_name</applicationName>
+      <environment>write_sandbox/production</environment>
+      <region>us_east_1</region>
+      <workers>1</workers>
+      <workerType>MICRO/SMALL/MEDIUM</workerType>
+      <objectStoreV2>true</objectStoreV2>
+      <properties>
+     <http.port>8081</http.port>
      <env>dev</env>
      <api.id>2518</api.id>
+     <anypoint.platform.client_id> 7714c6ba94af4e9590b3b03743d40edd </anypoint.platform.client_id>
+<anypoint.platform.client_secret> 
+43938114d3044012908CAE12f999Bd41 </anypoint.platform.client_secret>
+<anypoint.platform.base_uri> https://anypoint.mulesoft.com </anypoint.platform.base_uri>
+<anypoint.platform.analytics_base_uri> https://analytics-ingest.anypoint.mulesoft.com </anypoint.platform.analytics_base_uri>
       </properties>
     </cloudHubDeployment>
 
-//To deploy: mvn clean package deploy -DmuleDeploy
-//To un-deploy: mvn mule:undeploy
------------------------------------------------------------------
-profiles:
+//Copy from <build> to </builds> and paste it under id tag
+</properties>
+<profiles>
+<id>dev/test/prod</id> 
+</profiles>
+<build>
+
+//Remove plugin:
+                    <plugin>
+                    <groupId>
+                    <artifactId>
+                    <version>
+                    </plugin>
+<applicationName>
+<environment>
+                    <region>
+                    <workers>
+                    <workerType>
+<env>
+<api.id>
+                <anypoint.platform.client_id> 
+                <anypoint.platform.client_secret> 
+
+//paste  <objectStoreV2>true</objectStoreV2> in every environment.
+
+//In pom.xml path:
+To deploy: mvn clean package deploy -Pdev/test -DmuleDeploy
+To un-deploy: mvn mule:undeploy
+-------------------------------------------------------------------------------------
+//Injecting maven POM properties via settings.xml:
+
+<profiles>
+<profile>
+<id>dev/prod</id>
+<properties>
+<userName>bbhfvf</userName>
+<password>747</password>
+<anypoint.platform.client_id> 7714c6ba94af4e9590b3b03743d40edd </anypoint.platform.client_id>
+<anypoint.platform.client_secret> 
+43938114d3044012908CAE12f999Bd41 </anypoint.platform.client_secret>
+</properties>
+</profile>
+</profiles>
+
+// In pom.xml
+<cloudHubDeployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <muleVersion>write_mule_version_here</muleVersion>
+      <username>${userName}</username>
+      <password>${password}</password>
+      <anypoint.platform.client_id> ${anypoint.platform.client_id}</anypoint.platform.client_id>
+<anypoint.platform.client_secret> ${anypoint.platform.client_secret}</anypoint.platform.client_secret>
+--------------------------------------------------------------------------
+      
