@@ -92,8 +92,8 @@ in curly brackets ({}) inside a relative URI of a resource.
 
 //mediaType:- it's Default Media Types for example:- [ application/json , application/xml ]  --or--  application/json
 
-//documentation:-  reference documentation for the API. Such documents can clarify how the API works or provide technical
-and business context. it contains title & content..
+//documentation:-  reference documentation for the API. Such documents can clarify how
+ the API works or provide technical and business context. it contains title & content..
 
 types:
 
@@ -147,7 +147,7 @@ API Fragments:- has two types
 
 //Fragments Types:-
 
--------------
+------------------------------------------------------------------
 
 1.Traits:- here, you can edit query_params , headers fragments
 
@@ -207,6 +207,9 @@ type: Key_Name.Paste_
 
 ---------------------------------------------------------------------------------
 4. Data-Type:- 
+// datatype_folder
+type:
+properties:
 
 //In root_file
 types:
@@ -224,7 +227,22 @@ type: Key_Name
  type: !include copy_path of file which is in datatype_folder
 
 --------------------------------------
-5.User-Documentation
+5.User-Documentation:
+
+// documentation_folder
+tittle:
+content:
+
+//In root_file
+documentation:
+Key_Name: !include paste_path
+
+
+//In root_file
+documentation:
+tittle:
+content:
+
 -----------------------------------------------------------------
 6.Example:- 
 //In Example folder_file 

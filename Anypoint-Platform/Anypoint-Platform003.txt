@@ -22,3 +22,11 @@ Some are specific to type:
 //What are fragments in RAML?
 fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
 These fragments can be data types, traits, resource categories, and many others.
+-------------------------------------------------------
+//Mocking service:-
+is for to simulate behavior of API specification and explore API, tested by using test link or public link
+and then we get response as http code , example..
+-------------------------------------------
+//Documentation: 
+is reference guide for the API , we can add functional and business context it define 
+how API works...
