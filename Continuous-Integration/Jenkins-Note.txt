@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------------------
 //Jenkins is web-Application written in java , Jenkins is continuous integration tool that allows continuous development , test and 
 deployment of newly created codes.
 
@@ -42,9 +43,7 @@ We can create jenkins job Pipelines in two ways:
 1. Scripted Pipeline
 2. Declarative Pipeline
 configure pipeline to build , execute Munit test and deploy..
--------------------------------------------------------------------------
-
-
+---------------------------------------------------------------------------------------------
 //Two ways to trigger jenkins jobs automatically:
 1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit push.
 //go to settings ---> Webhooks
@@ -60,6 +59,7 @@ https://crontab.cronhub.io/
 -----------------------------------------------------------------------------------------
 //Jenkins pipeline allows us to define set of stages while continuous deployment,
 we can define stages to execute continuous deployment stage by stage..
+
 Declarative Checkout SCM ---> Build ---> Test ---> Deployment
 
 //Step1: Choose pipeline
@@ -88,6 +88,13 @@ Script path: Jenkinsfile
   your continuous integration environment...
 
 //Step4: Download maven plugin in jenkins tool..
-----------------------------------------------------------------------------------------
+--------------------
+Declarative Checkout SCM ---> Build ---> Test ---> Deployment
+
+//Step1: Choose pipeline
+Defination: Pipeline script 
+Script : write groovy script in editor.. add stage as Scripted pipeline for git repositories
+----------------------------------------------------------------------------------------------
+
 
 
