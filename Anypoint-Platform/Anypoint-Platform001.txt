@@ -101,7 +101,7 @@ types:
  headers, query string parameters, and responses. 
 
 //resourceTypes:-  A resource type , can specify security schemes,
- methods, and other nodes. 
+ methods, displayName and discription..
 
 
 //annotationTypes:-  Annotation types, like data types, can extend other data types,
@@ -113,6 +113,14 @@ is the annotation name, and the value is an instance of that annotation.
 
 //securitySchemes:- Most REST APIs have one or more mechanisms to secure data access, 
 identify requests, and determine access level and data visibility.
+Whenever we develop a REST_service we apply Security on top of rest APIs.
+Security can achieve in several ways, among that we use cofigure SQL certificates on mobile ,
+applications or either individually through application or through muleSoft runtime dedicated load
+balancer , so that those services will be exposed as HTTPS services.
+Apart from that, we also apply security policies on top of these APIs.
+Those are like basic authentification, client ID enforcement(injected through headers)
+and oAuth security policies.
+
 RAML supports the following built-in security scheme types:-	
 OAuth 1.0: 
 OAuth 2.0	
@@ -144,138 +152,7 @@ of reusable API even quicker and easier.
 API Fragments:- has two types
 1. Local
 2. Global 
-
-//Fragments Types:-
-
-------------------------------------------------------------------
-
-1.Traits:- here, you can edit query_params , headers fragments
-
-In Traits_fragment:-
-
- Key-1_Name:
-  partIn-root-fragment_paste-here
- Key-2_Name:
-  partIn-root-fragment_paste-here  
- 
-
----Below_baseUri-in root_file---
-
-traits:
- Key-1_Name: !include paste_pathOf-- Traits_file-1
- Key-2_Name: !include paste_pathOf-- Traits_file-2
+-----------------------------------------------------------------------------------------------
 
 
---mention_As--
 
-is: [Key-1_Name , Key-2_Name]
-
---------------------------------------------------------------
-2.Resource-Type here you can edit Methods
-
----Below_baseUri-in root_file---  
-resourcetypes:
- Key_Name: !include paste_pathOf-- Type_file
-
----mention-inType--
-type: Key_Name
-  
-     or
-     |
-     |
----mention-inType---> type: !include copy_path of file which is in datatype_folder
---------------------------------
-3.Library:- Is collection of data-types
-
-Q.How library refer to raml ?
-
-In Library_fragment:-
-
-usage: Tittle_for usage 
-types:
-Key_Name:
-partIn-root-fragment_paste-here
-
-
----Below_baseUri-in root_file---
-
-uses:
-  Key_Name: --paste_pathOf-- Library_file
-
----mention-inType--
-type: Key_Name.Paste_
-
----------------------------------------------------------------------------------
-4. Data-Type:- 
-// datatype_folder
-type:
-properties:
-
-//In root_file
-types:
-Key_Name: !include paste_path
-
-//mention-underBody
-body:
-Key_Name
-
-//mention-inType
-type: Key_Name
-
-    
-//mention-inType
- type: !include copy_path of file which is in datatype_folder
-
---------------------------------------
-5.User-Documentation:
-
-// documentation_folder
-tittle:
-content:
-
-//In root_file
-documentation:
-Key_Name: !include paste_path
-
-
-//In root_file
-documentation:
-tittle:
-content:
-
------------------------------------------------------------------
-6.Example:- 
-//In Example folder_file 
-example: |  <---or---> value:
-
-//mention as 
-example: file_Name
-
-//mention
-example: !include copy_path of file which is in example_folder
--------------------------------------------------------------------
-7.Annotation-Type
---------------------------------------
-8.security_Schemes:-
-Whenever we develop a REST_service we apply Security on top of rest APIs.
-Security can achieve in several ways, among that we use cofigure SQL certificates on mobile ,
-applications or either individually through application or through muleSoft runtime dedicated load
-balancer , so that those services will be exposed as HTTPS services.
-
-Apart from that, we also apply security policies on top of these APIs.
-Those are like basic authentification, client ID enforcement(injected through headers) and oAuth security policies.
-
-
-In Security_fragment:-
-type: basic authentification/oAuth2.0
-description/describedBy:
-
----Below_baseUri-in root_file---
-
-securitySchemes:
---Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
-
-
---mention_As--
-securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
-----------------------------------------------------------------------------------------------------

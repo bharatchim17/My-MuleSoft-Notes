@@ -1,112 +1,125 @@
-//Anypoint-Exchange:- is repository which provides all Connectors to muleSoft.
-//Templates:- are reusable project structures , we can create applications by using Templates.
+------------------------------------------------------------------
 
-//API-Life-Cycle:-
+1.Traits:- here, you can edit query_params , headers fragments
+
+//In Traits_folder:-
+
+ Key-1_Name:
+  partIn-root-fragment_paste-here
+ Key-2_Name:
+  partIn-root-fragment_paste-here  
  
-                      Design
-                        |
-                        |
-                    Development
-                        |
-                        |
-                    Manual Unit Testing
-                        |
-                        |
-                    Munit-Testing
-                        |
-                        |
-                    Manual Deployment
-                        |
-                        |
-                    CICD Deployment 
-                        |
-                        |
-                    API Management
-----------------------------------------------------------------
- 
-//Q. List different types of api ..?
-//Q. What is stateless ..?
-//Q. What is idompotent ..?
+//In root_file: 
+traits:
+ Key-1_Name: !include paste_pathOf-- Traits_file-1
+ Key-2_Name: !include paste_pathOf-- Traits_file-2
 
-//Design principles of REST APIs 
-- HTTP as application protocol
-- resource Based 
-- representation
-- uniform interface
-- stateless
 
-//resources
-- Nouns
-it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
-resources has two types:  1. Collection 2. Nested..
-//what is differece between collection resource and Nested resource ?
-In collection resource delete methode avoided in majority projects , in nested methode delete methode use in uri parameter
+//mention using is:
+is: [Key-1_Name , Key-2_Name]
 
-resource representation can be in different formats - XML , JSON etc , representations exchanged between consumer and provider..
+//mention using is:
+is: [Key-1_Name , Key-2_Name]
 
-//MediaType has two types:  1. Default  2. explicit 
-------------------------------------------------------------------------
+--------------------------------------------------------------
+2. Resource-type:- Type here you can edit Methods
 
-//Request contains:
-        - body
-        - headers
-        - mediaType
-        - uri_parameters
-        - query_parameters
-//request body must be required in post and patch method it not required in get and delete methode..
+//Resource-type folder:
 
-//Response contains:
-        - HTTP status code
-        - mediaType
-        - body
-        - headers
-//response body not required in post and patch methode  it's required in get and delete methode but we can use anyway..
-----------------------------------------------------------------------------------------------
-1xx information:
-    - 100 continue
-    - 101 switching protocols
-    - 102 processing (webDAV)
+//In root_file: 
+resourceTypes:
+ Key_Name: !include paste path
 
-2xx success:
-    - 200 Ok 
-    - 201 created
-    - 202 accepted
-    - 203 Non-authoritive information
-    - 204 No Content
-    - 205 reset content
+//Mention type as:
+type: Key_Name
+  
+   
+//Mention type as:
+ type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
+--------------------------------
+3.Library:- Is collection of data-types
 
-3xx redirection:
-    - 300 multiple choices
-    - 301 moved permanently 
-    - 302 found
-    - 303 see others
-    - 304 not modified
-    - 305 use proxy
+Q.How library refer to raml ?
 
-4xx client-error:
-    - 400 bad request
-    - 401 unauthorized
-    - 402 payment required
-    - 403 forbidden
-    - 404 not found
-    - 405 method not allowed
+In Library_fragment:-
 
-5xx server-error:
-- 500 internal server error
-- 501 not implemented
-- 502 bad gateway
-- 503 service unavilable
-- 504 gateway timeout
-- 505 http version not supported
+usage: Tittle_for usage 
+types:
+Key_Name:
+partIn-root-fragment_paste-here
 
------------------------------------------------------------------------
-//Request Headers has two types:
-1. Accept       ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
-2. Content-type ---e.g.-->  POST(collection resources) / PATCH(nested resources)
 
-//Response Headers has two types:
-1. Content-type  ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
-2. Location     ---e.g.-->  POST(collection resources) 
+---Below_baseUri-in root_file---
 
-We use Error-response as content-type in project as per requirement
+uses:
+  Key_Name: --paste_pathOf-- Library_file
 
+---mention-inType--
+type: Key_Name.Paste_
+
+---------------------------------------------------------------------------------
+4. Data-Type:- 
+// datatype_folder
+type:
+properties:
+
+//In root_file
+types:
+Key_Name: !include paste_path
+
+//mention-underBody
+body:
+Key_Name
+
+//mention-inType
+type: Key_Name
+
+    
+//mention-inType
+ type: !include copy_path of file which is in datatype_folder
+
+--------------------------------------
+5.User-Documentation:
+
+// documentation_folder
+tittle:
+content:
+
+//In root_file
+documentation:
+- !include paste_path
+
+
+//In root_file
+documentation:
+tittle:
+content:
+
+-----------------------------------------------------------------
+6.Example:- 
+//In Example folder_file 
+example: |  <---or---> value:
+
+//mention as 
+example: file_Name
+
+//mention
+example: !include copy_path of file which is in example_folder
+-------------------------------------------------------------------
+7.Annotation-Type
+--------------------------------------
+8.security_Schemes:-
+
+In Security_fragment:-
+type: basic authentification/oAuth2.0
+description/describedBy:
+
+---Below_baseUri-in root_file---
+
+securitySchemes:
+--Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
+
+
+--mention_As--
+securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
+----------------------------------------------------------------------------------------------------
