@@ -3,7 +3,8 @@
 Anypoint platform is web application ,a graphical user interface allows us to do cloud
  operations on deployed mule applications..
 
-* CONTROL PLANE 
+//CONTROL PLANE 
+
 1. Anypoint Design Centre:-
   - Flow Designer
   - API Designer
@@ -23,7 +24,7 @@ Anypoint platform is web application ,a graphical user interface allows us to do
 5. Anypoint Connectors
 6. Runtimes Services
 
-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 Organization:-      TATA
       |
       |
@@ -92,16 +93,9 @@ in curly brackets ({}) inside a relative URI of a resource.
 
 //mediaType:- it's Default Media Types for example:- [ application/json , application/xml ]  --or--  application/json
 
-//documentation:-  reference documentation for the API. Such documents can clarify how
- the API works or provide technical and business context. it contains title & content..
-
-types:
 
 //traits:- A trait, like a method, can provide method-level nodes such as a description,
  headers, query string parameters, and responses. 
-
-//resourceTypes:-  A resource type , can specify security schemes,
- methods, displayName and discription..
 
 
 //annotationTypes:-  Annotation types, like data types, can extend other data types,
@@ -144,9 +138,10 @@ A resource node is one that begins with the slash and is either at the root of t
 
 //schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 , always use types ..
 -------------------------------------------------------------------------------------------------
-
-//Fragments in RAML:-
-Fragments:- API fragments are reusable components of RAML to make the Design and build 
+//What are fragments in RAML?
+fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
+These fragments can be data types, traits, resource categories, and many others.
+ API fragments are reusable components of RAML to make the Design and build 
 of reusable API even quicker and easier.
 
 API Fragments:- has two types

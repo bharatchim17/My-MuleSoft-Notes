@@ -4,10 +4,15 @@
 
 //In Traits_folder:-
 
+
+
  Key-1_Name:
   partIn-root-fragment_paste-here
  Key-2_Name:
-  partIn-root-fragment_paste-here  
+  partIn-root-fragment_paste-here 
+
+responses:
+  <<errorCode>>:  
  
 //In root_file: 
 traits:
@@ -20,6 +25,10 @@ is: [Key-1_Name , Key-2_Name]
 
 //mention using is:
 is: [Key-1_Name , Key-2_Name]
+
+//mention using is:
+is:
+ - Key_Name: {errorCode: 500}
 
 --------------------------------------------------------------
 2. Resource-type:- Type here you can edit Methods
@@ -41,21 +50,19 @@ type: Key_Name
 
 Q.How library refer to raml ?
 
-In Library_fragment:-
+//In Library fragment:-
 
-usage: Tittle_for usage 
-types:
-Key_Name:
-partIn-root-fragment_paste-here
+//usage: Tittle_for usage 
+types: / resourceTypes: / traits:  
+partIn root fragment paste-here..
 
 
----Below_baseUri-in root_file---
-
+//Below baseUri-in root file
 uses:
-  Key_Name: --paste_pathOf-- Library_file
+  Key_Name: paste path of library file here without include tag..
 
----mention-inType--
-type: Key_Name.Paste_
+//mention inType
+type: Key_Name.Paste
 
 ---------------------------------------------------------------------------------
 4. Data-Type:- 
