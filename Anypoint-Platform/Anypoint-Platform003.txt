@@ -38,7 +38,7 @@
 //resources
 - Nouns
 it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
-resources has two types:  1. Collection 2. Nested..
+resources has two types:  1.Collection(plural)  2.Nested(singular)..
 //what is differece between collection resource and Nested resource ?
 In collection resource delete methode avoided in majority projects , in nested methode delete methode use in uri parameter
 
@@ -84,12 +84,12 @@ resource representation can be in different formats - XML , JSON etc , represent
     - 305 use proxy
 
 4xx client-error:
-    - 400 bad request
-    - 401 unauthorized
+    - 400 bad request / request validation error
+    - 401 unauthorized/Access denid
     - 402 payment required
     - 403 forbidden
-    - 404 not found
-    - 405 method not allowed
+    - 404 resource not found
+    - 405 method not found/allowed
 
 5xx server-error:
 - 500 internal server error
@@ -108,37 +108,8 @@ resource representation can be in different formats - XML , JSON etc , represent
 1. Content-type  ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
 2. Location     ---e.g.-->  POST(collection resources) 
 
-We use Error-response as content-type in project as per requirement
--------------------------------------------------------------------------------------------
-//What is datatype..?
-A data type describes the data expected in an API or returned by the API..
-Datatype describes data in an API and add rules to validate data against type declaration..
-there are two types of datatype 1. built-in datatype 2. custom data types
---------------------------------------------------------------------------------------
-//What are facets in RAML?
-Types can define two types of members: properties and facets. Both are inherited. 
-Properties are regular, object oriented properties. Facets are special configurations. You specialize types based on characteristics of facet values.
-use for adding some constraints/special configuration..
+We use Error-response as content-type in project * as per requirement
 
-Common facets for all type declarations:
--  default , description , enum , example
-
-Some are specific to type:
-- Object:  properties , minProperties , maxProperties etc
-- Array:   uniqueItems , minItems , maxItems
-- String:  pattern , minlength , maxlength 
-- integer: minimum , maximum , format , multipleOf
-
-//enum facet used to specify the possible values for the room type..
----------------------------------------------------------------------------------------
-
-//Mocking service:-
-is for to simulate behavior of API specification and explore API, tested by using test link or public link
-and then we get response as http code , example..
------------------------------------------------------------------------------------
-//Documentation: is reference guide for the API , Such documents can clarify how
- the API works or provide technical , functional and business context it define 
-how API works and it contains title & content..
 ------------------------------------------------------------------------------------
 //displayName: human friendly name
 //discription: human friendly description
@@ -166,9 +137,14 @@ In case of user defined parameters it need to have set value of parameter..
  - query parameters
  - body
  - response etc.
-//Reserved parameters
+
+//Reserved parameters:
  1. resourcePath :  /hotels , /hotels/{hotelId} same as in uri
  2. resourcePathName:  hotels (/hotels/{hotelId} for this resourcePath name will)
  3. methodName:  
 - User defined parameters
 --------------------------------------------------------------------------------------------
+//What is RAML..?
+- RAML is RESTful API Modeling language..
+- is powerful language YAML-based language..
+------------------------------------------------

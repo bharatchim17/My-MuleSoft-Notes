@@ -147,7 +147,35 @@ of reusable API even quicker and easier.
 API Fragments:- has two types
 1. Local
 2. Global 
------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+//What is datatype..?
+A data type describes the data expected in an API or returned by the API..
+Datatype describes data in an API and add rules to validate data against type declaration..
+there are two types of datatype 1. built-in datatype 2. custom data types
+--------------------------------------------------------------------------------------
+//What are facets in RAML?
+Types can define two types of members: properties and facets. Both are inherited. 
+Properties are regular, object oriented properties. Facets are special configurations. You specialize types based on characteristics of facet values.
+use for adding some constraints/special configuration..
 
+Common facets for all type declarations:
+-  default , description , enum , example
+
+Some are specific to type:
+- Object:  properties , minProperties , maxProperties etc
+- Array:   uniqueItems , minItems , maxItems
+- String:  pattern , minlength , maxlength 
+- integer: minimum , maximum , format , multipleOf
+
+//enum facet used to specify the possible values for the room type..
+---------------------------------------------------------------------------------------
+
+//Mocking service:-
+is for to simulate behavior of API specification and explore API, tested by using test link or public link
+and then we get response as http code , example..
+-----------------------------------------------------------------------------------
+//Documentation: is reference guide for the API , Such documents can clarify how
+ the API works or provide technical , functional and business context it define 
+how API works and it contains title & content..
 
 

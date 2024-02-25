@@ -1,0 +1,2 @@
+//we can use https protocols also , but we have to encrypt communication using TLS configuration..
+/* is symbol of wild-card , it use in path

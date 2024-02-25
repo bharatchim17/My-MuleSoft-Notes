@@ -1,0 +1,45 @@
+---------------------------------------------------------------------
+//What is point to point integration..?
+//What is ESB and ESB features..?
+//Difference between point to point and ESB..?
+//What is monolithic application..?
+//What are micro service and advantages..?
+//Modularity
+//Monolithic vs micro services
+//What is API-LED connectivity..?
+//What are system API , process API and experience API..?
+//When to go for system API , process API and experience API..?
+//advantages of API LED connectivity..
+---------------------------------------------
+//Microservices:
+Splitting larger application into pieces are called microservices that means the 
+process of developing buisness process as service/project is known as microservices..
+advantage:
+- Agility
+- Scalable 
+- Independent
+- Reliable
+
+//Monolithic application:
+Collection of buisness implemetation together in single project/application is 
+called as monolithic application..
+advantage:
+- simple to develop , test and deploy..
+--------------------------------------------------------------------------------------------
+//V-Core is nothing but memory , so one V-core provides 500MB for each application..
+each service at least should be deployed with 0.1 V-Core.. 
+---------------------------------------------------
+//API LED connectivity:
+The methodical way to transfer DATA between applications through reusable and purposeful
+API's..
+//System API's:  ----> decentralized access to core assets
+reusable system calls will be develop as system API's.. once built , many users , can access data
+without any need to learn the underlying systems and can reuse these API's in multiple projects..
+
+//Process API's:   ----> Agility and new value creation
+these API's interact with system API's and shape data within a single system or across
+system..
+
+//experience API's:   ----> innovation and digital products...
+experience API's were created to be consumed by it's intended audience..
+
