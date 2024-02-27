@@ -1,4 +1,4 @@
------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 //Mule Project naming standards and structure:-
 1.Project name:- kebab case 
 example ---> project-name
@@ -59,7 +59,7 @@ code management and need not to touch applications on configurations property ch
 
 
 
-4/3. Use Mule::p('key') dataweave script to extract in dataweave(--click--> fx)
+4/3. Use Mule::p('key') or p('key') dataweave script to extract in dataweave(--click--> fx)
 
 -------------------------------------------------------------------------------------
 //Secure configuration properties:-
@@ -96,7 +96,7 @@ https://secure-properties-api.us-e1.cloudhub.io/
 
 5/4. Use Mule::p('secure::key') dataweave script to extract in dataweave(--Click--> fx)
 
- //Mule::p('secure::db.Key_Name.password') is for descrypt value during runtime
+ //Mule::p('secure::MySQLDatabase.password') is for descrypt value during runtime
 
 --------------------------------------------------------------------------------------
 //Environment:-
@@ -106,10 +106,10 @@ https://secure-properties-api.us-e1.cloudhub.io/
             UAT
 //Load property files dynamically by environment:-
 
-global element tab ---> secure properties config ---> file: ${env}.yaml  key: ${enc.key} 
+global element tab ---> secure properties config ---> file: /${env}.yaml  key: ${enc.key} 
 global property ---> name: env |  value: dev  
 
---right_click-on_project---> Run As ---> Mule Application (configure) ---> Arguments--->
+--right_click-on_project/Config_file---> Run As / Debug As ---> Mule Application (configure) ---> Arguments--->
 program Arguments:
 -Denv=dev/test
 -Denc.key=paste_key_here

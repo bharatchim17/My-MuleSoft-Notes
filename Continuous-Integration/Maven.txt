@@ -11,7 +11,7 @@ it's used for project build , dependancy and documentation..
 - dependancy
 - repositories
 - plugin repositories
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 Local repositery <----project.xml/maven.xml/Maven--http--> remote repository
 
 //To install a JAR in the local repository use the following command:
