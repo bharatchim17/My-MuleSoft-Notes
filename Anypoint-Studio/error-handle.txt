@@ -40,9 +40,62 @@ catch it in catch statement , like these function anypoint studio provided try s
 
 --------------------------------------------------------------------------------------------------
 //On Error Continue:- Considers the request transaction as Success-response and 
-response back to the response section of  response back to the error section of listner..
+response back to the response section (success response) of listner..
 ..
 //On Error Propagate:- Considers the request transaction as Error-response  and
- response back to the error section of listner..
+ response back to the error response section of listner..
 //When we have API kit router with HTTP listner , we should use /* at the end of sub-path
 ---------------------------------------------------------------------------------------------------
+
+//set in variable of transform message:
+
+attributes.headers.'x-correlation-id' default ""
+attributes.headers.'x-transaction-id' default uuid() save in  variable name as transactionId..
+
+//set in variable of transform message:
+--error code--> 400 save in  variable name as statusCode now map it into 
+http response click fx ---> vars.statusCode 
+
+//set in payload of transform message:
+"code": 400/503/500,
+"message" : bad request/service unavailable/internal server error ,
+"description" : error.errorMessage.payload.message[0] as String ,
+"datetime": now() as String {format: "yyyy-MM-dd'T' HH:mm:ss'Z'"} ,
+"transactionId" : vars.transactionId
+
+
+//Where as 500 is internal server error work as default error handling --use--> type: ANY 
+
+//Default response in http listner Success response: 200 , error response: 500 ...
+go to httpListener's Response ---> Body: payload | status code: vars.statusCode default 200 to success response
+-------------------------------------------------------------------------------------------
+//Custom error:-
+error mapping ---> choose error ---> namespace: CUSTOM | identifier: CONNECTION_FAILED
+Now in ---on error propogate --choose-->  CUSTOM:CONNECTION_FAILED
+
+//Raise error:-
+General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server has not found anything matching the Request-URI  
+Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND 
+
+//We can use Raise error connectors to handle custom connectors.. 
+------------------------------------------------------------------------------
+note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
+
+//try scope: allow us to error handling on group of event processor individually..
+--------------------------------------------------------------------------------------
+//Global error handler:-
+1.Create configuration file name as global-error-handler and add error to it by using 
+error handler connector
+2.Create "configuration" global element..
+3. Default error handler: --choose--> global-error-handler
+4. --goto--> http listener ---> responses ---> error response--->
+Body: payload
+statusCode: vars.statusCode 
+
+---------------------
+--clickOn-->Error Handling--->Reference: --choose-->global-error-handler
+--------------------------------------------------------------------------------------
+//solution to solve conflict b/w global  vs local & connector level error handlers
+1. use private flow refer it by flow reference or API kit router and add error 
+handler in error handling don't refer it to global..
+2. refer error handler in main flow instead of private flow...

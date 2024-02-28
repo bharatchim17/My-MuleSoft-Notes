@@ -146,7 +146,13 @@ Solution:-
 Solution:-  
 Window ---> preference ---> Tooling --click--> 
 Check status/Restart Studio Services 
----------------------------------------------------------
-//Error Ocure:- connect ECONNREFUSED 127.0.0.1:8081
-Solution:-  
+------------------------------------------------------------------------------------
+//Error Ocure:- ORA-12505, TNS: listener does not currently know of
+SID given in connect descriptor..
+Solution:-
+--goto--> http listener ---> responses ---> error response--->
+Body: payload
+statusCode: vars.statusCode
+-----------------------------------------------------------------------------------------
+
 

@@ -28,7 +28,7 @@ GitHub Remote repositery --clone to pull--> working repositery .
 Git configuration:- 
 git config --global.email "bharatchim17@gmail.com"
 git config --global.name "bharatchim17"
-
+-------------------------------------------------------------------------------------------------
 
 pwd --> current project location
 git init --> Initialized empty Git repository in Drive:/folder/.git/
@@ -70,13 +70,22 @@ ls --> show files in working directory
 git ls-files --> show files in staging Area
 
 git rm --cached file_Name --> will delete all files from staging area..
+git reset file_name ---> will reset , discard changes from staging area...
 
-----------------------------------------------------------------
+---------------------------------------------------------------------------------------
 //Don't use regular:-
 
    git rm file_Name --> will , delete files from all stages.
    git rm -r        --> will , delete files from all stages.
----------------------------------------------------------------
+---------------------------------------------------------------------------------------
+//git checkout command:-
+we can use checkout command to discard unstaged changes in tracked files of working
+directory...
+git checkout -- file_name  ---> will undo changes...
+-----------------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -84,4 +93,4 @@ git rm --cached file_Name --> will delete all files from staging area..
 
 
 /////////////////////////////////////////////////////////////////////////////////////
-
+chapter7 is skipped
