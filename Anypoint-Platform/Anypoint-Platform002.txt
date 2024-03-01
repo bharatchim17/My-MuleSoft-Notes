@@ -2,7 +2,7 @@
 
 1.Traits:- here, you can edit query_params , headers fragments
 
-//In Traits_folder:-
+//In Traits_folder fragment:-
 
 
 
@@ -33,7 +33,7 @@ is:
 --------------------------------------------------------------
 2. Resource-type:- Type here you can edit Methods
 
-//Resource-type folder:
+//Resource-type folder fragment:
 
 //In root_file: 
 resourceTypes:
@@ -45,7 +45,7 @@ type: Key_Name
    
 //Mention type as:
  type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
---------------------------------
+----------------------------------------------------------------------------------
 3.Library:- Is collection of data-types
 
 Q.How library refer to raml ?
@@ -54,21 +54,21 @@ Q.How library refer to raml ?
 
 //usage: Tittle_for usage 
 types: / resourceTypes: / traits:  
-partIn root fragment paste-here..
+part in root fragment paste-here..
 
 
 //Below baseUri-in root file
 uses:
   Key_Name: paste path of library file here without include tag..
 
-//mention inType
+//mention in type
 type: Key_Name.Paste
 
 ---------------------------------------------------------------------------------
 4. Data-Type:- 
-// datatype_folder
-type:
-properties:
+// datatype_folder fragment
+type: object/array
+properties:/items:
 
 //In root_file
 types:
@@ -81,14 +81,10 @@ Key_Name
 //mention-inType
 type: Key_Name
 
-    
-//mention-inType
- type: !include copy_path of file which is in datatype_folder
-
---------------------------------------
+-------------------------------------------------------------------------------------
 5.User-Documentation:
 
-// documentation_folder
+// documentation_folder fragment
 tittle:
 content:
 
@@ -102,19 +98,20 @@ documentation:
 tittle:
 content:
 
------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 6.Example:- 
-//In Example folder_file 
+//In example folder fragment
 example: |  <---or---> value:
+
+//mention in root
+example: !include copy_path of file which is in example_folder
 
 //mention as 
 example: file_Name
 
-//mention
-example: !include copy_path of file which is in example_folder
 -------------------------------------------------------------------
 7.Annotation-Type
---------------------------------------
+--------------------------------------------------------------------------------------
 8.security_Schemes:-
 
 In Security_fragment:-

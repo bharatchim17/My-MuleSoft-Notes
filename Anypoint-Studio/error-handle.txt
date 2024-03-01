@@ -44,24 +44,36 @@ response back to the response section (success response) of listner..
 ..
 //On Error Propagate:- Considers the request transaction as Error-response  and
  response back to the error response section of listner..
-//When we have API kit router with HTTP listner , we should use /* at the end of sub-path
+//When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
+
+//Global error handler, also known as global exception strategy , is an error handling mechanism that
+allows you to define a centralized error handling strategy that applies to all flows within Mule application.. 
+
+//Raise Error:-
+Is used to intentionally throw an exception or error within flow..
 ---------------------------------------------------------------------------------------------------
 
-//set in variable of transform message:
+//set in variable of transform message of flow:
 
-attributes.headers.'x-correlation-id' default ""
+attributes.headers.'x-correlation-id' default "" save in variable name as correlationId
 attributes.headers.'x-transaction-id' default uuid() save in  variable name as transactionId..
-
+payload save in variable name as inputPayload
 //set in variable of transform message:
 --error code--> 400 save in  variable name as statusCode now map it into 
 http response click fx ---> vars.statusCode 
 
-//set in payload of transform message:
+//set in payload of transform message of Error_Handling:
+
+%dw 2.0
+output application/json
+---
+{
 "code": 400/503/500,
 "message" : bad request/service unavailable/internal server error ,
 "description" : error.errorMessage.payload.message[0] as String ,
-"datetime": now() as String {format: "yyyy-MM-dd'T' HH:mm:ss'Z'"} ,
+"datetime": now() as String {format: "yyyy-MM-dd'T'HH:mm:ss'Z'"} ,
 "transactionId" : vars.transactionId
+}
 
 
 //Where as 500 is internal server error work as default error handling --use--> type: ANY 

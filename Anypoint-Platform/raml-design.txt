@@ -1,0 +1,117 @@
+------------------------------------------------------------------------------------------------
+//1:-
+
+#RAML 1.0
+tittle:
+description:
+baseUri:
+mediaType:
+/resource(subpath)
+
+-------------------------------------------------------------------------------------
+//2:-
+
+
+get: <-----  methods like.. / delete: / post: / put: / patch:
+
+displayName:
+description:
+/resource(subpath)
+/{uriparams}:
+-------------------------------------------------------------------------------------------
+//3:-
+
+queryParameters:
+headers:   <---- request body header
+description:
+responses:
+body:
+----------------------------------------------------------------------------------
+//4:-
+
+Accept:
+Content-Type:  <---- request body Content-Type
+200:
+400:
+500:
+application/json:  <---- media type
+-------------------------------------------------------------------------------------
+//5:-
+
+headers:
+--------------------------------------------------------------------------------------
+//6:-
+
+Location:
+Content-Type: 
+type:
+properties:
+example:
+
+---------------------------------------------------------------------------------------------
+ application/xml:
+    type: object
+    xml:
+     name: response
+--------------------------------------------------------------------------------------
+#%RAML 1.0
+title: emp-sapi
+description: API's for flight information
+baseUri: http://localhost:8091/emp-sapi
+mediaType: 
+- application/json
+
+/create-employee:
+  description: This resource used to register a employee
+  post:
+    headers:
+      Content-Type:
+    body:
+      application/json:
+        type: object
+        properties:
+          employeeID:
+            required: true
+            type: integer
+            example: 35355
+          employeeName:
+            required: true
+            type: string
+            example: "bharat"
+          employeeStatus:
+            required: true
+            type: string
+            example: "A"
+        example:
+          {
+            "employeeID": 100 ,
+            "employeeName": "bharat" ,
+            "employeeStatus": "A"
+
+          }
+    responses:
+      201:
+        headers:
+          Location:
+            example: http://bookmyhotel.com/registrations/r1  
+        body:
+          application/json:
+            type: object/array
+            properties:/items:
+              status:
+                type: integer
+                required: true
+                example: 200
+              message:
+                type: string
+                required: true
+                example: "Success"
+            example:
+              {
+                "status": 200 ,
+                "message": "Success"
+
+              }
+
+
+
