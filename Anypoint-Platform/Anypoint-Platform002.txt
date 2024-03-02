@@ -1,4 +1,4 @@
-------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 1.Traits:- here, you can edit query_params , headers fragments
 
@@ -30,7 +30,8 @@ is: [Key-1_Name , Key-2_Name]
 is:
  - Key_Name: {errorCode: 500}
 
---------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
 2. Resource-type:- Type here you can edit Methods
 
 //Resource-type folder fragment:
@@ -45,15 +46,18 @@ type: Key_Name
    
 //Mention type as:
  type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 3.Library:- Is collection of data-types
 
 Q.How library refer to raml ?
 
 //In Library fragment:-
 
-//usage: Tittle_for usage 
-types: / resourceTypes: / traits:  
+//usage: Tittle_for usage of root_file
+types: / resourceTypes: / traits:
+datatype-Name: / resourceTypes-Name: / traits-Name:
+type: object/array
+properties:/items:
 part in root fragment paste-here..
 
 
@@ -62,9 +66,9 @@ uses:
   Key_Name: paste path of library file here without include tag..
 
 //mention in type
-type: Key_Name.Paste
+type: Key_Name.Paste-datatype:
 
----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 4. Data-Type:- 
 // datatype_folder fragment
 type: object/array
@@ -101,13 +105,18 @@ content:
 ---------------------------------------------------------------------------------------
 6.Example:- 
 //In example folder fragment
-example: |  <---or---> value:
+ type: object <---- type is written in 2nd line
+ example: |
+    {
+      
+    }
 
 //mention in root
-example: !include copy_path of file which is in example_folder
+types:
+example_File_Name: !include copy_path of file which is in example_folder
 
 //mention as 
-example: file_Name
+type : file_Name
 
 -------------------------------------------------------------------
 7.Annotation-Type
@@ -118,12 +127,12 @@ In Security_fragment:-
 type: basic authentification/oAuth2.0
 description/describedBy:
 
----Below_baseUri-in root_file---
+//in root_file:
 
 securitySchemes:
---Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
+Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
 
 
---mention_As--
+//mention_As:
 securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
 ----------------------------------------------------------------------------------------------------

@@ -51,7 +51,7 @@ we use git diff command :-
 git diff file_Name 
 git diff HEAD file_Name
 git diff --staged HEAD file_Name
-git log --online
+git log --online ------> showing file in local repository i.e. files which is commited
 git diff commit_id file_Name 
 git diff --staged commit_id
 
@@ -70,8 +70,27 @@ ls --> show files in working directory
 git ls-files --> show files in staging Area
 
 git rm --cached file_Name --> will delete all files from staging area..
-git reset file_name ---> will reset , discard changes from staging area...
+git reset file_name ---> will reset , discard changes from staging area(opposite of add command)..
 
+//For reset commit we have 3 mode i.e. mixed | soft | hard
+git reset <mode> <commit-id>
+ls --> show files in working directory
+git ls-files --> show files in staging Area
+git log --online ------> showing file in local repository i.e. files which is commited
+git reset --mixed acb9d2c  <---- is previous commit id..
+git ls-files
+
+1. reset with --mixed mode:
+it's default mode to discard commits in local repository (local repository come after we commit)
+ and to discard it in staging area (staging area come after we add) , it will not touch working directory..
+
+2. reset with --soft mode:
+ To discard commits in local repository (local repository come after we commit), it will 
+ not touch working directory as well as staging area...just we have commit to revert back..
+
+3. reset with --hard mode:
+ To discard commits in local repository (local repository come after we commit),
+ in staging area (staging area come after we add), as well as in working directory also..
 ---------------------------------------------------------------------------------------
 //Don't use regular:-
 
