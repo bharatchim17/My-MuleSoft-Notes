@@ -102,8 +102,19 @@ we can use checkout command to discard unstaged changes in tracked files of work
 directory...
 git checkout -- file_name  ---> will undo changes...
 -----------------------------------------------------------------------------------------
+//Git Branching commands
+1. To view available branches
+git branch
+git status
 
+2. Create new branch
+git branch branch_Name
 
+3. To switch branch
+git checkout branch_Name
+
+2 + 3. Creating and switching to branch
+git checkout -b branch_Name
 
 
 
@@ -112,4 +123,4 @@ git checkout -- file_name  ---> will undo changes...
 
 
 /////////////////////////////////////////////////////////////////////////////////////
-chapter7 is skipped
+

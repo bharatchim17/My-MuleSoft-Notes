@@ -154,5 +154,8 @@ Solution:-
 Body: payload
 statusCode: vars.statusCode
 -----------------------------------------------------------------------------------------
-
+//Error Ocure:- 1046. No database selected Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+Solution:-
+USE Database_Name ;
+-----------------------------------------------------------------------------------
 
