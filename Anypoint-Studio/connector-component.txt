@@ -1,0 +1,5 @@
+//The Scatter-Gather component executes each route in parallel, not sequentially.
+Parallel execution of routes can greatly increase the efficiency of your Mule
+application and may provide more information than sequential processing...
+
+//
