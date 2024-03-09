@@ -161,7 +161,7 @@ mediaType:
       </response>  
 ------------------------------------------------------------------------------------
 
-#%RAML 1.0 DataType
+#%RAML 1.0 DataType01
 type: object
 properties:
   roomId: string
@@ -174,7 +174,7 @@ properties:
     example: Single Room
   amount: number
 
-#%RAML 1.1 DataType   <--- Above 1.0 datatype mention here
+#%RAML 1.1 DataType02   <--- Above 1.0 datatype mention here in other datatype
 rooms: 
     type: array
     items: !include /DataTypes/room-datatype.raml

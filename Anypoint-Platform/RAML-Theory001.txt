@@ -178,4 +178,51 @@ and then we get response as http code , example..
  the API works or provide technical , functional and business context it define 
 how API works and it contains title & content..
 ----------------------------------------------------------------------------------
+//Anypoint-Exchange:- is repository which provides all Connectors to muleSoft.
+//Templates:- are reusable project structures , we can create applications by using Templates.
 
+//API-Life-Cycle:-
+ 
+                      Design
+                        |
+                        |
+                    Development
+                        |
+                        |
+                    Manual Unit Testing
+                        |
+                        |
+                    Munit-Testing
+                        |
+                        |
+                    Manual Deployment
+                        |
+                        |
+                    CICD Deployment 
+                        |
+                        |
+                    API Management
+------------------------------------------------------------------------------------------
+ 
+//Q. List different types of api ..?
+//Q. What is stateless ..?
+//Q. What is idompotent ..?
+
+//Design principles of REST APIs 
+- HTTP as application protocol
+- resource Based 
+- representation
+- uniform interface
+- stateless
+
+//resources
+- Nouns
+it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
+resources has two types:  1.Collection(plural)  2.Nested(singular)..
+//what is differece between collection resource and Nested resource ?
+In collection resource delete methode avoided in majority projects , in nested methode delete methode use in uri parameter
+
+resource representation can be in different formats - XML , JSON etc , representations exchanged between consumer and provider..
+
+//MediaType has two types:  1. Default  2. explicit 
+------------------------------------------------------------------------------------
