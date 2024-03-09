@@ -116,6 +116,7 @@ git checkout branch_Name
 2 + 3. Creating and switching to branch
 git checkout -b branch_Name
 
+git push origin branch_Name
 
 
 

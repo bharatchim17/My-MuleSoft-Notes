@@ -158,4 +158,8 @@ statusCode: vars.statusCode
 Solution:-
 USE Database_Name ;
 -----------------------------------------------------------------------------------
+ //Error Ocure:- Body is ignored since the HTTP Method is between the empty body methods ([HEAD, GET, OPTIONS]) and the Send Body Mode is not set to 'ALWAYS'. future warnings like this will be suppressed in order to avoid performance degradations
+Solution:- Restart studio
 
+
+https://help.mulesoft.com/s/question/0D52T00006R2h9DSAR/how-can-i-suppress-the-warning-body-is-ignored-since-the-http-method-is-between-the-empty-body-methods-head-get-options-and-the-send-body-mode-is-not-set-to-always-

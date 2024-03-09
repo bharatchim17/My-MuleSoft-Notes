@@ -99,7 +99,7 @@ resource representation can be in different formats - XML , JSON etc , represent
 - 504 gateway timeout
 - 505 http version not supported
 
------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 //Request Headers has two types:
 1. Accept       ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
 2. Content-type ---e.g.-->  POST(collection resources) / PATCH(nested resources)
@@ -110,28 +110,29 @@ resource representation can be in different formats - XML , JSON etc , represent
 
 We use Error-response as content-type in project * as per requirement
 
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 //displayName: human friendly name
 //discription: human friendly description
 displayName , discription are common facets of datatype use for resource and Nested 
 resource also, for the methods like get , patch , put , post , delete.
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 //resourceTypes:-  A resource type , can specify security schemes,
  methods, displayName and discription..
  //Reserved parameter
- 1. resourcePath :  /hotels , /hotels/{hotelId} same as in uri
- 2. resourcePathName:  hotels (/hotels/{hotelId} for this resourcePath name will
-  be just hotel)..
+ 1. resourcePath :  /hotels or /hotels/{hotelId} (same as in uri)
+ 2. resourcePathName:  /hotels or /hotels/{hotelId} for this resourcePath name will
+  be just hotel..
  Double angle brackets enclosed parameter name in resourceTypes.. Double angle brackets<<>> 
 In case of user defined parameters it need to have set value of parameter..
 
 //Resource can specify:
 - Methods
-- Description
 - displayName
+- Description
 - security Schemes
- ------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------
  //Traits can specify:
+ - displayName
  - description
  - headers
  - query parameters

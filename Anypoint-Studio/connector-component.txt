@@ -2,4 +2,83 @@
 Parallel execution of routes can greatly increase the efficiency of your Mule
 application and may provide more information than sequential processing...
 
-//
+//The For Each scope is similar to a "foreach" or "for loop" in most programming 
+languages. It takes as input a "collection" (a list or array from a payload with any
+ kind of content), and iterates over the items in the collection, passing each one
+through the components placed inside the For Each scope. If a particular item in a 
+collection throws an exception, the For Each scope will stop processing it and invoke 
+an error handler.
+ foreach works as localScope
+
+//Settings:
+collection: fx-payload
+counter variable name: counter
+batch size: 1 (default) / 4
+root message variable name: rootMessage
+
+//Parallel For Each Scopes: Splits the same message and processes each part in parallel.
+
+//Settings:
+collection: #[payload]
+Timeout: 
+Max concurrency:
+Target:
+Target value: #[payload]
+
+//Differences between For Each and Parallel For Each Scopes:
+For Each works sequentially, while the Parallel For Each processes in parallel. 
+This difference affects error handling:
+Because of the processing differences, the execution of For Each execution is 
+interrupted when an error is raised (and the Error Handler is invoked), 
+while Parallel For Each processes every route before invoking the Error Handler with
+a MULE:COMPOSITE_ROUTE error type. For Each does not modify the payload, while the 
+Parallel For Each outputs a collection of the output messages from each iteration.
+
+--------------------------------------------------------------------------------------
+//http Request:
+
+
+1.URI Parameter
+
+---In listener--General---path--->
+/invokeipinfo/{passAdreess}/{name}
+
+Set request configuration:- 
+path: /{value1}/{value2}
+---click-fx--->uri parameter--->
+{
+	value1 :  attributes.uriParams.passAdreess,
+	value2 : attributes.uriParams.name
+}
+
+
+2.QUERY Parameter
+
+Set request configuration:- 
+path: /path?
+---click-fx--->query parameter--->
+{
+	query_name1 :  attributes.queryParams.Drillsdown,
+	query_name2 : attributes.queryParams.measure
+}
+
+------------------------------------------------------------------------------------
+//Cache scope:-
+ is for storing and reusing frequently called data , caching strategy can also reference these customizations:
+1.Event Key for the ObjectStore, which is a DataWeave expression or Java object used to create the key to use for storing the payload in the ObjectStore.
+2.Response Generator for your strategy, which is a reference to a Java object that is used to create the responses returned by the caching strategy.
+3.Event Copy Strategy for mutable or immutable data....
+
+Catching strategy reference--->reference to strategy: ---click plus--+-->
+Event key--->click on : Key Expression & fx-->attributes.uriParams.passAdreess <---here passAdreess taken from subpath of listner: /invokeipinfo/{passAdreess}/{name}
+
+//Filter:- Use the filter to exclude specific message from Cache scope flow..
+-----------------------------------------------------------------------------------
+//Async:-
+The Async scope is a branch processing block that executes simultaneously with the main
+flow. The main flow continues to execute while it initiates and processes the Async scope. 
+The flow does not have to pause until the last message processor embedded in the asynchronous flow has completed its task...
+Processes the nested list of message processors asynchronously using a thread pool , 
+Async can be useful for executing time-consuming operations that do not require you to 
+send a response back to the initiating flow (such as printing a file or connecting to a mail server)...
+

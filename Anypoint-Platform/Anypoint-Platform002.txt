@@ -4,7 +4,11 @@
 
 //In Traits_folder fragment:-
 
-
+headers:
+  x-transaction-id:
+    required: false
+    type: string
+    example: "74a2d61f-a3cb-4b1b-9e97-767236ee0620"
 
  Key-1_Name:
   partIn-root-fragment_paste-here
@@ -23,8 +27,6 @@ traits:
 //mention using is:
 is: [Key-1_Name , Key-2_Name]
 
-//mention using is:
-is: [Key-1_Name , Key-2_Name]
 
 //mention using is:
 is:
@@ -70,7 +72,7 @@ type: Key_Name.Paste-datatype:
 
 ---------------------------------------------------------------------------------------
 4. Data-Type:- 
-// datatype_folder fragment
+//In datatype_folder fragment
 type: object/array
 properties:/items:
 
@@ -88,7 +90,7 @@ type: Key_Name
 -------------------------------------------------------------------------------------
 5.User-Documentation:
 
-// documentation_folder fragment
+//Documentation_folder fragment
 tittle:
 content:
 
@@ -97,7 +99,7 @@ documentation:
 - !include paste_path
 
 
-//In root_file
+//We can also , write directly in root raml file..
 documentation:
 tittle:
 content:
@@ -105,18 +107,42 @@ content:
 ---------------------------------------------------------------------------------------
 6.Example:- 
 //In example folder fragment
- type: object <---- type is written in 2nd line
- example: |
+ type: object <---- type/example is written on 2nd line
+ example: | 
     {
       
     }
 
-//mention in root
+//write in root
 types:
-example_File_Name: !include copy_path of file which is in example_folder
+Key_Name(example_File_Name): !include copy_path of file which is in example_folder
 
 //mention as 
-type : file_Name
+type : Key_Name  <----- We can remove type also as body: Key_Name
+
+//We can directly mention  (create other as API format  also , File name as .json file in exam folder)
+
+example: !include copy_path of file which is in example_folder
+
+---------------------------------------------------------------------------------------
+6.1. Example of datatype:-
+
+//In example folder fragment 
+value:
+  code: 404       <------ paste propertie's field in datatype Below value
+  reasonphrase: Not Found
+  details: string
+
+//In datatype_folder fragment
+
+example: !include copy_path of file which is in example_folder  <-----here example is on same line of properties 
+
+examples: 
+    example1: !include copy_path of file which is in example_folder 
+    example2: !include copy_path of file which is in example_folder 
+
+
+
 
 -------------------------------------------------------------------
 7.Annotation-Type

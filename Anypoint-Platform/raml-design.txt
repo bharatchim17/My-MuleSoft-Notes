@@ -49,11 +49,7 @@ properties:
 example:
 
 ---------------------------------------------------------------------------------------------
- application/xml:
-    type: object
-    xml:
-     name: response
---------------------------------------------------------------------------------------
+ 
 #%RAML 1.0
 title: emp-sapi
 description: API's for flight information
@@ -72,8 +68,6 @@ mediaType:
         properties:
           employeeID:
             required: true
-            type: integer
-            example: 35355
           employeeName:
             required: true
             type: string
@@ -85,7 +79,6 @@ mediaType:
         example:
           {
             "employeeID": 100 ,
-            "employeeName": "bharat" ,
             "employeeStatus": "A"
 
           }
@@ -96,8 +89,8 @@ mediaType:
             example: http://bookmyhotel.com/registrations/r1  
         body:
           application/json:
-            type: object/array
-            properties:/items:
+            type: object | array
+            properties:  | items:
               status:
                 type: integer
                 required: true
@@ -110,8 +103,99 @@ mediaType:
               {
                 "status": 200 ,
                 "message": "Success"
-
               }
+  put:
+    description: This resource used to update a covid case.
+    headers:
+      Content-Type:
+    body: 
+      application/xml:
+        type: object
+        xml:
+          name: covidCase
+        properties:
+          caseID:
+            type: string
+          nationalIDType: string   <---- Also we can mention type here 
+          nationalID:
+            type: string
+            required: true
+          address:
+            type: object
+            properties:
+              postal:
+                type: string
+                required: true
+                example: 20500                
+              country:
+                type: string
+                required: true
+                example: "USA"
+        example:
+          <?xml version="1.0" encoding="UTF-8" ?>
+              <covidCase>
+                      <caseID>7</caseID>
+                      <nationalID>209-49-6193</nationalID>
+                      <nationalIDType>SSN</nationalIDType>
+                <address>
+                      <postal>20500</postal>
+                      <country>USA</country>
+                </address>
+              </covidCase>    
+    responses:
+      200:
+        body:
+          application/xml:
+            type: object
+    xml:
+      name: response
+    properties:
+      caseID:
+        type: string
+        required: true
+        example: "3544"
+    example:
+      <?xml version="1.0" encoding="UTF-8" ?>
+      <response>
+        <caseID>7</caseID>
+      </response>  
+------------------------------------------------------------------------------------
+
+#%RAML 1.0 DataType
+type: object
+properties:
+  roomId: string
+  roomType:
+    type: string
+    enum:
+      - Single Room
+      - Double Room
+      - Twin Room
+    example: Single Room
+  amount: number
+
+#%RAML 1.1 DataType   <--- Above 1.0 datatype mention here
+rooms: 
+    type: array
+    items: !include /DataTypes/room-datatype.raml
 
 
+#%RAML 1.0 NamedExample  
+rooms:
+    - # item1
+        roomId: rm1
+        roomType: Single Room
+        amount: 40000
 
+    - # item2
+        roomId: rm2
+        roomType: Double Room
+        amount: 70000
+-----------------------------------------------------------------------------------
+//paymentTypes: string[]
+
+//paymentTypes:
+     - cash
+     - credit card
+     - paytm
+-------------------------------------------------------------------------------
