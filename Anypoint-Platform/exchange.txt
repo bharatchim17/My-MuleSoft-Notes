@@ -1,0 +1,48 @@
+//Exchange:-
+*Assets:
+- REST APIs
+- SOAP APIs
+- API Specification Fragments
+- Policies
+- Rulesets
+- Dataweave Libraries
+- RPA Activity Templates
+- Connectors
+- Examples
+- Templates
+- Custom
+--------------------------------------------------------------------------------------
+//Exchange: share assests within the organizations..
+
+//Public Portal: Share API assests with external users..
+URL look like below: 
+https://anypoint.mulesoft.com/exchange/Portals/Domain_Name/.
+
+When we shared api in Design centre we can:  1.View  2.Edit
+When we shared api in Exchange we can reuse:  1.API  2.API Fragments
+
+--------------------------------------------------------------------------------------
+//When we change version of API..?
+In below situations
+ - Delet resource 
+ - Delet method 
+ - change in Representational format
+ - break in communication
+
+//when there is no need to change version of API..?
+In below situations
+- Technology change in backend application 
+- data model changes
+- New resources are added
+- methods are added
+--------------------------------------------------------------------------------
+//Asset Version:
+Exchange asset version follow the semantic versioning
+semantic version refers to model of major , minor and patch release..
+
+//Format: A.B.C --->  Example: 1.0.3
+where, 
+  A = Major version -> 1
+  B = Minor version -> 0
+  C = Patch version -> 3
+----------------------------------------------------------------------------

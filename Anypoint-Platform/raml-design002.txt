@@ -26,6 +26,7 @@ headers:   <---- request body header
 description:
 responses:
 body:
+/resource(subpath)
 ----------------------------------------------------------------------------------
 //4:-
 
@@ -198,4 +199,28 @@ rooms:
      - cash
      - credit card
      - paytm
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+queryParameters:
+  field_name:
+
+headers:
+  x-transaction-id:
+
+headers:
+  x-correlation-id:
+
+headers:
+    Accept?:
+      example: application/json
+      description: MediaType of Expected Response
+
+responses:
+  <<errorCode>>:
+    headers:
+      Content-Type: 
+    body:
+     Error
+
+  is:
+  - has-accept-header
+  - has-error-traits: {errorCode: 404}  

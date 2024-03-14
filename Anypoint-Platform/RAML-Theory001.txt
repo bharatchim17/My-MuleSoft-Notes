@@ -75,7 +75,7 @@ This document is organized as follows:-
 -Security
 -Annotations
 -Includes, Libraries, Overlays, and Extensions
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 //A template URI refers to a URI parameter, which is a variable element, enclosed 
 in curly brackets ({}) inside a relative URI of a resource.
@@ -116,7 +116,7 @@ Those are like basic authentification, client ID enforcement(injected through he
 and oAuth security policies.
 
 RAML supports the following built-in security scheme types:-	
-OAuth 1.0: 
+OAuth 1.0
 OAuth 2.0	
 Basic Authentication	
 Digest Authentication	
@@ -132,7 +132,6 @@ security schemes previously defined in the securitySchemes.
 //relativeUri:- The resources of the API, identified as relative URIs that begin with a slash (/).
 A resource node is one that begins with the slash and is either at the root of the API definition or a child of a resource node. For example, /users and /{groupId}.
 
-//usage:- resource type or trait provides instructions about how and when the resource type or trait SHOULD be used. 
 
 //description:- Human-friendly description of the API.
 
@@ -225,4 +224,29 @@ In collection resource delete methode avoided in majority projects , in nested m
 resource representation can be in different formats - XML , JSON etc , representations exchanged between consumer and provider..
 
 //MediaType has two types:  1. Default  2. explicit 
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+//What is HATEOS?
+
+//Q. What is Representational ?
+--> Is response return by server to client can be reprent in format like json format {} or xml format <>
+
+//Q. What is State? Does it mean session State?
+state of resources in particular time
+
+//resources are held by server
+WebClient(browser)----request(product/1)----->WebServer
+WebServer-------response{product1: milk}------>WebClient
+
+//What is Web?
+is interconnected networks
+
+//What is an API?
+Application programming interface
+
+//What is web server? Why we need it?
+ex: IIS 
+To handle , interprete the request and then it responses it back.. 
+
+//SOAP is a protocol REST is an architectural style. SOAP stands for Simple Object 
+Access Protocol. REST stands for REpresentational State Transfer.
+---------------------------------------------------------------------------------------

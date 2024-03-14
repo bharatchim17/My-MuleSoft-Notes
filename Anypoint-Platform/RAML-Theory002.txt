@@ -1,5 +1,5 @@
 
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 //Request contains:
         - body
@@ -79,6 +79,7 @@ applied to multiple resources..
   be just hotel..
  Double angle brackets enclosed parameter name in resourceTypes.. Double angle brackets<<>> 
 In case of user defined parameters it need to have set value of parameter..
+<<resourcePathName | !uppercamelcase | !singularize>>
 
 //Resource can specify:
 - Methods
@@ -96,12 +97,18 @@ In case of user defined parameters it need to have set value of parameter..
 
 
 //Reserved parameters:
- 1. resourcePath :  /hotels , /hotels/{hotelId} same as in uri
- 2. resourcePathName:  hotels (/hotels/{hotelId} for this resourcePath name will)
- 3. methodName:  
+1. resourcePath:  /hotels or /hotels/{hotelId} (same as in uri)
+2. resourcePathName:  /hotels or /hotels/{hotelId} for this resourcePath name will be just hotel..
+3. methodName:  
 - User defined parameters
+
+we can apply Traits to methods in resource and resource Types..
 --------------------------------------------------------------------------------------------
 //What is RAML..?
 - RAML is RESTful API Modeling language..
 - is powerful language YAML-based language..
-----------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+//Library:
+RAML library are used to combine any collection of data type,traits,security_Schemes declarations
+into modular , externalized , reusable groups.. 
+------------------------------------------------------------------------------------

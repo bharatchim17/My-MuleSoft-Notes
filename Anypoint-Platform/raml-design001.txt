@@ -1,89 +1,5 @@
----------------------------------------------------------------------------------------------
-
-1.Traits:- here , you can edit part of resource type such as
-query_parameters, responses also , headers (correlation-id , transaction-id)..
-
-//In Traits_folder fragment:-
-
-headers:
-  x-transaction-id:
-
-headers:
-  x-correlation-id:
-
-queryParameters:
-  field_name:
-
-responses:
-  <<errorCode>>: 
-
-
- Key-1_Name:
-  partIn-root-fragment_paste-here
- Key-2_Name:
-  partIn-root-fragment_paste-here 
- 
- 
-//In root_file: 
-traits:
- Key-1_Name: !include paste_pathOf-- Traits_file-1
- Key-2_Name: !include paste_pathOf-- Traits_file-2
-
-
-//mention using is:
-is: [Key-1_Name , Key-2_Name]
-
-
-//mention using is:
-is:
- - Key_Name: {errorCode: 500}
-
-----------------------------------------------------------------------------------------
-
-2. Resource-type:- Type here you can paste Methods like get , post
-
-//Resource-type folder fragment:
-
-get?:   <------------- make methods in resourceTypes optional so we can refer in root if we want
-   body:
-   responses:
-      200:
-        type: success-example
-
-//In root_file: 
-resourceTypes:
- Key_Name: !include paste path
-
-//Mention type as:
-type: Key_Name
-  
-   
-//Mention type as:
- type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
------------------------------------------------------------------------------------------------------
-3.Library:- Is collection of data-types
-
-Q.How library refer to raml ?
-
-//In Library fragment:-
-
-//usage: Tittle_for usage of root_file
-types: / resourceTypes: / traits:
-datatype-Name: / resourceTypes-Name: / traits-Name:
-type: object/array
-properties:/items:
-part in root fragment paste-here..
-
-
-//Below baseUri-in root file
-uses:
-  Key_Name: paste path of library file here without include tag..
-
-//mention in type
-type: Key_Name.Paste-datatype:
-
 ---------------------------------------------------------------------------------------
-4. Data-Type:- 
+1. Data-Type:- 
 //In datatype_folder fragment
 type: object/array
 properties:/items:
@@ -99,8 +15,134 @@ Key_Name
 //mention-inType
 type: Key_Name
 
+---------------------------------------------------------------------------------------
+2.Example:- 
+//In example folder fragment
+ type: object <---- type and example is written on 2nd line
+ example: | 
+    {
+      
+    }
+
+//write in root
+types:
+Key_Name(example_File_Name): !include copy_path of file which is in example_folder
+
+//mention as 
+type : Key_Name  <----- We can remove type also , as body: Key_Name because type: object/item written in example fragments
+
+//We can directly mention(create other as API format  also , File name as .json file in exam folder)
+
+example: !include copy_path of file which is in example_folder
+---------------------------------------------------------------------------------------
+2.1.Example of datatype:-
+
+//In example folder fragment 
+            value:
+              code: 404       <------ paste propertie's field in datatype Below value
+              reasonphrase: Not Found
+              details: string
+
+//In datatype_folder fragment
+
+example: !include copy_path of file which is in example_folder  <-----here example is on same line of properties 
+
+examples: 
+    example1: !include copy_path of file which is in example_folder 
+    example2: !include copy_path of file which is in example_folder 
+
+
+
+---------------------------------------------------------------------------------------------
+3. Resource-type:- Type here you can paste Methods like get , post
+
+//Resource-type folder fragment:
+
+                      get?:   <------------- make methods in resourceTypes optional so we can refer in root if we want
+                        body:
+                        responses:
+                            200:
+                              type: success-example
+
+//In root_file: 
+resourceTypes:
+ Key_Name: !include paste path
+
+//Mention type as:
+type: Key_Name
+  
+   
+                        //Mention type as:
+                        type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
+-----------------------------------------------------------------------------------------------------
+
+4.Traits:- here , you can edit part of resource type such as
+query_parameters, responses also , headers (correlation-id , transaction-id)..
+
+
+//In Traits_folder fragment:-
+ Key-1_Name:
+  partIn-root-fragment_paste-here
+ Key-2_Name:
+  partIn-root-fragment_paste-here 
+ 
+                                                    queryParameters:
+                                                      field_name:
+
+                                                    headers:
+                                                          x-transaction-id:
+
+                                                        headers:
+                                                          x-correlation-id:
+
+                                                        headers:
+                                                            Accept?:
+                                                              example: application/json
+                                                              description: MediaType of Expected Response
+
+                                                        responses:
+                                                          <<errorCode>>:
+                                                            headers:
+                                                              Content-Type: 
+                                                            body:
+                                                            Error-datatype
+
+//In root_file: 
+traits:
+ Key-1_Name: !include paste_pathOf-- Traits_file-1
+ Key-2_Name: !include paste_pathOf-- Traits_file-2
+
+
+//mention using resourceTypes file:   <------------if resourceTypes not created then we use it in root file..
+is: [Key-1_Name , Key-2_Name]
+
+
+//mention using resourceTypes file:
+is:
+ - Key_Name: {errorCode: 500}
+
+                                                          is:
+                                                          - has-accept-header
+                                                          - has-error-traits: {errorCode: 404}  
+----------------------------------------------------------------------------------------
+
+5.Library:- is collection 
+
+//In Library fragment:-
+
+//usage: Tittle_for usage of root_file
+types: / resourceTypes: / traits:
+datatype-Name: / resourceTypes-Name: / traits-Name:
+
+//In root_file:
+uses:
+  Key_Name: paste path of library file here without include tag..
+
+//mention in type
+type: Key_Name.Paste-datatype:
+
 -------------------------------------------------------------------------------------
-5.User-Documentation:
+6.User-Documentation:
 
 //Documentation_folder fragment
 tittle:
@@ -116,61 +158,90 @@ documentation:
 tittle:
 content:
 
----------------------------------------------------------------------------------------
-6.Example:- 
-//In example folder fragment
- type: object <---- type/example is written on 2nd line
- example: | 
-    {
-      
-    }
-
-//write in root
-types:
-Key_Name(example_File_Name): !include copy_path of file which is in example_folder
-
-//mention as 
-type : Key_Name  <----- We can remove type also as body: Key_Name
-
-//We can directly mention  (create other as API format  also , File name as .json file in exam folder)
-
-example: !include copy_path of file which is in example_folder
-
----------------------------------------------------------------------------------------
-6.1. Example of datatype:-
-
-//In example folder fragment 
-value:
-  code: 404       <------ paste propertie's field in datatype Below value
-  reasonphrase: Not Found
-  details: string
-
-//In datatype_folder fragment
-
-example: !include copy_path of file which is in example_folder  <-----here example is on same line of properties 
-
-examples: 
-    example1: !include copy_path of file which is in example_folder 
-    example2: !include copy_path of file which is in example_folder 
-
-
-
-
 -------------------------------------------------------------------
 7.Annotation-Type
 --------------------------------------------------------------------------------------
 8.security_Schemes:-
 
-In Security_fragment:-
-type: basic authentification/oAuth2.0
-description/describedBy:
-
 //in root_file:
 
 securitySchemes:
-Key_Name-- basic/oAuth2.0: !include paste_pathOf-- Scheme_file    //this is global Scheme
+  basic:    <--------  here basic is Key_Name 
+    type: OAuth 1.0 / OAuth 2.0 / Basic Authentication	/ Digest Authentication	/ Pass Through	/ x-{other} <--------this is global Scheme
+    description: this is Basic Authentication
+                                             
+                                                
+ securitySchemes OAuth 2.0 link:
+https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth
 
-
-//mention_As:
+//mention under methods As:
 securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
+
+                                                                    securitySchemes:
+                                                                    basicAuth: !include /securitySchemes/basic-Auth.raml
+                                                                    securedBy:
+                                                                    - basic
+
+                                                                    /v1/cases:
+                                                                        securedBy:
+                                                                          - basic
+                                                                        post:
+
+                                                                    /v1/cases:
+                                                                        post:
+                                                                        securedBy: [basic]
+
+--------------------------------------------------------------------------------
+securitySchemes:
+       <<securityScheme_Name_Of_Your_Choise>>:
+           type: ----> OAuth 1.0 / OAuth 2.0 / Basic Authentication	/ Digest Authentication	/ Pass Through	/ x-{other}
+           describedBy: ---> request / responses / query_parameters / headers
+           settings: authorization uri / access token
 ----------------------------------------------------------------------------------------------------
+//If there is external security_Schemes:
+
+In Security_fragment:-
+type: OAuth 1.0 / OAuth 2.0 / Basic Authentication	/ Digest Authentication	/ Pass Through	/ x-{other} <--------this is global Scheme
+description: The API secured by basic authentification
+
+                                                          #%RAML 1.0 SecurityScheme
+                                                          type: Basic Authentication
+                                                          describedBy:
+                                                            headers:
+                                                              Authorization: 
+
+                                                          #%RAML 1.0 SecurityScheme
+                                                          type: x-clientIdEnforcement
+                                                          describedBy:
+                                                            headers:
+                                                              client_id:
+                                                              client_secrte:
+
+//in root_file:
+securitySchemes:
+  basic: !include ...paste path here
+                                                          securitySchemes:
+                                                            basic: !include /securitySchemes/basic-Auth.raml
+                                                            client-id-enforcement: !include /securitySchemes/client-id-enforcement.raml
+
+//mention under methods As:
+securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
+
+                                                                    securitySchemes:
+                                                                    basicAuth: !include /securitySchemes/basic-Auth.raml
+                                                                    securedBy:
+                                                                    - basic
+
+                                                                    /v1/cases:
+                                                                        securedBy:
+                                                                          - basic
+                                                                        post:
+
+                                                                    /v1/cases:
+                                                                        post:
+                                                                        securedBy: [basic]
+
+                                                                     /hotels:   
+                                                                      post:
+                                                                        securedBy:
+                                                                          - client-id-enforcement
