@@ -81,4 +81,21 @@ The flow does not have to pause until the last message processor embedded in the
 Processes the nested list of message processors asynchronously using a thread pool , 
 Async can be useful for executing time-consuming operations that do not require you to 
 send a response back to the initiating flow (such as printing a file or connecting to a mail server)...
-
+-------------------------------------------------------------------------------------------------------------
+//The Until Successful scope:-
+Executes processors within it, in order, until they all succeed or the scope exhausts
+the maximum number of retries. Until Successful runs synchronously. If any processor
+within the scope fails to connect or to produce a successful result, Until Successful
+retries all the processors within it, including the one that failed, until all 
+configured retries are exhausted. If a retry succeeds, the scope proceeds to the next component. 
+If the final retry does not succeed, Until Successful produces an error.
+--------------------------------------------------------------------------------------
+//Round Robin:-
+is a Mule component that contains two or more processing routes and executes only one 
+of the routes each time the flow executes the component.
+Round Robin keeps track of the previously selected route and never selects the same
+route consecutively. For example, the first time Round Robin executes, the 
+component selects the first route. The next time, it selects the second route. 
+If the previously selected route is the last route, Round Robin executes the first 
+route...
+--------------------------------------------------------------------------------------

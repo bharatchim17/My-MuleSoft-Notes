@@ -1,0 +1,3 @@
+//To externalize console:
+Type ---> powershell in the address bar and hit Enter.
+Get-Content console -Wait

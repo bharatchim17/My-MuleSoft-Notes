@@ -1,3 +1,4 @@
+-----------------------------------------------------------
 //Exchange:-
 *Assets:
 - REST APIs
@@ -35,7 +36,7 @@ In below situations
 - data model changes
 - New resources are added
 - methods are added
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 //Asset Version:
 Exchange asset version follow the semantic versioning
 semantic version refers to model of major , minor and patch release..
@@ -45,4 +46,17 @@ where,
   A = Major version -> 1
   B = Minor version -> 0
   C = Patch version -> 3
-----------------------------------------------------------------------------
+
+When to Change Version Numbers??
+//Major versions:
+When introducing a change in the structure of the API that requires the user of the 
+API to adapt the interface on the consumer side, such as a new required operation 
+argument..
+
+//Minor versions:
+When introducing a backward compatible change to the API that does not require 
+an API user to change, such as a new optional element..
+
+//Patch versions:
+When introducing a backward compatible bug fix or documentation update
+--------------------------------------------------------------------------------------

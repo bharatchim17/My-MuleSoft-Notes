@@ -163,3 +163,6 @@ Solution:- Restart studio
 
 
 https://help.mulesoft.com/s/question/0D52T00006R2h9DSAR/how-can-i-suppress-the-warning-body-is-ignored-since-the-http-method-is-between-the-empty-body-methods-head-get-options-and-the-send-body-mode-is-not-set-to-always-
+---------------------------------------------
+//Error Ocure type: MULE:SOURCE_RESPONSE_SEND
+Solution:- 

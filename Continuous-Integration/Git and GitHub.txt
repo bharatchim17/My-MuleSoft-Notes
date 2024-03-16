@@ -34,7 +34,7 @@ pwd --> current project location
 git init --> Initialized empty Git repository in Drive:/folder/.git/
 git status --> show track , untrack and commit files
 git add --tab--> it add mentioned file ..
-git add . git add * --> it add all files in folder.
+git add . or git add * --> it add all files in folder.
 git commit -m "comment"
 git log --> show author information and detail history of committed file.
 git rename_branch --> git branch -M branch_Name 
@@ -118,7 +118,8 @@ git checkout -b branch_Name
 
 git push origin branch_Name
 
-
+//To Delete branch:
+git branch -d branch_Name
 
 
 
