@@ -1,3 +1,10 @@
 //To externalize console:
+Run as---> Run/Debug configurations ---> Common ---> Check Allocate console (necessary for input)
+---> Check Output File: console.log / console or any other name ---> Apply
+
 Type ---> powershell in the address bar and hit Enter.
 Get-Content console -Wait
+
+//To run studio smoothly change AnypointStudio configurations as:
+-Xms1024m
+-Xmx2048m

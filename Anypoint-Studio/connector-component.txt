@@ -1,21 +1,28 @@
-//The Scatter-Gather component executes each route in parallel, not sequentially.
+------------------------------------------------------------------------------------
+//The Scatter-Gather component executes each route in parallel, not sequentially...
 Parallel execution of routes can greatly increase the efficiency of your Mule
 application and may provide more information than sequential processing...
 
+//To extract all resulting payloads to an array, use a DataWeave script:
+
+flatten(valuesOf(payload) map ((item, index) -> item.*payload))
+
+--------------------------------------------------------------------------------------
 //The For Each scope is similar to a "foreach" or "for loop" in most programming 
 languages. It takes as input a "collection" (a list or array from a payload with any
  kind of content), and iterates over the items in the collection, passing each one
 through the components placed inside the For Each scope. If a particular item in a 
 collection throws an exception, the For Each scope will stop processing it and invoke 
 an error handler.
- foreach works as localScope
+
+ Async & Foreach works as localScope:
 
 //Settings:
 collection: fx-payload
 counter variable name: counter
 batch size: 1 (default) / 4
 root message variable name: rootMessage
-
+--------------------------------------------------------------------------------------
 //Parallel For Each Scopes: Splits the same message and processes each part in parallel.
 
 //Settings:
@@ -26,6 +33,7 @@ Target:
 Target value: #[payload]
 
 //Differences between For Each and Parallel For Each Scopes:
+
 For Each works sequentially, while the Parallel For Each processes in parallel. 
 This difference affects error handling:
 Because of the processing differences, the execution of For Each execution is 
@@ -99,3 +107,22 @@ component selects the first route. The next time, it selects the second route.
 If the previously selected route is the last route, Round Robin executes the first 
 route...
 --------------------------------------------------------------------------------------
+//Object Store:-
+Connector is a Mule component that allows for simple key-value storage , it is mainly design for:
+-Storing synchronization information, such as watermarks.
+-Storing temporal information such as access tokens.
+-Storing user information.
+Additionally, Mule Runtime uses Object Stores to support some of its own components, for example:
+-The Cache module uses an Object Store to maintain all of the cached data.
+-The OAuth module (and every OAuth enabled connector) uses Object Stores to store the access and refresh tokens.
+------------------------------------------------------------------------------------------
+//Batch processing:-
+Components are designed for reliable, asynchronous processing of larger-than-memory data sets. 
+The components are the Batch Job, Batch Step, and Batch Aggregator.
+
+https://docs.mulesoft.com/mule-runtime/latest/_images/mruntime-batch-job-overview.png
+
+Batch Job Processing each batch contains three different phases:
+1. Load and dispatch
+2. Processes
+3. On Complete

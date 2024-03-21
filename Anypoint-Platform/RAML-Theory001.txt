@@ -45,9 +45,17 @@ Environments:-      1.Development   2.Quality-Assurance  3.Production
     Base URI :-  http://localhost:8081/Domain_Name
     Resource :- v1/cases
 
-2.HTTP Methods :-
+2.HTTP Methods/Verbs :-
 GET, POST, PUT, DELETE
 
+Create: ----> Post
+Read:----> Get ---> we use Get by url , form tag , hyperlink
+Update:----> Put(Create + Update)/Patch(partially Update)
+Delete
+--------------------------------------------------------------------------------------------------
+Idompotent: Give same result --------> example:- Get/Put/Delete is Idompotent
+Non-Idompotent: ---------> example: Post 
+-------------------------------------------------------------
 3.Input :-
 headers , body
 
