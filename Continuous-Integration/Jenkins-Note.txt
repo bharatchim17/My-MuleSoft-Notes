@@ -88,7 +88,7 @@ Script path: Jenkinsfile
   your continuous integration environment...
 
 //Step4: Download maven plugin in jenkins tool..
---------------------
+----------------------------------------------------------------------------------
 Declarative Checkout SCM ---> Build ---> Test ---> Deployment
 
 //Step1: Choose pipeline

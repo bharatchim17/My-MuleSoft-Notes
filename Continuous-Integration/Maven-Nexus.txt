@@ -1,0 +1,174 @@
+-----------------------------------------------------------------------------------
+//Maven
+maven is project Management tool that is based on POM (Project Object Model)...
+it's used for project build , dependancy and documentation..
+
+//What basic pom.xml contains..?
+- project build name details
+- properties
+- plugins
+- plugins to build the Project
+- dependancy
+- repositories
+- plugin repositories
+-----------------------------------------------------------------------------------------
+
+//Maven pom.xml deals with remote repository and local repositery and when ever we install 
+custom jar that will be install to local repositery (.m2)..
+----------------------------------------------------------------------------------------------------
+Download Nexus-sonatype:-
+
+https://help.sonatype.com/en/download.html
+
+
+// :\nexus-3.65.0-02\bin ---> in this bin path write ---> cmd 
+nexus.exe /run
+
+
+//Step001: Add dependancy in pom.xml
+<dependancy>
+<groupId>com.oracle</groupId>
+<artifactId>ojdbc6</artifactId>
+<version>11.2.0.2.0</version>
+</dependancy>
+
+//Step002:  Add repository in pom.xml
+<repository>
+<id>repository_name_from_nexus</id>
+<name>nexus_repo_createdName</name> <--------we can give name as we want
+<url>url_of_the_Nexus_repo</url>
+</repository>
+
+//Step003: In apache maven copy setting.xml and paste it in location .m2
+<server>
+<id>repository_name_from_nexus</id>
+<userName>Nexus_userName</userName>
+<password>Nexus_password</password>
+</server>
+
+//Step004:  restart studio
+--------------------------------------------------------------------------------------
+//Configure cloudHub deployment stratergy in your projects pom.xml file so you can 
+deploy, re-deploy your mule applicattion using mule maven plugin... 
+
+                      https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
+                      https://docs.mulesoft.com/mule-gateway/mule-gateway-org-credentials-mule4
+
+//Before you can deploy to CloudHub using the Mule Maven plugin
+If you are using the HTTP Listener as source for your flow, you need to set it's host 
+to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
+//Set <objectStoreV2>true</objectStoreV2> as global..
+
+//add in plugin:
+  <plugin>
+  <groupId>org.mule.tools.maven</groupId>
+  <artifactId>mule-maven-plugin</artifactId>
+  <version>3.7.1</version>
+  <extensions>true</extensions>
+  <configuration>
+    <cloudHubDeployment>
+          *<username>anypoint_platform_user_name</username>        bharat-mule17
+          *<password>anypoint_platform_user_password</password>    Chimbh17
+          <applicationName>dev-project_name</applicationName>
+          <environment>write_Sandbox/production</environment>
+          <region>us-east-1</region>
+          <workers>1</workers>
+          <workerType>MICRO/SMALL/MEDIUM</workerType>
+          *<objectStoreV2>true</objectStoreV2>      <---------------  objectStoreV2
+          <server>my.anypoint.credentials</server>  
+    <properties>
+          *<http.port>8081</http.port>
+         <env>dev</env>                           <-----------  env As per yaml 
+         <api.id>2518</api.id>
+         <anypoint.platform.client_id>7714c6ba94b3b03743d40edd</anypoint.platform.client_id>
+         <anypoint.platform.client_secret>439381AE12f999Bd41</anypoint.platform.client_secret>
+         *<anypoint.platform.base_uri>https://anypoint.mulesoft.com</anypoint.platform.base_uri>
+         *<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com </anypoint.platform.analytics_base_uri> 
+    </properties>
+    </cloudHubDeployment>
+  </configuration>
+</plugin>
+------------------------------------------------------------------------------------
+//In pom.xml folder pathType_cmd:
+To deploy: mvn clean package deploy -DmuleDeploy
+To deploy: mvn clean package deploy -P(environment) -Dusername -Dpassword -DmuleDeploy
+To un-deploy: mvn mule:undeploy
+
+
+//Error: "The packaging for this project did not assign a file to the build artifact":
+Solution: Remove package or update maven --->  mvn clean deploy -DmuleDeploy
+
+--------------------------------------------------------------------------------------
+//profiles maven plugin to multiple environments: 
+
+//Copy from <build> to </builds> and paste it between </properties> &  <build>
+
+                                            <profiles>
+                                                   <profile>
+          --------Mention environment-------->     <id> development </id>
+                                                   <build>
+                                                    <plugins>
+                                                    <plugin>
+                                                    <groupId>org.mule.tools.maven</groupId>
+				                                            <artifactId>mule-maven-plugin</artifactId>
+				                                            <version>${mule.maven.plugin.version}</version>
+				                                            <extensions>true</extensions>
+				                                            <configuration>
+                                                    <!-- Cloudhub-depoyment -->
+                                                    <configuration>
+                                                    <cloudHubDeployment>
+                                                    <applicationName>Dev-deployment</applicationName>
+                                                    <environment>Sandbox</environment>
+                                             <properties>    
+                                                    <api.id>2518</api.id>   
+                                                    <anypoint.platform.client_id> 7714c6ba94b3b03743d40edd</anypoint.platform.client_id>
+                                                    <anypoint.platform.client_secret>439381AE12f999Bd41</anypoint.platform.client_secret>
+                                            </properties>    
+                                                    </cloudHubDeployment>
+                                                    </configuration>
+                                                    </plugin>
+                                                   </plugins>
+                                                   </build>
+                                                   </profile>
+                                            </profiles>
+
+
+-------------------------------------------------------------------------------------
+//Injecting maven POM properties via settings .xml:
+                       https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
+
+//In settings.xml  under <profiles> 
+
+<profile>
+<id>dev/prod</id>
+<properties>
+<userName>bbhfvf</userName>
+<password>bvbfvfv</password>
+<anypoint.platform.client_id>7714c6ba94af4e95d40edd</anypoint.platform.client_id>
+<anypoint.platform.client_secret>44012908CAE12f999Bd41</anypoint.platform.client_secret>
+</properties>
+</profile>
+
+--------------------------------------------------------------------------------------
+//Encrypt Password:-
+
+1. mvn --encrypt-master-password <yourMasterPassword>
+2. Create a settings-security.xml file in your ~/.m2 repository..
+3. 
+<settingsSecurity>
+  <master>{l9vZ2uM5LjnQ=}</master>
+</settingsSecurity>
+
+4. mvn --encrypt-password <yourAnypointPlatformPassword>
+5. Add your encrypted Anypoint Platform password to your settings.xml file in the <server> section:
+   
+<server>
+      <id>my.anypoint.credentials</id>
+      <username>my.anypoint.username</username>
+      <password>{HTWFGH5BG9QmvJ1B=}</password>
+</server>
+
+6. Mention Server-id in tag global of pom.xml
+<server>my.anypoint.credentials</server> <---------- id is mention here
+
+-----------------------------------------------------------------------------------
