@@ -105,7 +105,8 @@ Body: payload
 statusCode: vars.statusCode 
 
 ---------------------
---clickOn-->Error Handling--->Reference: --choose-->global-error-handler
+Click-On-->Error Handling--->Reference: --choose-->global-error-handler
+Global-configuration--->configuration--default error handler--->choose file
 --------------------------------------------------------------------------------------
 //solution to solve conflict b/w global  vs local & connector level error handlers
 1. use private flow refer it by flow reference or API kit router and add error 

@@ -1,10 +1,21 @@
----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+//Unit Testing:-
+validate of smallest unit of code to verify as it works as expected..
+-------------------------------------------------------------------------------------------------
 //Munit:-
-Munit is Mule application framework that allows you to easily build automated tests for your 
+Munit is Mule application testing framework that allows you to easily build automated tests for your 
 integrations and APIs. it provides a full suite of integration and unit test capabilites and is fully integrated with Maven surefire for 
 integration with your continuous deployment environment...
- 
-with Munit you can:
+//Munit is divided in two main sub modules:
+Munit 
+Munit Tools
+
+//Munit test case 
+1. Behavior
+2. Execution
+3. Validation
+
+With Munit you can:
 - Create your test by writing mule code
 - Mock processors
 - spy any processor 
@@ -31,6 +42,11 @@ using Dataweave assertion library..
 
 //Spy Event processor
 The spy processor allows you to spy what happens before and after an event processor is called.. 
+
+#attributes:
+{
+	queryParams:{param1: "20" , param2: "30"}  <------- here , param1 is key & 20 is value...
+}
 ----------------------------------------------------------------------------------------
 
 
