@@ -91,12 +91,12 @@ Async can be useful for executing time-consuming operations that do not require 
 send a response back to the initiating flow (such as printing a file or connecting to a mail server)...
 -------------------------------------------------------------------------------------------------------------
 //The Until Successful scope:-
-Executes processors within it, in order, until they all succeed or the scope exhausts
-the maximum number of retries. Until Successful runs synchronously. If any processor
-within the scope fails to connect or to produce a successful result, Until Successful
-retries all the processors within it, including the one that failed, until all 
-configured retries are exhausted. If a retry succeeds, the scope proceeds to the next component. 
-If the final retry does not succeed, Until Successful produces an error.
+Until Successful runs synchronously , If any processor within the scope fails to 
+connect or to produce a successful result, Until Successful retries all the processors
+within it, including the one that failed, until all configured retries are exhausted...
+#Generic:
+Max Retries:
+Mili-Second between Retries:
 --------------------------------------------------------------------------------------
 //Round Robin:-
 is a Mule component that contains two or more processing routes and executes only one 
@@ -126,3 +126,4 @@ Batch Job Processing each batch contains three different phases:
 1. Load and dispatch
 2. Processes
 3. On Complete
+--------------------------------------------------------------------------------------

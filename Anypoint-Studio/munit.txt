@@ -4,8 +4,10 @@ validate of smallest unit of code to verify as it works as expected..
 -------------------------------------------------------------------------------------------------
 //Munit:-
 Munit is Mule application testing framework that allows you to easily build automated tests for your 
-integrations and APIs. it provides a full suite of integration and unit test capabilites and is fully integrated with Maven surefire for 
-integration with your continuous deployment environment...
+integrations and APIs. it provides a full suite of integration and unit test 
+capabilites and is fully integrated with Maven surefire for integration with your 
+continuous deployment environment...
+
 //Munit is divided in two main sub modules:
 Munit 
 Munit Tools
@@ -25,28 +27,97 @@ With Munit you can:
 - check visual coverage in studio 
 - generate coverage reports
 --------------------------------------------------------------------------------------------------------------------------------------
-//Assert Equals
+//Assert Equals:
 The Assert Equals processor allows you to run assertions in order to validate the state 
 of Mule Event's content. This is processor can be used to validate Mule Event after production code runs. 
+fx#Actual: --example-->payload.***
+fx#expected: --example-->** as Number
 
-//Assert That Event processor 
+//Assert That:
 The Assert That event processor allows you to run assertions to validate the state of 
 Mule event's content. You can use the Assert that processor to validate the mule event after 
 the production code runs..
 Assert that processor uses set of dataweave function called Munit matchers to define assertion conditions 
-for any value in an expression.. 
-//Assert Expression 
-The Assert expression processor allows you evaluate Dataweave expression that asserts state
+for any value in an expression.. https://docs.mulesoft.com/munit/latest/munit-matchers
+#Expression: payload
+#is: MunitTools::withMediaType('application/json')
+-----------------------------------------------------------------------------------
+//Assert Expression:
+The Assert expression processor allows you to evaluate Dataweave expression that asserts state
 of Mule Event's content..This processor can be used to validate mule event after production code runs , 
 using Dataweave assertion library..
-
-//Spy Event processor
-The spy processor allows you to spy what happens before and after an event processor is called.. 
-
+#Expression:
+import * from dw::test::Asserts 
+ ---
+payload must notBeNull() 
+---------------------------------------------------------------------------------------
+//Set Event:
+The Set Event Processor allows you to define a Mule Event. This message processor is 
+normally used at the beginning of an MUnit test, to define the first message to send 
+to the flow being tested...
 #attributes:
-{
-	queryParams:{param1: "20" , param2: "30"}  <------- here , param1 is key & 20 is value...
-}
+fx{
+	queryParams:{param1: "20" , param2: "30"}  <------- Here , param1 is key & 20 is value...
+  }
 ----------------------------------------------------------------------------------------
+//The Mock When:
+processor enables you to mock an event processor  we can configure a then-return 
+element to define the type of response the mocked processor returns. It can be a
+payload, a variable, a list of attributes, or an error...
+#Processor: Pick processor
+#Then return:  payload | variable | attributes | error
+#payload:
+value:
+%dw 2.0 output application/json
+---
+fx{
+ 
+  }
 
+#Error:
+Typeid: HTTP:CONNECTIVITY
 
+#payload:
+value: ${reqResPayload}  <---- in ${} is parameter Name: 
+global Config Element--- value: #[ %dw 2.0 output application/json --- readUrl("classpath://munitPOC3/reqResPayloadID2.json")]
+Media Type: application/json
+Encoding: UTF-8
+
+//Parameterization from File:
+Steps:
+Create file: parameterizations.yaml
+paramID2:         <---- Parameterization 
+		userID: "2"   <---- Here Parameterization Name is userID & value is 2
+        reqResPayload: "{https://www.freeformatter.com/json-escape.html#before-output}"
+    
+#payload:
+value: fx--> #[Mule::p('reqResPayload')]  <---- reqResPayload is parameter Name: 
+in global tab choose file: ***.yaml
+Media Type: application/json
+Encoding: UTF-8
+
+----------------------------------------------------------------------------------------
+//---Right-click---src/test/munit---->Munit--->Run Test
+----------------------------------------------------------------------------------------
+//The Verify call:
+Event processor allows you to verify if a processor was called. 
+#Processor: Pick processor
+#Comparison: <-------- The attributes times, atLeast, atMost, are mutually exclusive...
+#value: 1 
+----------------------------------------------------------------------------------------------------------
+//The Spy Processor:
+Enables you to spy on what happens before and after an event processor is called..
+Setting a spy processor tells MUnit to run a set of instructions (usually assertions 
+or verifications) before and/or after the execution of the spied event processor...
+------------------------------------------------------------------------------------------
+//Flow Sources:
+ Element within the MUnit test tells MUnit which flow sources to load and execute for the test.
+#Enable Flow Sources:
+-------------------------------------------------------------------------------------------------
+//Test Recorder in Studio:
+It's enables you to record processing flow and then configure unit test based on captured event..
+-------------------------------------------------------------------------------------------------
+//Before Suite:
+The Munit Suite contains code that is meant to be executed before whole suite..
+we can use one Before Suite scope / Munit test Suite..
+--------------------------------------------------------------------------------------
