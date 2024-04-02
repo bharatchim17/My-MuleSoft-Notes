@@ -54,7 +54,7 @@ example:
 #%RAML 1.0
 title: emp-sapi
 description: API's for flight information
-baseUri: http://localhost:8091/emp-sapi
+baseUri:  http://localhost:8091/emp-sapi
 mediaType: 
 - application/json
 

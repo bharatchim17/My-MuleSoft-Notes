@@ -1,7 +1,7 @@
------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 //Error handling:-
 The process of handling errors in flow and responding back user friendly messages 
-instead of system error messages is known as error handling.
+instead of system error messages is known as error handling...
 
 Selector Expressions for Mule Errors:-
 1. #[error.description]
@@ -12,7 +12,7 @@ Selector Expressions for Mule Errors:-
 6. #[error.childErrors]
 
 ---------------------------------------------------------------------------------------
-//Error types :-
+//Error types:-
 
 Any and Critical
 
@@ -24,21 +24,19 @@ Any :-
 5. expression
 6. security     ----- security has two types 1.Client_Security & 2.Server_Security
 
-Critical :-
+Critical:-
 1. fatal
 2.overload
 
 //Error type is combination of : name_space: identifier
 
------------------------------------------------------------------------------------------
-
-
+------------------------------------------------------------------------------------------------------
 // in java there is try catch statement when error occure in try statement it will be 
 catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in --> try scope)..
 
 //every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
 
---------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 //On Error Continue:- Considers the request transaction as Success-response and 
 response back to the response section (success response) of listner..
 ..
@@ -52,12 +50,12 @@ allows you to define a centralized error handling strategy that applies to all f
 //Raise Error:-
 Is used to intentionally throw an exception or error within flow..
 ---------------------------------------------------------------------------------------------------
-
 //set in variable of transform message of flow:
 
-attributes.headers.'x-correlation-id' default "" save in variable name as correlationId
+attributes.headers.'x-correlation-id' default "" save in variable name as correlationId..
 attributes.headers.'x-transaction-id' default uuid() save in  variable name as transactionId..
 payload save in variable name as inputPayload
+
 //set in variable of transform message:
 --error code--> 400 save in  variable name as statusCode now map it into 
 http response click fx ---> vars.statusCode 
@@ -90,7 +88,7 @@ General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server h
 Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND 
 
 //We can use Raise error connectors to handle custom connectors.. 
-------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
 
 //try scope: allow us to error handling on group of event processor individually..
@@ -104,11 +102,12 @@ error handler connector
 Body: payload
 statusCode: vars.statusCode 
 
----------------------
+--------------------------------------------------------------------------------
 Click-On-->Error Handling--->Reference: --choose-->global-error-handler
 Global-configuration--->configuration--default error handler--->choose file
 --------------------------------------------------------------------------------------
-//solution to solve conflict b/w global  vs local & connector level error handlers
+//Solution to solve conflict b/w global  vs local & connector level error handlers
 1. use private flow refer it by flow reference or API kit router and add error 
 handler in error handling don't refer it to global..
 2. refer error handler in main flow instead of private flow...
+--------------------------------------------------------------------------------------

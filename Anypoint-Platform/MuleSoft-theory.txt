@@ -1,1 +1,3 @@
-//What is muleSoft?
+//Stable state: is ready to be consumed. The asset cannot be republished or overwritten.
+//Deprecated state: is similar to an asset version in the stable state.
+The only difference is that the status property shows the asset version is deprecated.

@@ -43,6 +43,9 @@ You can configure multiple limits with window sizes ranging from milliseconds to
 
 1. Apply configuration to all API method & resources.
 2. Apply configuration to specific API method & resources.
+
+global element----> API Autodiscovery---> api id: provide instance here
+                                       flow Name: API kit router flow i.e. Main flow
 ---------------------------------------------------------------------------------------
 //Rate limiting SLA based policy:-
 The rate limiting policy is combination of rate limiting and client id enforcement that enables you to 
@@ -54,7 +57,7 @@ limit the number of request specified by the level of access granted to the requ
  2. Create client Applications
  3. Apply rate limiting SLA based policy 
 -------------------------------------------------------------------------------------------
-JSON & XML threat protection policy:-
+//JSON & XML threat protection policy:-
 
 Applications processing JSON and XML requests are susceptible to attacks characterized 
 by unusual inflation of elements and nesting levels. Attackers use recursive techniques

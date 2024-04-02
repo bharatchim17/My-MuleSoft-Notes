@@ -27,11 +27,11 @@ request body:
 it contains core information processed by runtime and it follows configured application logic.
 Mule event contains:-
 
-1.mule message:- contains message i.e. payload and attributes.   
+1.mule message:- contains message i.e. payload(message.payload) and attributes(message.attributes)   
 
-//attributes contains queries (attributes.queryparams.key) ,uri parameters also known as
- resource parameters (attributes.uriparams.key) and we put placeholder {key} in sub-path..
- headers (attributes.headers.'content-type')..to fetch ID attributes of payload.@id  
+//attributes contains queries (attributes.queryparams.key) , uri parameters also known as
+resource parameters (attributes.uriparams.key) and we put placeholder {key} in sub-path..
+headers (attributes.headers.'content-type')..to fetch ID attributes of payload.@id  
 
 2.variables:- are Mule event metadata that use in flow. 
 
