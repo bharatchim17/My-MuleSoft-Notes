@@ -91,7 +91,7 @@ https://secure-properties-api.us-e1.cloudhub.io/
         port =  ${secure::OracleDatabase.port}
         username = ${secure::OracleDatabase.userName}
         password = ${secure::OracleDatabase.password}
-        service name  = ${secure::OracleDatabase.serviceName}
+        service name = ${secure::OracleDatabase.serviceName}
 
 
 5/4. Use Mule::p('secure::key') dataweave script to extract in dataweave(--Click--> fx)
@@ -106,7 +106,7 @@ https://secure-properties-api.us-e1.cloudhub.io/
             UAT
 //Load property files dynamically by environment:-
 
-global element tab ---> secure properties config ---> file: /${env}.yaml  key: ${enc.key} 
+global element tab ---> secure properties config ---> file: /${env}.yaml  key: ${enc.key}  <--------\------/-------
 global property ---> name: env |  value: dev  
 
 --right_click-on_project/Config_file---> Run As / Debug As ---> Mule Application (configure) ---> Arguments--->

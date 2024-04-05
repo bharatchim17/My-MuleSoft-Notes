@@ -1,4 +1,5 @@
------------------------------------------------------------------------------------
+https://www.vpsserver.com/maven-commands-and-options/#table-of-contents-13
+----------------------------------------------------------------------------------------
 //Maven
 maven is project Management tool that is based on POM (Project Object Model)...
 it's used for project build , dependancy and documentation..
@@ -52,7 +53,6 @@ nexus.exe /run
 deploy, re-deploy your mule applicattion using mule maven plugin... 
 
                       https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
-                      https://docs.mulesoft.com/mule-gateway/mule-gateway-org-credentials-mule4
 
 //Before you can deploy to CloudHub using the Mule Maven plugin
 If you are using the HTTP Listener as source for your flow, you need to set it's host 
@@ -74,34 +74,44 @@ to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
           <region>us-east-1</region>
           <workers>1</workers>
           <workerType>MICRO/SMALL/MEDIUM</workerType>
+          <businessGroup>${business.group}</businessGroup> <---Name of businessGroup
           *<objectStoreV2>true</objectStoreV2>      <---------------  objectStoreV2
           <server>my.anypoint.credentials</server>  
     <properties>
           *<http.port>8081</http.port>
          <env>dev</env>                           <-----------  env As per yaml 
-         <api.id>2518</api.id>
-         <anypoint.platform.client_id>7714c6ba94b3b03743d40edd</anypoint.platform.client_id>
-         <anypoint.platform.client_secret>439381AE12f999Bd41</anypoint.platform.client_secret>
+         <api.id>2518</api.id>                    <-----------  ${api.id} is api id in autodiscovery
+         <anypoint.platform.client_id>7714c6ba74dd</anypoint.platform.client_id>
+         <anypoint.platform.client_secret>439399Bd41</anypoint.platform.client_secret>
          *<anypoint.platform.base_uri>https://anypoint.mulesoft.com</anypoint.platform.base_uri>
          *<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com </anypoint.platform.analytics_base_uri> 
     </properties>
     </cloudHubDeployment>
   </configuration>
 </plugin>
-------------------------------------------------------------------------------------
+
+
+                      https://docs.mulesoft.com/mule-gateway/mule-gateway-org-credentials-mule4
+                      https://help.mulesoft.com/s/question/0D52T00004tGTeYSAW/adding-business-group-using-mule-maven-plugin-for-cloudhubdeployment
+---------------------------------------------------------------------------------------------------
 //In pom.xml folder pathType_cmd:
-To deploy: mvn clean package deploy -DmuleDeploy
-To deploy: mvn clean package deploy -P(environment) -Dusername -Dpassword -DmuleDeploy
-To un-deploy: mvn mule:undeploy
+Base command line for build:  mvn clean package -nsu -DskipMunitTests
+To deploy:      mvn clean package deploy -DmuleDeploy  |  mvn clean package deploy -P(environment) -Dusername -Dpassword -DmuleDeploy
+To un-deploy:   mvn mule:undeploy   | mvn mule:undeploy -PSandbox
 
 
 //Error: "The packaging for this project did not assign a file to the build artifact":
 Solution: Remove package or update maven --->  mvn clean deploy -DmuleDeploy
 
---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 //profiles maven plugin to multiple environments: 
-
-//Copy from <build> to </builds> and paste it between </properties> &  <build>
+make profiles in between </properties> &  <build>
+<profiles>
+    <profile>
+        <id>Sandbox</id> <------is environment
+    </profile>
+</profiles>
+//Copy from <build> to </build> and paste it in  below id tag 
 
                                             <profiles>
                                                    <profile>
@@ -119,6 +129,9 @@ Solution: Remove package or update maven --->  mvn clean deploy -DmuleDeploy
                                                     <cloudHubDeployment>
                                                     <applicationName>Dev-deployment</applicationName>
                                                     <environment>Sandbox</environment>
+                                                     <region>us-east-1</region>
+                                             <workers>1</workers>
+                                             <workerType>MICRO/SMALL/MEDIUM</workerType>
                                              <properties>    
                                                     <api.id>2518</api.id>   
                                                     <anypoint.platform.client_id> 7714c6ba94b3b03743d40edd</anypoint.platform.client_id>
@@ -168,7 +181,14 @@ Solution: Remove package or update maven --->  mvn clean deploy -DmuleDeploy
       <password>{HTWFGH5BG9QmvJ1B=}</password>
 </server>
 
-6. Mention Server-id in tag global of pom.xml
+6. Mention Server-id in  global tag of pom.xml
 <server>my.anypoint.credentials</server> <---------- id is mention here
 
------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+java -version
+mvn -version
+
+https://developer.mulesoft.com/tutorials-and-howtos/quick-start/how-to-deploy-using-maven-anypoint-studio-mule-application/
+
+https://www.vpsserver.com/maven-commands-and-options/#table-of-contents-13
+---------------------------------------------------------------------------------------

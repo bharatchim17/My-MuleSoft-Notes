@@ -14,7 +14,7 @@ Mulesoft has provided API management in two areas:
  Is the process of allowing API manager application to discover the application is running in
  the runtime using instance , ID is known as auto discovery..
  To enable auto discovery follow below steps:
- 1. create auto discovery global element using API instance id.
+ 1. Create api autodiscovery global element using API instance id & select main flow of API kit router..
  2. provide below runtime properties:
   - Organization buisness group client_id
   - Organization buisness group client_secret

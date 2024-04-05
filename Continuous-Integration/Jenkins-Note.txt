@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------------------------
 //Jenkins is web-Application written in java , Jenkins is continuous integration tool that allows continuous development , test and 
-deployment of newly created codes.
+deployment of newly created codes...
 
-//continuous Integration Tools : -
+//continuous Integration Tools:-
 1.Bamboo 
 2.CI Tools 
 3.Jenkins 
 4.Buildbot 
 5.Travis CI  
-6.Jenkins :- Bosch introduce use of cloudBees (enterprise Jenkins company) from Jenkins..
+6.Jenkins:- Bosch introduce use of cloudBees (enterprise Jenkins company) from Jenkins..
 7.Apache Gump
 
 //Featuers of Jenkins
