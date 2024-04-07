@@ -16,9 +16,9 @@ Key_Name
 type: Key_Name
 
 ---------------------------------------------------------------------------------------
-2.Example:- 
+2.Example:-  
 //In example folder fragment
- type: object <---- type and example is written on 2nd line
+ type: object <---- type and example is written on 2nd line(.json)
  example: | 
     {
       
@@ -31,15 +31,15 @@ Key_Name(example_File_Name): !include copy_path of file which is in example_fold
 //mention as 
 type : Key_Name  <----- We can remove type also , as body: Key_Name because type: object/item written in example fragments
 
-//We can directly mention(create other as API format  also , File name as .json file in exam folder)
+//We can directly mention(create other as API format  also , File name as .json file in example folder)
 
 example: !include copy_path of file which is in example_folder
 ---------------------------------------------------------------------------------------
-2.1.Example of datatype:-
+2.1.Example of RAMl datatype:-
 
 //In example folder fragment 
             value:
-              code: 404       <------ paste propertie's field in datatype Below value
+              code: 404       <------ paste propertie's/items field in datatype Below value
               reasonphrase: Not Found
               details: string
 
@@ -59,7 +59,6 @@ examples:
 //Resource-type folder fragment:
 
                       get?:   <------------- make methods in resourceTypes optional so we can refer in root if we want
-                        body:
                         responses:
                             200:
                               type: success-example

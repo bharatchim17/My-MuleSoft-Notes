@@ -94,8 +94,8 @@ it's default mode to discard commits in local repository (local repository come 
 ---------------------------------------------------------------------------------------
 //Don't use regular:-
 
-   git rm file_Name --> will , delete files from all stages.
-   git rm -r        --> will , delete files from all stages.
+   git rm file_Name --> Will , delete files from all stages.
+   git rm -r        --> Will , delete files from all stages.
 ---------------------------------------------------------------------------------------
 //git checkout command:-
 we can use checkout command to discard unstaged changes in tracked files of working
@@ -120,9 +120,6 @@ git push origin branch_Name
 
 //To Delete branch:
 git branch -d branch_Name
-
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 

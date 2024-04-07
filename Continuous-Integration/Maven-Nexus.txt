@@ -27,6 +27,7 @@ nexus.exe /run
 
 
 //Step001: Add dependancy in pom.xml
+
 <dependancy>
 <groupId>com.oracle</groupId>
 <artifactId>ojdbc6</artifactId>
@@ -48,7 +49,7 @@ nexus.exe /run
 </server>
 
 //Step004:  restart studio
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 //Configure cloudHub deployment stratergy in your projects pom.xml file so you can 
 deploy, re-deploy your mule applicattion using mule maven plugin... 
 
@@ -101,7 +102,7 @@ To un-deploy:   mvn mule:undeploy   | mvn mule:undeploy -PSandbox
 
 
 //Error: "The packaging for this project did not assign a file to the build artifact":
-Solution: Remove package or update maven --->  mvn clean deploy -DmuleDeploy
+Solution: Remove package or update maven --->  mvn clean deploy -PSandbox -DmuleDeploy
 
 ---------------------------------------------------------------------------------------------------------
 //profiles maven plugin to multiple environments: 
@@ -162,10 +163,10 @@ make profiles in between </properties> &  <build>
 </properties>
 </profile>
 
---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 //Encrypt Password:-
 
-1. mvn --encrypt-master-password <yourMasterPassword>
+1. mvn --encrypt-master-password  <---- Key
 2. Create a settings-security.xml file in your ~/.m2 repository..
 3. 
 <settingsSecurity>
