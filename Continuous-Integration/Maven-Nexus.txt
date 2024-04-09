@@ -58,7 +58,6 @@ deploy, re-deploy your mule applicattion using mule maven plugin...
 //Before you can deploy to CloudHub using the Mule Maven plugin
 If you are using the HTTP Listener as source for your flow, you need to set it's host 
 to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
-//Set <objectStoreV2>true</objectStoreV2> as global..
 
 //add in plugin:
   <plugin>
@@ -75,25 +74,33 @@ to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
           <region>us-east-1</region>
           <workers>1</workers>
           <workerType>MICRO/SMALL/MEDIUM</workerType>
-          <businessGroup>${business.group}</businessGroup> <---Name of businessGroup
+          <businessGroup>${businessGroup}</businessGroup> <---Name of businessGroup
           *<objectStoreV2>true</objectStoreV2>      <---------------  objectStoreV2
+          *<javaVersion>17</javaVersion> 
           <server>my.anypoint.credentials</server>  
     <properties>
           *<http.port>8081</http.port>
          <env>dev</env>                           <-----------  env As per yaml 
-         <api.id>2518</api.id>                    <-----------  ${api.id} is api id in autodiscovery
-         <anypoint.platform.client_id>7714c6ba74dd</anypoint.platform.client_id>
-         <anypoint.platform.client_secret>439399Bd41</anypoint.platform.client_secret>
+         <api.id>19404789</api.id>                    <-----------  ${api.id} is api id in autodiscovery
+<anypoint.platform.client_id>77a74dd</anypoint.platform.client_id> <---- is environment credentials not businessGroup credentials
+<anypoint.platform.client_secret>4341</anypoint.platform.client_secret> <---- is environment credentials
          *<anypoint.platform.base_uri>https://anypoint.mulesoft.com</anypoint.platform.base_uri>
          *<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com </anypoint.platform.analytics_base_uri> 
     </properties>
     </cloudHubDeployment>
   </configuration>
 </plugin>
-
-
                       https://docs.mulesoft.com/mule-gateway/mule-gateway-org-credentials-mule4
+
                       https://help.mulesoft.com/s/question/0D52T00004tGTeYSAW/adding-business-group-using-mule-maven-plugin-for-cloudhubdeployment
+---------------------------------------------------------------------------------------------------------------------
+To use Monitoring and Visualizer with this version, you may need to enable the agent 
+after deploying:
+https://docs.mulesoft.com/monitoring/configure-monitoring-cloudhub#enable-monitoring-using-the-ui
+
+anypoint.platform.config.analytics.agent.enabled=true  <-------- In properties section
+
+
 ---------------------------------------------------------------------------------------------------
 //In pom.xml folder pathType_cmd:
 Base command line for build:  mvn clean package -nsu -DskipMunitTests
@@ -193,3 +200,14 @@ https://developer.mulesoft.com/tutorials-and-howtos/quick-start/how-to-deploy-us
 
 https://www.vpsserver.com/maven-commands-and-options/#table-of-contents-13
 ---------------------------------------------------------------------------------------
+Maven Phases
+Although hardly a comprehensive list, these are the most common default lifecycle phases executed.
+
+validate: validate the project is correct and all necessary information is available
+compile: compile the source code of the project
+test: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+package: take the compiled code and package it in its distributable format, such as a JAR.
+integration-test: process and deploy the package if necessary into an environment where integration tests can be run
+verify: run any checks to verify the package is valid and meets quality criteria
+install: install the package into the local repository, for use as a dependency in other projects locally
+deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.

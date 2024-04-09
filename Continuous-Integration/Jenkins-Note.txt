@@ -45,17 +45,19 @@ We can create jenkins job Pipelines in two ways:
 configure pipeline to build , execute Munit test and deploy..
 ---------------------------------------------------------------------------------------------
 //Two ways to trigger jenkins jobs automatically:
-1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit push.
+*1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit push...
 //go to settings ---> Webhooks
 payload url: https://paste_hoste_here/github-webhooks/
 just push event (active)
 //In jenkin project
-build environment: select github hook trigger for GITScm polling..
+Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm polling..
 
-2. Polling: jenkins polls in regular schedules.
-//In jenkin project
-build environment: select build perodically
-https://crontab.cronhub.io/
+              2. Polling: jenkins polls in regular schedules...
+              //In jenkin project
+              Build trigger: select build perodically  (use cron expression generator)
+              https://crontab.cronhub.io/
+
+//Always use Push notification
 -----------------------------------------------------------------------------------------
 //Jenkins pipeline allows us to define set of stages while continuous deployment,
 we can define stages to execute continuous deployment stage by stage..

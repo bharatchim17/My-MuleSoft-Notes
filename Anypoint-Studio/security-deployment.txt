@@ -36,7 +36,7 @@ code management and need not to touch applications on configurations property ch
             password: "chimbh17"
             serviceName: "XEPDB1"
 
-     httpListener:
+     http:
           port: "6061"
           host: "localhost"
           readTimeOut: "30000"
@@ -129,11 +129,20 @@ scaling...
 key: env        value: dev/test/uat
 key: enc.key    value: abcdef0123456789
 
-//In Logging:- choose info/debug
+//In Logging:- choose info/debug etc
+
+//In insight we know , How much time process taking for each transaction..
+
+//How to make alerts..?
+-----------------------------------------------------------------------------------------
 
 //Hiding fields in runtime manager property section
 --example--> In mule-artifact.json write "secureProperties" : ["enc.key"]
-
-//In insight we know , How much time process taking for each transaction..
-//How to make alerts..?
------------------------------------------------------------------------------------------
+                                                {
+                                                "minMuleVersion": "4.6.0" , 
+                                                "secureProperties":
+                                                [
+                                                "anypoint.platform.analytics_base_uri" ,
+                                                "anypoint.platform.client_id"  
+                                                ]
+                                                }

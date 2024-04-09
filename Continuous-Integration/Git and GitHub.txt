@@ -19,11 +19,11 @@ Git is the most widely used distributed version control system.
 
 //Git and GitHub:-
 
-working repositery --add to track--> staging/index Area --commit to save--> Git local repositery --push to send--> GitHub Remote repositery .
+Working repositery --add to track--> staging/index Area --commit to save--> Git local repositery --push to send--> GitHub Remote repositery .
 GitHub Remote repositery --clone to pull--> working repositery .
 
 
-// Git commands :-
+// Git commands:-
 
 Git configuration:- 
 git config --global.email "bharatchim17@gmail.com"
@@ -121,5 +121,5 @@ git push origin branch_Name
 //To Delete branch:
 git branch -d branch_Name
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
