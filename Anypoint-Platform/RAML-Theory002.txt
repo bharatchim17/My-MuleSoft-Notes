@@ -113,3 +113,6 @@ we can apply Traits to methods in resource and resource Types..
 RAML library are used to combine any collection of data type,traits,security_Schemes declarations
 into modular , externalized , reusable groups.. 
 ------------------------------------------------------------------------------------
+//Stable state: is ready to be consumed. The asset cannot be republished or overwritten.
+//Deprecated state: is similar to an asset version in the stable state.
+The only difference is that the status property shows the asset version is deprecated.

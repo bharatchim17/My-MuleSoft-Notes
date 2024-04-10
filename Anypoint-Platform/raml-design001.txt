@@ -31,7 +31,7 @@ Key_Name(example_File_Name): !include copy_path of file which is in example_fold
 //mention as 
 type : Key_Name  <----- We can remove type also , as body: Key_Name because type: object/item written in example fragments
 
-//We can directly mention(create other as API format  also , File name as .json file in example folder)
+//We can directly mention(.json file in example folder):
 
 example: !include copy_path of file which is in example_folder
 ---------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ examples:
 
 //Resource-type folder fragment:
 
-                      get?:   <------------- make methods in resourceTypes optional so we can refer in root if we want
+                      get?:   <------------- make methods in resourceTypes as optional so we can refer in root if we want
                         responses:
                             200:
                               type: success-example
@@ -129,9 +129,9 @@ is:
 
 //In Library fragment:-
 
-//usage: Tittle_for usage of root_file
-types: / resourceTypes: / traits:
-datatype-Name: / resourceTypes-Name: / traits-Name:
+//usage: write Tittle_for usage of root_file
+types: | resourceTypes: | traits:
+datatype-Name: | resourceTypes-Name: | traits-Name:
 
 //In root_file:
 uses:
@@ -200,7 +200,7 @@ securitySchemes:
 //If there is external security_Schemes:
 
 In Security_fragment:-
-type: OAuth 1.0 / OAuth 2.0 / Basic Authentication	/ Digest Authentication	/ Pass Through	/ x-{other} <--------this is global Scheme
+type: OAuth 1.0 | OAuth 2.0 | Basic Authentication	| Digest Authentication	| Pass Through	| x-{other} <--------this is global Scheme
 description: The API secured by basic authentification
 
                                                           #%RAML 1.0 SecurityScheme
