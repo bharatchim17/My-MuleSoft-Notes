@@ -1,0 +1,195 @@
+----------------------------------------------------------------------------------------
+//Add API:
+add new api ----> 
+#Select runtime
+Mule Gateway  | Flex Gateway  
+
+#proxy type
+Basic endpoint |  proxy application
+
+#Mule version: mule 4
+
+---click--Next---->
+select api from exchange | create new api
+
+------------------------------------------------------------------------------------------
+//Proxy API:-
+proxy API is a wrapper on actual application , we can go proxy API's in below scenarios.
+  - When we would like to expose wrapper/proxy API on external services with own API management..
+  - When we would like to expose with different end point on our mule applications..
+  - When we would like to apply set of other policies on same services..
+------------------------------------------------------------------------------------------
+//Mule API management:-
+Is the process of designing , publishing , documenting , analyzing , versioning ,
+securing and managing API users,traffic,SLAs.
+Mulesoft has provided API management in two areas:
+1. Mule Gateway API management
+ - Mule Gateway
+2. Universal API Management
+ - Flex Gateway
+ - Service Mesh
+
+ --------------------------------------------------------------------------------------------
+ //Auto discovery:-
+ We use API Autodiscovery to pair an API in API Manager to its deployed Mule application.
+ Is the process of allowing API manager application to discover the application is running in
+ the runtime using instance , ID is known as auto discovery..
+ To enable auto discovery follow below steps:
+ 1. Create api autodiscovery global element using API instance id & select main flow of API kit router..
+ 2. provide below runtime properties:
+  - Organization buisness group client_id
+  - Organization buisness group client_secret
+ 
+global element----> API Autodiscovery---> api id: provide instance here | You can also choose to use the ${apiId} value and reference it from a config.yaml file.
+                                       flow Name: API kit router flow i.e. Main flow not xml file
+
+
+//Hiding fields in runtime manager property section
+--example--> In mule-artifact.json write "secureProperties" : ["enc.key"]
+                                                {
+                                                "minMuleVersion": "4.6.0" , 
+                                                "secureProperties":
+                                                [
+                                                "anypoint.platform.analytics_base_uri" ,
+                                                "anypoint.platform.client_id"  
+                                                ]
+                                                }
+-----------------------------------------------------------------------------------------
+//Policies:-
+1. Quality of service
+2. Security
+3. Troubleshooting
+4. Transformation
+5. Compliance
+--------------------------------------------------------------------------------------
+//Quality of service:
+
+1. HTTP Caching: 
+The HTTP Caching policy enables you to store HTTP responses from an API implementation
+or an API proxy for reuse. To optimize against computation-heavy processing , this 
+policy avoids performing multiple calls to the backend when the response of a service
+does not change often. This policy uses a cache, which enables a faster service for 
+data requests...
+
+2. Rate limiting SLA based policy:
+The Rate Limiting policy enables you to limit the number of requests that an API can
+accept within a time window. The API rejects any request that exceeds this limit. 
+SLA-based policiesImpose a limit specified by the level of access granted to the 
+requesting application. The Rate Limiting policy is SLA-based...
+(The rate limiting policy is combination of rate limiting and client id enforcement that enables you to 
+limit the number of request specified by the level of access granted to the requesting application)..
+ //steps:
+ 1. Add SLA tiers
+ 2. Create client Applications
+ 3. Apply rate limiting SLA based policy 
+
+
+3. Rate limiting: 
+The Rate Limiting policy enables you to limit the number of requests that an API 
+can accept within a time window. The API rejects any request that exceeds this limit. 
+You can configure multiple limits with window sizes ranging from milliseconds to years.
+We can Apply configuration to all API method & resources or we can Apply specific API method & resources.
+
+
+4. Spike Control:
+The Spike Control policy enables you to manage API traffic.The policy ensures that 
+within any given period of time, no more than the maximum configured requests are 
+processed Spike control uses a sliding window algorithm. Over time, the window adjusts
+to retain only the processed information that fits within the window time span..
+----------------------------------------------------------------------------------------
+//Security:
+
+1. OAuth 2.0 Access Token Enforcement using Mule OAuth Provider:
+The Mule OAuth 2.0 Provider policy enables you to alternatively use the OAuth 2.0 
+authentication, designed by Mulesoft, which is an open standard for token-based 
+authentication over the internet. Mule OAuth authenticates consumers and service 
+providers using tokens instead of passwords...
+
+2. XML Threat Protection:
+XML requests are susceptible to attacks characterized by unusual inflation of 
+elements, attributes, and nesting levels. Attackers use recursive techniques to 
+consume memory resources. Dramatic swings in the size of the application data often 
+signal a security problem The XML Threat Protection policy enables you to protect your
+ applications from such intrusions....
+
+3. Json Threat Protection:
+JSON requests are susceptible to attacks characterized by unusual inflation of 
+elements and nesting levels. Attackers use recursive techniques to consume memory 
+resources. Dramatic swings in the size of the application data often signal a security
+problem. The JSON threat Protection policy enables you to protect your applications 
+from such intrusions...
+
+4. IP Allowlist:
+The IP Allowlist policy enables you to allow a list or range of IP addresses to access
+and interact with a configured API endpoint. This policy behaves in a manner opposite 
+to that of the IP Blocklist policy. You can allowlist addresses for your API endpoints
+based on the: 
+1. IP address of the request
+2. Origin IP address of the x-Forwarded-For header..
+
+5. Basic Authentication-Simple:
+The Simple authentication policy enables you to enforce security for the APIs by 
+requiring applications to provide a username and password when making a request...
+
+6. Basic Authentication-LDAP:
+The Lightweight Directory Access Protocol (LDAP) authentication policy enables you to 
+establish the configuration details for an Open LDAP or Active Directory LDAP that 
+you set up for your enterprise...
+
+7. IP Blocklist
+The IP Blocklist policy enables you to restrict a list or range of IP addresses from 
+accessing and interacting with a configured API endpoint. You can blocklist addresses 
+for your API based on the:
+1. IP address of the request, and
+2. Origin IP address of the x-Forwarded-For header
+
+8. JWT Validation:
+You can use a JSON Web Token (JWT) to transfer information between parties as a JSON 
+object. Because the token is signed, you can trust the information and its emitter.
+The JWT Validation policy enables you to validate incoming requests using a JWT with 
+JWS format. The policy verifies the signature of the token and asserts the values of 
+the claims...
+-------------------------------------------------------------------------------------
+//Troubleshooting:
+
+1.Message Logging:
+The Message Logging policy enables you to log a custom message with the information 
+available from policies, a proxy, or the backend, at any point of the execution.This 
+policy works with both log4j and log4j2...
+------------------------------------------------------------------------------
+//Transformation:
+
+1. Header Removal:
+The Header Removal policy removes headers from the request and response of a message. 
+The content-type and content-length headers of a request can be filtered using this 
+policy...
+
+2. Header Injection:
+The Header Injection policy enables you to add headers to the request and response 
+of a message. If the injected header already exists in the message attributes, the 
+policy creates a new header, without overriding the value of the existing one. This 
+action creates two headers with the same name...
+----------------------------------------------------------------------------------
+//Compliance:
+
+1. Cross-Origin Resource Sharing:
+The cross-origin resource sharing (CORS) policy enables you to access resources in 
+another domain using a web application. For example, browsers rely on this standard 
+for allowing cross-origin requests...
+
+2. Client ID Enforcement:
+The Client ID Enforcement policy enables you to restrict access to a protected 
+resource. Only HTTP requests specifying client application credentials that are 
+already registered with target APIs are approved. The policy validates the Client ID 
+and Client Secret of a client application created within an Anypoint Platform 
+organization. This policy does not validate client application credentials that are 
+generated outside of Anypoint Platform...
+1. register client application on API in exchange.
+2. specifies from where in the request to extract values..
+  - HTTP Basic Authentification Header: Requires credentials as part of the authorization header.
+ The application consuming the API must use the basic Authentification scheme to send the 
+ credentials in the requests.
+  - Custom Expression: Accepts an expression each for client_id and client_secret in the headers,
+  indicating where to extract the credentials from request.
+---------------------------------------------------------------------------------------
+

@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 //Jenkins is web-Application written in java , Jenkins is continuous integration tool that allows continuous development , test and 
 deployment of newly created codes...
 
@@ -26,7 +26,6 @@ Jenkins Master (Server)
         |
         |
 Jenkins slave (local machine)
-
 ------------------------------------------------------------------------------------------
 //CICD workflow-
 continuous integration: continuous integration is practice that drive development
@@ -45,20 +44,57 @@ We can create jenkins job Pipelines in two ways:
 configure pipeline to build , execute Munit test and deploy..
 ---------------------------------------------------------------------------------------------
 //Two ways to trigger jenkins jobs automatically:
-*1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit push...
-//go to settings ---> Webhooks
-payload url: https://paste_hoste_here/github-webhooks/
-just push event (active)
-//In jenkin project
-Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm polling..
+*1. Push notification: SCM tool (GITHUB) notifies jenkins on new commit pushes...
+ 2. Polling: jenkins polls in regular schedules...
 
-              2. Polling: jenkins polls in regular schedules...
+*1. Push notification: 
+
+//go to repository settings of github ---> Webhooks
+payload url: https://paste_hoste_here/github-webhooks/
+
+#just push event (active)
+Add webhook
+
+In jenkin project
+Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm polling..
+//NG-Rok:
+ngrok.exe --version
+ngrok.exe http 8080
+
+//In github repository settings
+ Webhooks
+ Add webhooks: paste path of ngrok here /github-webhook
+Select events: pushes
+----------------------
+              2. Polling: 
               //In jenkin project
               Build trigger: select build perodically  (use cron expression generator)
               https://crontab.cronhub.io/
 
 //Always use Push notification
 -----------------------------------------------------------------------------------------
+//Freestyle project
+#source code management
+Git
+Repository URL:  paste git repo url paste_here
+Credentials: 
+Add 
+give Git password | Personal access tokens | id: git
+
+#Build
+Invoke top-level Maven targets?:
+Goals: clean deploy -Penvironment -DmuleDeploy
+-------------------------------------------------------------------------------------
+//Maven project
+Manage plugins ---> Available ---> Maven integration plugin download it 
+Manage jenkins ---> Global Tool configuration ---> Maven: set installation and version
+
+#Build
+                                    Root POM: paste pom.xml path here  <--- is optional
+Goals and options:
+ clean deploy -PSandbox -DmuleDeploy
+-------------------------------------------------------------------------------------
+
 //Jenkins pipeline allows us to define set of stages while continuous deployment,
 we can define stages to execute continuous deployment stage by stage..
 
@@ -66,8 +102,9 @@ Declarative Checkout SCM ---> Build ---> Test ---> Deployment
 
 //Step1: Choose pipeline
 Defination: Pipeline script from SCM
-Choose SCM : git
-Script path: Jenkinsfile
+--Choose--> SCM : Git
+Repository URl: paste git repo here
+Script path: Jenkinsfile  (create file in studio)
 //Step2: create Jenkinsfile in studio  https://alc.workshops.mulesoft.com/alc-workshop/4.5.0/module7/module7_lab4.html
 
 //Step3: provide maven plugin in pom.xml https://docs.mulesoft.com/munit/latest/munit-maven-plugin
@@ -90,8 +127,8 @@ Script path: Jenkinsfile
   your continuous integration environment...
 
 //Step4: Download maven plugin in jenkins tool..
+//step5: Add  Mulesoft enterprise Repository in settings.xml
 ---------------------------------------------------------------------------------------
-Declarative Checkout SCM ---> Build ---> Test ---> Deployment
 
 //Step1: Choose pipeline
 Defination: Pipeline script 
@@ -112,5 +149,4 @@ username: github userName |  password: paste token | ID: paste token id
 Add build step: Invoke Top level maven target ----> Goals: clean deploy -P -DmuleDeploy
 
 ----------------------------------------------------------------------------------------
-
 
