@@ -244,3 +244,4 @@ securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
                                                                       post:
                                                                         securedBy:
                                                                           - client-id-enforcement
+-----------------------------------------------------------------------------------------------------------------------------------------            

@@ -16,6 +16,8 @@
         - headers
 //response body not required in post and patch methode  it's required in get and delete methode but we can use anyway..
 ----------------------------------------------------------------------------------------------
+https://testfully.io/blog/http-methods/
+
 1xx information:
     - 100 continue
     - 101 switching protocols

@@ -19,7 +19,7 @@ Anypoint platform is web application ,a graphical user interface allows us to do
 3. Anypoint Exchange:-
     - Exchange portal
 
-* RUNTIME PLANE 
+//RUNTIME PLANE 
 4. runtime engine
 5. Anypoint Connectors
 6. Runtimes Services
@@ -53,21 +53,15 @@ Read:----> Get ---> we use Get by url , form tag , hyperlink
 Update:----> Put(Create + Update)/Patch(partially Update)
 Delete
 --------------------------------------------------------------------------------------------------
-Idompotent: Give same result --------> example:- Get/Put/Delete is Idompotent
-Non-Idompotent: ---------> example: Post 
--------------------------------------------------------------
-3.Input :-
-headers , body
+//Idompotent:
+Idempotent methods are HTTP methods that have the same effect on the server, 
+regardless of how many times they are executed. For example, GET, PUT, and DELETE are 
+idempotent methods, because they always return the same resource, update the same 
+resource, or remove the same resource, respectively...
 
-4.Content type :-
-application/json, application/xml
-
-5.Response headers:-
-200 OK , 400 Bad Reqest , 500 Server Error
-
-6.Response body :-
-application/json , application/xml
------------------------------------------------------------------------------------------
+Idompotent:      --------> example:- Get/Put/Delete is Idompotent
+Non-Idompotent:  --------> example: Post 
+---------------------------------------------------------------------------------------
 //RAML is a language for the definition of HTTP-based APIs that embody most or all 
 of the principles of Representational State Transfer (REST).
 RAML is a human & machine-readable language for the definition of a RESTful 
@@ -97,9 +91,9 @@ in curly brackets ({}) inside a relative URI of a resource.
 //baseUriParameters:- The baseUriParameters node has the same semantics and therefore
  MUST follow the same structure as the uriParameters.
 
-//protocols:-  [ HTTP, HTTPS ]
+//protocols:-  [HTTP, HTTPS]
 
-//mediaType:- it's Default Media Types for example:- [ application/json , application/xml ]  --or--  application/json
+//mediaType: [ application/json , application/xml ]  | application/json  (it's Default Media Types)
 
 
 //traits:- A trait, like a method, can provide method-level nodes such as a description,
@@ -186,42 +180,8 @@ and then we get response as http code , example..
 how API works and it contains title & content..
 ----------------------------------------------------------------------------------
 //Anypoint-Exchange:- is repository which provides all Connectors to muleSoft.
-//Templates:- are reusable project structures , we can create applications by using Templates.
-
-//API-Life-Cycle:-
- 
-                      Design
-                        |
-                        |
-                    Development
-                        |
-                        |
-                    Manual Unit Testing
-                        |
-                        |
-                    Munit-Testing
-                        |
-                        |
-                    Manual Deployment
-                        |
-                        |
-                    CICD Deployment 
-                        |
-                        |
-                    API Management
+//Templates:- are reusable project structures , we can create applications by using Templates.   
 ------------------------------------------------------------------------------------------
- 
-//Q. List different types of api ..?
-//Q. What is stateless ..?
-//Q. What is idompotent ..?
-
-//Design principles of REST APIs 
-- HTTP as application protocol
-- resource Based 
-- representation
-- uniform interface
-- stateless
-
 //resources
 - Nouns
 it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
@@ -236,7 +196,8 @@ resource representation can be in different formats - XML , JSON etc , represent
 //What is HATEOS?
 
 //Q. What is Representational ?
---> Is response return by server to client can be reprent in format like json format {} or xml format <>
+--> Is response return by server to client can be reprent in format like json format 
+{} or xml format <>
 
 //Q. What is State? Does it mean session State?
 state of resources in particular time
@@ -245,16 +206,7 @@ state of resources in particular time
 WebClient(browser)----request(product/1)----->WebServer
 WebServer-------response{product1: milk}------>WebClient
 
-//What is Web?
-is interconnected networks
 
-//What is an API?
-Application programming interface
 
-//What is web server? Why we need it?
-ex: IIS 
-To handle , interprete the request and then it responses it back.. 
 
-//SOAP is a protocol REST is an architectural style. SOAP stands for Simple Object 
-Access Protocol. REST stands for REpresentational State Transfer.
 ---------------------------------------------------------------------------------------
