@@ -32,7 +32,7 @@ Solution:-
 3. Re-enter url in postman..
 4. Restart studio..
 
----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 //Error Ocure :- "No listener found for request".
 Solution:- 
  Clear Application Data from Mule context menu.. 
@@ -42,7 +42,7 @@ Solution:-
 1. Check url and methods
 2. Global element  --> http configuration --> delete read-TimeOut --> save
 
-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
 //Error occure:-Parameter 'key' was not bound for query 'insert into Table(key_1, key_2) values(:key1 , :key2)
 
@@ -60,7 +60,7 @@ input parameter:-
   key3: payload.keyName
 }
 
------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
 //Error Ocure:- ORA-00904: "key": invalid identifier
 Solution:-
@@ -69,7 +69,7 @@ check : Key in queries is equal to key in input parameters
 query text --->  :key  (:key is placeholder for input parameter key:)
 input  parameter ---> key: payload.key
 
-------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 //Error Ocure :- java.sql.SQLSyntaxErrorException.
 ORA-00942: table or view does not exist..
@@ -79,7 +79,7 @@ First, Check that the table exists. You can do that by running the query
 Next, check the owner of the table.
 Finally, check your query to ensure it refers to the correct schema.
 
----------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 //Error Ocure:- "ORA-00933: SQL command not properly ended
 //Error Ocure:- java.sql.SQLSyntaxErrorException: ORA-00933: SQL command not properly ended..
@@ -89,13 +89,13 @@ Check , sql query syntax (;)
 
 ; if it not required remove it .
 
---------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 //Error Ocure:- java.lang.NullPointerException errpr:-
 Solution:-
 Test/check http configuration..
 
-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 //Error Ocure:- Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
 Solution:-
 1. Check Data type 
@@ -134,14 +134,14 @@ Solution:-
 Right click on mule config file ---> Mule  ---> Clear project metadata catelog
 also , refresh metadata.
   
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 //Error Ocure:- mvn Clean Package-nsu-DskipMunitTests has encountered problem.
 Solution:-
 1. Restart
 2. Change the work-space 
 
-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 //Error Ocure:- Tooling instance is not available
 Solution:-  
 Window ---> preference ---> Tooling --click--> 
@@ -157,12 +157,16 @@ statusCode: vars.statusCode
 //Error Ocure:- 1046. No database selected Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
 Solution:-
 USE Database_Name ;
------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
  //Error Ocure:- Body is ignored since the HTTP Method is between the empty body methods ([HEAD, GET, OPTIONS]) and the Send Body Mode is not set to 'ALWAYS'. future warnings like this will be suppressed in order to avoid performance degradations
 Solution:- Restart studio
 
 
 https://help.mulesoft.com/s/question/0D52T00006R2h9DSAR/how-can-i-suppress-the-warning-body-is-ignored-since-the-http-method-is-between-the-empty-body-methods-head-get-options-and-the-send-body-mode-is-not-set-to-always-
----------------------------------------------
-//Error Ocure type: MULE:SOURCE_RESPONSE_SEND
+----------------------------------------------------------------------------------------
+ //Error Ocure:-  jms-brokerFlow ObjectFieldDefinitionFactory: Field 'private final java.lang.String 
+java.lang.Enum.name' is not accessible. Error message: class 
+com.mulesoft.mule.debugger.builder.ObjectFieldDefinitionFactory cannot access a member
+of class java.lang.Enum (in module java.base) with modifiers "private final"
 Solution:- 
+https://help.salesforce.com/s/articleView?id=001119071&type=1

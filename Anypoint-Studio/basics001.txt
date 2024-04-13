@@ -41,15 +41,11 @@ message source triggers generation of mule event and dispatches that event to fl
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-
-
 //payload contains body of the message , for example content of file , record from database or response from rest or web service..
 
 //Database conector:- Allows us to interact with relation database , such as MySQL ,Oracle , ms SQL , it provides set of operations on database tables, as well as executing SQL queries and store procedures.
 
-
 // Root element is optional in Json where as, in XML is mandatory and in CSV is not required..
-
 -------------------------------------------------------------------------------------------------------------------------
 // Mule ESB is a lightweight java-based enterprise service bus (ESB) and integration platform
 that allows developers to connect Applications together quickly and easily , enabling them to 

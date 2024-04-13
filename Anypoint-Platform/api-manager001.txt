@@ -1,3 +1,13 @@
+------------------------------------------------------------------------------------------
+//Mule API management:-
+Is the process of designing , publishing , documenting , analyzing , versioning ,
+securing and managing API users,traffic,SLAs.
+Mulesoft has provided API management in two areas:
+1. Mule Gateway API management (use to deploy application on cloudHub | cloudHub 2.0)
+ - Mule Gateway
+2. Universal API Management
+ - Flex Gateway
+ - Service Mesh
 ----------------------------------------------------------------------------------------
 //Add API:
 add new api ----> 
@@ -18,16 +28,6 @@ proxy API is a wrapper on actual application , we can go proxy API's in below sc
   - When we would like to expose wrapper/proxy API on external services with own API management..
   - When we would like to expose with different end point on our mule applications..
   - When we would like to apply set of other policies on same services..
-------------------------------------------------------------------------------------------
-//Mule API management:-
-Is the process of designing , publishing , documenting , analyzing , versioning ,
-securing and managing API users,traffic,SLAs.
-Mulesoft has provided API management in two areas:
-1. Mule Gateway API management
- - Mule Gateway
-2. Universal API Management
- - Flex Gateway
- - Service Mesh
 
  --------------------------------------------------------------------------------------------
  //Auto discovery:-

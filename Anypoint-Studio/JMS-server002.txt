@@ -1,0 +1,55 @@
+----------------------------------------------------------------------------------------
+//Global elements
+
+#Configure an ActiveMQ Connection: <----- Global Element
+Connection: there are 3 types of Connection
+1. ActiveMQ Connection ✅ 
+2. No Connectivity Test Connection
+3. Generic Connection
+
+Conection Factory: Edit inline  
+broker url: tcp://localhost:61616 (we can find it in cmd)..
+
+//JMS
+
+1. Ack: Allows the user to perform an ACK when the AckMode#MANUAL mode is elected while 
+consuming the Message. As per JMS Spec, performing an ACK over a single Message 
+automatically works as an ACK for all the Messages produced in the same JmsSession...
+#
+In set variable component Name: ackId  | value: attributes.ackId
+Ack id fx : vars.ackId
+--------------------------------------------------------------------------------
+2. Consume: Operation that allows the user to consume a single Message from a given
+Destination...
+----------------------------------------------------------------------------------
+3. On New Message: JMS Subscriber for Destinations , allows to listen for incoming 
+Messages..
+
+#General:
+Destination: Queue_Name | Topic_Name
+Consumer Type: Queue Consumer | Topic Consumer
+Inbound Content-Type: application/json
+Number of Consumers:      <--------      for Queue i used 4 | for topic i used  1
+Acknowledge Mode: IMMEDIATE | dUPS_OK | EMPTY | MANUAL | AUTO
+
+------------------------------------------------------------------------------------
+4. Publish: Operation that allows the user to send a Message to a JMS Destination..
+
+#General:
+Destination: Queue_Name | Topic_Name
+Destination Type: Queue | Topic
+--------------------------------------------------------------------------------------
+5. Publish Consume: Operation that allows the user to send a message to a JMS 
+Destination and waits for a response either to the provided ReplyTo destination or to 
+a temporary Destination created dynamically..
+----------------------------------------------------------------------------------------
+6. Recover session: Allows the user to perform a session recover when the 
+AckMode#MANUAL mode is elected while consuming the Message. As per JMS Spec, 
+performing a session recover automatically will redeliver all the consumed messages 
+that had not being acknowledged before this recover...
+----------------------------------------------------------------------------------------
+//The message we are Publishing to default are of transient so , it will be disapeare
+if message failed..to avoid it make it persistent..
+# Persistent Delivery: ✅
+//Dead Later Queue(DLQ): Mean message not process successfuly... 
+------------------------------------------------------------------

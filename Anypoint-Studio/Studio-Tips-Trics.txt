@@ -10,3 +10,9 @@ Get-Content console -Wait
 -Xms1024m
 -Xmx2048m
 ------------------------------------------------------------------------------------------
+ctrl + shift + l <------- for more shrtcuts
+shift + alt + n  (use regularly😎)
+shift + alt + r <------- rename
+alt + shift + w <------- Show in
+alt + shift + Q <----- Show view
+---------------------------------------------------------------------------------------
