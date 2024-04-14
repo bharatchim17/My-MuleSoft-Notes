@@ -1,6 +1,5 @@
 ----------------------------------------------------------------------------------------
 //Global elements
-
 #Configure an ActiveMQ Connection: <----- Global Element
 Connection: there are 3 types of Connection
 1. ActiveMQ Connection ✅ 
@@ -8,20 +7,32 @@ Connection: there are 3 types of Connection
 3. Generic Connection
 
 Conection Factory: Edit inline  
-broker url: tcp://localhost:61616 (we can find it in cmd)..
+broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd or in activeMq.xml)..
 
+
+-----------------------------------------------------------------------------------
 //JMS
 
+1. Ack 
+2. Consume
+3. On New Message  (Source)
+4. Publish
+5. Publish Consume
+6. Recover session
+---------------------------------------------------------------------------------------
 1. Ack: Allows the user to perform an ACK when the AckMode#MANUAL mode is elected while 
 consuming the Message. As per JMS Spec, performing an ACK over a single Message 
 automatically works as an ACK for all the Messages produced in the same JmsSession...
 #
 In set variable component Name: ackId  | value: attributes.ackId
-Ack id fx : vars.ackId
---------------------------------------------------------------------------------
+Ack id fx : vars.ackId  <----- This is ack_id connector
+--------------------------------------------------------------------------------------
 2. Consume: Operation that allows the user to consume a single Message from a given
 Destination...
-----------------------------------------------------------------------------------
+#General:
+Destination: Queue_Name | Topic_Name
+Consumer Type: Queue Consumer | Topic Consumer
+---------------------------------------------------------------------------------------
 3. On New Message: JMS Subscriber for Destinations , allows to listen for incoming 
 Messages..
 
@@ -29,9 +40,10 @@ Messages..
 Destination: Queue_Name | Topic_Name
 Consumer Type: Queue Consumer | Topic Consumer
 Inbound Content-Type: application/json
-Number of Consumers:      <--------      for Queue i used 4 | for topic i used  1
+Number of Consumers:      <--------      for Queue i used 1 , 4  | for topic i used  1
 Acknowledge Mode: IMMEDIATE | dUPS_OK | EMPTY | MANUAL | AUTO
 
+https://docs.mulesoft.com/jms-connector/latest/jms-ack
 ------------------------------------------------------------------------------------
 4. Publish: Operation that allows the user to send a Message to a JMS Destination..
 
@@ -40,8 +52,19 @@ Destination: Queue_Name | Topic_Name
 Destination Type: Queue | Topic
 --------------------------------------------------------------------------------------
 5. Publish Consume: Operation that allows the user to send a message to a JMS 
-Destination and waits for a response either to the provided ReplyTo destination or to 
+Destination and waits for a response either to the provided Reply To destination or to 
 a temporary Destination created dynamically..
+#General:
+Destination: Queue_Name | Topic_Name
+request-reply-pattern: CORRELATION_ID ✅ | MESSAGE_ID
+Inbound Content-Type: application/json
+
+Reply to: edit inline ✅ | expression or bean reference
+Destination name: Queue_Name | Topic_Name
+Destination Type: Queue | Topic
+
+Persistent delivery: true | false | expression
+Maximum wait/unit: 30/sec
 ----------------------------------------------------------------------------------------
 6. Recover session: Allows the user to perform a session recover when the 
 AckMode#MANUAL mode is elected while consuming the Message. As per JMS Spec, 
@@ -52,4 +75,4 @@ that had not being acknowledged before this recover...
 if message failed..to avoid it make it persistent..
 # Persistent Delivery: ✅
 //Dead Later Queue(DLQ): Mean message not process successfuly... 
-------------------------------------------------------------------
+------------------------------------------------------------------------------------

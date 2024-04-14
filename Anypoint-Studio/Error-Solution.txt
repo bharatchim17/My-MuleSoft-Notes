@@ -164,9 +164,3 @@ Solution:- Restart studio
 
 https://help.mulesoft.com/s/question/0D52T00006R2h9DSAR/how-can-i-suppress-the-warning-body-is-ignored-since-the-http-method-is-between-the-empty-body-methods-head-get-options-and-the-send-body-mode-is-not-set-to-always-
 ----------------------------------------------------------------------------------------
- //Error Ocure:-  jms-brokerFlow ObjectFieldDefinitionFactory: Field 'private final java.lang.String 
-java.lang.Enum.name' is not accessible. Error message: class 
-com.mulesoft.mule.debugger.builder.ObjectFieldDefinitionFactory cannot access a member
-of class java.lang.Enum (in module java.base) with modifiers "private final"
-Solution:- 
-https://help.salesforce.com/s/articleView?id=001119071&type=1
