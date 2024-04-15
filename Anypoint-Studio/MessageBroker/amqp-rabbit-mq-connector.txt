@@ -1,0 +1,42 @@
+----------------------------------------------------------------------------------
+//AMQP Operations:
+
+1. Ack
+2. Consume
+3. Listner(souerce)
+4. Publish
+5. Publish consume
+6. Reject
+-------------------------------------------------------------------------------------
+1. Ack: Operation that acks a message with the delivery tag..
+#General
+Ack id fx : vars.ackId  <----- This is ack_id connector
+In set variable component Name: ackId  | value: attributes.ackId
+--------------------------------------------------------------------------------
+2. Consume:  Operation that allows the user to consume a single AmqpMessage from a given Queue.
+-------------------------------------------------------------------------------------------
+3. Listner: AMQP Listener for Queues, allows to listen for incoming messages.
+#General:
+Queue_Name: paste_Queue_Name_here 
+Fallback queue definations: None ✅ | Edit inline | Global reference
+Inbound Content-Type: application/json
+Ack Mode: IMMEDIATE | EMPTY | MANUAL | AUTO
+-----------------------------------------------------------------------------
+4. Publish: Operation that allows the user to publish a single AmqpMessage to a given 
+exchange Read more about configuring connectors and building flows in the Mule 4 
+documentation...
+#General:
+Exchange Name:  
+Routing keys: Edit inline ✅ | Expression or bean reference | None
+value: 1 
+------------------------------------------------------------------------------------
+5. Publish consume:
+Operation that allows the user to send a message to a AMQP Exchange and waits for a 
+response either to the provided replyTo destination or to a temporary destination 
+created dynamically...
+--------------------------------------------------------------------------------
+6. Reject: Operation that allows the user to reject a delivered AmqpMessage.
+#General
+Ack id fx : vars.ackId  <----- This is ack_id connector
+In set variable component Name: ackId  | value: attributes.ackId
+-------------------------------------------------------------------------

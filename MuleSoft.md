@@ -31,3 +31,12 @@ https://www.restapitutorial.com/httpstatuscodes.html
 https://testfully.io/blog/http-methods/
 
 -------------------------------------------------------------------------------
+//For study and certifications:
+
+https://mulesy.com/category/3-mulesoft-working-samples/advance-mulesoft-poc/
+
+https://training.mulesoft.com/learning-path/developers
+
+https://mindmajix.com/search?searchString=mulesoft&type=course
+
+-------------------------------------------------

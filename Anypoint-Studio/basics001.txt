@@ -32,18 +32,14 @@ Mule event contains:-
 //attributes contains queries (attributes.queryparams.key) , uri parameters also known as
 resource parameters (attributes.uriparams.key) and we put placeholder {key} in sub-path..
 headers (attributes.headers.'content-type')..to fetch ID attributes of payload.@id  
+1.1. payload: It contains body of the message , for example content of file , record from
+database or response from rest or web service..
 
 2.variables:- are Mule event metadata that use in flow. 
 
-
-//Message source:- such as http listner , schedular , new/updated file component.
-message source triggers generation of mule event and dispatches that event to flow..
-
-
+3. Message Exception: When error occure we get exceptions..
 --------------------------------------------------------------------------------------------------------------------------------------------
-//payload contains body of the message , for example content of file , record from database or response from rest or web service..
 
-//Database conector:- Allows us to interact with relation database , such as MySQL ,Oracle , ms SQL , it provides set of operations on database tables, as well as executing SQL queries and store procedures.
 
 // Root element is optional in Json where as, in XML is mandatory and in CSV is not required..
 -------------------------------------------------------------------------------------------------------------------------

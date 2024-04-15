@@ -57,9 +57,13 @@ Add webhook
 
 In jenkin project
 Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm polling..
+
 //NG-Rok:
+Install and signup ngrok command prompt:
+
 ngrok.exe --version
-ngrok.exe http 8080
+ngrok.exe http paste_port_here(8080)  | ngrok tcp paste_port_here(3306) 
+forwanding:    <------- from ngrok and save it
 
 //In github repository settings
  Webhooks
@@ -129,7 +133,6 @@ Script path: Jenkinsfile  (create file in studio)
 //Step4: Download maven plugin in jenkins tool..
 //step5: Add  Mulesoft enterprise Repository in settings.xml
 ---------------------------------------------------------------------------------------
-
 //Step1: Choose pipeline
 Defination: Pipeline script 
 Script : write groovy script in editor.. add stage as Scripted pipeline for git repositories

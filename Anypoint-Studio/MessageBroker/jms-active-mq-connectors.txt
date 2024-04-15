@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------------
 //Global elements
-#Configure an ActiveMQ Connection: <----- Global Element
+#Configure an ActiveMQ Connection: 
 Connection: there are 3 types of Connection
 1. ActiveMQ Connection ✅ 
 2. No Connectivity Test Connection
@@ -11,7 +11,7 @@ broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd o
 
 
 -----------------------------------------------------------------------------------
-//JMS
+//JMS Operations
 
 1. Ack 
 2. Consume
@@ -23,9 +23,9 @@ broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd o
 1. Ack: Allows the user to perform an ACK when the AckMode#MANUAL mode is elected while 
 consuming the Message. As per JMS Spec, performing an ACK over a single Message 
 automatically works as an ACK for all the Messages produced in the same JmsSession...
-#
-In set variable component Name: ackId  | value: attributes.ackId
+#General
 Ack id fx : vars.ackId  <----- This is ack_id connector
+In set variable component Name: ackId  | value: attributes.ackId
 --------------------------------------------------------------------------------------
 2. Consume: Operation that allows the user to consume a single Message from a given
 Destination...
@@ -74,5 +74,10 @@ that had not being acknowledged before this recover...
 //The message we are Publishing to default are of transient so , it will be disapeare
 if message failed..to avoid it make it persistent..
 # Persistent Delivery: ✅
-//Dead Later Queue(DLQ): Mean message not process successfuly... 
+
+//Dead Later Queue(DLQ): Means message not process successfuly.."back out"..
+
+//Persistent vs Non-Persistent:
+persistent: Log the message to stable storage..
+non-persistent: Does not required message logged to stable storage..
 ------------------------------------------------------------------------------------

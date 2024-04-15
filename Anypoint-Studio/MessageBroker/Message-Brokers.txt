@@ -1,0 +1,120 @@
+---------------------------------------------------------------------------------
+//Messaging Brokers:
+
+1. RabbitMQ (AMQP)
+2. Apache Kafka
+3. WebsphereMQ
+4. Apache Pulser 
+5. Solace PubSub
+6. ActiveMQ (JMS based)
+--------------------------------------------------------------------------------------------------------------------
+//The Jakarta Messaging API (formerly Java Message Service or JMS API) is a Java 
+application programming interface (API) for message-oriented middleware... 
+
+//Java Messaging Service (JMS) 
+In integration world after webservices , the JMS publish subscribe model used mostly 
+to make asynchronous integrations..
+We usually create Queues and Topics in JMS server to publish the message.. 
+
+Queue & Topic is pipeline where we can publish the payload so , it can be subscribed by clients
+where as , Queue is point to point..
+JMS Queue:  Publisher ---> Queue ---> Subscribe            
+JMS Topic: Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber
+
+//Addvantages:
+1. Asynchronous: 
+To receive the message, client is not required to send request. Message will arrive automatically to the client. 
+2. Reliable: 
+It provides assurance that message is delivered...
+3. it easy to develop enterprise applications that asynchronously send and receive business data and events...
+--------------------------------------------------------------------------------------
+ActiveMQ is a popular open source messaging service that is built on top of Java.
+It works as a message-oriented middleware (MoM).
+  
+apache-activemq-5.17.6\bin\win64 <---- in this path type cmd & give command activemq.bat strat
+localhost: 8161 is default port of ActiveMQ
+userName: admin 
+password: admin
+------------------------------------------------------------------------------------
+//Following are JMS elements:
+1. Providers
+2. Client 
+3. Producer/Publisher
+4. Consumer/subscriber
+5. queue
+6. topic
+7. message
+----------------------------------------------------------------------------------------
+//ActiveMQ vs Kafka which message broker is the best? 
+//RabbitMQ vs. Kafka vs. ActiveMQ: A Battle of Messaging Brokers:
+
+https://www.designgurus.io/blog/rabbitmq-kafka-activemq-system-design 
+
+-------------------------------------------------------------------------------------
+//Rabbit MQ
+Open RabbitMQ command prompt and run below commands:
+- rabbitmq-plugins.bat list
+- rabbitmq-plugins.bat enable mention_plugine_here (rabbitmq_management)
+
+localhost: 15672 is default port of Rabbit-MQ
+userName: guest 
+password: guest
+
+//Overview of Rabbit MQ:
+- It based on AMQP(Advanced Message Queing Protocol)..
+- It support multiple Protocols..
+- It Enable loosely coupled messaging based integration
+- It equipped with fault tolerence(FA) , high availability(HA) , scalability features..
+
+//What is loosely coupled (Dcopled)..?
+Loose coupling is an approach to interconnecting the components in a system, network or software application 
+so that those components, also called elements,reducing the risk that changes within 
+one module will create unanticipated changes within other modules... 
+
+//RabitMQ core concepts:
+- Message
+- Message Producer
+- Exchange
+- Queues
+- Consumers
+- Binding & Routing keys
+
+//RabbitMQ exchange Types:
+- Direct
+- Fanout
+- Topic
+- Headers 
+                                      //Subcategories RabbitMQ exchange Types:
+                                        - Default 
+                                        - Dead Letter
+--------------------------------------------------------------------------------------
+//Kafka: 
+Is written in scala & java Apache Kafka is an open-source distributed-streaming & 
+messaging system Originally designed by LinkedIn with capabilities to handle huge 
+loads of data with its distrubuted , fault tolerence architecture it works with 
+pub-sub mechanism for message communication..
+
+//Kafka use cases:
+1. Stream processing to stream , aggregate , enrich and transform data from multiple
+sources..
+2. Website activity tracking..
+3. application health monitoring
+
+-----------------------------------------------------------------------------------------
+//Diff between Anypoint MQ connector vs JMS Connector vs VM connector?
+Virtual Machine (VM Connector) is Mule's internal transport for messaging/queueing. The VM transport is for 
+intra-JVM communication between Mule flows. So, that means when you use a VM in your 
+flow, you can communicate between different flows in the application. It can only be 
+used by Mule applications. When creaing a VM queue it can only be accessed by the Mule 
+application that creates it (Cloudhub for example) OR it can be reused by same Mule 
+apps running in a domain project or cluster. No existing broker infrastructure needs 
+to be setup. Supports persistent and transient...
+
+Anypoint MQ is Mulesoft's Cloud Messaging platform. This can be used by other applications
+not just Mule. It can also be used across multiple Mule apps regardless of domains or 
+cluster, well suited for Cloudhub applications. No infra setup, all in the cloud , 
+Think Amazon SQS but a lot better and great integration with Anypoint Platform..
+
+JMS uses the Java Messaging Service protocol and requires an external JMS broker such 
+as ActiveMQ. Can be used by any application that supports JMS connectivity...
+-------------------------------------------------------------------------------------
