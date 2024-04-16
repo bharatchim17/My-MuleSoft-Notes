@@ -16,10 +16,17 @@ In integration world after webservices , the JMS publish subscribe model used mo
 to make asynchronous integrations..
 We usually create Queues and Topics in JMS server to publish the message.. 
 
-Queue & Topic is pipeline where we can publish the payload so , it can be subscribed by clients
-where as , Queue is point to point..
-JMS Queue:  Publisher ---> Queue ---> Subscribe            
-JMS Topic: Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber
+//Queue & Topic is pipeline where we can publish the payload so , it can be subscribed by clients
+ 
+
+1. JMS Queue:  Publisher ---> Queue ---> Subscribe 
+Exchange of messages happens between single sender (producer) and single receiver (Consumer)
+via queue. In case of multiple (consumers) are trying to pick up the message from queue ,
+only one consumer will be able to pick up the message at a time(Queue is point to point: 1 to 1)....       
+
+2.JMS Topic: Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber
+When publisher sends message to topic , all subscribers are subscribed to topic , will
+receive the message (publish & subscriber i.e. PubSub model: 1 to many)..
 
 //Addvantages:
 1. Asynchronous: 

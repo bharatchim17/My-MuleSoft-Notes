@@ -55,7 +55,8 @@ deploy, re-deploy your mule applicattion using mule maven plugin...
 
                       https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
 
-//Before you can deploy to CloudHub using the Mule Maven plugin
+
+Before you can deploy to CloudHub using the Mule Maven plugin
 If you are using the HTTP Listener as source for your flow, you need to set it's host 
 to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
 
@@ -212,3 +213,11 @@ verify: run any checks to verify the package is valid and meets quality criteria
 install: install the package into the local repository, for use as a dependency in other projects locally
 deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
 ---------------------------------------------------------------------------------------------------------------------------
+//The following ports are assigned on the Mule worker:
+ search: private port in cloudhub + mulesoft
+
+http.port is set to 8081
+https.port is set to 8082
+
+https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide
+----------------------------------------------------------------------------------

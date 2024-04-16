@@ -77,9 +77,8 @@ output application/json
 }
 
 
-//Where as 500 is internal server error work as default error handling --use--> type: ANY 
-
-//Default response in http listner Success response: 200 , error response: 500 ...
+//Where as 500 is internal server error , set as default error..
+Default response in http listner Success response: 200 , error response: 500 ...
 go to httpListener's Response ---> Body: payload | status code: vars.statusCode default 200 to success response
 -------------------------------------------------------------------------------------------
 //Custom error:-
@@ -96,10 +95,10 @@ note:- use Private flow for error handling instead of subflow in subflow we use 
 
 //try scope: allow us to error handling on group of event processor individually..
 --------------------------------------------------------------------------------------
-//Global error handler:-
+//Setting global error handler:-
 1.Create configuration file name as global-error-handler and add error to it by using 
-error handler connector
-2.Create "configuration" global element..
+error handler connector..
+2.Create "configuration" in global element..
 3. Default error handler: --choose--> global-error-handler
 4. --goto--> http listener ---> responses ---> error response--->
 Body: payload
@@ -111,10 +110,14 @@ Global-configuration--->configuration--default error handler--->choose file
 --------------------------------------------------------------------------------------
 //Solution to solve conflict b/w global  vs local & connector level error handlers
 1. use private flow refer it by flow reference or API kit router and add error 
-handler in error handling don't refer it to global..
+in error handling don't refer it to global..
 2. refer error handler in main flow instead of private flow...
 --------------------------------------------------------------------------------------
-//We can know exact error sometimes by ---> error.exception.message
+//We can know exact error sometimes by ---> error.exception.message..
+
+//If any branch fails in scatter-gather it gives MULE:COMPOSITE_ROUTING exception..
+error.errorMessage.payload.failures
+error.errorMessage.payload.results
 -----------------------------------------------------------------------------------
 //Details global Error examples informations:
 

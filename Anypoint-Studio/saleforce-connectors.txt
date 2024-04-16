@@ -1,0 +1,72 @@
+----------------------------------------------------------------------------------
+developer.saleforce.com    <--- log in here          
+dataloader.io              <--- To quickly and securely import, export and delete 
+unlimited amounts of data for your enterprise also , use for intelligent data mapping...
+dataloader                 <---- Is software
+------------------------------------------------------------------------------
+//Whenever we write the query on custom object , make sure we are keeping underscore C for
+(_C) to the saleforce object and corresponding fields...
+
+//Streaming is the process of synchronizing data between one target with other target..
+//Explain  mulesoft event streaming with saleforce..?
+
+//How can you identify what event happens in Streaming..?
+saleforce can fetch the object events and it's reflect in attributes of mule.. 
+attributes.'type' == "created" | "updated" | "deleted"..
+
+-------------------------------------------------------------------------------
+//Need to create topic either we can create in studio by using publish topic operations or as following
+below:
+
+In saleforce : ---> Developer console ---> Debug ---> open execute Anonymous window(ctrl + e)..
+
+PushTopic pushTopic = new PushTopic();
+pushTopic.Name = 'sample2';
+pushTopic.Query = 'SELECT Id, Name, emp_phone__c, emp_email__c, emp_skills__c FROM emp_profile__c';
+pushTopic.ApiVersion = 60.0;
+pushTopic.NotifyForOperationCreate = true;
+pushTopic.NotifyForOperationUpdate = true;
+pushTopic.NotifyForOperationDelete = true;
+insert pushTopic;
+-----------------------------------------------------------------------------------
+//Crete custom profile:
+setting:Setup ---> Object ---> Object manager ---> create custom object + Add fields
+
+//Create tab:
+Setup --> tab ---> create new tab 
+-------------------------------------------------------------------------------
+//Saleforce Operations: 
+1. Create
+Adds one or more new records to your organization's data...
+#General:
+Type: search custom_object here
+-------------------------------------------------------------------------------------
+2. Query: 
+Use SOQL query..
+#General:
+Saleforce query:
+                SELECT Id, Name, emp_phone__c, emp_email__c, emp_skills__c FROM emp_profile__c WHERE 
+                emp_skills__c = ':Skills'
+Parameter:
+                {
+	              "Skills": attributes.queryParams.skill
+                }
+-----------------------------------------------------------------------------------
+3. Publish topic:
+Creates a topic representing a query, which is used to notify listeners when changes 
+are made to records in an organization...
+#General:
+Topic name fx: payload.topic
+Query: payload.query
+//In postman we can send
+            {
+            "topic": "empprofile"
+            "query" : "SELECT Id, Name, emp_phone__c, emp_email__c, emp_skills__c FROM emp_profile__c" 
+            }
+-----------------------------------------------------------------------------------
+3. Subscribe topic listner:
+First the topic must be published and after that a subscription to that topic created... 
+      Attention: Salesforce won't send you notifications after the topic is created...
+#General:
+Topic: Fetch created topic here..
+-----------------------------------------------------------------------------------

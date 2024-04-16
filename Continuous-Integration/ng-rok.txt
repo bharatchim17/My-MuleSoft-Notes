@@ -1,0 +1,1 @@
+Ngrok works by creating a secure tunnel to your local server and assigning it a unique URL that can be accessed globally. It encrypts the traffic between your local machine and the internet, ensuring security while exposing your local server to the outside world.
