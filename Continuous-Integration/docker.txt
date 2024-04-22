@@ -1,0 +1,1 @@
+https://www.prostdev.com/post/how-to-run-locally-the-dataweave-playground-docker-image

@@ -100,12 +100,9 @@ Is written in scala & java Apache Kafka is an open-source distributed-streaming 
 messaging system Originally designed by LinkedIn with capabilities to handle huge 
 loads of data with its distrubuted , fault tolerence architecture it works with 
 pub-sub mechanism for message communication..
+database have high storage but low throughput that's why , Operation Per Second is low..
+Whereas kafka has high throughput and low storage...
 
-//Kafka use cases:
-1. Stream processing to stream , aggregate , enrich and transform data from multiple
-sources..
-2. Website activity tracking..
-3. application health monitoring
 
 -----------------------------------------------------------------------------------------
 //Diff between Anypoint MQ connector vs JMS Connector vs VM connector?

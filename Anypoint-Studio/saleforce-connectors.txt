@@ -6,14 +6,19 @@ dataloader                 <---- Is software
 --------------------------------------------------------------------------------------
 // UnderscoreC (_C) is the custom_object..
 
-//////////////
-
+//Streaming is the process of synchronizing data between one target with other target..
+streaming API enables streaming of events using push technology and provides a subscription
+mechanism for receiving events..
+API subcription mechanism supports multiple types of event:
+1. PushTopic events..
+2. Generic events..
+3. platform events..
+4. Change data capture events..
 //Explain  mulesoft event streaming with saleforce..?
-
+-------------------------------------------------------------------------------
 //How can you identify what event happens in Streaming..?
 saleforce can fetch the object events and it's reflect in attributes of mule.. 
 attributes.'type' == "created" | "updated" | "deleted"..
-
 ---------------------------------------------------------------------------------------
 //Crete custom object in 2 ways: 
 1. setting:Setup ---> Object ---> Object manager ---> create custom object + Add fields
@@ -52,13 +57,14 @@ Creates a topic representing a query, which is used to notify listeners when cha
 are made to records in an organization...
 #General:
 Topic name fx: payload.topic
-Query: payload.query
+Query fx: payload.query
 //In postman we can send
             {
-            "topic": "empprofile"
+            "topic": "empprofile" ,
             "query" : "SELECT Id, Name, emp_phone__c, emp_email__c, emp_skills__c FROM emp_profile__c" 
             }
------------------------------------------------------------------------------------
+
+
 //Need to create topic either we can create in studio by using publish topic operations or as following
 below:
 https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/code_sample_java_create_pushtopic.htm
@@ -77,20 +83,50 @@ pushTopic.NotifyForOperationDelete = true;
 pushTopic.NotifyForFields = 'Referenced';
 insert pushTopic;
 
-//Paste it in Anonymous window (ctrl + E)
 -----------------------------------------------------------------------------------
-3. Subscribe topic listner:
+4. Subscribe topic listner:
 First the topic must be published and after that a subscription to that topic created... 
       Attention: Salesforce won't send you notifications after the topic is created...
 #General:
-Topic: Fetch created topic here..
+Topic: Fetch topic here..
 -----------------------------------------------------------------------------------
-//Streaming is the process of synchronizing data between one target with other target..
-streaming API enables streaming of events using push technology and provides a subscription
-mechanism for receiving events in near real time...
-API subcription mechanism supports multiple types of event:
-1. PushTopic events..
-2. Generic events..
-3. platform events..
-4. Change data capture events..
--------------------------------------------------------------------------------
+5. Upsert:
+upsert = insert + update..
+Upserts a homogeneous list of objects: creates new records and updates existing 
+records, using a custom field to determine the presence of existing records. In most 
+cases, prefer upsert over create, to avoid creating unwanted duplicate records....
+#General:
+Object type: fetch created object here..
+External id field Name: here fetch external id from object.. 
+-----------------------------------------------------------------------------------
+6. Update: 
+Updates one or more existing records in your organization's data.
+#General:
+Type: here fetch the object 
+
+//Error Occure:
+Error id is not specified in an update call on update or upsert..
+solution: 
+Each existing record in saleforce is assigned unique saleforce record Id.. in order to
+update existing record's must need to specify records Id and map containing record id.. 
+-----------------------------------------------------------------------------------
+7.Query all:
+Retrieves data from specified objects, whether or not they have been deleted.
+#General:
+Saleforce query:     SELECT Id, StudentSemester__c , StudentID__c FROM 
+studentinformation__c   where StudentID__c = :studentId
+
+#Parameter fx:
+output application/java
+---
+{
+	StudentID : attributes.queryParams.studentId
+}
+-----------------------------------------------------------------------------------
+8. Delete:
+Deletes one or more records from object..
+#General:
+Records to delete Id fx:    payload.Id
+-----------------------------------------------------------------------------------
+
+

@@ -204,7 +204,7 @@ client input to start internal function and return output data back to client..
 - Stateless: does not store information of client 
 - Resources: REST APIs are built around resources , which represent entities or object 
 being exposed by API...
-
+----------------------------------------------------------------------------------------
 //What is mulesoft ?
 mulesoft is software company that provides an integration platform called anypoint 
 platform.
@@ -213,6 +213,7 @@ lifecycle.
 mulesoft anypoint platforms offers a range of tools and capabilities to support
 integration efforts for example: design centre , exchange , anypoint studio , runtime manager,
 api manager , anypoint monitoring etc..
+-----------------------------------------------------------------------------------
 //What is API integration..?
 integration is process of combining two or more things to create a whole..
 integration allows information to be shared between the connected systems..
@@ -222,6 +223,7 @@ customers expect fast , digital and on-demand experiences..
 The more digital transformation initiatives that need to be implemented , the wider 
 delivery gap gets. the central piller to solve this huge challenge is to understand 
 how integration drives digital transformation..
+---------------------------------------------------------------------------------
 //Why mulesoft for api integration?
 - robust integration capabilities
 - API-Led connectivity
@@ -230,4 +232,33 @@ how integration drives digital transformation..
 - scalability and performance 
 - Developer productivity
 - monitoring and management
-----------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+//we can use https protocols also , but we have to encrypt communication using TLS configuration..
+/* is symbol of wild-card , it use in path
+
+http://<host>:<port>/api/resource
+-------------------------------------------------------------------------------------------
+//MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
+properties and variables. #[payload/vars/attributes]
+
+#['\n'] --->  Give us new line
+#[payload] ---> To print payload without fx
+
+----------------------------------------------------------------------------------------
+// We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
+  The correlationID can find multiple logs and transactionID will find exact transaction log.
+
+The correlation-ID : Client chosen value can be duplicate among the request but , that should be value from the input.. 
+ if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
+syntax to fetch :-
+attributes.headers.'x-correlation-id' default ""
+
+The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to correlationID
+ Whereas mulesoft can able to generate its its own transaction ID it will maintain in each log.
+// uuid() :- is mulesoft function that will , generate unique ID .
+syntax to fetch :-
+attributes.headers.'x-transaction-id' default uuid()
+--------------------------------------------------------------------------------------------------------
+
+

@@ -91,7 +91,7 @@ Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND
 
 //We can use Raise error connectors to handle custom connectors.. 
 ---------------------------------------------------------------------------------------
-note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
+Note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
 
 //try scope: allow us to error handling on group of event processor individually..
 --------------------------------------------------------------------------------------

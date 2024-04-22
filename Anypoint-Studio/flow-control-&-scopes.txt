@@ -1,0 +1,152 @@
+------------------------------------------------------------------------------------
+//Flow control:
+
+1. Choise
+2. First Successfull
+3. Round Robin
+4. Scatter-Gather
+------------------------------------------------------------------------------------
+//The Scatter-Gather:
+- Component executes each It will enable multi-threading will make the parallel call , not sequentially...
+Parallel execution of routes can greatly increase the efficiency of your Mule
+application and may provide more information than sequential processing...
+- It catch responses we get from individual system..
+
+//To extract all resulting payloads to an array, use a DataWeave script:
+flatten(valuesOf(payload) map ((item, index) -> item.*payload))
+------------------------------------------------------------------------------------
+//Round Robin:-
+is a Mule component that contains two or more processing routes and executes only one 
+of the routes each time the flow executes the component.
+Round Robin keeps track of the previously selected route and never selects the same
+route consecutively. For example, the first time Round Robin executes, the 
+component selects the first route. The next time, it selects the second route. 
+If the previously selected route is the last route, Round Robin executes the first 
+route...
+--------------------------------------------------------------------------------
+//Scopes:
+
+1. Async
+2. Cache
+3. Flow
+4. For Each
+5. Parallel For Each
+6. Sub Flow
+7. Try
+8. Until Successfull
+------------------------------------------------
+//Target Scope:
+Flow Reference component we can set as below  
+
+#Target: payload
+#Target value :  payload (default fx)
+
+#Advanced ---> output
+Target variable:  varableName 
+Target value:  payload  (default fx)
+-------------------------------------------------------------------------------------
+//Async scope:-
+The Async scope is a branch processing block that executes simultaneously with the main
+flow. The main flow continues to execute while it initiates and processes the Async 
+scope. The flow does not have to pause until the last message processor embedded in 
+the asynchronous flow has completed its task...
+Processes the nested list of message processors asynchronously using a thread pool, 
+Async can be useful for executing time-consuming operations that do not require you to 
+send a response back to the initiating flow (such as printing a file or connecting to 
+a mail server)...
+
+ //Async & Foreach , try scope + on-error-Continue works as localScope..
+ if we save variable inside foreach it remain after scope but in case of async , 
+ try + on-error it vanish..
+ 
+ -------------------------------------------------------------------------------------
+//try scope:
+The Try scope catches and handles errors that occur when executing any of the 
+components placed inside. The components inside the Try scope can also be configured 
+as a Transaction via the "Transactional Action" property, in which case they will 
+never be partially executed. Every operation within the scope of a transaction is 
+executed in the same thread, and errors should lead to either a rollback or a commit...
+-------------------------------------------------------------------------------------------------------------
+//The Until Successful scope:-
+Until Successful runs synchronously , If any processor within the scope fails to 
+connect or to produce a successful result, Until Successful retries all the processors
+within it, including the one that failed, until all configured retries are exhausted...
+#Generic:
+Max Retries: 3        <-----(here , 3 times + 1 normal call = 4 retries)
+Mili-Second between Retries: 1000
+
+//use this Until scope in asynchronous flow also , when we use scheduler and mq...
+--------------------------------------------------------------------------------------
+//For Each scope:
+scope is similar to a "foreach" or "for loop" in most programming languages. It takes 
+as input a "collection" (a list or array from a payload with any kind of content), and
+iterates over the items in the collection, passing each one through the components 
+placed inside the For Each scope. If a particular item in a collection throws an
+exception, the For Each scope will stop processing it and invoke an error handler..
+
+#General:
+collection : #[payload]  | #[variable]
+counter variable name: counter
+batch size: 1 (default) | 4 (is collection)
+root message variable name: rootMessage
+--------------------------------------------------------------------------------------
+//Parallel For Each Scopes: 
+Splits the same message and processes each part in parallel...
+
+#General:
+collection: #[payload]
+Timeout: 
+Max concurrency: 4 | 
+Target:
+Target value: #[payload]
+
+//calculating parallelism:
+1. processing intensive tasks(Max concurrency):
+number of threads <= number of cores 
+2. processing blocking tasks(Max concurrency):
+number of threads <= number of cores / (1 - blocking factor)
+0 < blocking factor < 1
+--------------------------------------------------------------------------------
+//Differences between For Each and Parallel For Each Scopes:
+
+For Each works sequentially, while the Parallel For Each processes in parallel. 
+This difference affects error handling:
+Because of the processing differences, the execution of For Each execution is 
+interrupted when an error is raised (and the Error Handler is invoked), 
+while Parallel For Each processes every route before invoking the Error Handler with
+a MULE:COMPOSITE_ROUTE error type. For Each does not modify the payload, while the 
+Parallel For Each outputs a collection of the output messages from each iteration...
+--------------------------------------------------------------------------------------
+//Cache scope:
+Is for storing and reusing frequently called data. We can use cache scope to reduce
+the processing load on Mule instance and to increase speed of message processing 
+within flow..
+Caching strategy can also reference these customizations:
+1. Event Key for the ObjectStore, which is a DataWeave expression or Java object used 
+to create the key to use for storing the payload in the ObjectStore.
+2. Response Generator for your strategy, which is a reference to a Java object that 
+is used to create the responses returned by the caching strategy.
+3. Event Copy Strategy for mutable or immutable data....
+
+#General:
+caching strategy reference:
+1. Use default caching strategy ✅
+2. Reference to strategy: key expression: #[attributes.uriParams.empId]
+
+Default caching saves or keeps data into memory(heap space of RAM memory i.e. In-memory: RAM)..
+Persistent is hard disck kind memory , so it need to perform I/O operations internally ,
+if we need huge amount of data need to be cached , then go with persistent memory..
+
+Filter:
+Use the filter to exclude specific message from Cache scope flow.
+ #[attributes.uriParams.empId == "2"]
+
+------------------------------------------------------------------------------------
+Caching type
+1. Default
+2. ObjectStore
+
+ObjectStore type
+1. In memory
+2. Persistent
+------------------------------------------------------------------------------------------

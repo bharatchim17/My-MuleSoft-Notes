@@ -1,0 +1,102 @@
+--------------------------------------------------------------------------------------
+
+//Batch processing:-
+Components are designed for reliable, asynchronous processing of larger-than-memory 
+data sets. The components are the Batch Job, Batch Step, and Batch Aggregator...
+Batch processing: The process of transferring huge amount of data as sets/batches between
+systems..
+
+https://docs.mulesoft.com/mule-runtime/latest/_images/mruntime-batch-job-overview.png
+
+//Batch Job Processing each batch contains three different phases:
+1. Load and dispatch
+2. Processes
+3. On Complete
+---------------------------------------
+//Load and dispatch:
+
+When flow execution reaches the load and dispatch phase executed implicitly then it 
+creates..
+- New batch job instance..
+- The batch engine submits task for each record block to the I/O pool to process each 
+record..
+- Parallelism occure automatically , at record the block level..
+
+- The Mule runtime engine uses its autotunning capabilities to determine how many 
+threads to use and the level of parallelism to apply...
+
+- Mule splits the incoming message into records , stores them in persistent Queue , and
+Queries and schedules those records in blocks of records to process..
+----------------------------------------
+//Process(Batch Step):
+- The runtime begins processing the records in batch asynchronously..
+- Only one Queue exists , and records are picked out it for each batch step , processed ,
+and then sent back to it ; each record keeps track of what stages it has been processed
+through while it sits on this queue..
+- A batch job instance does not wait for all it's queued records to finish processing
+in one batch step before pushing any of them to the next batch step , queue are persistent..
+- Mule persist a list of all records as they succeed or fail to process through each 
+batch step. the runtime continues processing the batch , skipping over the failed 
+record in each subsequent batch step..
+- We can apply filters and Aggregators in this phase...
+----------------------------------
+//Refining Batch Steps Processing:
+Batch filters:
+you can set filters upon batch steps to only accept some records for processing..
+A batch step uses two attributes to filter records:
+1. AcceptExpression
+2. AcceptPolicy
+
+Batch Aggregator:
+1. Fixed size batch Aggregator
+2. Streaming
+--------------------------------
+On Complete Phase:
+- During this phase , we can optionally configured the runtime to create a report
+or summary of the records it processed for the particular batch job instance..
+- If you leave the ON complete phase empty and do not reference the batch job result
+ object elsewhere in your application , the batch job simply completes , whether failed
+ or successful..
+ --------------------------------
+ //Variable propagation:
+ - Variable created in batch step is available in each batch step..
+ - Variable created inside batch job are not visible in on complete phase only final
+ result will be available..
+ - Moreover , since the batch job instance executes asynchronously from the rest of 
+ the flow , no variable set in either a batch step or the On Complete phase will be 
+ visible outside the batch scope.. 
+ 
+//variable inside batch step is available in batch step , not come in the on-complete
+phase..
+variable before batch job it's available in batch job too..
+
+//How mule works internally on batch step failure..?
+- Mule strips that stack trace from any messages..
+- When mule Batch job reaches the On-complete phase , mule displays an error summary
+with every error type , and how many times it happened in each batch step.. 
+------------------------------------------------------------------------------------
+//Batch processing strategies for error handling:
+
+1. Finish processing:
+Stop the execution of current job instance..finish execution of records currently
+in-flight , but do'nt pull any more records from queues and set job instance into 
+failure state.. The On complete phase is invoked...
+This behavior is controlled through maxFailedRecords attributes..
+#General:
+Max Failed Records: 10
+
+2. Continue processing:
+The batch regardless of any failed records , using acceptExpression and acceptPolicy
+attributes to instruct subsequent batch steps how to handle failed records..
+#General:
+Max Failed Records: -1
+--------------------------------------------------------------------------------------
+//Batch Processing foreach vs batch job:
+
+1. Batch processing using foreach:
+- process/commit record by record at a time..
+- process/commit batch records at time using batch option..
+2. Batch processing using batch job:
+- process/commit record by record at time..
+- process/commit batch records at time using batch Aggregator..
+--------------------------------------------------------------------------------------

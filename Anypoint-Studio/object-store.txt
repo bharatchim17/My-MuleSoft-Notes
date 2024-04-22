@@ -1,0 +1,13 @@
+-----------------------------------------------------------------------------------
+//Object Store:-
+Connector is a Mule component that allows for simple key-value storage , it is mainly 
+design for:
+-Storing synchronization information, such as watermarks.
+-Storing temporal information such as access tokens.
+-Storing user information.
+Additionally, Mule Runtime uses Object Stores to support some of its own components, 
+for example:
+-The Cache module uses an Object Store to maintain all of the cached data.
+-The OAuth module (and every OAuth enabled connector) uses Object Stores to store the 
+access and refresh tokens...
+-------------------------------------------------------------------------------------
