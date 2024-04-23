@@ -38,10 +38,9 @@ database or response from rest or web service..
 2.variables:- are Mule event metadata that use in flow. 
 
 3. Message Exception: When error occure we get exceptions..
---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-// Root element is optional in Json where as, in XML is mandatory and in CSV is not required..
+-----------------------------------------------------------------------------------------------------------------------
+// Root element is optional in Json where as, in XML is mandatory and in CSV is not 
+required..
 -------------------------------------------------------------------------------------------------------------------------
 // Mule ESB is a lightweight java-based enterprise service bus (ESB) and integration platform
 that allows developers to connect Applications together quickly and easily , enabling them to 
@@ -54,7 +53,6 @@ Benefits:-
  - API Management
 
  //Mule has two version community and enterprise.
-
 ---------------------------------------------------------------------------------------------
  //Integration:- The process of making data transfer between multiple systems is known
  as integration.
@@ -163,15 +161,12 @@ it has:-
     |        
     |   Error_Handling
     |
-    
-
 -------------------------------------------------------------------------------------------------
 //Asynchronous flows:- execute in parallel to the calling flow; i.e., they are processed asynchronously.
 We can do this by wrapping the flow reference component in an async component.
 
 //synchronous flows:- is also processed synchronously , We add synchronous flows to our Mule application by adding 
 regular flows; there is no “synchronous flow” component. 
-
 ----------------------------------------------------------------------------------------
 //Streaming API
 Streaming API enables Streaming of events using push technology and provides subscription mechanism for receiving events in near real time..
@@ -179,7 +174,6 @@ The Streaming API subscription mechanism supports multiple types of events , inc
 
 //Push technology , also called the publish/subscribe model , transfers information that is initiated from server to client..
 --------------------------------------------------------------------------------------------
-
 //When http listner source receives an http request , source triggers flow by using request data.
 //Host:- indicates where request are received , host can be hostname such as localhost , www.mulesoft.com  or ip address such as 175.0.0.1.
 //Port:- indicates where request are listened/received.
@@ -232,11 +226,10 @@ how integration drives digital transformation..
 - scalability and performance 
 - Developer productivity
 - monitoring and management
--------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------
 //we can use https protocols also , but we have to encrypt communication using TLS configuration..
-/* is symbol of wild-card , it use in path
-
+/* is symbol of wild-card , it use in path..
+//When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
 http://<host>:<port>/api/resource
 -------------------------------------------------------------------------------------------
 //MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
@@ -244,7 +237,6 @@ properties and variables. #[payload/vars/attributes]
 
 #['\n'] --->  Give us new line
 #[payload] ---> To print payload without fx
-
 ----------------------------------------------------------------------------------------
 // We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
   The correlationID can find multiple logs and transactionID will find exact transaction log.
@@ -260,5 +252,11 @@ The transaction-ID : Will be the unique ID that can be transfer over the Applica
 syntax to fetch :-
 attributes.headers.'x-transaction-id' default uuid()
 --------------------------------------------------------------------------------------------------------
-
+//To extract all resulting payloads to an array, use a DataWeave script:
+flatten(valuesOf(payload) map ((item, index) -> item.*payload))
+----------------------------------------------------------------------------------------
+//payload orderBy -$ give descending order value..
+//(payload orderBy -$)[0] give descending order highest value..
+//When we have unique key one is alphabetic other is numeric then choose numeric one 
+for operations...
 

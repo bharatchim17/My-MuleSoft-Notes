@@ -11,3 +11,42 @@ for example:
 -The OAuth module (and every OAuth enabled connector) uses Object Stores to store the 
 access and refresh tokens...
 -------------------------------------------------------------------------------------
+//ObjectStore operations:
+1. Clear
+2. Contains
+3. Retrieve
+4. Retrieve all
+5. Retrieve all keys
+6. Remove
+7. Store
+-----------------------------------------------------------------------------------
+1. Clear:
+Removes all the contents in the store...
+------------------------------------------------------
+2. Contains:
+Returns whether the key is present or not..
+#General:
+key: #[attributes.queryParams.key]
+----------------------------------------------------------------------
+3. Retrieve:
+Retrieves the value stored for the given key..
+#General:
+key: #[vars.variableName]
+default value: #[payload]
+-----------------------------------------------------------------------
+4. Retrieve all:
+Retrieves all the key value pairs in the object store...
+-----------------------------------------------
+5. Retrieve all keys:
+Returns a List containing all keys that the objectStore currently holds values for...
+------------------------------------------------------------
+6. Remove:
+Removes the value associated to the given key...
+key:  keyName 
+------------------------------------------------------------------
+7. Store:
+Stores the given value using the given key..
+#General:
+key: keyName
+Value: #[payload]
+------------------------------------------------------------------------

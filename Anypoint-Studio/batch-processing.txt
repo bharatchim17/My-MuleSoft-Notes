@@ -1,5 +1,4 @@
 --------------------------------------------------------------------------------------
-
 //Batch processing:-
 Components are designed for reliable, asynchronous processing of larger-than-memory 
 data sets. The components are the Batch Job, Batch Step, and Batch Aggregator...
@@ -12,7 +11,7 @@ https://docs.mulesoft.com/mule-runtime/latest/_images/mruntime-batch-job-overvie
 1. Load and dispatch
 2. Processes
 3. On Complete
----------------------------------------
+----------------------------------------------------------------------------------
 //Load and dispatch:
 
 When flow execution reaches the load and dispatch phase executed implicitly then it 
@@ -27,7 +26,7 @@ threads to use and the level of parallelism to apply...
 
 - Mule splits the incoming message into records , stores them in persistent Queue , and
 Queries and schedules those records in blocks of records to process..
-----------------------------------------
+--------------------------------------------------------------------------------
 //Process(Batch Step):
 - The runtime begins processing the records in batch asynchronously..
 - Only one Queue exists , and records are picked out it for each batch step , processed ,
@@ -39,7 +38,7 @@ in one batch step before pushing any of them to the next batch step , queue are 
 batch step. the runtime continues processing the batch , skipping over the failed 
 record in each subsequent batch step..
 - We can apply filters and Aggregators in this phase...
-----------------------------------
+------------------------------------------------------------------------------
 //Refining Batch Steps Processing:
 Batch filters:
 you can set filters upon batch steps to only accept some records for processing..
@@ -50,14 +49,14 @@ A batch step uses two attributes to filter records:
 Batch Aggregator:
 1. Fixed size batch Aggregator
 2. Streaming
---------------------------------
+-------------------------------------------------------------------------------
 On Complete Phase:
 - During this phase , we can optionally configured the runtime to create a report
 or summary of the records it processed for the particular batch job instance..
 - If you leave the ON complete phase empty and do not reference the batch job result
- object elsewhere in your application , the batch job simply completes , whether failed
- or successful..
- --------------------------------
+ object elsewhere in your application , the batch job simply completes , whether 
+ failed or successful..
+ ---------------------------------------------------------------------------------
  //Variable propagation:
  - Variable created in batch step is available in each batch step..
  - Variable created inside batch job are not visible in on complete phase only final
@@ -100,3 +99,21 @@ Max Failed Records: -1
 - process/commit record by record at time..
 - process/commit batch records at time using batch Aggregator..
 --------------------------------------------------------------------------------------
+//Batch operations:
+1. Batch job:
+Defines a BatchJob and creates an instance per each event that runs through this 
+processor..
+#General:
+Max failed Records: 0 | 5
+Batch Block Size: 100(Default)
+------------------------------------------------------------------------
+2. Batch step: (Process record)
+#General:
+Accept Expression: payload > 10
+Accept Policy:  All | NO_Failures(default) | Only_Failures
+------------------------------------------------------------------
+3. Batch Aggregator: (Process record)
+#General:
+Aggregator Size: 4 
+------------------------------------------------------------------
+//Marking specific id called water marking..

@@ -1,22 +1,53 @@
--------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 //Unit Testing:-
 validate of smallest unit of code to verify as it works as expected..
--------------------------------------------------------------------------------------------------
+
 //Munit:-
-Munit is Mule application testing framework that allows you to easily build automated tests for your 
-integrations and APIs. it provides a full suite of integration and unit test 
-capabilites and is fully integrated with Maven surefire for integration with your 
+Munit is Mule application testing framework that allows us to easily build automated 
+tests for our integrations and APIs. it provides a full suite of integration and unit 
+test capabilites and is fully integrated with Maven surefire for integration with your 
 continuous deployment environment...
-
+Munit framework provides full suite of integration and unit test capabilites , and is
+fully integrated with Maven for continuous deployment environment..
+---------------------------------------------------------------------------
 //Munit is divided in two main sub modules:
-Munit 
-Munit Tools
+1. Munit (has two categories 1. Operations , Scope and Routers) 
+2. Munit Tools
 
+//Munit Operations:
+1. Set Event
+2. Set null payload
+//Munit Scope and Routers:
+3. After Suite
+4. Before Suite
+5. After Test 
+6. Before Test
+7. Test
+
+//Munit tools Operations:
+1. Assert equals
+2. Assert expression
+3. Assert that
+4. Clear stored data
+5. Dequeue
+6. Fail
+7. Mock When
+8. Queue
+9. Remove
+10. Retrieve
+11. Run custom
+12. Sleep
+13. Store
+14. Store Oauth token
+15. Verify call
+//Munit tools Scopes and Routers
+17. Spy
+----------------------------------------------------------------------------
 //Munit test case 
 1. Behavior
 2. Execution
 3. Validation
-
+----------------------------------------------------------------------------
 With Munit you can:
 - Create your test by writing mule code
 - Mock processors
@@ -26,12 +57,19 @@ With Munit you can:
 - Tag tests
 - check visual coverage in studio 
 - generate coverage reports
---------------------------------------------------------------------------------------------------------------------------------------
-//Assert Equals:
+----------------------------------------------------------------------------
+Munit is divided in two Sub-modules:
+1. MUnit
+2. MUnit Tools
+------------------------------------------------------------------------------
+//Assert Equals: 
+Use to do equals assertions..
 The Assert Equals processor allows you to run assertions in order to validate the state 
-of Mule Event's content. This is processor can be used to validate Mule Event after production code runs. 
-fx#Actual: --example-->payload.***
-fx#expected: --example-->** as Number
+of Mule Event's content. This is processor can be used to validate Mule Event after 
+production code runs. 
+#General:
+Actual: payload.** 
+expected: ** as Number | As String
 
 //Assert That:
 The Assert That event processor allows you to run assertions to validate the state of 
@@ -39,9 +77,9 @@ Mule event's content. You can use the Assert that processor to validate the mule
 the production code runs..
 Assert that processor uses set of dataweave function called Munit matchers to define assertion conditions 
 for any value in an expression.. https://docs.mulesoft.com/munit/latest/munit-matchers
-#Expression: payload
-#is: MunitTools::withMediaType('application/json')
------------------------------------------------------------------------------------
+Expression: #[payload]
+is: #[MunitTools::withMediaType('application/json')]
+-------------------------------------------------------------------------------
 //Assert Expression:
 The Assert expression processor allows you to evaluate Dataweave expression that asserts state
 of Mule Event's content..This processor can be used to validate mule event after production code runs , 
@@ -50,16 +88,16 @@ using Dataweave assertion library..
 import * from dw::test::Asserts 
  ---
 payload must notBeNull() 
----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 //Set Event:
 The Set Event Processor allows you to define a Mule Event. This message processor is 
 normally used at the beginning of an MUnit test, to define the first message to send 
 to the flow being tested...
 #attributes:
-fx{
+value: #[{
 	queryParams:{param1: "20" , param2: "30"}  <------- Here , param1 is key & 20 is value...
-  }
-----------------------------------------------------------------------------------------
+        }]
+----------------------------------------------------------------------------------
 //The Mock When:
 processor enables you to mock an event processor  we can configure a then-return 
 element to define the type of response the mocked processor returns. It can be a
@@ -120,4 +158,14 @@ It's enables you to record processing flow and then configure unit test based on
 //Before Suite:
 The Munit Suite contains code that is meant to be executed before whole suite..
 we can use one Before Suite scope / Munit test Suite..
+--------------------------------------------------------------------------------------
+//Assertion connectors:
+Assert equals: Used to do equal assertion..
+Assert that: contains below matcher function to do assertions..
+- Core Matchers
+- String Matchers
+- Comparable Matchers
+- Iterable and Map Matchers
+Assert expression:
+Dataweave assertions library
 --------------------------------------------------------------------------------------

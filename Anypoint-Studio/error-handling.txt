@@ -37,18 +37,33 @@ catch it in catch statement , like these function anypoint studio provided try s
 //every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
 
 ------------------------------------------------------------------------------------------------------
-//On Error Continue:- Considers the request transaction as Success-response and 
-response back to the response section (success response) of listner..
+Error Handling Operations:
+1. On Error Continue
+2. On Error Propagate
+3. Raise Error
+4. Error Handler
+-----------------------------------------------------------------------------
+1. On Error Continue: 
+Considers the request transaction as Success-response and response back to the 
+response section (success response) of listner..
 
-//On Error Propagate:- Considers the request transaction as Error-response  and
- response back to the error response section of listner..
-//When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
+2. On Error Propagate: 
+Considers the request transaction as Error-response and response back to the error 
+response section of listner..
 
+//Raise Error:
+Is used to intentionally throw an exception or error within flow..
+
+//Error Handler:
+This component executes when an error is raised and routes it to the first matching 
+handler. It can contain any number of internal handlers (for example On Error 
+Continue and On Error Propagate) and supports handler matching by error type or with 
+a DataWeave expression. The raised error is stored as an inspectable object so the 
+handlers can execute and act accordingly...
 //Global error handler, also known as global exception strategy , is an error handling mechanism that
 allows you to define a centralized error handling strategy that applies to all flows within Mule application.. 
 
-//Raise Error:-
-Is used to intentionally throw an exception or error within flow..
+
 ---------------------------------------------------------------------------------------------------
 //Set in variable of transform message of flow:
 
