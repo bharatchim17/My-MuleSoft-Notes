@@ -1,0 +1,39 @@
+//File | FTP | SFTP Operations:
+1. Copy
+2. Create directory
+3. Delete
+4. List
+5. Move
+6. On New or Updated File
+7. Read 
+8. Rename
+9. Write 
+---------------------------------------
+1. Copy:
+
+------------------------------------------------------------------------
+2. Create directory:
+#General:
+connector configuration: Create main folder and link it..
+Directory path: \basic <---------this directory we wann Create
+-----------------------------------------------------------------------
+3. Delete
+4. List
+5. Move
+6. On New or Updated File
+7. Read 
+8. Rename
+---------------------------------------------------------------------------
+9. Write:
+#General:
+connector configuration: Create folder and link it..
+path: fileOperation/Abstract.txt <-----directory/file
+content(fx):
+Create parent directories: True
+write Mode(fx): OVER_WRITE 
+----------------------------------------------------------------------------------------
+
+
+
+
+

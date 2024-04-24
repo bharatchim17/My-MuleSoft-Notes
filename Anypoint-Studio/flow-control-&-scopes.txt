@@ -7,7 +7,8 @@
 4. Choise
 ------------------------------------------------------------------------------------
 1. The Scatter-Gather:
-Component executes each It will enable multi-threading will make the parallel call , not sequentially...
+Component executes each It will enable multi-threading will make the parallel call , 
+not sequentially...
 Parallel execution of routes can greatly increase the efficiency of your Mule
 application and may provide more information than sequential processing...
 It catch responses we get from individual system..
@@ -96,7 +97,7 @@ exception, the For Each scope will stop processing it and invoke an error handle
 #General:
 collection : #[payload]  | #[variable]
 counter variable name: counter
-batch size: 1 (default) | 4 (is collection)
+batch size: 1 (default) | 4 <--------- collection of 1 | 4 
 root message variable name: rootMessage
 --------------------------------------------------------------------------------------
 //Parallel For Each Scopes: 
