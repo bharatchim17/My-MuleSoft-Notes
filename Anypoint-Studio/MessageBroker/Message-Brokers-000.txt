@@ -59,6 +59,9 @@ https://www.designgurus.io/blog/rabbitmq-kafka-activemq-system-design
 
 -------------------------------------------------------------------------------------
 //Rabbit MQ
+Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based on
+erlang language..
+Producer ---> Exchange ---> Queue ---> Consumer
 Open RabbitMQ command prompt and run below commands:
 - rabbitmq-plugins.bat list
 - rabbitmq-plugins.bat enable mention_plugine_here (rabbitmq_management)
@@ -88,21 +91,12 @@ one module will create unanticipated changes within other modules...
 
 //RabbitMQ exchange Types:
 - Direct
-- Fanout
+- Fanout***
 - Topic
 - Headers 
                                       //Subcategories RabbitMQ exchange Types:
                                         - Default 
                                         - Dead Letter
---------------------------------------------------------------------------------------
-//Kafka: 
-Is written in scala & java Apache Kafka is an open-source distributed-streaming & 
-messaging system Originally designed by LinkedIn with capabilities to handle huge 
-loads of data with its distrubuted , fault tolerence architecture it works with 
-pub-sub mechanism for message communication..
-database have high storage but low throughput that's why , Operation Per Second is low..
-Whereas kafka has high throughput and low storage...
-
 
 -----------------------------------------------------------------------------------------
 //Diff between Anypoint MQ connector vs JMS Connector vs VM connector?
@@ -121,4 +115,55 @@ Think Amazon SQS but a lot better and great integration with Anypoint Platform..
 
 JMS uses the Java Messaging Service protocol and requires an external JMS broker such 
 as ActiveMQ. Can be used by any application that supports JMS connectivity...
--------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+//Kafka: 
+Is written in scala & java Apache Kafka is an open-source distributed-streaming & 
+messaging system Originally designed by LinkedIn with capabilities to handle huge 
+loads of data with its distrubuted , fault tolerence architecture it works with 
+pub-sub mechanism for message communication..
+database have high storage but low throughput that's why , Operation Per Second is low..
+Whereas kafka has high throughput and low storage...
+
+
+//What is message..?  is small to medium size piece of data:
+
+1. Producer: is an application that sends data to kafka server...
+2. Consumer: an application that receive data from kafka sever..
+3. Broker: is kafka server
+4. Cluster: group of computers
+5. Topic: is unique name for kafka stream..
+6. Partitions: part of topic 
+7. Offset: unique , sequence id for message within partition..
+8. Consumer groups: group of consumers acting as single logic unit..
+
+kafka-3.7.0-src\bin\windows <--- type cmd in this path
+
+//Error Occure:
+Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
+Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
+
+//wmic' is not recognized as an internal or external command,
+operable program or batch file.
+Solution: https://www.youtube.com/watch?v=mSAAHeDkmDk
+
+---------------------------------------------------------------------------------------
+//kafka random commands:
+
+zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+kafka-server-start.bat ..\..\config\server.properties
+
+kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+----------------------------------------------------------------------------------------------------
+//Create data folder in path: kafka-3.7.0-src
+In data floder create folder: broker & zookeeper
+1. zookeeper: 
+In config zookeeper.properties dataDir = paste path with forward slash (/) of zookeeper folder 
+2. broker: 
+In config server.properties  log.dirs= paste path with forward slash (/) here of broker folder 
+---------------------------------------------------------------------------------------------------------

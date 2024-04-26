@@ -151,7 +151,7 @@ Use the filter to exclude specific message from Cache scope flow.
  #[attributes.uriParams.empId == "2"]
 
 ------------------------------------------------------------------------------------
-Caching type
+//Caching type
 1. Default
 2. ObjectStore
 

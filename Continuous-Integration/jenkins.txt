@@ -67,9 +67,16 @@ world...
 Install and signup ngrok command prompt:
 
 ngrok.exe --version
-ngrok.exe http paste_port_here(8080)  | ngrok tcp paste_port_here(3306) 
+ngrok config add-authtoken 2esDlb <-- it's token
+ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306
+ngrok http http://localhost:8080 
 forwanding:    <------- from ngrok and save it
 
+
+
+ //Error: authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+Solution:  taskkill /f /im ngrok.exe
+----------------------
 //In github repository settings
  Webhooks
  Add webhooks: paste path of ngrok here /github-webhook

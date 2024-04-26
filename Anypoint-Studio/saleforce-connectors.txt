@@ -116,12 +116,12 @@ Retrieves data from specified objects, whether or not they have been deleted.
 Saleforce query:     SELECT Id, StudentSemester__c , StudentID__c FROM 
 studentinformation__c   where StudentID__c = :studentId
 
-#Parameter fx:
-output application/java
+Parameter:
+#[output application/java
 ---
 {
 	StudentID : attributes.queryParams.studentId
-}
+}]
 -----------------------------------------------------------------------------------
 8. Delete:
 Deletes one or more records from object..

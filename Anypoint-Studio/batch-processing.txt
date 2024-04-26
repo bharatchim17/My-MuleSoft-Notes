@@ -98,6 +98,8 @@ Max Failed Records: -1
 2. Batch processing using batch job:
 - process/commit record by record at time..
 - process/commit batch records at time using batch Aggregator..
+
+//Foreach is single threaded and BatchJob is multi-threaded...
 --------------------------------------------------------------------------------------
 //Batch operations:
 1. Batch job:
@@ -106,14 +108,15 @@ processor..
 #General:
 Max failed Records: 0 | 5
 Batch Block Size: 100(Default)
-------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 2. Batch step: (Process record)
 #General:
 Accept Expression: payload > 10
 Accept Policy:  All | NO_Failures(default) | Only_Failures
-------------------------------------------------------------------
+-------------------------------------------------------------------------------
 3. Batch Aggregator: (Process record)
 #General:
 Aggregator Size: 4 
-------------------------------------------------------------------
-//Marking specific id called water marking..
+-------------------------------------------------------------------------------
+
+ 

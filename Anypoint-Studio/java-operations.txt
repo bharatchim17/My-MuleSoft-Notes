@@ -3,60 +3,71 @@ https://docs.mulesoft.com/scripting-module/latest/scripting-module-xml-maven
 
 http://www.mulesoft.org/schema/mule/scripting-module
 http://www.mulesoft.org/schema/mule/scripting-module/current/mule-scripting-module.xsd
+--------------------------------------------------------------------------------------------
+//java operations:
+1. Invoke
+2. Invoke static
+3. New 
+4. Validate type
+--------------------------------------------------------------------------------------------
+1. Invoke:
+Operation that allows the user to invoke methods with the provided arguments on the given 
+instance. The identifier of the Method to be invoked includes the class and method 
+names, being the method a full description of its signature including the types of 
+each parameter. 
+#General
+Instance: #[vars.taxCalculator]  <------------- instance includes in Invoke 
 
+Args: #[{
+              ctrl + space
+         }]
+
+#Method
+Class: 
+Method: fetch methods
 
 --------------------------------------------------------------------------------------------
-//New: 
+2. Invoke static:
+Operation that allows the user to invoke static methods with the provided arguments. 
+The identifier of the Method to be invoked includes the class and method names, 
+being the method a full description of its signature including the types of each parameter.
+
+#General
+Args: #[{
+              ctrl + space
+         }]
+#Method
+Class: 
+Method: fetch methods
+
+#Advanced
+Target Variable: totalTax
+Target Value: #[payload] (default)
+--------------------------------------------------------------------------------------------
+3. New:
 Operation that allows the user to create a new instance of the given class The identifier
 of the Constructor to be used includes the class and constructor names, being the 
 constructor a full description of its signature including the types of each parameter.
 
 #General
 Arg: fx
-#Constructor
-class: 
-Constructor fx: 
+class: Add(+) | search
+Constructor:  fetch constructor
 
 #Advanced
-Output
 Target Variable: taxCalculator
 Target Value: #payload
----------------------------------------------------------------------------------
-//Invoke:
-Operation that allows the user to invoke methods with the provided arguments on the given 
-instance. The identifier of the Method to be invoked includes the class and method 
-names, being the method a full description of its signature including the types of 
-each parameter. 
-
-//Invoke static:
-Operation that allows the user to invoke static methods with the provided arguments. 
-The identifier of the Method to be invoked includes the class and method names, 
-being the method a full description of its signature including the types of each parameter.
-
-
-#General
-Instance: fx---> vars.taxCalculator  <------------- instance includes in Invoke 
-Args: fx--->{
-              ctrl + space
-            }
-#Method
-Class: 
-Method:
-
-#Advanced
-Output
-Target Variable: totalTax
-Target Value: #payload
 --------------------------------------------------------------------------------------------
-//Validate-Type:
+4. Validate type:
 Operation that allows the user to validate that a given instance is an instanceof 
 the specified class.
 #General
-Class:
-Instance: fx---> vars.taxCalculator
-Accept subtypes: True(Default)
+Class: Add(+) | search
+Instance: #[vars.taxCalculator]
+Accept subtypes: True(default) | False | expression | Empty
+
 ---------------------------------------------------------------------------------------
 //Java Constructors:
 A Constructor in Java is special methods that is used to intialize objects , The
 Constructor is called when an object of class is created..
----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------

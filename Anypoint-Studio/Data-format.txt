@@ -1,1 +1,18 @@
 -----------------------------------------------------------------------------------
+//JSON stands for JavaScript Object Notation , JSON is a text format for storing and 
+transporting data..
+In JSON, values must be one of the following data types:
+string
+number
+object (JSON object)
+array
+boolean
+null
+JSON values can't be one of the following data types:
+function
+date
+undefined
+---------------------------------------------------------------------------------
+//XML stands for eXtensible Markup Language , XML was designed to store and transport 
+data...
+-----------------------------------------------------

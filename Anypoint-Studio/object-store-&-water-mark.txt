@@ -11,7 +11,7 @@ for example:
 -The OAuth module (and every OAuth enabled connector) uses Object Stores to store the 
 access and refresh tokens...
 -------------------------------------------------------------------------------------
-//ObjectStore operations:
+//ObjectStore Operations:
 1. Clear
 2. Contains
 3. Retrieve
@@ -22,31 +22,42 @@ access and refresh tokens...
 -----------------------------------------------------------------------------------
 1. Clear:
 Removes all the contents in the store...
-------------------------------------------------------
+--------------------------------------------------------------------------------
 2. Contains:
 Returns whether the key is present or not..
 #General:
-key: #[attributes.queryParams.key]
-----------------------------------------------------------------------
+key: #[attributes.queryParams.key]  | key:  keyName 
+--------------------------------------------------------------------------------
 3. Retrieve:
 Retrieves the value stored for the given key..
 #General:
-key: #[vars.variableName]
+key: #[vars.variableName] | key: keyName 
 default value: #[payload]
 -----------------------------------------------------------------------
 4. Retrieve all:
 Retrieves all the key value pairs in the object store...
------------------------------------------------
+---------------------------------------------------------------------------
 5. Retrieve all keys:
 Returns a List containing all keys that the objectStore currently holds values for...
-------------------------------------------------------------
+-----------------------------------------------------------------------------
 6. Remove:
 Removes the value associated to the given key...
-key:  keyName 
-------------------------------------------------------------------
+#General:
+key: #[attributes.queryParams.key]  | key:  keyName 
+------------------------------------------------------------------------------
 7. Store:
 Stores the given value using the given key..
 #General:
-key: keyName
+key: keyName 
 Value: #[payload]
-------------------------------------------------------------------------
+Fall if present: False(default) | True | expression | Empty
+Fall on null value: True(default) | False | expression | Empty
+-----------------------------------------------------------------------------
+//Marking specific id called water marking , There are two types of marking Automatic
+& manual..
+Watermarking is a technique for storing and retrieving the point at which a periodic
+synchronization should resume the next time it’s executed. Watermarking is a common 
+use of the object store...
+use persistent storage when we use Watermarking also, when we have two primary key 
+choose numeric one..
+------------------------------------------------------------------------------

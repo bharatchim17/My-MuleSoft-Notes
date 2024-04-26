@@ -1,0 +1,120 @@
+//Database operations:
+1. Bulk delete
+2. Bulk insert
+3. Bulk update
+4. Delete
+5. Execute DDL
+6. Execute Script 
+7. Insert
+8. On Table Row (source)
+9. Query Single
+10. Select
+11. Store procedure
+12. update
+-------------------------------------------------------------------------------------
+1. Bulk delete:
+Allows executing one delete statement various times using different parameter bindings. 
+using one single Database statement, which has performance advantages compared to 
+executing one single delete operation various times...
+#General:
+Input parameters: #[payload]  (default)
+SQL query Text: 
+
+2. Bulk insert:
+
+3. Bulk update:
+-----------------------------------------------------------------------------------
+4. Delete: 
+//How can we give input parameters to queries for database component ?
+#General:
+SQL query Text: 
+VALUES(:key1 , :key2 , :key3) ;      // this is placeholder :key
+
+Input parameters: 
+                    #[{
+                    key1: payload.keyName ,            
+                    key2: payload.keyName , 
+                    key3: payload.keyName
+                    }]  
+
+
+5. Select:
+Selects data from a database. Streaming is automatically applied to avoid preemptive 
+consumption of such results, which may lead to performance and memory issues...
+
+6. Query Single:
+Selects single result from a database. If the indicated SQL query returns more than 
+one record, only the first one is returned. Streaming is not used for this operation, 
+which means that you must be careful because all selected fields will be loaded to 
+memory...
+
+7. update:
+8. Insert:
+------------------------------------------------------------------------------------
+9. Store procedure:
+Invokes a Stored Procedure on the database. When the stored procedure returns one or 
+more ResultSet instances, streaming is automatically applied to avoid preemptive 
+consumption of such results, which may lead to performance and memory issues...
+#General:
+SQL query Text: 
+Input parameters:
+In out parameters: None | Edit inline | Expression
+output parameters: None | Edit inline ✅ | Expression
+-----------------------------------------------------------------------------------------
+//After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
+ to avoide this there are two ways:
+
+ 1. We can make use of auto generated keys features on top of database...
+Database(Insert-operation) component ---> Advance ---> 
+Auto generated keys = true | Auto generated key columnNames = edit inline 
+---> + --provide--> columnNames = Value: case_ID
+//To read payload in java-stream objects ---> 
+evaluate: write(payload , "application/json")
+
+ 2. We can write a stored procedures which will take all fields as input and insert 
+ nto the database , then return us generated case_id..
+Database(stored-procedure) 
+#General: 
+inout parameters : none 
+output parameters : edit inline
++ provide --->  output parameters = key: case_id & type: Integer
+
+// In database case ID is of auto generated  which is primary key. but , same payload 
+can come multiple times so , we need to give max(case_id here case id is primary key) 
+to DB which will give us the latest case id.. 
+we use select operation in anypoint studio for this task write in select query-text:- 
+ use max function.. 
+----------------- --------------------------------------------------------------------
+10. Execute DDL: 
+Enables execution of DDL queries against a database...
+#General:
+SQL query Text:
+                        CREATE TABLE inventory (
+                            id INT PRIMARY KEY,
+                            product VARCHAR(50) UNIQUE,
+                            quantity INT,
+                            price DECIMAL(18,2)
+                        );
+-----------------------------------------------------------------------------------
+6. Execute Script:
+Executes a SQL script in one single Database statement. The script is executed as 
+provided by the user, without any parameter binding..
+#General:
+SQL query Text:
+Script path: <-------- path of .sql file
+
+-----------------------------------------------------------------------------------
+8. On Table Row: 
+Triggers a message per each row in a table..
+#General:
+Table: <--- fetch table
+Watermark column: <--- fetch column we select  Watermark to primarykey
+Id column: <--- fetch id column
+Scheduling stratergy:  Fixed Frequency ✅ | Corn 
+Frequency: 
+Start delay:
+Time unit: 
+
+-----------------------------------------------------------------------------------
+
+

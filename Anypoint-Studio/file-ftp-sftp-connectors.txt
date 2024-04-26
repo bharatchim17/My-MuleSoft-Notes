@@ -4,7 +4,7 @@
 3. Delete
 4. List
 5. Move
-6. On New or Updated File
+6. On New or Updated File (source)
 7. Read 
 8. Rename
 9. Write 
@@ -21,7 +21,10 @@ Directory path: \basic <---------this directory we wann Create
 4. List
 5. Move
 6. On New or Updated File
-7. Read 
+--------------------------------------------------------------------------
+7. Read:
+
+--------------------------------------------------------------------------
 8. Rename
 ---------------------------------------------------------------------------
 9. Write:
@@ -31,9 +34,31 @@ path: fileOperation/Abstract.txt <-----directory/file
 content(fx):
 Create parent directories: True
 write Mode(fx): OVER_WRITE 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+//FileZila , FileZila pro: is FTP , SFTP client..
+Default port for FTP = 21
+Default port for SFTP = 22
+//What is FTP , SFTP..?
+File Transfer Protocol Secure File Transfer Protocol. is used to transfer file between
+server(website) and client(local machine)..FTP is the language that computers use to 
+transfer files over TCP/IP network...SFTP(secure file transfer protocol) Data encrypted 
+using SSH (secure shell)..
+SFTP & FTP both use TCP for file transfer...
+TFTP(Trival File Transfer Protocol) its not used to transfer files over internet..
+mainly use for transfering files within local area network , is connectionless protocol
+use UDP instead of TCP..
 
+server port: 14148
+server host: 127.0.0.1
 
+server fingerprint: be:e3:7b:64:d4:c8:52:1a:cf:de:b3:65:83:f9:e4:22:4c:8c:8f:b8:30:22:6f:54:50:85:04:f9:fc:b5:5b:fa
+---------------------------------------------------------------------------------
+//File Transfer Protocol(FTP):
+- Transmits files from one host to another..
+- Can be used for downloading the files to computer from other server..
 
+//How FTP work..?
+Client <---- control connection & Data connection ----> Server
+---------------------------------------------------------------------------------
 
 
