@@ -1,22 +1,4 @@
------------------------------------------------------------------------------------------
-//Mule Project naming standards and structure:-
-1.Project name:- kebab case 
-example ---> project-name
 
-2. file names:- kebab case 
-example ---> file-name
-
-3.flow and subflow names: kebab case
-example ---> subflow-name
-
-4.json/xml fields names:-  camel case 
-example ---> streetAddress
-
-5.variable name:- camel case
-example ---> variableName
-
-6.conmector/component name :-  First later capital and space between words
-example ---> Transform Message
 
 --------------------------------------------------------------------------------------------
 //Manual deployment:- right click on project ---> Anypoint platform ---> choose environment 
@@ -146,4 +128,20 @@ key: enc.key    value: abcdef0123456789
                                                 "anypoint.platform.client_id"  
                                                 ]
                                                 }
------------------------------- --------------------------
+---------------------------------------------------------------------------------------------------------------------------
+//http listner:
+The following ports are assigned on the Mule worker:
+ gogle it : private port in cloudhub + mulesoft
+
+http.port is set to 8081
+https.port is set to 8082
+
+https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide
+--------------------------------------------------------------------------------------
+//http request:
+Port 80 vs. Port 443 – The main difference between Port 80 and Port 443 is strong 
+security. Port 80 provides an unencrypted connection, whereas Port 443 supports an 
+encrypted connection...
+
+https://www.clickssl.net/blog/port-80-http-vs-port-443-https
+---------------------------------------------------------------------------------------

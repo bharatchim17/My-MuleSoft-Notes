@@ -1,0 +1,57 @@
+-------------------------------------------------------------------------------
+//kafka Operations:
+1. Batch message listener (source)
+2. Message listener (source)
+3. Consume
+4. Commit 
+5. Publish
+---------------------------------------------------------------------------------
+1. Batch message listener: 
+This source supports the consumption of messages from a Kafka Cluster, producing a 
+List of messages to the flow...
+#General:
+Poll timeout:
+Poll timeout time unit: Days | Hours | Second
+Acknowledgement mode: Auto | Dups_Ok | Empty | Immediate | Manual
+Amount of parallel consumer: 
+
+2. Message listener:
+This source supports the consumption of messages from a Kafka Cluster, producing a 
+single message to the flow...
+--------------------------------------------------------------
+3. Consume:
+This operation allows receiving messages from one or more Kafka topics, it works very 
+similarly to the Message Listener source, so all the operations that apply to that, 
+will apply to this operation as well.
+Note: The consume operation works only in IMMEDIATE mode. The consume operation does 
+not return the consumerCommitKey...
+#General:
+Consumption timeout:
+Timeout Time Unit:
+Acknowledgement mode:
+------------------------------------------------------------------------
+4. Commit:
+Commits the offsets associated to a message or batch of messages consumed in a 
+Message Listener. This would be a List or a single message consumed in the 
+BatchMessageListenerSource..
+#General:
+Consumer commit key:
+----------------------------------------------------------------
+5. Publish:
+Publish a message to the specified kafka topic, optionally specifying the partition, 
+key and message content for it. The publish operation supports transactions..
+#General:
+Topic:
+Partion:
+Key:
+Message: #[payload] (default)
+Headers: 
+-------------------------------------------------------------------------------
+6. Seek:
+Sets the current offset value for the given topic, partition and consumer group of 
+the listener..
+#General:
+Topic:
+Partion:
+Offset:
+------------------------------------------------------------------------------------

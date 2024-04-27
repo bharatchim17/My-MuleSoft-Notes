@@ -1,3 +1,22 @@
+-----------------------------------------------------------------------------------------
+//Mule Project naming standards and structure:-
+1.Project name:- kebab case 
+example ---> project-name
+
+2. file names:- kebab case 
+example ---> file-name
+
+3.flow and subflow names: kebab case
+example ---> subflow-name
+
+4.json/xml fields names:-  camel case 
+example ---> streetAddress
+
+5.variable name:- camel case
+example ---> variableName
+
+6.conmector/component name :-  First later capital and space between words
+example ---> Transform Message
 -------------------------------------------------------------------------------------------------------------
 
 //How request & response data passed :-
@@ -259,4 +278,4 @@ flatten(valuesOf(payload) map ((item, index) -> item.*payload))
 //(payload orderBy -$)[0] give descending order highest value..
 //When we have unique key one is alphabetic other is numeric then choose numeric one 
 for operations...
-
+---------------------------------------------------------------------------------

@@ -15,7 +15,7 @@ API subcription mechanism supports multiple types of event:
 3. platform events..
 4. Change data capture events..
 //Explain  mulesoft event streaming with saleforce..?
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 //How can you identify what event happens in Streaming..?
 saleforce can fetch the object events and it's reflect in attributes of mule.. 
 attributes.'type' == "created" | "updated" | "deleted"..
@@ -98,7 +98,7 @@ cases, prefer upsert over create, to avoid creating unwanted duplicate records..
 #General:
 Object type: fetch created object here..
 External id field Name: here fetch external id from object.. 
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
 6. Update: 
 Updates one or more existing records in your organization's data.
 #General:
@@ -117,7 +117,8 @@ Saleforce query:     SELECT Id, StudentSemester__c , StudentID__c FROM
 studentinformation__c   where StudentID__c = :studentId
 
 Parameter:
-#[output application/java
+#[
+%dw 2.0 output application/java
 ---
 {
 	StudentID : attributes.queryParams.studentId

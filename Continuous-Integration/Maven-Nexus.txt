@@ -1,4 +1,4 @@
----------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 https://www.vpsserver.com/maven-commands-and-options/#table-of-contents-13
 ----------------------------------------------------------------------------------------
 //Maven
@@ -205,20 +205,17 @@ https://www.vpsserver.com/maven-commands-and-options/#table-of-contents-13
 Maven Phases
 Although hardly a comprehensive list, these are the most common default lifecycle phases executed.
 
-validate: validate the project is correct and all necessary information is available
-compile: compile the source code of the project
-test: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
-package: take the compiled code and package it in its distributable format, such as a JAR.
-integration-test: process and deploy the package if necessary into an environment where integration tests can be run
-verify: run any checks to verify the package is valid and meets quality criteria
-install: install the package into the local repository, for use as a dependency in other projects locally
-deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
----------------------------------------------------------------------------------------------------------------------------
-//The following ports are assigned on the Mule worker:
- search: private port in cloudhub + mulesoft
-
-http.port is set to 8081
-https.port is set to 8082
-
-https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide
-----------------------------------------------------------------------------------
+1. validate: validate the project is correct and all necessary information is available
+2. compile: compile the source code of the project
+3. test: test the compiled source code using a suitable unit testing framework. 
+These tests should not require the code be packaged or deployed..
+4. package: take the compiled code and package it in its distributable format, 
+such as a JAR...
+5. mintegration-test: process and deploy the package if necessary into an environment 
+where integration tests can be run...
+6. mverify: run any checks to verify the package is valid and meets quality criteria..
+7. install: install the package into the local repository, for use as a dependency 
+in other projects locally...
+8. deploy: done in an integration or release environment, copies the final package to 
+the remote repository for sharing with other developers and projects...
+--------------------------------------------------------------------------------------

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------------
+//NG-Rok:
+Ngrok works by creating a secure tunnel to your local server and assigning it a unique
+URL that can be accessed globally. It encrypts the traffic between your local machine 
+and the internet, ensuring security while exposing your local server to the outside 
+world...
+
+Install and signup ngrok command prompt:
+
+ngrok.exe --version
+ngrok config add-authtoken 2esDlb <-- it's token
+ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306
+ngrok http http://localhost:8080 
+forwanding:    <------- from ngrok and save it
+-------------------------------------------------------------------------------------
