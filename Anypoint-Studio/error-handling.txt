@@ -4,9 +4,9 @@ The process of handling errors in flow and responding back user friendly message
 instead of system error messages is known as error handling...
 
 Selector Expressions for Mule Errors:-
-1. #[error.description]
+1. #[error.description] *
 2. #[error.detailedDescription]
-3. #[error.errorType]
+3. #[error.errorType] *
 4. #[error.cause]
 5. #[error.errorMessage]
 6. #[error.childErrors]
@@ -62,7 +62,6 @@ a DataWeave expression. The raised error is stored as an inspectable object so t
 handlers can execute and act accordingly...
 //Global error handler, also known as global exception strategy , is an error handling mechanism that
 allows you to define a centralized error handling strategy that applies to all flows within Mule application.. 
-
 
 ---------------------------------------------------------------------------------------------------
 //Set in variable of transform message of flow:

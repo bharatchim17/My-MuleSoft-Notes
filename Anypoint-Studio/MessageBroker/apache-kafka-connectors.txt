@@ -1,4 +1,5 @@
--------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
 //kafka Operations:
 1. Batch message listener (source)
 2. Message listener (source)
@@ -18,7 +19,12 @@ Amount of parallel consumer:
 2. Message listener:
 This source supports the consumption of messages from a Kafka Cluster, producing a 
 single message to the flow...
---------------------------------------------------------------
+
+#Global Element
+Topic subcription patterns: Edit inline ✅ + | Bean Reference | None
+Topic patern:
+value: Topic_Name
+----------------------------------------------------------------------------------
 3. Consume:
 This operation allows receiving messages from one or more Kafka topics, it works very 
 similarly to the Message Listener source, so all the operations that apply to that, 
@@ -29,23 +35,28 @@ not return the consumerCommitKey...
 Consumption timeout:
 Timeout Time Unit:
 Acknowledgement mode:
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 4. Commit:
 Commits the offsets associated to a message or batch of messages consumed in a 
 Message Listener. This would be a List or a single message consumed in the 
 BatchMessageListenerSource..
 #General:
 Consumer commit key:
-----------------------------------------------------------------
+-----------------------------------------------------------------------------------
 5. Publish:
 Publish a message to the specified kafka topic, optionally specifying the partition, 
 key and message content for it. The publish operation supports transactions..
 #General:
-Topic:
+Topic: Topic_Name
 Partion:
-Key:
-Message: #[payload] (default)
+Key: #[now()]
+Message: #[payload] (default) | "We can put message here"
 Headers: 
+
+#Global Element
+Bootstrap server: Edit inline ✅ + | Bean Reference
+Bootstrap server
+Value : localhost:9092
 -------------------------------------------------------------------------------
 6. Seek:
 Sets the current offset value for the given topic, partition and consumer group of 

@@ -276,6 +276,5 @@ flatten(valuesOf(payload) map ((item, index) -> item.*payload))
 ----------------------------------------------------------------------------------------
 //payload orderBy -$ give descending order value..
 //(payload orderBy -$)[0] give descending order highest value..
-//When we have unique key one is alphabetic other is numeric then choose numeric one 
-for operations...
+
 ---------------------------------------------------------------------------------

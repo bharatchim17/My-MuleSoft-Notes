@@ -57,6 +57,7 @@ password: admin
 
 https://www.designgurus.io/blog/rabbitmq-kafka-activemq-system-design 
 
+Difference between Apache kafka & Apache pulsuar..?
 -------------------------------------------------------------------------------------
 //Rabbit MQ
 Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based on
@@ -137,6 +138,8 @@ Whereas kafka has high throughput and low storage...
 7. Offset: unique , sequence id for message within partition..
 8. Consumer groups: group of consumers acting as single logic unit..
 
+E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows add this path in environment 
+variable...
 kafka-3.7.0-src\bin\windows <--- type cmd in this path
 
 //Error Occure:
@@ -151,8 +154,10 @@ Solution:
 //kafka random commands:
 
 zookeeper-server-start.bat ..\..\config\zookeeper.properties
+zookeeper-server-start.bat <----add path of zookeeper.properties
 
 kafka-server-start.bat ..\..\config\server.properties
+kafka-server-start.bat .<----add path of server.properties
 
 kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 
@@ -172,6 +177,5 @@ In config server.properties  log.dirs= paste path with forward slash (/) here of
 1. In config zookeeper.properties dataDir = log.dirs=C:/kafka/zookeeper-data
 
 2. In config server.properties  log.dirs= log.dirs=C:/kafka/zookeeper-data
----------------------------------------------------------------------------------------------------------
-
+---------------------------------------------------------------------------------
 

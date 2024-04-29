@@ -27,7 +27,7 @@ solution:- Clear blank spaces..
 //Error Ocure :-  Mule Agent REST service is not available..
 
 Solution:-
-1.  Project --> Clean / Refreshing metadata..
+1.  Project --> Clean / Refresh metadata..
 2. Remove blank-space in url or payload.. 
 3. Re-enter url in postman..
 4. Restart studio..

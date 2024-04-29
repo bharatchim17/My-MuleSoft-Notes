@@ -39,7 +39,8 @@ SELECT id, Name from PushTopic  <--- command to view topic
 1. Create
 Adds one or more new records to your organization's data...
 #General:
-Type: search custom_object here  <------ custom object remove automatically we need to fetch it again an again its studio error not developer..
+Type: search custom_object here  <------ sometimes custom object remove automatically we need
+to fetch it again an again ..
 -------------------------------------------------------------------------------------
 2. Query: 
 Use SOQL query..
@@ -97,7 +98,8 @@ records, using a custom field to determine the presence of existing records. In 
 cases, prefer upsert over create, to avoid creating unwanted duplicate records....
 #General:
 Object type: fetch created object here..
-External id field Name: here fetch external id from object.. 
+External id field Name:  external id from object.. 
+Type: here fetch object 
 -------------------------------------------------------------------------------------
 6. Update: 
 Updates one or more existing records in your organization's data.
@@ -114,7 +116,7 @@ update existing record's must need to specify records Id and map containing reco
 Retrieves data from specified objects, whether or not they have been deleted.
 #General:
 Saleforce query:     SELECT Id, StudentSemester__c , StudentID__c FROM 
-studentinformation__c   where StudentID__c = :studentId
+studentinformation__c   where StudentID__c = :studentID
 
 Parameter:
 #[

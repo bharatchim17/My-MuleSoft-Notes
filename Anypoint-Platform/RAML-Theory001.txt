@@ -205,8 +205,4 @@ state of resources in particular time
 //resources are held by server
 WebClient(browser)----request(product/1)----->WebServer
 WebServer-------response{product1: milk}------>WebClient
-
-
-
-
 ---------------------------------------------------------------------------------------
