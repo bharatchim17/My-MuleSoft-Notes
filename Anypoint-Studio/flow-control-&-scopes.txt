@@ -11,7 +11,15 @@ Component executes each It will enable multi-threading will make the parallel ca
 not sequentially...
 Parallel execution of routes can greatly increase the efficiency of your Mule
 application and may provide more information than sequential processing...
-It catch responses we get from individual system..
+Output payload is combination of all targets. And each target output has payload + 
+attributes... 
+The output type Scatter Gather is Object & content type is application/java.. 
+
+//When one of the route fail all routes are failed So its always best practice to wrap
+it with Try-Block with On-Error-Continue , So that we can handle the errors and 
+complete the process successfully..
+When max concurrency = 1 , then at time one route exceutes it means , it work 
+sequentially...
 ------------------------------------------------------------------------------------
 2. Round Robin:
 is a Mule component that contains two or more processing routes and executes only one 
@@ -56,18 +64,18 @@ Target variable:  varableName
 Target value:  payload  (default fx)
 -------------------------------------------------------------------------------------
 //Async scope:
-The Async scope is a branch processing block that executes simultaneously with the main
-flow. The main flow continues to execute while it initiates and processes the Async 
-scope. The flow does not have to pause until the last message processor embedded in 
-the asynchronous flow has completed its task...
+The Async scope executes simultaneously with the main flow. The main flow continues to
+execute while it initiates and processes the Async scope. The flow does not have to 
+pause until the last message processor embedded in the asynchronous flow has completed 
+its task...
 Processes the nested list of message processors asynchronously using a thread pool, 
 Async can be useful for executing time-consuming operations that do not require you to 
 send a response back to the initiating flow (such as printing a file or connecting to 
 a mail server)...
 
- //Async & Foreach , try scope + on-error-Continue works as localScope..
+ //Async , Foreach & try scope + on-error-Continue works as localScope..
  if we save variable inside foreach it remain after scope but in case of async , 
- try + on-error it vanish..
+ try + on-error-Continue it will vanish..
  
  -------------------------------------------------------------------------------------
 //try scope:
@@ -81,11 +89,14 @@ executed in the same thread, and errors should lead to either a rollback or a co
 Until Successful runs synchronously , If any processor within the scope fails to 
 connect or to produce a successful result, Until Successful retries all the processors
 within it, including the one that failed, until all configured retries are exhausted...
+If  the  final  retry  does  not succeed, Until Successful produces an error. The 
+error Type for this Until-successful is MULE:RETRY_EXHAUSTED.. 
+
 #Generic:
 Max Retries: 3        <-----(here , 3 times + 1 normal call = 4 retries)
 Mili-Second between Retries: 1000
 
-//use this Until scope in asynchronous flow also , when we use scheduler and mq...
+//Use this Until scope in asynchronous flow also , when we use scheduler and mq...
 --------------------------------------------------------------------------------------
 //For Each scope:
 scope is similar to a "foreach" or "for loop" in most programming languages. It takes 
@@ -93,12 +104,17 @@ as input a "collection" (a list or array from a payload with any kind of content
 iterates over the items in the collection, passing each one through the components 
 placed inside the For Each scope. If a particular item in a collection throws an
 exception, the For Each scope will stop processing it and invoke an error handler..
+//Remember: Input collection for For-each must be always an Arrays...
 
 #General:
 collection : #[payload]  | #[variable]
-counter variable name: counter
+counter variable name: counter  (default)
 batch size: 1 (default) | 4 <--------- collection of 1 | 4 
-root message variable name: rootMessage
+root message variable name: rootMessage (default)
+
+If we want to process all records even if there are failures in individual records. 
+Then you must use “Try” block and use “On-Error-Continue” to handle individual errors 
+and process to next record....
 --------------------------------------------------------------------------------------
 //Parallel For Each Scopes: 
 Splits the same message and processes each part in parallel...

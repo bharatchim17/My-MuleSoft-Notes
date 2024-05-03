@@ -29,6 +29,9 @@ proxy API is a wrapper on actual application , we can go proxy API's in below sc
   - When we would like to expose with different end point on our mule applications..
   - When we would like to apply set of other policies on same services..
 
+
+//Basically your implementation url is your actual endpoint and Consumer endpoint is 
+Proxy endpoint...
  --------------------------------------------------------------------------------------------
  //Auto discovery:-
  We use API Autodiscovery to pair an API in API Manager to its deployed Mule application.
@@ -192,4 +195,9 @@ generated outside of Anypoint Platform...
   - Custom Expression: Accepts an expression each for client_id and client_secret in the headers,
   indicating where to extract the credentials from request.
 ---------------------------------------------------------------------------------------
+Note:- If your API is not showing ACTIVE in API Manager, that means , either the api ID 
+is mismatched that you have given in your code and the value in API Manager, or The 
+Anypoint platform credentials are wrong. When Status is “Un Registered “ That means , 
+your policies are not appended. But still application works without having Policies appended.
+
 

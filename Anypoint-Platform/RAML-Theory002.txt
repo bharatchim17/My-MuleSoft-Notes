@@ -18,12 +18,12 @@
 ----------------------------------------------------------------------------------------------
 https://testfully.io/blog/http-methods/
 
-1xx information:
+1xx information:  (100–199)
     - 100 continue
     - 101 switching protocols
     - 102 processing (webDAV)
 
-2xx success:
+2xx success:  (200–299)
     - 200 Ok (The request was a success)
     - 201 created (A new resource was successfully created)
     - 202 accepted
@@ -31,7 +31,7 @@ https://testfully.io/blog/http-methods/
     - 204 No Content
     - 205 reset content
 
-3xx redirection:
+3xx redirection:  (300–399)
     - 300 multiple choices
     - 301 moved permanently 
     - 302 found
@@ -39,7 +39,7 @@ https://testfully.io/blog/http-methods/
     - 304 not modified
     - 305 use proxy
 
-4xx client-error:
+4xx client-error:  (400–499)
     - 400 bad request / request validation error (The server could not understand the request. The request needs to be modified before re-sending it)..
 
     - 401 unauthorized/Access denid (The request’s authentication is either missing or incorrect)
@@ -48,13 +48,32 @@ https://testfully.io/blog/http-methods/
     - 404 resource not found
     - 405 method not found/allowed
 
-5xx server-error:
+5xx server-error:  (500–599)
 - 500 internal server error (The server encountered an error)..
 - 501 not implemented
 - 502 bad gateway
 - 503 service unavilable
 - 504 gateway timeout
 - 505 http version not supported
+
+//Frequently Used Status codes:
+• 200 OK
+• 201 Created
+• 202 Accepted
+• 400 Bad Request
+• 401 Unauthorized
+• 402 Payment Required
+• 403 Forbidden
+• 404 Not Found
+• 405 Method Not Allowed
+• 406 Not Acceptable
+• 409 Conflict
+• 415 Unsupported Media Type
+• 500 Internal Server Error
+• 501 Not Implemented
+• 502 Bad Gateway
+• 503 Service Unavailable
+• 504 Gateway Timeout
 
 ----------------------------------------------------------------------------------------
 //Request Headers has two types:

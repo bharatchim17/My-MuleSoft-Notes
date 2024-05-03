@@ -8,19 +8,37 @@
 7. Read 
 8. Rename
 9. Write 
----------------------------------------
+-----------------------------------------------------------------------------------
 1. Copy:
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 2. Create directory:
 #General:
 connector configuration: Create main folder and link it..
 Directory path: \basic <---------this directory we wann Create
------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 3. Delete
 4. List
 5. Move
-6. On New or Updated File
+---------------------------------------------------------------------------------
+6. On New or Updated File:
+#Global Elemet: 
+Working Directory:  D:\sample\xxx3
+#General:
+Directory: D:\sample\xxx3\inbound
+Scheduling Stratergy: Fixed Frequency
+Frequency: 10
+Start delay: 0
+Time unit: Second
+Auto Delete: True
+Move to directory:  D:\Downloads\xxx3\archive
+#MIME Type: 
+MIME Type: application/csv
+Key: ✅ header | separator| escape | streaming | bodyStartlineNumber | qoute | ignoreEmptyLine | headerLineNumber
+Value: true
+
+key: ✅ separator
+Value: , (quama)
 --------------------------------------------------------------------------
 7. Read:
 
@@ -59,6 +77,6 @@ server fingerprint: be:e3:7b:64:d4:c8:52:1a:cf:de:b3:65:83:f9:e4:22:4c:8c:8f:b8:
 
 //How FTP work..?
 Client <---- control connection & Data connection ----> Server
----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 

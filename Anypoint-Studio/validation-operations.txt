@@ -1,5 +1,8 @@
 --------------------------------------------------------------------------------------------
-// We can do validation in two ways :- By using validation module connectors and by using
-RAML while , Designing API's... we use required in raml
+// We can do validation in two ways :- By using validation module connectors and by 
+using RAML while , Designing API's... we use required as true...
+
+Validation :
+Validation component will verify the content of message whether it matches the specified criteria.
 ------------------------------------------------------------------------------------------
 

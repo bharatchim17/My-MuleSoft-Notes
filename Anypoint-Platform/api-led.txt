@@ -1,4 +1,4 @@
----------------------------------------------------------------------
+------------------------------------------------------------------------------------
 //What is point to point integration..?
 //What is ESB and ESB features..?
 //Difference between point to point and ESB..?
@@ -11,7 +11,7 @@
 //When to go for system API , process API and experience API..?
 //advantages of API LED connectivity..?
 //Explain agile and scrum..?
------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
 //Microservices:
 Splitting larger application into pieces are called microservices that means the 
 process of developing buisness process as service/project is known as microservices..
@@ -29,7 +29,7 @@ advantage:
 --------------------------------------------------------------------------------------------
 //V-Core is nothing but memory , so one V-core provides 500MB for each application..
 each service at least should be deployed with 0.1 V-Core.. 
--------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 //API LED connectivity:
 The methodical way to transfer DATA between applications through reusable and purposeful
 API's..
@@ -46,3 +46,20 @@ experience API's were created to be consumed by it's intended audience..
 -----------------------------------------------------------------------------------
 //The Anypoint Virtual Private Cloud (VPC) offering allows you to create a virtual, 
 private, and isolated network segment in the cloud to host your CloudHub workers.
+-----------------------------------------------------------------------------------
+//Horizontal scaling:
+1. No change in table size..
+2. Called as scaling out..
+3. Addition of new nodes to cope up with increase in demand..
+
+//Advantages of horizontal scaling:
+1. scaling is easier..
+2. very less downtime..
+3. increase resilience and fault tolerance...
+
+//Disadvantage of horizontal scaling:
+
+
+------------------------------------------------------------------------------
+//Horizontal scaling is usefull when request size is same , but number of request 
+are increase..
