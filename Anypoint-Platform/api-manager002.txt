@@ -1,62 +1,4 @@
-------------------------------------------------------------------------------------------
-//Mule API management:-
-Is the process of designing , publishing , documenting , analyzing , versioning ,
-securing and managing API users,traffic,SLAs.
-Mulesoft has provided API management in two areas:
-1. Mule Gateway API management (use to deploy application on cloudHub | cloudHub 2.0)
- - Mule Gateway
-2. Universal API Management
- - Flex Gateway
- - Service Mesh
-----------------------------------------------------------------------------------------
-//Add API:
-add new api ----> 
-#Select runtime
-Mule Gateway  | Flex Gateway  
 
-#proxy type
-Basic endpoint |  proxy application
-
-#Mule version: mule 4
-
----click--Next---->
-select api from exchange | create new api
-
-------------------------------------------------------------------------------------------
-//Proxy API:-
-proxy API is a wrapper on actual application , we can go proxy API's in below scenarios.
-  - When we would like to expose wrapper/proxy API on external services with own API management..
-  - When we would like to expose with different end point on our mule applications..
-  - When we would like to apply set of other policies on same services..
-
-
-//Basically your implementation url is your actual endpoint and Consumer endpoint is 
-Proxy endpoint...
- --------------------------------------------------------------------------------------------
- //Auto discovery:-
- We use API Autodiscovery to pair an API in API Manager to its deployed Mule application.
- Is the process of allowing API manager application to discover the application is running in
- the runtime using instance , ID is known as auto discovery..
- To enable auto discovery follow below steps:
- 1. Create api autodiscovery global element using API instance id & select main flow of API kit router..
- 2. provide below runtime properties:
-  - Organization buisness group client_id
-  - Organization buisness group client_secret
- 
-global element----> API Autodiscovery---> api id: provide instance here | You can also choose to use the ${apiId} value and reference it from a config.yaml file.
-                                       flow Name: API kit router flow i.e. Main flow not xml file
-
-
-//Hiding fields in runtime manager property section
---example--> In mule-artifact.json write "secureProperties" : ["enc.key"]
-                                                {
-                                                "minMuleVersion": "4.6.0" , 
-                                                "secureProperties":
-                                                [
-                                                "anypoint.platform.analytics_base_uri" ,
-                                                "anypoint.platform.client_id"  
-                                                ]
-                                                }
 -----------------------------------------------------------------------------------------
 //Policies:-
 1. Quality of service
@@ -199,5 +141,5 @@ Note:- If your API is not showing ACTIVE in API Manager, that means , either the
 is mismatched that you have given in your code and the value in API Manager, or The 
 Anypoint platform credentials are wrong. When Status is “Un Registered “ That means , 
 your policies are not appended. But still application works without having Policies appended.
-
+-------------------------------------------------------------------------------------
 

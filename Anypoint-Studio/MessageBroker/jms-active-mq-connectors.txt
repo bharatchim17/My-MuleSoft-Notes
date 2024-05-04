@@ -68,8 +68,8 @@ broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd o
 consuming the Message. As per JMS Spec, performing an ACK over a single Message 
 automatically works as an ACK for all the Messages produced in the same JmsSession...
 #General
-Ack id fx : vars.ackId  <----- This is ack_id connector
-In set variable component Name: ackId  | value: attributes.ackId
+Ack id  : #[vars.ackId]     <----- This is ackId variable
+In set variable Transformer -----> Name: ackId  | value: attributes.ackId
 --------------------------------------------------------------------------------------
 2. Consume: Operation that allows the user to consume a single Message from a given
 Destination...

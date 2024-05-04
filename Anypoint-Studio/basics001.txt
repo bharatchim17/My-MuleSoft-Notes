@@ -116,7 +116,6 @@ are running together in one Applications or in one server.
 //Import file ---> File --->  Package mule Application (.jar) 
 
 ----------------------------------------------------------------------------------
-
 //ESB integration tool :-
 
 Integration tool called as ESB tool when it provides below features:-
@@ -183,9 +182,15 @@ it has:-
 -------------------------------------------------------------------------------------------------
 //Asynchronous flows:- execute in parallel to the calling flow; i.e., they are processed asynchronously.
 We can do this by wrapping the flow reference component in an async component.
+It means it will run in Background it will not wait for response Synchronous flow is 
+similar to sub flow This type of flow process the message with in single  thread
+It will process the message parallel..
 
 //synchronous flows:- is also processed synchronously , We add synchronous flows to our Mule application by adding 
 regular flows; there is no “synchronous flow” component. 
+It Doesn’t inherit the processing strategies  and exception strategies of the calling 
+flow...
+
 ----------------------------------------------------------------------------------------
 //Streaming API
 Streaming API enables Streaming of events using push technology and provides subscription mechanism for receiving events in near real time..
@@ -251,11 +256,12 @@ how integration drives digital transformation..
 //When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
 http://<host>:<port>/api/resource
 -------------------------------------------------------------------------------------------
-//MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
+//Mule Expression Language MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
 properties and variables. #[payload/vars/attributes]
 
 #['\n'] --->  Give us new line
 #[payload] ---> To print payload without fx
+
 ----------------------------------------------------------------------------------------
 // We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
   The correlationID can find multiple logs and transactionID will find exact transaction log.

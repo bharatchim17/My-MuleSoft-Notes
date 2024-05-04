@@ -1,2 +1,0 @@
-//Create environment ---> buisness Groups ---> Environment
-//Invite user ---> Users ---> Email address:  @gmail.com  | Roles: ---> send invitation

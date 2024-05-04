@@ -1,0 +1,110 @@
+
+//Anypoint MQ:
+Client Apps + Name: give name ---> save changes
+we get:
+Client App ID:
+Client Secret:
+
+Destinations:  
+region:
+
+#Global Element:
+URL: paste region here..
+Client App ID:
+Client Secret:
+
+//Destinations:
+1. Queue
+2. Exchange
+3. FIFO(First In First Out) Queue 
+------------------------------------------------------------------------------------
+we need enterprize version for 
+The Anypoint-MQ connector provides publish-subscribe messaging to Mule apps using 
+Anypoint-MQ cloud service..
+Anypoint MQ also , has REST API for publishing or consuming messages using frameworks 
+such as node.js , Java , Go and devops bash script.. 
+------------------------------------------------------------------------------------
+//Anypoint-MQ Operations:
+1. Subscriber (source)
+2. Ack 
+3. Nack
+4. Publish
+5. Consume
+------------------------------------------------------------------------------------
+1. Subscriber:
+Anypoint MQ Subscriber Message Source, retrieves messages from the given destination 
+name..
+
+#General:
+Queue:  <---- paste Queue id here
+Subscribe type: Prefetch (Default) | Polling
+Max local Messages: 30 (Default)
+Acknowledgement mode: Auto (Default) | Immediate |Manual   
+Acknowledgement timeout:
+Acknowledgement timeout unit:
+------------------------------------------------------------------------------------
+2. Ack:
+Executes an Acknowledgement indicating that the message has been consumed correctly 
+and deletes the message from In Flight status...
+
+#General:
+Ack token: #[vars.ackToken]  <----- This is ackToken variable
+In set variable Transformer    -----> Name: ackToken  | value: attributes.ackToken
+------------------------------------------------------------------------------------
+3. Nack:
+Executes an Not Acknowledgement and change the status of the message from In Flight 
+to In Queue to be consumed again for a subscriber..
+
+#General:
+Ack token:
+------------------------------------------------------------------------------------
+4. Publish:
+
+#General:
+Destination: <---- paste Queue id here
+Body: #[payload]
+User properties:
+------------------------------------------------------------------------------------
+5. Consume:
+#General:
+Queue: 
+Acknowledgement mode: Imidiate(Default) | Manual
+Acknowledgement timeout:
+Acknowledgement timeout unit: 
+Polling time:
+Polling time unit:
+------------------------------------------------------------------------------------
+//How to consume a message using Subscriber..?
+When we deal with subscriber in anypoint mq , ACK mode is important and based on our 
+use case/preference we have to choose mode and below is the information for the same..
+
+Anypoint MQ connector provides three Acknowledgement modes:
+
+1. Automatic:
+use automatic to acknowledge received message Automatically only if flow execution
+finishes successfully..
+
+2. Immediate:
+- Use Immediate when we want to acknowledge message as our app consumes them , before
+processing them..
+- The message will be deleted from Queue as soon as it's consumed irrespective of flow
+execution..
+
+3. Manual:
+- Use manual if we want app logic to control message Acknowledgement..
+- In this case , we have to explicitly send an ACK or NACK on our business logic.
+if it's ACK to the Queue, then message will be removed from queue..
+if it's NACK to the Queue, then message will still exist in queue for redelivery..
+
+//The message in Queue should be consumed and deleted from Queue if there are no errors
+from flow execution..
+If an errors occures during flow execution , the message is not acknowleged (NACK)
+so , message returned to Queue for redelivery.. 
+------------------------------------------------------------------------------------
+//What is AnyPoint MQ ..?
+Any point MQ is multi-tenat , cloud messaging service that enables customers to Perform
+advanced asynchronous messaging scenarios between their applications... Anypoint MQ is fully integrated
+with Anypoint Platform , offering role-based access control , client managemant and connectors..
+we can use any point MQ URL , client App id , secret to connect Queue or Exchange queues..
+//Message Exchange:
+With message exchanges you can distribute single message to multiple consumers..
