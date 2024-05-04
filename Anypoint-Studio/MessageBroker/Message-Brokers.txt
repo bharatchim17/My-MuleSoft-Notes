@@ -7,50 +7,7 @@
 4. Apache Pulser 
 5. Solace PubSub
 6. ActiveMQ (JMS based)
---------------------------------------------------------------------------------------------------------------------
-//The Jakarta Messaging API (formerly Java Message Service or JMS API) is a Java 
-application programming interface (API) for message-oriented middleware... 
 
-//Java Messaging Service (JMS) 
-In integration world after webservices , the JMS publish subscribe model used mostly 
-to make asynchronous integrations..
-We usually create Queues and Topics in JMS server to publish the message.. 
-
-//Queue & Topic is pipeline where we can publish the payload so , it can be subscribed by clients
- 
-
-1. JMS Queue:  Publisher ---> Queue ---> Subscribe 
-Exchange of messages happens between single sender (producer) and single receiver (Consumer)
-via queue. In case of multiple (consumers) are trying to pick up the message from queue ,
-only one consumer will be able to pick up the message at a time(Queue is point to point: 1 to 1)....       
-
-2.JMS Topic: Publisher ---> Topic <--Bridge--> distrubuted to multiple Queue ---> Subscriber
-When publisher sends message to topic , all subscribers are subscribed to topic , will
-receive the message (publish & subscriber i.e. PubSub model: 1 to many)..
-
-//Addvantages:
-1. Asynchronous: 
-To receive the message, client is not required to send request. Message will arrive automatically to the client. 
-2. Reliable: 
-It provides assurance that message is delivered...
-3. it easy to develop enterprise applications that asynchronously send and receive business data and events...
---------------------------------------------------------------------------------------
-ActiveMQ is a popular open source messaging service that is built on top of Java.
-It works as a message-oriented middleware (MoM).
-  
-apache-activemq-5.17.6\bin\win64 <---- in this path type cmd & give command activemq.bat strat
-localhost: 8161 is default port of ActiveMQ
-userName: admin 
-password: admin
-------------------------------------------------------------------------------------
-//Following are JMS elements:
-1. Providers
-2. Client 
-3. Producer/Publisher
-4. Consumer/subscriber
-5. queue
-6. topic
-7. message
 ----------------------------------------------------------------------------------------
 //ActiveMQ vs Kafka which message broker is the best? 
 //RabbitMQ vs. Kafka vs. ActiveMQ: A Battle of Messaging Brokers:
@@ -58,46 +15,6 @@ password: admin
 https://www.designgurus.io/blog/rabbitmq-kafka-activemq-system-design 
 
 Difference between Apache kafka & Apache pulsuar..?
--------------------------------------------------------------------------------------
-//Rabbit MQ
-Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based on
-erlang language..
-Producer ---> Exchange ---> Queue ---> Consumer
-Open RabbitMQ command prompt and run below commands:
-- rabbitmq-plugins.bat list
-- rabbitmq-plugins.bat enable mention_plugine_here (rabbitmq_management)
-
-localhost: 15672 is default port of Rabbit-MQ
-userName: guest 
-password: guest
-
-//Overview of Rabbit MQ:
-- It based on AMQP(Advanced Message Queing Protocol)..
-- It support multiple Protocols..
-- It Enable loosely coupled messaging based integration
-- It equipped with fault tolerence(FA) , high availability(HA) , scalability features..
-
-//What is loosely coupled (Dcopled)..?
-Loose coupling is an approach to interconnecting the components in a system, network or software application 
-so that those components, also called elements,reducing the risk that changes within 
-one module will create unanticipated changes within other modules... 
-
-//RabitMQ core concepts:
-- Message
-- Message Producer
-- Exchange
-- Queues
-- Consumers
-- Binding & Routing keys
-
-//RabbitMQ exchange Types:
-- Direct
-- Fanout***
-- Topic
-- Headers 
-                                      //Subcategories RabbitMQ exchange Types:
-                                        - Default 
-                                        - Dead Letter
 
 -----------------------------------------------------------------------------------------
 //Diff between Anypoint MQ connector vs JMS Connector vs VM connector?
@@ -117,65 +34,4 @@ Think Amazon SQS but a lot better and great integration with Anypoint Platform..
 JMS uses the Java Messaging Service protocol and requires an external JMS broker such 
 as ActiveMQ. Can be used by any application that supports JMS connectivity...
 
---------------------------------------------------------------------------------------
-//Kafka: 
-Is written in scala & java Apache Kafka is an open-source distributed-streaming & 
-messaging system Originally designed by LinkedIn with capabilities to handle huge 
-loads of data with its distrubuted , fault tolerence architecture it works with 
-pub-sub mechanism for message communication..
-database have high storage but low throughput that's why , Operation Per Second is low..
-Whereas kafka has high throughput and low storage...
-
-
-//What is message..?  is small to medium size piece of data:
-
-1. Producer: is an application that sends data to kafka server...
-2. Consumer: an application that receive data from kafka sever..
-3. Broker: is kafka server
-4. Cluster: group of computers
-5. Topic: is unique name for kafka stream..
-6. Partitions: part of topic 
-7. Offset: unique , sequence id for message within partition..
-8. Consumer groups: group of consumers acting as single logic unit..
-
-E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows add this path in environment 
-variable...
-kafka-3.7.0-src\bin\windows <--- type cmd in this path
-
-//Error Occure:
-Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
-Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
-
-//wmic' is not recognized as an internal or external command,
-operable program or batch file.
-Solution: 
-
----------------------------------------------------------------------------------------
-//kafka random commands:
-
-zookeeper-server-start.bat ..\..\config\zookeeper.properties
-zookeeper-server-start.bat <----add path of zookeeper.properties
-
-kafka-server-start.bat ..\..\config\server.properties
-kafka-server-start.bat .<----add path of server.properties
-
-kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
-
-kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
-
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
-----------------------------------------------------------------------------------------------------
-//Create data folder in path: kafka-3.7.0-src
-In data floder create folder: broker & zookeeper
-1. zookeeper: 
-In config zookeeper.properties dataDir = paste path with forward slash (/) of zookeeper folder 
-2. broker: 
-In config server.properties  log.dirs= paste path with forward slash (/) here of broker folder 
-
-                               ------- or -------
-
-1. In config zookeeper.properties dataDir = log.dirs=C:/kafka/zookeeper-data
-
-2. In config server.properties  log.dirs= log.dirs=C:/kafka/zookeeper-data
----------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------

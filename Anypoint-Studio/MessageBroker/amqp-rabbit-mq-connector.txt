@@ -1,3 +1,44 @@
+-------------------------------------------------------------------------------------
+//Rabbit MQ
+Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based on
+erlang language..
+Producer ---> Exchange ---> Queue ---> Consumer
+Open RabbitMQ command prompt and run below commands:
+- rabbitmq-plugins.bat list
+- rabbitmq-plugins.bat enable mention_plugine_here (rabbitmq_management)
+
+localhost: 15672 is default port of Rabbit-MQ
+userName: guest 
+password: guest
+
+//Overview of Rabbit MQ:
+- It based on AMQP(Advanced Message Queing Protocol)..
+- It support multiple Protocols..
+- It Enable loosely coupled messaging based integration
+- It equipped with fault tolerence(FA) , high availability(HA) , scalability features..
+
+//What is loosely coupled (Dcopled)..?
+Loose coupling is an approach to interconnecting the components in a system, network or software application 
+so that those components, also called elements,reducing the risk that changes within 
+one module will create unanticipated changes within other modules... 
+
+//RabitMQ core concepts:
+- Message
+- Message Producer
+- Exchange
+- Queues
+- Consumers
+- Binding & Routing keys
+
+//RabbitMQ exchange Types:
+- Direct
+- Fanout***
+- Topic
+- Headers 
+                                      //Subcategories RabbitMQ exchange Types:
+                                        - Default 
+                                        - Dead Letter
+
 ----------------------------------------------------------------------------------
 //AMQP Operations:
 
@@ -39,4 +80,4 @@ created dynamically...
 #General
 Ack id fx : vars.ackId  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId
--------------------------------------------------------------------------
+---------------------------------------------------------------------------------

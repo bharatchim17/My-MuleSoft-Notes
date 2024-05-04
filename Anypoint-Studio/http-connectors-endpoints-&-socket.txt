@@ -83,10 +83,7 @@ Before going to learn about rules. We must not forget that , RAML based generate
 Listener has Error Response Body as #[payload] as Default but manually dragged and drop 
 Http Listeners has #[output text/plain --- error.description] as default. So change 
 accordingly to your business requirements..
-
-
 -------------------------------------------------------------------------------------
-
 //Web socket is persistent connection between client and server , it's bi-directional 
 full duplex connection..
 Web socket send first request as "http handshake Request with upgrade header" to 
@@ -102,6 +99,10 @@ Switching Protocol Request" and then handshake is completed..
 1. statefull
 2. bi-directional
 3. full-duplex
+
+//HTTP is primarily designed as a request-response protocol, where a client sends a 
+request to a server, and the server responds with the requested resource. 
+there are technologies built on top of HTTP that support full-duplex communication. 
 -----------------------------------------------------------------------------------------------
 
 

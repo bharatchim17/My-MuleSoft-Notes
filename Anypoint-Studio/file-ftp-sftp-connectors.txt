@@ -53,9 +53,19 @@ content(fx):
 Create parent directories: True
 write Mode(fx): OVER_WRITE 
 -----------------------------------------------------------------------------------
+
+//File Transfer Protocol(FTP):
+- Transmits files from one host to another..
+- Can be used for downloading the files to computer from other server..
+
+//How FTP work..?
+Client <---- control connection & Data connection ----> Server
+---------------------------------------------------------------------------------
+
 //FileZila , FileZila pro: is FTP , SFTP client..
 Default port for FTP = 21
 Default port for SFTP = 22
+
 //What is FTP , SFTP..?
 File Transfer Protocol Secure File Transfer Protocol. is used to transfer file between
 server(website) and client(local machine)..FTP is the language that computers use to 
@@ -69,14 +79,31 @@ use UDP instead of TCP..
 server port: 14148
 server host: 127.0.0.1
 
-server fingerprint: be:e3:7b:64:d4:c8:52:1a:cf:de:b3:65:83:f9:e4:22:4c:8c:8f:b8:30:22:6f:54:50:85:04:f9:fc:b5:5b:fa
----------------------------------------------------------------------------------
-//File Transfer Protocol(FTP):
-- Transmits files from one host to another..
-- Can be used for downloading the files to computer from other server..
+server fingerprint: be:e3:7b:64:d4:c8:52:1a:cf:de:b3:65:83:
 
-//How FTP work..?
-Client <---- control connection & Data connection ----> Server
+//Start fileZila sever:
+Administer fileZila server:
+Select server 
+#Configure:
+user: ftpUser
+✅ user is enable
+virtual path: /  
+native path: paste path here
+Access mode: read + write 
+
+//cmd ---> ipconfig
+windows IP Configuration:
+IPv4 Address: 192.168.176.1
+
+//in path of file explorer: 
+ftp://192.168.176.1
+
+//If we can't see file in folder:
+#Configure:
+FTP over TLS(FTPS)
+select pasive mode:
+check on use custom port range: ✅  
+From: 49152
+To: 49155 <--- here we given 3 ports only
 ------------------------------------------------------------------------------------
-
 

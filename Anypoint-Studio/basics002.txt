@@ -1,0 +1,57 @@
+---------------------------------------------------------------------
+
+Internet Protocol IP:
+is numeric address , it's identifier for computer device on network.. Every device have
+IP address for communication purposes..
+Consist of two parts:
+- A network address
+- host address
+
+The main Difference between IPv4 & IPv6 is length of address. IP version 4 is 32-bit 
+IP version 6 is next generation of IP address and it has 128-bit hexadecimal address..
+hexadecimal use both number and alphabets in address.. 
+---------------------------------------------------------------------
+//In standard http, all information sent in clear text. HTTPS encrypt data using two
+Protocols 
+1.Secure Socket Layer(SSL)..
+2.Transport Layer security(TLS)..
+Protocol is used to ensure security on internet it, uses public key encryption to secure
+data and authentificates te server , client and encrypt data..
+TLS is cryptographic protocol and Successor to SSL..
+---------------------------------------------------------------------
+Transmition Control Protocol (TCP):
+is connection oriented protocol that mean it acknowleged session between two computers
+that are communicating by three-way handshake..
+- generated data delivery..
+
+User Datagram Protocol (UDP):
+is connectionless oriented protocol is also known as fire and forget protocol..
+- Not generated data delivery..
+---------------------------------------------------------------------
+Half-Duplex:
+Can only communicate in one direction at a time..
+Full-Duplex:
+Can communicate in both direction at a time..
+---------------------------------------------------------------------
+Port forwarding:
+Allows computer over the internet to connect to specific computer or services
+within private network..
+port is logical connection that is used by programs and services to exchange information..
+port is always associated with an I.P. address..
+---------------------------------------------------------------------
+proxy server:
+retrieves data on the internet on behalf of user as act like gentelman😅..
+proxy benefits:
+1. privacy:
+Allows you to surf internet anonymously with using proxy , our public address isn't
+visible..
+2. Faster:
+It save cache so , the request is process in proxy's database..
+
+Disadvantage is proxy server can't encrypt data so , we can use vpn for it
+
+//Virtual Private Network VPN:
+- VPN encrypts data that's being transferred over the internet..
+- It provides dedicated service tunnel between two points over internet..
+------------------------------------------------------------------------------------
+//What is firewall..?

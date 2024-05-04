@@ -9,7 +9,7 @@ Install and signup ngrok command prompt:
 
 ngrok.exe --version
 ngrok config add-authtoken 2esDlb <-- it's token
-ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306
+ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306 (it's mysql port)
 ngrok http http://localhost:8080 
 forwanding:    <------- from ngrok and save it
 -------------------------------------------------------------------------------------

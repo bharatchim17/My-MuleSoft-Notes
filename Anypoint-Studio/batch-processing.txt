@@ -118,5 +118,11 @@ Accept Policy:  All | NO_Failures(default) | Only_Failures
 #General:
 Aggregator Size: 4 
 -------------------------------------------------------------------------------
-
+4. create:
+Adds one or more new records to your organization's data. When you map your objects to
+the input of this message processor, they must match the expected type of the object 
+at Salesforce...
+#General:
+Type: fetch object here...
+Records: #[payload]
  
