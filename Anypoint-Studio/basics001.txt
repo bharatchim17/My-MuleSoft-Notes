@@ -257,7 +257,7 @@ how integration drives digital transformation..
 http://<host>:<port>/api/resource
 -------------------------------------------------------------------------------------------
 //Mule Expression Language MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
-properties and variables. #[payload/vars/attributes]
+properties and variables. #[payload| vars | attributes]
 
 #['\n'] --->  Give us new line
 #[payload] ---> To print payload without fx
@@ -277,10 +277,4 @@ The transaction-ID : Will be the unique ID that can be transfer over the Applica
 syntax to fetch :-
 attributes.headers.'x-transaction-id' default uuid()
 --------------------------------------------------------------------------------------------------------
-//To extract all resulting payloads to an array, use a DataWeave script:
-flatten(valuesOf(payload) map ((item, index) -> item.*payload))
-----------------------------------------------------------------------------------------
-//payload orderBy -$ give descending order value..
-//(payload orderBy -$)[0] give descending order highest value..
 
----------------------------------------------------------------------------------

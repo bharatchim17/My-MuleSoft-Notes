@@ -9,6 +9,6 @@ in flow or save payload as variable..
 To apply connection pulling:- 
 --goto--> 
 Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
---configure--> Max pool size: | Min pool size:  | Acquire increment: ---> ok & save .
+--configure--> Max pool size: | Min pool size:  | Acquire increment: ---> Ok & Save...
 
 ------------------------------------------------------------------------------------------- 

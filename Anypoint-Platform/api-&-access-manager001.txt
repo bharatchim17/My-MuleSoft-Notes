@@ -12,7 +12,7 @@ Mulesoft has provided API management in two areas:
 //Add API:
 add new api ----> 
 #Select runtime
-Mule Gateway  | Flex Gateway  
+Mule Gateway ✅ | Flex Gateway  
 
 #proxy type
 Basic endpoint |  proxy application
@@ -34,6 +34,7 @@ proxy API is a wrapper on actual application , we can go proxy API's in below sc
 Proxy endpoint...
  --------------------------------------------------------------------------------------------
  //Auto discovery:-
+
  We use API Autodiscovery to pair an API in API Manager to its deployed Mule application.
  Is the process of allowing API manager application to discover the application is running in
  the runtime using instance , ID is known as auto discovery..
@@ -43,18 +44,22 @@ Proxy endpoint...
   - Organization buisness group client_id
   - Organization buisness group client_secret
  
-global element----> API Autodiscovery---> api id: provide instance here | You can also choose to use the ${apiId} value and reference it from a config.yaml file.
-                                       flow Name: API kit router flow i.e. Main flow not xml file
+global element----> API Autodiscovery---> api id: provide instance here | You can also
+ choose to use the ${apiId} value and reference it from a config.yaml file.
+   
+flow Name: API kit router flow i.e. Main flow not xml file
 
 
 //Hiding fields in runtime manager property section
---example--> In mule-artifact.json write "secureProperties" : ["enc.key"]
+--example--> In mule-artifact.json write  --> "secureProperties" : ["enc.key"]
+
                                                 {
                                                 "minMuleVersion": "4.6.0" , 
                                                 "secureProperties":
                                                 [
                                                 "anypoint.platform.analytics_base_uri" ,
-                                                "anypoint.platform.client_id"  
+                                                "anypoint.platform.client_id"  ,
+                                                "enc.key"
                                                 ]
                                                 }
 

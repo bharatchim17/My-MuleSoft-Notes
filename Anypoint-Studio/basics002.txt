@@ -1,5 +1,4 @@
----------------------------------------------------------------------
-
+---------------------------------------------------------------------------------------
 Internet Protocol IP:
 is numeric address , it's identifier for computer device on network.. Every device have
 IP address for communication purposes..
@@ -10,7 +9,7 @@ Consist of two parts:
 The main Difference between IPv4 & IPv6 is length of address. IP version 4 is 32-bit 
 IP version 6 is next generation of IP address and it has 128-bit hexadecimal address..
 hexadecimal use both number and alphabets in address.. 
----------------------------------------------------------------------
+----------------------------------------------------------------------------------
 //In standard http, all information sent in clear text. HTTPS encrypt data using two
 Protocols 
 1.Secure Socket Layer(SSL)..
@@ -18,7 +17,7 @@ Protocols
 Protocol is used to ensure security on internet it, uses public key encryption to secure
 data and authentificates te server , client and encrypt data..
 TLS is cryptographic protocol and Successor to SSL..
----------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Transmition Control Protocol (TCP):
 is connection oriented protocol that mean it acknowleged session between two computers
 that are communicating by three-way handshake..
@@ -27,18 +26,18 @@ that are communicating by three-way handshake..
 User Datagram Protocol (UDP):
 is connectionless oriented protocol is also known as fire and forget protocol..
 - Not generated data delivery..
----------------------------------------------------------------------
+------------------------------------------------------------------------------------
 Half-Duplex:
 Can only communicate in one direction at a time..
 Full-Duplex:
 Can communicate in both direction at a time..
----------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Port forwarding:
 Allows computer over the internet to connect to specific computer or services
 within private network..
 port is logical connection that is used by programs and services to exchange information..
 port is always associated with an I.P. address..
----------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 proxy server:
 retrieves data on the internet on behalf of user as act like gentelman😅..
 proxy benefits:
@@ -55,3 +54,39 @@ Disadvantage is proxy server can't encrypt data so , we can use vpn for it
 - It provides dedicated service tunnel between two points over internet..
 ------------------------------------------------------------------------------------
 //What is firewall..?
+------------------------------------------------------------------------------------
+//What is port..?
+A port is NOT physical connection ..
+- It's logical connection that's used by programs and services to exchange information..
+- It specifically determine which programs or service on computer or server that is 
+going to be used..
+- a port is always associated with an IP address & IP address determine location of that
+server.. 
+
+Port number 0 - 1023 are called system or well-known ports..    <--- use by server
+Port number 1024 - 49151 are called user or registered ports..  <--- use by server
+Port number 49152 - 65535 are called dynamic or private ports...<--- use by client
+
+
+//Netstat (Network Statistic):
+command line tool that is used to display current network connections and port activity
+on our computer..
+
+Netstat command in cmd prompt: 
+netstat -n
+netstat
+netstat -a
+-----------------------------------------------------------------------------------------
+//Hypervisor allows one machine to run multiple virtual machines , each virtual machine
+will have their own operating system..
+virtual machine consume lot of disk space , RAM and CPU power from the server..
+
+//Containers is an application that's been packaged with all file , configurations and
+dependencies..
+The leading software that is used to create , manage and run Containers is docker..
+Advantage:
+- smaller file size..
+- considered light weight..
+- Lightning fast..
+- Consume less RAM and CPU power..
+---------------------------------------------------------------------------------

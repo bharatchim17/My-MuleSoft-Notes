@@ -1,3 +1,4 @@
+------------------------------------------------------------------------------
 //File | FTP | SFTP Operations:
 1. Copy
 2. Create directory
@@ -39,16 +40,23 @@ Value: true
 
 key: ✅ separator
 Value: , (quama)
---------------------------------------------------------------------------
+
+#Advanced:
+Reconnection Stratergy: standard ✅ | none | Forever
+Frequency(ms): 2000 (miliSeconds)
+Reconnection Attempts: 2
+
+What is Reconnection stratergy..?
+-----------------------------------------------------------------------------------
 7. Read:
 
---------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 8. Rename
----------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 9. Write:
 #General:
 connector configuration: Create folder and link it..
-path: fileOperation/Abstract.txt <-----directory/file
+path: fileOperation/Abstract.txt <----- directory/file
 content(fx):
 Create parent directories: True
 write Mode(fx): OVER_WRITE 

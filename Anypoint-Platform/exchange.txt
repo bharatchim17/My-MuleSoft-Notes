@@ -16,6 +16,7 @@
 //Exchange: share assests within the organizations..
 
 //Public Portal: Share API assests with external users..
+
 URL look like below: 
 https://anypoint.mulesoft.com/exchange/Portals/Domain_Name/.
 
@@ -25,12 +26,12 @@ When we shared api in Exchange we can reuse:  1.API  2.API Fragments
 --------------------------------------------------------------------------------------
 //When we change version of API..?
 In below situations
- - Delet resource 
- - Delet method 
+ - Delete resource 
+ - Delete method 
  - change in Representational format
  - break in communication
 
-//when there is no need to change version of API..?
+//When there is no need to change version of API..?
 In below situations
 - Technology change in backend application 
 - data model changes

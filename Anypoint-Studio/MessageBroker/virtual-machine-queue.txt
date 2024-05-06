@@ -1,0 +1,71 @@
+--------------------------------------------------------------------------------
+//Virtual Machine VM:
+Virtual machine (VM connector) manages intra-app and inter-app communication through
+either transient or persistent asynchronous queues..
+Transient queues are faster than persistent queues , but they are not reliable if
+system crashes..
+persistent Queue are slower but reliable..
+------------------------------------------------------------------------------
+#Global Element:
+VM config:
+Queues: Edit inline + 
+Queue Name: 
+Queue type: Transient (Default) | Persistent
+---------------------------------------------------------------------------------
+//VM connectors:
+1. Consume
+2. Listner (source)
+3. Publish 
+4. Publish consume
+---------------------------------------------------------------------------------
+1. Consume:
+Pull one message from a queue. If a message is not immediately available, it will wait 
+up to the configured queueTimeout, after which a VM:QUEUE_TIMEOUT error will be thrown.
+The queue on which the content is published has to be one for which a doesn't exists. 
+Consuming from queues on which a exists is not allowed..
+
+#General:
+Queue name: fetch queue name here
+Timeout: 5 (Default)
+Timeout unit: second (Default)
+-----------------------------------------------------------------------------------
+2. Listner: A source which creates and listens on a VM queues.
+#General:
+Number of consumers: 4 (Default)
+Queue name: fetch queue name here
+Timeout: 5 (Default)
+Timeout unit:
+Content: #[payload] (Default)
+---------------------------------------------------------------------------------
+3. Publish: Publishes the given content into the queue of the given queueName.
+#General:
+Content: #[payload] (Default)
+Send correlation id: Always | Auto | Empty | Never
+correlation id: correlationId
+Queue name: fetch queue name here which was created in global configuration..
+Timeout: 5 (Default)
+Timeout unit:
+----------------------------------------------------------------------------------
+4. Publish consume:
+Publishes the given content into a queue, and then awaits up to the queueTimeout for 
+a response to be supplied on a temporal reply-To queue that this operation 
+automatically creates. The temporal reply queue is automatically disposed after a 
+response is received or the timeout expires. The queue on which the content is 
+published has to be one for which a doesn't exists. Consuming from queues on which a 
+exists is not allowed. If the flow that receives and processed the message fails, 
+then that error is propagated and re-thrown by this operation. Notice that such error 
+type will not be predictable by this operation and could be anything. You need to be 
+mindful of the listening flow when writing your error handlers...
+
+#General:
+Content: #[payload] (Default)
+Send correlation id: Always | Auto | Empty | Never
+correlation id: 
+Queue name: fetch queue name here
+Timeout: 5 (Default)
+Timeout unit:
+-----------------------------------------------------------------------------------
+
+
+
+

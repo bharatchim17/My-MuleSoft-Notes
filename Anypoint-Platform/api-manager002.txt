@@ -1,6 +1,5 @@
-
 -----------------------------------------------------------------------------------------
-//Policies:-
+//Policy types:-
 1. Quality of service
 2. Security
 3. Troubleshooting
@@ -23,6 +22,7 @@ SLA-based policiesImpose a limit specified by the level of access granted to the
 requesting application. The Rate Limiting policy is SLA-based...
 (The rate limiting policy is combination of rate limiting and client id enforcement that enables you to 
 limit the number of request specified by the level of access granted to the requesting application)..
+ 
  //steps:
  1. Add SLA tiers
  2. Create client Applications
@@ -55,7 +55,7 @@ XML requests are susceptible to attacks characterized by unusual inflation of
 elements, attributes, and nesting levels. Attackers use recursive techniques to 
 consume memory resources. Dramatic swings in the size of the application data often 
 signal a security problem The XML Threat Protection policy enables you to protect your
- applications from such intrusions....
+applications from such intrusions....
 
 3. Json Threat Protection:
 JSON requests are susceptible to attacks characterized by unusual inflation of 
@@ -137,8 +137,8 @@ generated outside of Anypoint Platform...
   - Custom Expression: Accepts an expression each for client_id and client_secret in the headers,
   indicating where to extract the credentials from request.
 ---------------------------------------------------------------------------------------
-Note:- If your API is not showing ACTIVE in API Manager, that means , either the api ID 
-is mismatched that you have given in your code and the value in API Manager, or The 
+Note:- If our API is not showing ACTIVE in API Manager, that means , either the api ID 
+is mismatched that our have given in your code and the value in API Manager, or The 
 Anypoint platform credentials are wrong. When Status is “Un Registered “ That means , 
 your policies are not appended. But still application works without having Policies appended.
 -------------------------------------------------------------------------------------

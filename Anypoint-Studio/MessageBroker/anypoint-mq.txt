@@ -1,4 +1,4 @@
-
+--------------------------------------------------------------------------------------
 //Anypoint MQ:
 Client Apps + Name: give name ---> save changes
 we get:
@@ -8,15 +8,27 @@ Client Secret:
 Destinations:  
 region:
 
+----------------------------------------------------------------------------------
 #Global Element:
+Anypoint mq config:
 URL: paste region here..
 Client App ID:
 Client Secret:
 
+circuit breaker:
+On error types: 
+Error threshold:
+Trip timeout:
+Trip timeout unit:
+
+------------------------------------------------------------------------------
 //Destinations:
 1. Queue
 2. Exchange
 3. FIFO(First In First Out) Queue 
+
+//Where sequence of processing of the message is important we use FIFO Queue. The
+sequence , you push the message into Queue will be sequence when you consume the message..
 ------------------------------------------------------------------------------------
 we need enterprize version for 
 The Anypoint-MQ connector provides publish-subscribe messaging to Mule apps using 
@@ -61,7 +73,7 @@ Ack token:
 4. Publish:
 
 #General:
-Destination: <---- paste Queue id here
+Destination: <---- paste Queue id here | we can paste exchange id also
 Body: #[payload]
 User properties:
 ------------------------------------------------------------------------------------
@@ -108,3 +120,31 @@ with Anypoint Platform , offering role-based access control , client managemant 
 we can use any point MQ URL , client App id , secret to connect Queue or Exchange queues..
 //Message Exchange:
 With message exchanges you can distribute single message to multiple consumers..
+----------------------------------------------------------------------------------------
+//What is DLQ and why we use DLQ..?
+is service implementation to store message that fail to deliver that means it receive 
+only undelivered messages..
+We can specify time-to-live(TTL) value , encryption and delivery delay when we create
+the queue..
+
+If we assigning DLQ for normal queue then DLQ should also , be normal queue..
+If we are assigning DLQ for FIFO queue then DLQ should also be FIFO queue..
+
+#Queue settings:
+Dead Letter Queue Name: 
+Delivery attepts before resource: 10 (Default)
+
+//when the delivery attepts got exceeded , message will be removed to DLQ and 
+will be removed from actual queue..
+-----------------------------------------------------------------------------
+//Exchange:
+Using message exchange , we can send message to one or more standard Queues that are
+bound to the message exhange.. The maximum size of message sent to message exchange
+ is 10 MB.
+
+FIFO does not support use of message exhange.. similarly , FIFO queues can't bound to
+message exchange..
+
+//When we create an exchange we can also , bind queues(standard) , so we can broadcast
+message to all these queues..
+-------------------------------------------------------------------------------

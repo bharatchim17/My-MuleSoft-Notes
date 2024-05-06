@@ -152,7 +152,7 @@ API Fragments:- has two types
 //What is datatype..?
 A data type describes the data expected in an API or returned by the API..
 Datatype describes data in an API and add rules to validate data against type declaration..
-there are two types of datatype 1. built-in datatype 2. custom data types
+there are two types of datatype 1. built-in datatype  2. custom data types
 --------------------------------------------------------------------------------------
 //What are facets in RAML?
 Types can define two types of members: properties and facets. Both are inherited. 
