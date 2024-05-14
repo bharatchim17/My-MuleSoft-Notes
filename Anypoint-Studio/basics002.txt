@@ -11,7 +11,7 @@ IP version 6 is next generation of IP address and it has 128-bit hexadecimal add
 hexadecimal use both number and alphabets in address.. 
 ----------------------------------------------------------------------------------
 //In standard http, all information sent in clear text. HTTPS encrypt data using two
-Protocols 
+Protocols:
 1.Secure Socket Layer(SSL)..
 2.Transport Layer security(TLS)..
 Protocol is used to ensure security on internet it, uses public key encryption to secure
@@ -52,8 +52,7 @@ Disadvantage is proxy server can't encrypt data so , we can use vpn for it
 //Virtual Private Network VPN:
 - VPN encrypts data that's being transferred over the internet..
 - It provides dedicated service tunnel between two points over internet..
-------------------------------------------------------------------------------------
-//What is firewall..?
+
 ------------------------------------------------------------------------------------
 //What is port..?
 A port is NOT physical connection ..
@@ -90,3 +89,11 @@ Advantage:
 - Lightning fast..
 - Consume less RAM and CPU power..
 ---------------------------------------------------------------------------------
+//What is firewall..?
+firewall is an system that is designed to prevent unauthorized access from entering
+private network , It creates safety barrier between private network and public internet..
+Firewall is important to large organizations..
+Types:
+1. Host-based firewall..
+2. Network-based firewall..
+-------------------------------------------------------------------------------------

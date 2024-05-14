@@ -1,6 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////////////
-
-
 Version control systems (VCS) categorized into two main types:-
 centralized version control systems (CVCS) and distributed version control systems (DVCS).
 
@@ -39,7 +37,7 @@ git commit -m "comment"
 git log --> show author information and detail history of committed file.
 git rename_branch --> git branch -M branch_Name 
 git remote
-git push -u origin main / git push -u origin branch_Name
+git push -u origin main | git push -u origin branch_Name
 
 --------------------------------------------------------------------------------------
 //To comapre differece between  
@@ -121,5 +119,8 @@ git push origin branch_Name
 //To Delete branch:
 git branch -d branch_Name
 
+git push --set-upstream origin branch_Name
+
+git clone link -b branch_Name
 ////////////////////////////////////////////////////////////////////////////////////////
 

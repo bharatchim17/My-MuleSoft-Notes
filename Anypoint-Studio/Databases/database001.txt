@@ -108,14 +108,26 @@ Script path: <-------- path of .sql file
 8. On Table Row: 
 Triggers a message per each row in a table..
 #General:
-Table: <--- fetch table
-Watermark column: <--- fetch column we select  Watermark to primarykey
-Id column: <--- fetch id column
 Scheduling stratergy:  Fixed Frequency ✅ | Corn 
 Frequency: 
 Start delay:
 Time unit: 
+Table: <--- fetch table
+Watermark column: <--- fetch column we select  Watermark to primarykey
+Id column: <--- fetch id column
+Since:
 
 -----------------------------------------------------------------------------------
+// Database call give us java base response as outcome and payload will be vanished 
+after going to DB ---> to solve this we need to set variable component
+in flow or save payload as variable..
+---------------------------------------------------------------------------------------
+// To point any value or expression dynamically over SQL query text :-  
+#["$(vars.Dynamic_Query)"]
+----------------------------------------------------------------------------------------
+To apply connection pulling:- 
+--goto--> 
+Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
+--configure--> Max pool size: | Min pool size:  | Acquire increment: ---> Ok & Save...
 
-
+------------------------------------------------------------------------------------------- 

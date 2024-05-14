@@ -1,14 +1,147 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Database call give us java base response as outcome and payload will be vanished 
-after going to DB ---> to solve this we need to set variable component
-in flow or save payload as variable..
----------------------------------------------------------------------------------------
-// To point any value or expression dynamically over SQL query text :-  
-#["$(vars.Dynamic_Query)"]
-----------------------------------------------------------------------------------------
-To apply connection pulling:- 
---goto--> 
-Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
---configure--> Max pool size: | Min pool size:  | Acquire increment: ---> Ok & Save...
+//Snowflake:
 
-------------------------------------------------------------------------------------------- 
+#Global Element:  snowflake config
+Connection: Basic_snowflake Connection ✅ | Key-Pair Connection
+Account Name: rr51301.central-india.azure
+Warehous: COMPUTE_WH
+Database:
+Schema:
+User:
+Password:
+Role: ACCOUNTADMIN
+------------------------------------------------------------------------------------
+//How to store all value from payload to one array..?
+
+Set Variable:
+#General:
+DisplayName: Empty List
+Name: inpPayload
+Value: #[ [] ]
+
+#General:
+DisplayName:  Input Payload
+Name: inpPayload
+Value: 
+#[ 
+    %dw 2.0 output application/json --- vars.inpPayload << payload
+]
+--------------------------------------------------------------------------------------
+//Snowflake operations:
+1. Bulk delete
+2. Bulk insert
+3. Bulk update 
+4. Copy into location
+5. Copy into table
+6. Copy into table with transformation
+7. Create pipe 
+8. Create stage
+9. Create task
+10. Delete
+11. Execute ddl 
+12. Execute script 
+13. Insert
+14. Insert multi table 
+15. Merge 
+16. On Table Row 
+17. Select 
+18. Store procedure 
+19. Update 
+---------------------------------------------------------------------------------------
+1. Select:
+SELECT can be used in both a statement and a clause within a SELECT statement: As a 
+statement, the SELECT statement is the most commonly executed SQL statement; it 
+queries the database and retrieves a set of rows. As a clause, SELECT defines the set 
+of columns returned by a query..
+
+2. Delete: 
+Removes data from a table using an optional WHERE clause and|or additional tables...
+
+3. Update:
+Updates specified rows in the target table with new values..
+
+4. Insert:
+#General:
+SQL query: 
+INSERT INTO Bank_Transactions(
+custName , custAcountNum , bankName , accountType , ifscCode , branchName , 
+transactionTimeStamp , mailId , phoneNumber
+)
+VALUES(:custName , :custAcountNum , :bankName , :accountType , :ifscCode , :branchName , 
+:transactionTimeStamp , :mailId , :phoneNumber
+);
+
+Input parameters: 
+#[
+    {(
+	vars.inpPayload map {
+	 custName: vars.customerName, 
+	 custAcountNum: $.accountNumber , 
+	 bankName: vars.bank , 
+	 accountType: vars."type" , 
+	ifscCode: $.ifsCode , 
+	 branchName: vars.branchName , 
+ transactionTimeStamp: now() , 
+mailId: $.mailId , 
+phoneNumber: $.contact
+})}
+]
+------------------------------------------------------------------------------
+5. Bulk delete:
+Allows executing one delete statement various times using different parameter bindings. 
+This happens using one single Database statement, which has performance advantages 
+compared to executing one single delete operation various times...
+
+#General:
+Input parameters: #[payload]  (default)
+Query: 
+
+6. Bulk insert:
+Allows executing one insert statement various times using different parameter bindings. 
+This happens using one single Database statement, which has performance advantages 
+compared to executing one single insert operation various times...
+
+7. Bulk update:
+Allows executing one update statement various times using different parameter bindings. 
+This happens using one single Database statement, which has performance advantages 
+compared to executing one single update operation various times...
+
+-------------------------------------------------------------------------
+8. On table row:
+Returns all rows of a table based on a watermark..
+#General:
+Table: <--- fetch table
+Watermark column: <--- fetch column we select  Watermark to primarykey
+Id column: <--- fetch id column
+Scheduling stratergy:  Fixed Frequency ✅ | Corn 
+Frequency: 
+Start delay:
+Time unit: 
+-------------------------------------------------------------------
+9. Execute DDL: 
+Data Definition Language (DDL) commands are used to create, manipulate, and modify 
+objects in Snowflake, such as users, virtual warehouses, databases, schemas, tables, 
+views, columns, functions, and stored procedures..
+#General:
+Query:
+                        CREATE TABLE inventory (
+                            id INT PRIMARY KEY,
+                            product VARCHAR(50) UNIQUE,
+                            quantity INT,
+                            price DECIMAL(18,2)
+                        );
+-----------------------------------------------------------------------------------
+10. Execute Script:
+Executes a SQL script in one single Database statement. The script is executed as 
+provided by the user, without any parameter binding..
+#General:
+SQL query Text:
+Script path: <-------- path of .sql file
+-----------------------------------------------------------------------------------
+11. Store procedure:
+Invokes a Stored Procedure on the database. When the stored procedure returns one or 
+more ResultSet instances, streaming is automatically applied to avoid preemptive 
+consumption of such results, which may lead to performance and memory issues..
+#General:
+SQL query | String: 
+Input parameters:
+------------------------------------------------------------------------------------

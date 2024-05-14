@@ -13,25 +13,31 @@ Whereas kafka has high throughput and low storage...
 1. Producer: is an application that sends data to kafka server...
 2. Consumer: an application that receive data from kafka sever..
 3. Broker: is kafka server
-4. Cluster: group of computers
-5. Topic: is unique name for kafka stream..
-6. Partitions: part of topic 
-7. Offset: unique , sequence id for message within partition..
+4. Cluster: group of broker
+
+5. Topic: is unique name for kafka it contains name related data , they are Link
+tables in database , producer produce message into topic (ultimetly to partition in round robin fashion)..
+
+6. Partitions:  A topic is split into several parts which are known as the partitions 
+of topic , a topic is partitioned and distributed to kafka brokers in round robin 
+fashion to achieve distributed system. each partition is an ordered , immutable sequence
+of records..
+
+7. Offset: each message gets store into partition with an Incremental id known as 
+its offset value..
+
 8. Consumer groups: group of consumers acting as single logic unit..
 
 E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows add this path in environment 
 variable...
 kafka-3.7.0-src\bin\windows <--- type cmd in this path
 
-//Error Occure:
-Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
-Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
+//When sending message with key , ordering will be maintained as they will be in the
+same partion...
+without key we can not garantee the ordering of message as consumer poll the message 
+from all the partitions at the same time..
+-------------------------------------------------------------------------------------
 
-//wmic' is not recognized as an internal or external command,
-operable program or batch file.
-Solution: 
-
----------------------------------------------------------------------------------------
 //kafka random commands:
 
 zookeeper-server-start.bat ..\..\config\zookeeper.properties
@@ -127,3 +133,11 @@ Topic:
 Partion:
 Offset:
 ------------------------------------------------------------------------------------
+//Error Occure:
+Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
+Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
+
+//wmic' is not recognized as an internal or external command,
+operable program or batch file.
+Solution: 
+---------------------------------------------------------------------------------------
