@@ -153,4 +153,4 @@ username: github userName |  password: paste token | ID: paste token id
 Add build step: Invoke Top level maven target ----> Goals: clean deploy -P -DmuleDeploy
 
 ----------------------------------------------------------------------------------------
-
+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

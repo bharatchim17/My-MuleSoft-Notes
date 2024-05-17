@@ -1,0 +1,254 @@
+------------------------------------------------------------------------------------------
+SHOW DATABASES ;
+USE db_name;
+SHOW tables ;
+DESCRIBE table_name ;
+SELECT * FROM table_name ;
+command line client:  \! cls for clearing screen
+
+
+--------------------------------------------------------------------------------------
+//Database related queries:-
+
+create DATABASE db_name;
+CREATE SCHEMA db_name;
+
+create DATABASE IF NOT EXISTS db_name ;
+
+DROP DATABASE db_name;
+DROP DATABASE IF EXISTS db_name;
+
+
+-------------------------------------------------------------------------------------
+//Table related Queries:-
+
+USE db_name;
+
+CREATE TABLE table_name(
+column_name1 datatype constraint ,
+column_name2 datatype constraint
+);
+
+SELECT * FROM table_name ;
+SELECT column_name1 , column_name2  FROM table_name ;
+
+DESCRIBE table_name ;
+
+INSERT INTO table_name
+(column1 , column2)
+VALUES
+(Column_Value1 , Column_Value2) ,
+(Column_Value1 , Column_Value2) ;
+
+SHOW tables ;
+DROP table table_name ;
+--------------------------------------------------------------------------------------------
+//Primary Key:-
+It is a column (or set of columns) in table that uniquely identifies each row..(unique id)
+There is only 1 PK & it should be NOT null.. 
+
+//Foreign Key:-
+A foreign key is column (or set of columns) in a table that refers to the Primary key of 
+another table.. 
+There can be multiple FKs.
+FKs can have duplicate & null values. 
+it prevent actions that would destroy links between tables..
+
+//Default:- Sets the default value of column..
+//Check:-  It can limit the values allowed in column.. 
+---------------------------------------------------------------------------------------------
+//Constraints:-
+SQL constraints are used to specify rules for data in table..
+NOT NULL    ---> columns can't have null value      ---> example:- column1 int NOT NULL
+UNIQUE      ---> all values in column are different ---> example:- column2 int UNIQUE 
+PRIMARY KEY ---> makes column unique & not null but used only for one..
+----------------------------------------------------------------------------------------------------
+
+//Select
+syntax:-
+SELECT column_name1 , column_name2 FROM table_name ;
+WHERE conditions;
+SELECT * FROM table_name;
+SELECT DISTINCT column_name FROM table_name ;
+DISTINCT mean unique ;
+----------------------------------------------------------------------------------
+//Where Clause
+Arithmetic Operators:- 
+- Addition (+)
+- Subtraction (-)
+- Multiplication (*)
+- Division (/)
+- Modulus (%)
+
+Comparison Operators:-
+- Equal to (=) , Not Equal to (!=)  , > , >= , < , <=
+
+Bitwise Operators:- 
+- Bitwise AND (&)
+- Bitwise OR (|) 
+------------------------------------------------------------------------------
+//Between (selects for given range):-
+SELECT * FROM table_name WHERE column_name BETWEEN - AND - ; 
+//In (matches any value in list):-
+SELECT * FROM table_name WHERE column_name IN ("-" , "-");
+//NOT (to negate the given condition):-
+SELECT * FROM table_name WHERE column_name NOT IN ("-" , "-");
+---------------------------------------------------------------------------------
+//Limit Clauses
+sets an upper limit on number of (tuples) row to be returned
+
+SELECT * FROM student LIMIT 3 ;
+
+select * from table_name 
+order by column_name asc/desc;
+-------------------------------------------------------------------------------------
+//Aggregate Functions
+Aggregare functions perform calculation on set of values , and return single value..
+        - COUNT()
+        - MAX()
+        - MIN()
+        - SUM()
+        - AVG()
+
+SELECT max/avg(column_name)
+FROM table_name ;
+---------------------------------------------------------------------------------------
+//Group By Clause
+Groups rows that have same values into summary rows..
+It collects data from multiple records and groups results by one or more column..
+Generally we use group by with some aggregation function..
+-----------------------------------------------------------------------------------
+//Having Clause
+Similar to Where i.e. applies some condition on rows.
+Used Where we want to apply any condition after grouping..
+------------------------------------------------------------------------------------
+//General Order:-
+SELECT column 
+FROM table_name
+WHERE condition
+GROUP BY column
+HAVING condition
+ORDER BY column asc/desc ;
+-----------------------------------------------------------------------------------
+//Table related Queries:-
+update (to update existing rows)
+
+UPDATE table_name
+SET column_name1 = Value1 ,
+SET column_name2 = Value2
+WHERE condition ; 
+---------------------------------------------------------------------------------------
+//Error Code:- 1175. You are using safe update mode and you tried to update a table 
+without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in
+ Preferences -> SQL Editor and reconnect.
+Solution:-  SET SQL_SAFE_UPDATES = 0 ;
+------------------------------------------------------------------------------------
+//Delete (to delete existing rows)
+
+DELETE FROM table_name 
+WHERE condition ;
+---------------------------------------------------------------------------------
+Cascading for FK:-
+
+//On Delete Cascade 
+When we create foreign key using this option , it deletes the referencing rows in the 
+child table when the referenced row is deleted in the parent table which 
+has Primary key..
+
+//On Update Cascade
+when we create foreign key using UPDATE CASCADE the refrencing rows are updated in 
+child table when referenced row is updated in parent table which has Primary key..
+--------------------------------------------------------------------------------------
+//Alter (to change the schema)
+
+Add Column
+ALTER TABLE table_name
+ADD COLUMN column_name datatype constraint ;
+
+Drop Column
+ALTER TABLE table_name 
+DROP COLUMN column_name ;
+
+RENAME Table
+ALTER TABLE table_name 
+RENAME TO new_table_name ;
+
+CHANGE Column(rename)
+ALTER TABLE table_name
+CHANGE COLUMN old_name new_name new_datatype new_constraint;
+
+MODIFY Column(modify datatype/constraint) 
+ALTER TABLE table_name
+MODIFY column_name new_datatype new_constraint;
+ 
+TRUNCATE table table_name ;
+----------------------------------------------------------------------------------
+//Joins in SQL
+Join is used to combine rows from two or more tables , based on a related column 
+between them..
+------------------------------------------------------------------------------------
+//Inner Join
+Returns records that have matching values in both tables..
+
+syntax
+SELECT column
+FROM TableA
+INNER/LEFT/RIGHT JOIN tableB
+ON tableA.column_name = tableB.column_name ;
+
+//Full Join (LEFT <--UNION--> RIGHT)
+Returns all records when there is match in either left or right table..
+
+SELECT * FROM table_name1 as a 
+LEFT JOIN table_name2 as b
+ON a.id = b.id 
+UNION
+SELECT * FROM table_name1 as a 
+RIGHT JOIN table_name2 as b 
+ON a.id = b.id ;
+
+//Self Join
+it's regular join but the table is joined with itself..
+
+//Union 
+It is used to combine the result-set of two or more SELECT statements.
+Gives UNIQUE records.
+To use it:
+ - every SELECT should have same no. of columns..
+ - columns must have Similar data Types..
+ - columns in every SELECT should be in same order..
+ ----------------------------------------------------------------------------
+ //SQL Sub Queries
+ A subquery or inner query or nested query is query within another SQL query..
+ -------------------------------------------------------------------------------
+ // A view is virtual table based on the result-set of an SQL statement.. 
+
+-----------------------------------------------------------------------------------
+
+//BACKUP DATABASE databasename
+TO DISK = 'filepath';
+WITH DIFFERENTIAL;
+
+Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.
+A differential back up only backs up the parts of the database that have changed since the last full database backup.
+
+
+//CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+
+//The SELECT statement is used to select data from a database.
+
+SELECT column1, column2, ...
+FROM table_name;
+----------------------------------------------------------------------------------------------
+SOQL (Salesforce Object Query Language) is query language used in Salesforce to retrieve data from
+the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) queries but are specifically
+designed for querying Salesforce Objects.
+Query syntax:-
+SELECT <List Of Fields> FROM <Object API Name> WHERE <Filter Condition>
+---------------------------------------------------------------------------------------------

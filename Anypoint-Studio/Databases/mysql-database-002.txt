@@ -1,0 +1,60 @@
+---------------------------------------------------------------------------------
+//DBMS(DataBase Management System)
+//RDBMS(Relational DataBase Management System)
+//SQL(Structure Query Language)
+
+//DataBase have two components:- 
+1.Client (use to communicate with database by SQL) 
+there are two types of Client graphical mode (GUI) e.g. SQLdeveloper & 
+command line interface(CLI)e.g. SQLplus
+2.Server (is storage area , remote machine) 
+---------------------------------------------------------------------------------
+//In oracle ; at the end of line is mandatory
+//In mysql database also called schema
+---------------------------------------------------------------------------------
+//Types of SQL Commands..?
+//Types of SQL queries..?
+
+DDL(Data Defination Language): create , alter , rename , truncate & drop 
+DQL(Data Query Language)/DRL(Data Retrieval Language):: Select
+DML(Data Manipulation Language): insert , update & delete
+DCL(Data Control Language): grant & revoke permission to users
+TCL(Transaction Control Language): start Transaction , commit , rollback , 
+save point etc.
+--------------------------------------------------------------------------------
+//SQL Datatypes:-
+
+CHAR
+VARCHAR
+BLOB
+INT
+TINYINT
+BIGINT
+BIT 
+FLOAT
+DOUBLE
+BOOLEAN
+DATE 
+YEAR 
+--------------------------------------------------------------------------------------
+//Numeric Datatypes:-
+
+TINYINT
+SMALLINT
+MEDIUMINT
+INT
+BIGINT
+FLOAT
+DOUBLE
+DECIMAL
+------------------------------------------------------------------------------
+//Text Datatypes:-
+
+CHAR()
+VARCHAR()
+BLOB
+MEDIUMTEXT
+MEDIUMBLOB
+LONGTEXT
+LONGBLOB
+---------------------------------------------------------------------------------
