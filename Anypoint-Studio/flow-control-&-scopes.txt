@@ -29,10 +29,10 @@ route consecutively. For example, the first time Round Robin executes, the
 component selects the first route. The next time, it selects the second route. 
 If the previously selected route is the last route, Round Robin executes the first 
 route...
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
 3. first Successful:
 Sends a message to a list of message processors until one processes it successfully..
---------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 4. Choise:
 The Choice router adds conditional processing to a flow, similar to an if/then/else 
 code block in most programming languages. The Choice router dynamically routes 
@@ -41,7 +41,7 @@ that evaluate message content. Each expression is associated with a different ro
 and the Default case executes when no other expressions match...
 #When
 Expression: #[payload.ip == "161.185.160.99"]
-
+Expression: #[sizeOf(payload) >= 1]
 ---------------------------------------------------------------------------------------
 //Scopes:
 1. Async

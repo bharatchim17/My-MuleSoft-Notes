@@ -1,4 +1,6 @@
 --------------------------------------------------------------------------------------
+https://kafka.apache.org/documentation/#introduction
+--------------------------------------------------------------------------------------
 //Kafka: 
 Is written in scala & java Apache Kafka is an open-source distributed-streaming & 
 messaging system Originally designed by LinkedIn with capabilities to handle huge 
@@ -7,7 +9,20 @@ pub-sub mechanism for message communication..
 database have high storage but low throughput that's why , Operation Per Second is low..
 Whereas kafka has high throughput and low storage...
 
+Apache kafka is like communication system that helps different parts of computer system
+exchange data by publishing and subscribing to topics..
+//Why apache kafka..?
+1. High throughput
+2. Fault Tolerance(replication)..
 
+Apache kafka is an event streaming platform What does that mean..?
+Kafka combines three key capabilities so we can implement use case for event streaming
+end-to-end with single battle-tested solution:
+1. To publish(write) and subscribe to (read) streams of events , including continues
+import|export of your data from other system..
+2. To store streams of events durably and reliably for as long as we want..
+3. To process streams of event as they ocure retrospectively..
+----------------------------------------------------------------------------------------
 //What is message..?  is small to medium size piece of data:
 
 1. Producer: is an application that sends data to kafka server...
@@ -28,14 +43,23 @@ its offset value..
 
 8. Consumer groups: group of consumers acting as single logic unit..
 
-E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows add this path in environment 
-variable...
+E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows <---- add this path in 
+environment variable...
+
 kafka-3.7.0-src\bin\windows <--- type cmd in this path
 
 //When sending message with key , ordering will be maintained as they will be in the
 same partion...
 without key we can not garantee the ordering of message as consumer poll the message 
 from all the partitions at the same time..
+
+//Consumer offset:
+Is position of consumer in specific partition of topic , it represents latest message,
+consumer has to read..
+When consumer groups reads message from topic , each memeber of the group maintains
+its , own offset and updates it as it consumes messages that's  bookmark called consumer offset..
+Consumer offset is built-in topic in Apache kafka that keeps track of latest offset committed for 
+each partition of each consumer group..
 -------------------------------------------------------------------------------------
 
 //kafka random commands:
@@ -61,12 +85,11 @@ In config server.properties  log.dirs= paste path with forward slash (/) here of
 
                                ------- or -------
 
-1. In config zookeeper.properties dataDir = log.dirs=C:/kafka/zookeeper-data
+1. In config zookeeper.properties dataDir = E:/Mule-Soft/Message-Broker/kafkaStore/zookeeper
 
-2. In config server.properties  log.dirs= log.dirs=C:/kafka/zookeeper-data
+2. In config server.properties  log.dirs= E:/Mule-Soft/Message-Broker/kafkaStore/kafka-logs
 
-
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 //kafka Operations:
 1. Batch message listener (source)
 2. Message listener (source)
@@ -137,7 +160,30 @@ Offset:
 Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
 Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
 
-//wmic' is not recognized as an internal or external command,
-operable program or batch file.
+//Error Occure:
+wmic' is not recognized as an internal or external command,
+operable program or batch file...
+
+//Error Occure:
+Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'..
 Solution: 
 ---------------------------------------------------------------------------------------
+Apache kafka with docker..
+E:\GitFuck\git003\My-MuleSoft-Notes\Continuous-Integration\docker-compose.yml
+E:\GitFuck\git003\My-MuleSoft-Notes\Continuous-Integration <----- in this path type cmd
+
+//cmd command:
+docker-compose -f docker-compose.yml up -d  <----------- for Installation | for running 
+docker images
+docker ps
+docker exec -it acc10e768e66 /bin/sh
+ls
+cd opt 
+ls
+cd bitnami
+cd kafka <---------- common  java  kafka  licenses  scripts
+cd bin 
+
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --Partitions
+ 1 --topic dcb 
+ ------------------------------------------------------

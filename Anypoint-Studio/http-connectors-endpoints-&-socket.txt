@@ -4,15 +4,20 @@ Scheduler:
  is endpoint Source that schedules periodic execution of a flow. By default it will 
  used a fixed frequency scheduling of 1 second...
  #General:
- scheduling strategy: Fixed Frequency | Cron
+ scheduling strategy: Fixed Frequency✅ | Cron
  Frequency:
  Start dealy:
  Time unit:
+scheduling strategy: Fixed Frequency | Cron ✅
+Expression: 0 0/2 * 1/1 * ? * <------------- (here 0=second ; 15=minute ; 10=hours)
+Time Zone: 
+
+
 
  http://www.cronmaker.com/ 
  
 
-
+https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept
 -----------------------------------------------------------------------------------
 //http Request:
 

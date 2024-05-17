@@ -35,17 +35,23 @@ Your app password for your device: jbjb azew ztpz gjud
 #Global element: search smtp email 
 email:      <--------- is .yaml file
   host:     "smtp.gmail.com" 
-  user:     "bharatchim17@gmail.com" 
+  user:     "bharatchim17@gmail.com" <------- sender mail 
   password: "jbjb azew ztpz gjud" 
   port:     "587"
 
-From address: ${email.user}
+From address: ${email.user}  <------- sender mail 
 To address: Edit inline ✅ | Expression or Bean reference
+Subject: "Congratulations account created Successfully.. !"
 Content: #[payload] (default) | #["Congratulations your account is created successfully"]
 Encoding: UTF-8
 Content Transfer Encoding: Base64
+
+
+To address: Edit inline ✅ 
+value: #[payload.MAILID as String]
+Subject: #["Today's Total Balance:" ++ payload.BANKNAME]
 ---------------------------------------------------------------------------------------
-  //Error Ocure :-
+//Error Ocure :-
 "Error while sending email: 530-5.7.0 Must issue a STARTTLS command first. For more information, go to
 530-5.7.0  https://support.google.com/a/answer/3221692 and review RFC 3207
 530 5.7.0 specifications. d9443c01a7336-1ef0c264479sm68671665ad.292 - gsmtp"..

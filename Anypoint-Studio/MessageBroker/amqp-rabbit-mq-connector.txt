@@ -81,3 +81,5 @@ created dynamically...
 Ack id fx : vars.ackId  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId
 ---------------------------------------------------------------------------------
+//How to Install RabbitMQ Locally with Docker..?
+https://hub.docker.com/_/rabbitmq
