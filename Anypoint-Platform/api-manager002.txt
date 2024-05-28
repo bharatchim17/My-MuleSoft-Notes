@@ -9,7 +9,7 @@
 //Quality of service:
 
 1. HTTP Caching: 
-The HTTP Caching policy enables you to store HTTP responses from an API implementation
+The HTTP Caching policy enables us to store HTTP responses from an API implementation
 or an API proxy for reuse. To optimize against computation-heavy processing , this 
 policy avoids performing multiple calls to the backend when the response of a service
 does not change often. This policy uses a cache, which enables a faster service for 
@@ -33,7 +33,8 @@ limit the number of request specified by the level of access granted to the requ
 The Rate Limiting policy enables you to limit the number of requests that an API 
 can accept within a time window. The API rejects any request that exceeds this limit. 
 You can configure multiple limits with window sizes ranging from milliseconds to years.
-We can Apply configuration to all API method & resources or we can Apply specific API method & resources.
+We can Apply configuration to all API method & resources or we can Apply specific 
+API method & resources.
 
 
 4. Spike Control:
@@ -118,7 +119,7 @@ action creates two headers with the same name...
 //Compliance:
 
 1. Cross-Origin Resource Sharing:
-The cross-origin resource sharing (CORS) policy enables you to access resources in 
+The cross-origin resource sharing (CORS) policy enables us to access resources in 
 another domain using a web application. For example, browsers rely on this standard 
 for allowing cross-origin requests...
 
@@ -138,8 +139,8 @@ generated outside of Anypoint Platform...
   indicating where to extract the credentials from request.
 ---------------------------------------------------------------------------------------
 Note:- If our API is not showing ACTIVE in API Manager, that means , either the api ID 
-is mismatched that our have given in your code and the value in API Manager, or The 
+is mismatched that our have given in our code and the value in API Manager, or The 
 Anypoint platform credentials are wrong. When Status is “Un Registered “ That means , 
-your policies are not appended. But still application works without having Policies appended.
+our policies are not appended. But still application works without having Policies appended...
 -------------------------------------------------------------------------------------
 

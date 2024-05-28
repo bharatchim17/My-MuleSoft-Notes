@@ -187,3 +187,9 @@ cd bin
 kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --Partitions
  1 --topic dcb 
  -----------------------------------------------------------------------------------
+ //Kafka architecture:
+ producer ---> kafka ---> consumer
+ kafka ecosystem contains: 1.kafka cluster   2.zookeeper
+Kafka Cluster has broker and broker contains topic(topic contains partitions).. 
+with help of offset message store in the partition of the topic...
+-------------------------------------------------------------------------------

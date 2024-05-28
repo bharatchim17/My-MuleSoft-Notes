@@ -12,7 +12,7 @@ Key_Name: !include paste_path
 body:
 Key_Name
 
-//mention-inType
+//mention-inType ✅
 type: Key_Name
 
 ---------------------------------------------------------------------------------------
@@ -33,27 +33,28 @@ type : Key_Name  <----- We can remove type also , as body: Key_Name because type
 
 //We can directly mention(.json file in example folder):
 
-example: !include copy_path of file which is in example_folder..
+example: !include copy_path of file which is in example_folder..✅
 ---------------------------------------------------------------------------------------
 2.1.Example of RAMl datatype:-
 
 //In example folder fragment 
             value:
-              code: 404       <------ paste propertie's/items field in datatype Below value
-              reasonphrase: Not Found
+              code: 404       <------ paste (propertie's| items) field in datatype Below the value 
+              reasonphrase:" Not Found"
               details: string
 
 
 //In datatype_folder fragment
 
-example: !include copy_path of file which is in example_folder  <-----here example is on same line of properties 
+example: !include copy_path of file which is in example_folder  <-----here example is 
+on same line of properties..
 
 examples: 
     example1: !include copy_path of file which is in example_folder 
     example2: !include copy_path of file which is in example_folder 
 
----------------------------------------------------------------------------------------------
-3. Resource-type:- Type here you can paste Methods like get , post
+------------------------------------------------------------------------------------------------
+3. Resource-type:-  here you can paste Methods like get , post
 
 //Resource-type folder fragment:
 
@@ -66,7 +67,7 @@ examples:
 resourceTypes:
  Key_Name: !include paste path
 
-//Mention type as:
+//Mention type as:  ✅
 type: Key_Name
   
    
@@ -74,7 +75,7 @@ type: Key_Name
                         type: !include copy_path of file which is in datatype_folder (when Key_Name not mentioned)
 -----------------------------------------------------------------------------------------------------
 
-4.Traits:- here , you can edit part of resource type such as
+4.Traits:- We can edit part of resource type such as
 query_parameters, responses also , headers (correlation-id , transaction-id)..
 
 
@@ -173,7 +174,7 @@ securitySchemes:
 https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth
 
 //mention under methods As:
-securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name
+securedBy: [basic|oAuth2.0]  //here basic or oAuth2.0 is Key_Name
 
                                                                     securitySchemes:
                                                                     basicAuth: !include /securitySchemes/basic-Auth.raml
@@ -193,10 +194,20 @@ securedBy:
 -----------------------------------------------------------------------------------------
 securitySchemes:
        <<securityScheme_Name_Of_Your_Choise>>:
-           type: ----> OAuth 1.0 / OAuth 2.0 / Basic Authentication	/ Digest Authentication	/ Pass Through	/ x-{other}
-           describedBy: ---> request / responses / query_parameters / headers
-           settings: authorization uri / access token
-----------------------------------------------------------------------------------------------------
+           type: ----> OAuth 1.0 | OAuth 2.0 | Basic Authentication	| Digest Authentication	| Pass Through	| x-{other}
+           describedBy: ---> request | responses | query_parameters | headers
+           settings: authorization uri | access token
+--------------------------------------------------------------------------------------
+//In security_Schemes file:
+type: Basic Authentication
+//In root file:
+securitySchemes:
+  secure: !include /security/securityScheme.raml  
+
+//mention as:
+securedBy:
+  - secure       
+-----------------------------------------------------------------------------------------
 //If there is external security_Schemes or in Folder:
 
 In Security_folder fragment:-

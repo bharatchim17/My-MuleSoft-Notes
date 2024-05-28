@@ -32,7 +32,12 @@ SQL query Text:
 VALUES(:key1 , :key2 , :key3) ;      // this is placeholder :key
 
 Input parameters: 
-                    #[{
+
+                    #[
+                     %dw 2.0
+                    output application/json
+                    ---   
+                    {
                     key1: payload.keyName ,            
                     key2: payload.keyName , 
                     key3: payload.keyName

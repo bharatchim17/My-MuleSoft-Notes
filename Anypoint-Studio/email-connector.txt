@@ -1,3 +1,4 @@
+------------------------------------------------------------------------------------
 https://myaccount.google.com/
 
 search: App passwords
@@ -38,11 +39,14 @@ email:      <--------- is .yaml file
   user:     "bharatchim17@gmail.com" <------- sender mail 
   password: "jbjb azew ztpz gjud" 
   port:     "587"
+#Advanced ----> Edit inline ----> key: mail.smtp.starttls.enable  value: true
 
+#General:
 From address: ${email.user}  <------- sender mail 
 To address: Edit inline ✅ | Expression or Bean reference
 Subject: "Congratulations account created Successfully.. !"
 Content: #[payload] (default) | #["Congratulations your account is created successfully"]
+content type: text/plain
 Encoding: UTF-8
 Content Transfer Encoding: Base64
 
@@ -50,6 +54,9 @@ Content Transfer Encoding: Base64
 To address: Edit inline ✅ 
 value: #[payload.MAILID as String]
 Subject: #["Today's Total Balance:" ++ payload.BANKNAME]
+
+To address: Expression or Bean reference ✅
+#[vars.saveMe.MAILID[0]]
 ---------------------------------------------------------------------------------------
 //Error Ocure :-
 "Error while sending email: 530-5.7.0 Must issue a STARTTLS command first. For more information, go to

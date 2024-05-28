@@ -1,0 +1,34 @@
+//Dataweave + Docker:
+
+https://www.prostdev.com/post/how-to-run-locally-the-dataweave-playground-docker-image
+
+//cmd command:
+docker --version 
+docker compose --version
+
+//Docker Notes:
+https://cloudchamp.notion.site/Docker-Course-6d015251774947848db541a4163043b8
+
+//What is Docker? 🐳
+
+Docker is a Containerization platform for packaging, deploying, and running 
+applications as CONTAINERS..
+
+
+// What is containerization? 📦
+Containerization is a lightweight form of virtualization that allows you to 
+encapsulate an application and its dependencies into a self-contained unit called a 
+"container"... 
+Docker applications run in containers that can be used on any system: a developer’s 
+laptop, systems on premises, or in the cloud. (it runs the same)..
+Containers share the host operating system's kernel, but they have their own isolated 
+file system, processes, and networking..
+------------------------------------------------------------------------------
+//Docker command:
+docker search ubuntu ---> searching for ubuntu 
+              docker ---> searching docker command
+
+docker create --help ---> get's help from docker
+docker create --name containerName -it containerImage ---> creating container
+docker container ls -a   ---> 
+------------------------------------------------------------------------------

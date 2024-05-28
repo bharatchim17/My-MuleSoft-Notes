@@ -42,6 +42,11 @@ and the Default case executes when no other expressions match...
 #When
 Expression: #[payload.ip == "161.185.160.99"]
 Expression: #[sizeOf(payload) >= 1]
+Expression: #[payload.affectedRows >= 1]
+Expression: #[payload.WRONGPIN == 3]
+Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String == "active"]
+Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String != "active"]
+
 ---------------------------------------------------------------------------------------
 //Scopes:
 1. Async
@@ -57,11 +62,36 @@ Expression: #[sizeOf(payload) >= 1]
 Flow Reference component we can set as below  
 
 #Target: payload
-#Target value :  payload (default fx)
+#Target value : #[payload] 
 
 #Advanced ---> output
 Target variable:  varableName 
-Target value:  payload  (default fx)
+Target value:  #[payload]
+
+-------------------------------------------------------------------------------
+//Supose we have payload we want to save it into variable how can we do it ...?
+--->
+We can use target variable for it :
+#Advance
+Target variable: saveMe
+Target value: #[payload]
+
+In set payload transformer:
+#[saveMe]
+------------------------------------------------------------------------------------
+In set variable transformer:
+Name: inpPayload
+value:
+#[
+%dw 2.0
+output application/json
+var inp = []
+---
+inp << payload 
+reduce ((item, accumulator) -> item )
+]
+
+
 -------------------------------------------------------------------------------------
 //Async scope:
 The Async scope executes simultaneously with the main flow. The main flow continues to
@@ -141,6 +171,11 @@ interrupted when an error is raised (and the Error Handler is invoked),
 while Parallel For Each processes every route before invoking the Error Handler with
 a MULE:COMPOSITE_ROUTE error type. For Each does not modify the payload, while the 
 Parallel For Each outputs a collection of the output messages from each iteration...
+
+//For each mule process one or more record at time in sequential way but parallel for each
+mule component process multiple records at time in parallel way..
+For each mule processor do single threaded processing but , parallel for each do multi threaded
+processing...
 --------------------------------------------------------------------------------------
 //Cache scope:
 Is for storing and reusing frequently called data. We can use cache scope to reduce

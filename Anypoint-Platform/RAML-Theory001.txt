@@ -1,10 +1,9 @@
 ---------------------------------------------------------------------------------------------
 //Anypoint platform capabilities:-
-Anypoint platform is web application ,a graphical user interface allows us to do cloud
- operations on deployed mule applications..
+Anypoint platform is web application , a graphical user interface allows us to do 
+cloud operations on deployed mule applications..
 
 //CONTROL PLANE 
-
 1. Anypoint Design Centre:-
   - Flow Designer
   - API Designer
@@ -28,7 +27,7 @@ Anypoint platform is web application ,a graphical user interface allows us to do
 Organization:-      TATA
       |
       |
-Business groups:-   1.TATA Motors  2.TATA Steel   3.TATA Motors
+Business groups:-   1.TATA Motors  2.TATA Steel   3.TATA consultant service
       |
       |
 Environments:-      1.Development   2.Quality-Assurance  3.Production
@@ -43,23 +42,23 @@ Environments:-      1.Development   2.Quality-Assurance  3.Production
     
     here: 
     Base URI :-  http://localhost:8081/Domain_Name
-    Resource :- v1/cases
+    Resource :-  v1/cases
 
-2.HTTP Methods/Verbs :-
+2.HTTP Methods/Verbs:-
 GET, POST, PUT, DELETE
 
 Create: ----> Post
 Read:----> Get ---> we use Get by url , form tag , hyperlink
-Update:----> Put(Create + Update)/Patch(partially Update)
+Update:----> Put(Create + Update)|Patch(partially Update)
 Delete
 --------------------------------------------------------------------------------------------------
 //Idompotent:
 Idempotent methods are HTTP methods that have the same effect on the server, 
 regardless of how many times they are executed. For example, GET, PUT, and DELETE are 
-idempotent methods, because they always return the same resource, update the same 
+idempotent methods, because they always return the same resources , update the same 
 resource, or remove the same resource, respectively...
 
-Idompotent:      --------> example:- Get/Put/Delete is Idompotent
+Idompotent:      --------> example:- Get|Put|Delete is Idompotent
 Non-Idompotent:  --------> example: Post 
 ---------------------------------------------------------------------------------------
 //RAML is a language for the definition of HTTP-based APIs that embody most or all 
@@ -86,10 +85,10 @@ in curly brackets ({}) inside a relative URI of a resource.
 
 //version:- API version
 
-//baseUri:-  baseUri node specifies a URI as an identifier for the API as a whole.
+//baseUri:-  baseUri node specifies a URI as an identifier for the API as a whole...
 
 //baseUriParameters:- The baseUriParameters node has the same semantics and therefore
- MUST follow the same structure as the uriParameters.
+ MUST follow the same structure as the uriParameters...
 
 //protocols:-  [HTTP, HTTPS]
 
@@ -97,12 +96,11 @@ in curly brackets ({}) inside a relative URI of a resource.
 
 
 //traits:- A trait, like a method, can provide method-level nodes such as a description,
- headers, query string parameters, and responses. 
-
+ headers, query string parameters, and responses...
 
 //annotationTypes:-  Annotation types, like data types, can extend other data types,
- but annotation types themselves can neither be extended nor used 
- anywhere data types can be used.
+ but annotation types themselves can neither be extended nor used anywhere data types 
+can be used...
 
 (annotationName):-  An annotation is a map having a key that wrap in parentheses() 
 is the annotation name, and the value is an instance of that annotation.
@@ -131,19 +129,20 @@ security schemes previously defined in the securitySchemes.
 
 //uses:- Imported external libraries for use within the API.
 
-//relativeUri:- The resources of the API, identified as relative URIs that begin with a slash (/).
-A resource node is one that begins with the slash and is either at the root of the API definition or a child of a resource node. For example, /users and /{groupId}.
-
+//relativeUri:- The resources of the API, identified as relative URIs that begin with 
+a slash (/). A resource node is one that begins with the slash and is either at the 
+root of the API definition or a child of a resource node. For example, /users and 
+/{groupId}..
 
 //description:- Human-friendly description of the API.
 
-//schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 , always use types ..
+//schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 , always use types..
 -------------------------------------------------------------------------------------------------
 //What are fragments in RAML?
 fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
 These fragments can be data types, traits, resource categories, and many others.
- API fragments are reusable components of RAML to make the Design and build 
-of reusable API even quicker and easier.
+API fragments are reusable components of RAML to make the Design and build of reusable 
+API even quicker and easier.
 
 API Fragments:- has two types
 1. Local
@@ -151,13 +150,14 @@ API Fragments:- has two types
 -------------------------------------------------------------------------------------------
 //What is datatype..?
 A data type describes the data expected in an API or returned by the API..
-Datatype describes data in an API and add rules to validate data against type declaration..
-there are two types of datatype 1. built-in datatype  2. custom data types
---------------------------------------------------------------------------------------
+Datatype describes data in an API and add rules to validate data against type 
+declaration..there are two types of datatype 1. built-in datatype  2. custom data types..
+-------------------------------------------------------------------------------------------
 //What are facets in RAML?
 Types can define two types of members: properties and facets. Both are inherited. 
-Properties are regular, object oriented properties. Facets are special configurations. You specialize types based on characteristics of facet values.
-use for adding some constraints/special configuration..
+Properties are regular, object oriented properties. Facets are special configurations.
+You specialize types based on characteristics of facet values. use for adding some 
+constraints/special configuration..
 
 Common facets for all type declarations:
 -  default , description , enum , example
@@ -170,39 +170,41 @@ Some are specific to type:
 
 //enum facet used to specify the possible values for the room type..
 ---------------------------------------------------------------------------------------
-
 //Mocking service:-
-is for to simulate behavior of API specification and explore API, tested by using test link or public link
-and then we get response as http code , example..
+Is for to simulate behavior of API specification and explore API, tested by using test
+link or public link and then we get response as http code , example..
 -----------------------------------------------------------------------------------
 //Documentation: is reference guide for the API , Such documents can clarify how
  the API works or provide technical , functional and business context it define 
 how API works and it contains title & content..
 ----------------------------------------------------------------------------------
 //Anypoint-Exchange:- is repository which provides all Connectors to muleSoft.
-//Templates:- are reusable project structures , we can create applications by using Templates.   
+//Templates:- are reusable project structures , we can create applications by using 
+Templates.   
 ------------------------------------------------------------------------------------------
 //resources
 - Nouns
 it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
 resources has two types:  1.Collection(plural)  2.Nested(singular)..
 //what is differece between collection resource and Nested resource ?
-In collection resource delete methode avoided in majority projects , in nested methode delete methode use in uri parameter
+In collection resource delete methode avoided in majority projects , in nested method
+delete methode use in uri parameter
 
-resource representation can be in different formats - XML , JSON etc , representations exchanged between consumer and provider..
+resource representation can be in different formats - XML , JSON etc , representations
+exchanged between consumer and provider..
 
 //MediaType has two types:  1. Default  2. explicit 
 --------------------------------------------------------------------------------------------
 //What is HATEOS?
 
 //Q. What is Representational ?
---> Is response return by server to client can be reprent in format like json format 
+--> Is response return by server to client can be reprsent in format like json format 
 {} or xml format <>
 
 //Q. What is State? Does it mean session State?
-state of resources in particular time
+--> state of resources in particular time
 
 //resources are held by server
-WebClient(browser)----request(product/1)----->WebServer
-WebServer-------response{product1: milk}------>WebClient
+WebClient(browser)--->request(product/1)----->WebServer
+WebServer---->response{product1: milk}----->WebClient
 ---------------------------------------------------------------------------------------

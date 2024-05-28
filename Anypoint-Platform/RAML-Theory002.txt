@@ -1,20 +1,21 @@
 
 ------------------------------------------------------------------------------------------------
-
 //Request contains:
         - body
         - headers
         - mediaType
         - uri_parameters
         - query_parameters
-//request body must be required in post and patch method it not required in get and delete methode..
+//request body must be required in post , put and patch method it not required in get 
+and delete methode..
 
 //Response contains:
         - HTTP status code
         - mediaType
         - body
         - headers
-//response body not required in post and patch methode  it's required in get and delete methode but we can use anyway..
+//response body not required in post , put and patch methode  it's required in get 
+and delete methode but we can use anyway..
 ----------------------------------------------------------------------------------------------
 https://testfully.io/blog/http-methods/
 
@@ -24,7 +25,7 @@ https://testfully.io/blog/http-methods/
     - 102 processing (webDAV)
 
 2xx success:  (200–299)
-    - 200 Ok (The request was a success)
+    - 200 Ok (The request was a success) | successfull
     - 201 created (A new resource was successfully created)
     - 202 accepted
     - 203 Non-authoritive information
@@ -40,13 +41,14 @@ https://testfully.io/blog/http-methods/
     - 305 use proxy
 
 4xx client-error:  (400–499)
-    - 400 bad request / request validation error (The server could not understand the request. The request needs to be modified before re-sending it)..
-
-    - 401 unauthorized/Access denid (The request’s authentication is either missing or incorrect)
+    - 400 bad request | request validation error (The server could not understand the 
+    request. The request needs to be modified before re-sending it)..
+    - 401 unauthorized | Access denay (The request’s authentication is either missing or incorrect)
     - 402 payment required
     - 403 forbidden(The request’s authentication succeeded, but the user does not have access to the resource)
     - 404 resource not found
-    - 405 method not found/allowed
+    - 405 method not found|allowed
+
 
 5xx server-error:  (500–599)
 - 500 internal server error (The server encountered an error)..
@@ -66,39 +68,36 @@ https://testfully.io/blog/http-methods/
 • 403 Forbidden
 • 404 Not Found
 • 405 Method Not Allowed
-• 406 Not Acceptable
-• 409 Conflict
-• 415 Unsupported Media Type
+• 406 Not Acceptable *
+• 409 Conflict *
+• 415 Unsupported Media Type *
 • 500 Internal Server Error
 • 501 Not Implemented
 • 502 Bad Gateway
 • 503 Service Unavailable
 • 504 Gateway Timeout
-
 ----------------------------------------------------------------------------------------
+//Below requirement we use Error-response as content-type in project * as per requirement
 //Request Headers has two types:
-1. Accept       ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
-2. Content-type ---e.g.-->  POST(collection resources) / PATCH(nested resources)
+1. Accept       ---e.g.-->  GET(collection and nested resources) |DELETE(nested resources)
+2. Content-type ---e.g.-->  POST(collection resources) | PATCH(nested resources)
 
 //Response Headers has two types:
-1. Content-type  ---e.g.-->  GET(collection and nested resources) / DELETE(nested resources)
+1. Content-type  ---e.g.-->  GET(collection and nested resources) | DELETE(nested resources)
 2. Location     ---e.g.-->  POST(collection resources) 
-
-We use Error-response as content-type in project * as per requirement
-
 --------------------------------------------------------------------------------------------
 //displayName: human friendly name
 //discription: human friendly description
 displayName , discription are common facets of datatype use for resource and Nested 
 resource also, for the methods like get , patch , put , post , delete.
 -----------------------------------------------------------------------------------------
-//resourceTypes:-  A resource type  is collection-type resource can be defined and then
-applied to multiple resources..
+//resourceTypes:-  A resource type  is collection-type resource can be defined and 
+then applied to multiple resources..
 
  //Reserved parameter
  1. resourcePath :  /hotels or /hotels/{hotelId} (same as in uri)
  2. resourcePathName:  /hotels or /hotels/{hotelId} for this resourcePath name will
-  be just hotel..
+  be just hotels..
  Double angle brackets enclosed parameter name in resourceTypes.. Double angle brackets<<>> 
 In case of user defined parameters it need to have set value of parameter..
 <<resourcePathName | !uppercamelcase | !singularize>>
@@ -120,7 +119,8 @@ In case of user defined parameters it need to have set value of parameter..
 
 //Reserved parameters:
 1. resourcePath:  /hotels or /hotels/{hotelId} (same as in uri)
-2. resourcePathName:  /hotels or /hotels/{hotelId} for this resourcePath name will be just hotel..
+2. resourcePathName:  /hotels or /hotels/{hotelId} for this resourcePath name will 
+be just hotel..
 3. methodName:  
 - User defined parameters
 
@@ -131,10 +131,10 @@ we can apply Traits to methods in resource and resource Types..
 - is YAML-based language..
 -------------------------------------------------------------------------------------------------------
 //Library:
-RAML library are used to combine any collection of data type,traits,security_Schemes declarations
-into modular , externalized , reusable groups.. 
+RAML library are used to combine any collection of data type , traits , 
+security_Schemes declarations into modular , externalized , reusable groups.. 
 ------------------------------------------------------------------------------------
 //Stable state: is ready to be consumed. The asset cannot be republished or overwritten.
 //Deprecated state: is similar to an asset version in the stable state.
 The only difference is that the status property shows the asset version is deprecated.
-------------------------------------------------
+------------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ securitySchemes:
 securedBy:
 -------------------------------------------------------------------------------------
 //2:-
-get: <-----  methods like.. / delete: / post: / put: / patch:
+get: <-----  methods like.. delete: | post: | put: | patch:
 
 displayName:
 description:
@@ -28,7 +28,7 @@ description:
 responses:
 body:
 /resource(subpath)
-----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 //4:-
 
 Accept:
@@ -37,7 +37,7 @@ Content-Type:  <---- request body Content-Type
 400:
 500:
 application/json:  <---- media type
--------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 //5:-
 
 headers:
@@ -82,7 +82,6 @@ mediaType:
           {
             "employeeID": 100 ,
             "employeeStatus": "A"
-
           }
     responses:
       201:
@@ -225,3 +224,4 @@ responses:
   is:
   - has-accept-header
   - has-error-traits: {errorCode: 404}  
+-------------------------------------------------------------------------------------

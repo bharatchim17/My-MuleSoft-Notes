@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------------
 //Exchange:-
-*Assets:
+Assets:
 - REST APIs
 - SOAP APIs
 - API Specification Fragments
@@ -39,8 +39,8 @@ In below situations
 - methods are added
 --------------------------------------------------------------------------------------
 //Asset Version:
-Exchange asset version follow the semantic versioning
-semantic version refers to model of major , minor and patch release..
+Exchange asset version follow the semantic versioning semantic version refers to model
+of major , minor and patch release..
 
 //Format: A.B.C --->  Example: 1.0.3
 where, 
