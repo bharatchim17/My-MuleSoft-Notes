@@ -25,10 +25,20 @@ Containers share the host operating system's kernel, but they have their own iso
 file system, processes, and networking..
 ------------------------------------------------------------------------------
 //Docker command:
+docker -v ---> Version of the docker
 docker search ubuntu ---> searching for ubuntu 
               docker ---> searching docker command
-
+docker run -it imageName ---> to interact | run | install image
+docker run  node --->   to run | install node image
 docker create --help ---> get's help from docker
 docker create --name containerName -it containerImage ---> creating container
-docker container ls -a   ---> 
+docker container ls      ---> list the running container
+docker container ls -a   ---> list the all container
+docker start  ---> run (start) the exited container 
+docker start  ---> Exit(stop) the exited container 
+docker exec -it containerName bash ---> for going inside container -it mean interact 
+mkdir floderName
+ctr + D ---> to exit
+docker run -it -p 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port
+docker run -it -p -e key=value 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port
 ------------------------------------------------------------------------------

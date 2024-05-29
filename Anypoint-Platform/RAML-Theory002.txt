@@ -26,10 +26,11 @@ https://testfully.io/blog/http-methods/
 
 2xx success:  (200–299)
     - 200 Ok (The request was a success) | successfull
-    - 201 created (A new resource was successfully created)
+    - 201 created (A new resource was successfully created) It's used in POST and PUT 
+methode........  
     - 202 accepted
     - 203 Non-authoritive information
-    - 204 No Content
+    - 204 No Content <---success , there is no response body send by this status code...
     - 205 reset content
 
 3xx redirection:  (300–399)
@@ -46,7 +47,7 @@ https://testfully.io/blog/http-methods/
     - 401 unauthorized | Access denay (The request’s authentication is either missing or incorrect)
     - 402 payment required
     - 403 forbidden(The request’s authentication succeeded, but the user does not have access to the resource)
-    - 404 resource not found
+    - 404 resource not found 
     - 405 method not found|allowed
 
 

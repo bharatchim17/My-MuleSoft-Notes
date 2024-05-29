@@ -122,5 +122,10 @@ git branch -d branch_Name
 git push --set-upstream origin branch_Name
 
 git clone link -b branch_Name
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
+Windows command shell:
+code . <---- open vs code or any coding tool
+mkdir <--- to make folder
+ctr + D ---> to exit

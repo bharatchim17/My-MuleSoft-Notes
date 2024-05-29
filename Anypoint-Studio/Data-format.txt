@@ -16,3 +16,10 @@ undefined
 //XML stands for eXtensible Markup Language , XML was designed to store and transport 
 data...
 --------------------------------------------------------------------------------
+Create project --->  Project (General) ---> projectName: xmlBasics
+//XSD:
+New ---> Other  ---> xmlSchema file  --->fileName: orders.xsd  <--- (ctrl + N)
+
+//XML:
+New ---> Other  ---> xml file  --->fileName: myOrder.xml ---> Next --->
+Create  xmlSchema file    <--- (ctrl + N)   
