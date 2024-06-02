@@ -16,6 +16,7 @@ Solution:-
 1. check/re-enter url 
 2. Test http configuration
 3. Remove empty spaces in postman's URL and payload..
+4. Re-run or debug again
 
 Error:- "Illegal processing instruction target ("xml"); xml (case insensitive) is reserved by the specs.
 solution:- Clear blank spaces..
@@ -27,11 +28,12 @@ solution:- Clear blank spaces..
 //Error Ocure :-  Mule Agent REST service is not available..
 
 Solution:-
-1.  Project --> Clean / Refresh metadata..
+1.  Project --> Clean | Refresh metadata..
 2. Remove blank-space in url or payload.. 
 3. Re-enter url in postman..
 4. Restart studio..
-
+Right click on mule config file ---> Mule  ---> Clear project metadata catelog
+also , refresh metadata.
 --------------------------------------------------------------------------------------------
 //Error Ocure :- "No listener found for request".
 Solution:- 
@@ -40,11 +42,10 @@ Solution:-
 //Error Ocure :- No listener for endpoint: /emp-sapi/creat-employee
 Solution:- 
 1. Check url and methods
-2. Global element  --> http configuration --> delete read-TimeOut --> save
+2. Global element  ---> http configuration ---> delete read-TimeOut ---> save
 
 -----------------------------------------------------------------------------------------
-
-//Error occure:-Parameter 'key' was not bound for query 'insert into Table(key_1, key_2) values(:key1 , :key2)
+//Error occure:- Parameter 'key' was not bound for query 'insert into Table(key_1, key_2) values(:key1 , :key2)
 
 Solution:-
 1. Check Database table by select * from TABLE ;
@@ -67,7 +68,7 @@ Solution:-
 check : Key in queries is equal to key in input parameters
 
 query text --->  :key  (:key is placeholder for input parameter key:)
-input  parameter ---> key: payload.key
+input  parameter ---> key: payload.key_1
 
 --------------------------------------------------------------------------------------
 
@@ -104,36 +105,20 @@ Example :-
 here , i change create_Date/update_date as string i.e. vharchar2 in oracleDB  
 
 ----------------------------------------------------------------------------------------------
-
-//500 Server error:- A generic error message, given when no more specific message is suitable.
-
-//200 ok :- Standard response for successful HTTP requests. The actual response will
- depend on the request method used. In a GET request, the response will contain an 
- entity corresponding to the requested resource. In a POST request the response will 
- contain an entity describing or containing the result of the action.
-
 // TimeOut error:-
 Solution:- 
 increase response TimeOut. 
-
 -----------------------------------------------------------------------------------------
 //Error Ocure:-
 You called the function 'Value Selector' with these arguments: 
   1: Binary "" as Binary {base: "64"} as Binary {encoding: "UTF-8", mediaType: "*/*; char...}
 
-solution:- By mapping , Transform JSON input to XML output..
+Solution:- By mapping , Transform JSON input to XML output..
           Inbound  = json payload ,
           Outbound = xml payload
 
 In postman:- Body --> raw --> json and POST/PUT payload (ENSURE , payload in postman and Inbound will be same)
 
-
----------------------------------------------------------------------------------------------
-//Error Ocure:- ToolingException {message='Mule Agent REST service is not available}..
-Solution:-
-Right click on mule config file ---> Mule  ---> Clear project metadata catelog
-also , refresh metadata.
-  
 --------------------------------------------------------------------------------------
 
 //Error Ocure:- mvn Clean Package-nsu-DskipMunitTests has encountered problem.
@@ -147,18 +132,20 @@ Solution:-
 Window ---> preference ---> Tooling --click--> 
 Check status/Restart Studio Services 
 ------------------------------------------------------------------------------------
-//Error Ocure:- ORA-12505, TNS: listener does not currently know of
-SID given in connect descriptor..
+//Error Ocure:- ORA-12505, TNS: listener does not currently know of SID given in connect descriptor..
 Solution:-
 --goto--> http listener ---> responses ---> error response--->
 Body: payload
 statusCode: vars.statusCode
 -----------------------------------------------------------------------------------------
-//Error Ocure:- 1046. No database selected Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+//Error Ocure:- 1046. No database selected Select the default DB to be used by double-clicking its name in the 
+SCHEMAS list in the sidebar.
 Solution:-
 USE Database_Name ;
 -----------------------------------------------------------------------------------------------
- //Error Ocure:- Body is ignored since the HTTP Method is between the empty body methods ([HEAD, GET, OPTIONS]) and the Send Body Mode is not set to 'ALWAYS'. future warnings like this will be suppressed in order to avoid performance degradations
+ //Error Ocure:- Body is ignored since the HTTP Method is between the empty body methods ([HEAD, GET, OPTIONS]) 
+and the Send Body Mode is not set to 'ALWAYS'. future warnings like this will be suppressed in order to avoid 
+performance degradations:
 Solution:- Restart studio
 
 

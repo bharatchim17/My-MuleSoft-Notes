@@ -18,9 +18,9 @@ password: guest
 - It equipped with fault tolerence(FA) , high availability(HA) , scalability features..
 
 //What is loosely coupled (Dcopled)..?
-Loose coupling is an approach to interconnecting the components in a system, network or software application 
-so that those components, also called elements,reducing the risk that changes within 
-one module will create unanticipated changes within other modules... 
+Loose coupling is an approach to interconnecting the components in a system, network 
+or software application so that those components, also called elements,reducing the 
+risk that changes within one module will create unanticipated changes within other modules... 
 
 //RabitMQ core concepts:
 - Message
@@ -44,17 +44,18 @@ one module will create unanticipated changes within other modules...
 
 1. Ack
 2. Consume
-3. Listner(souerce)
+3. Listner (source)
 4. Publish
 5. Publish consume
 6. Reject
 -------------------------------------------------------------------------------------
 1. Ack: Operation that acks a message with the delivery tag..
 #General
-Ack id fx : vars.ackId  <----- This is ack_id connector
+Ack id : #[vars.ackId]  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId
 --------------------------------------------------------------------------------
-2. Consume:  Operation that allows the user to consume a single AmqpMessage from a given Queue.
+2. Consume:  
+Operation that allows the user to consume a single AmqpMessage from a given Queue.
 -------------------------------------------------------------------------------------------
 3. Listner: AMQP Listener for Queues, allows to listen for incoming messages.
 #General:
@@ -78,8 +79,9 @@ created dynamically...
 --------------------------------------------------------------------------------
 6. Reject: Operation that allows the user to reject a delivered AmqpMessage.
 #General
-Ack id fx : vars.ackId  <----- This is ack_id connector
+Ack id : #[vars.ackId]  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId
 ---------------------------------------------------------------------------------
 //How to Install RabbitMQ Locally with Docker..?
 https://hub.docker.com/_/rabbitmq
+-----------------------------------------------------------------------------------

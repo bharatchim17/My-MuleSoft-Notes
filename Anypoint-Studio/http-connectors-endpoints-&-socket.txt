@@ -52,8 +52,8 @@ path: /path?
 Create variable in Transform message or in set variable:
 
 1. correlation-id
-attributes.headers.'x-correlation-id' default "" |  attributes.headers.
-'x-correlation-id' default payload.nationalId
+attributes.headers.'x-correlation-id' default "" |  attributes.headers.'x-correlation-id' 
+default payload.nationalId
 
 2. transaction-id
 attributes.headers.'x-transaction-id' default uuid()
@@ -72,9 +72,6 @@ Response Timeout: 50000
 Response validator: Failure Status Code  | Success Status Code 
 Value: 400 | 200 
 
-//When we choose Success status code only as value 200 , 400 or 200..499( pithing range) 
-then it consider both response as Success...
-
 //All   Attributes and Payload just before Http Request  are overridden by attributes and 
 Payload  that we received from external web-service via Http Request...
 Status code coming form Http Request : #[attributes.statusCode]
@@ -87,7 +84,7 @@ Status code coming form Http Request : #[attributes.statusCode]
 Before going to learn about rules. We must not forget that , RAML based generated Http 
 Listener has Error Response Body as #[payload] as Default but manually dragged and drop 
 Http Listeners has #[output text/plain --- error.description] as default. So change 
-accordingly to your business requirements..
+accordingly to our business requirements..
 -------------------------------------------------------------------------------------
 //Web socket is persistent connection between client and server , it's bi-directional 
 full duplex connection..
@@ -107,7 +104,10 @@ Switching Protocol Request" and then handshake is completed..
 
 //HTTP is primarily designed as a request-response protocol, where a client sends a 
 request to a server, and the server responds with the requested resource. 
-there are technologies built on top of HTTP that support full-duplex communication. 
+there are technologies built on top of HTTP that support full-duplex communication...
+
+
+//What is full-duplex , half duplex , statefull and stateless..?
 -----------------------------------------------------------------------------------------------
 
 

@@ -22,8 +22,16 @@ end-to-end with single battle-tested solution:
 import|export of your data from other system..
 2. To store streams of events durably and reliably for as long as we want..
 3. To process streams of event as they ocure retrospectively..
+
+//What is Fault tolerence (replication)..?
 ----------------------------------------------------------------------------------------
-//What is message..?  is small to medium size piece of data:
+ //Kafka architecture:
+ producer ---> kafka ---> consumer
+ kafka ecosystem contains: 1.kafka cluster   2.zookeeper
+Kafka Cluster has broker and broker contains topic(topic contains partitions).. 
+with help of offset message store in the partition of the topic...
+-------------------------------------------------------------------------------
+//What is message..? message is small to medium size piece of data:
 
 1. Producer: is an application that sends data to kafka server...
 2. Consumer: an application that receive data from kafka sever..
@@ -31,7 +39,8 @@ import|export of your data from other system..
 4. Cluster: group of broker
 
 5. Topic: is unique name for kafka it contains name related data , they are Link
-tables in database , producer produce message into topic (ultimetly to partition in round robin fashion)..
+tables in database , producer produce message into topic (ultimetly to partition in 
+round robin fashion)..
 
 6. Partitions:  A topic is split into several parts which are known as the partitions 
 of topic , a topic is partitioned and distributed to kafka brokers in round robin 
@@ -68,9 +77,10 @@ zookeeper-server-start.bat ..\..\config\zookeeper.properties
 zookeeper-server-start.bat <----add path of zookeeper.properties
 
 kafka-server-start.bat ..\..\config\server.properties
-kafka-server-start.bat .<----add path of server.properties
+kafka-server-start.bat <----add path of server.properties
 
-kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
+kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 
+--partitions 3
 
 kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
 
@@ -83,7 +93,7 @@ In config zookeeper.properties dataDir = paste path with forward slash (/) of zo
 2. broker: 
 In config server.properties  log.dirs= paste path with forward slash (/) here of broker folder 
 
-                               ------- or -------
+                        ------- or metion directly without creating folder -------
 
 1. In config zookeeper.properties dataDir = E:/Mule-Soft/Message-Broker/kafkaStore/zookeeper
 
@@ -169,8 +179,8 @@ Classpath is empty. Please build the project first e.g. by running 'gradlew jarA
 Solution: 
 ---------------------------------------------------------------------------------------
 Apache kafka with docker..
-E:\GitFuck\git003\My-MuleSoft-Notes\Continuous-Integration\docker-compose.yml
-E:\GitFuck\git003\My-MuleSoft-Notes\Continuous-Integration <----- in this path type cmd
+E:\Apache kafka\docker-compose.yml
+E:\Apache kafka <----- in this path type cmd
 
 //cmd command:
 docker-compose -f docker-compose.yml up -d  <----------- for Installation | for running 
@@ -187,9 +197,3 @@ cd bin
 kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --Partitions
  1 --topic dcb 
  -----------------------------------------------------------------------------------
- //Kafka architecture:
- producer ---> kafka ---> consumer
- kafka ecosystem contains: 1.kafka cluster   2.zookeeper
-Kafka Cluster has broker and broker contains topic(topic contains partitions).. 
-with help of offset message store in the partition of the topic...
--------------------------------------------------------------------------------

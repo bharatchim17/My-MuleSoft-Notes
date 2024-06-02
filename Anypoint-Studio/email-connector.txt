@@ -19,19 +19,7 @@ Your app password for your device: jbjb azew ztpz gjud
 11. On New Email -POP3
 13. Send 
 -----------------------------------------------------------------------------------------
-1. Count message -IMAP
-2. Count message -POP3
-3. Delete
-4. Expunge folder
-5. List -IMAP
-6. List -POP3 
-7. Mark as deleted
-8. Mark as read
-9. Move to folder
-10. On New Email -IMAP
-11. On New Email -POP3
-------------------------------------------------------------------------------------
-13. Send:
+// Send:
 
 #Global element: search smtp email 
 email:      <--------- is .yaml file

@@ -129,3 +129,5 @@ Windows command shell:
 code . <---- open vs code or any coding tool
 mkdir <--- to make folder
 ctr + D ---> to exit
+ls ----> list
+ls -lrt 

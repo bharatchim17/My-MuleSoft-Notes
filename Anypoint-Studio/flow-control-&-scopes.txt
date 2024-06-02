@@ -33,7 +33,7 @@ route...
 3. first Successful:
 Sends a message to a list of message processors until one processes it successfully..
 --------------------------------------------------------------------------------------
-4. Choise:
+4. Choice:
 The Choice router adds conditional processing to a flow, similar to an if/then/else 
 code block in most programming languages. The Choice router dynamically routes 
 messages to different portions of a flow according to a set of DataWeave expressions
@@ -62,23 +62,39 @@ Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String != "ac
 Flow Reference component we can set as below  
 
 #Target: payload
-#Target value : #[payload] 
+#Target value : #[payload] (default)
 
 #Advanced ---> output
-Target variable:  varableName 
-Target value:  #[payload]
-
--------------------------------------------------------------------------------
+Target variable:  variableName 
+Target value:  #[payload] (default)
+------------------------------------------------------------------------------------
 //Supose we have payload we want to save it into variable how can we do it ...?
 --->
-We can use target variable for it :
-#Advance
+We can use target variable for it:
+#Advanced
 Target variable: saveMe
 Target value: #[payload]
 
 In set payload transformer:
-#[saveMe]
-------------------------------------------------------------------------------------
+#[vars.saveMe]
+
+Set Variable:
+#General:
+DisplayName: Empty List
+Name: inpPayload
+Value: #[ [] ]
+
+Set Variable:
+#General:
+DisplayName:  Input Payload
+Name: inpPayload
+Value: 
+#[ 
+    %dw 2.0 output application/json --- vars.inpPayload << payload
+]
+
+----------or--------------
+
 In set variable transformer:
 Name: inpPayload
 value:
@@ -90,41 +106,41 @@ var inp = []
 inp << payload 
 reduce ((item, accumulator) -> item )
 ]
-
-
 -------------------------------------------------------------------------------------
 //Async scope:
 The Async scope executes simultaneously with the main flow. The main flow continues to
 execute while it initiates and processes the Async scope. The flow does not have to 
 pause until the last message processor embedded in the asynchronous flow has completed 
 its task...
-Processes the nested list of message processors asynchronously using a thread pool, 
-Async can be useful for executing time-consuming operations that do not require you to 
+Async scope processes the nested list of message processors asynchronously using a thread pool, 
+Async can be useful for executing time-consuming operations that do not require us to 
 send a response back to the initiating flow (such as printing a file or connecting to 
 a mail server)...
 
- //Async , Foreach & try scope + on-error-Continue works as localScope..
- if we save variable inside foreach it remain after scope but in case of async , 
- try + on-error-Continue it will vanish..
+ //Async , Foreach & try scope with (+) on-error-Continue works as localScope..
+ but ,
+ if we save variable inside foreach it remain after scope 
+ but , 
+ in case of async try + on-error-Continue it will vanish..
  
  -------------------------------------------------------------------------------------
 //try scope:
 The Try scope catches and handles errors that occur when executing any of the 
-components placed inside. The components inside the Try scope can also be configured 
+components which placed inside it.. The components inside the Try scope can also be configured 
 as a Transaction via the "Transactional Action" property, in which case they will 
 never be partially executed. Every operation within the scope of a transaction is 
 executed in the same thread, and errors should lead to either a rollback or a commit...
--------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 //The Until Successful scope:
 Until Successful runs synchronously , If any processor within the scope fails to 
-connect or to produce a successful result, Until Successful retries all the processors
-within it, including the one that failed, until all configured retries are exhausted...
+connect or to produce a successful result , Until Successful retries all the processors
+within it, including the one that failed , until all configured retries are exhausted...
 If  the  final  retry  does  not succeed, Until Successful produces an error. The 
 error Type for this Until-successful is MULE:RETRY_EXHAUSTED.. 
 
 #Generic:
 Max Retries: 3        <-----(here , 3 times + 1 normal call = 4 retries)
-Mili-Second between Retries: 1000
+Mili-Second between Retries: 60000(default)    1000
 
 //Use this Until scope in asynchronous flow also , when we use scheduler and mq...
 --------------------------------------------------------------------------------------
@@ -143,7 +159,7 @@ batch size: 1 (default) | 4 <--------- collection of 1 | 4
 root message variable name: rootMessage (default)
 
 If we want to process all records even if there are failures in individual records. 
-Then you must use “Try” block and use “On-Error-Continue” to handle individual errors 
+Then we must use “Try” block and use “On-Error-Continue” to handle individual errors 
 and process to next record....
 --------------------------------------------------------------------------------------
 //Parallel For Each Scopes: 
@@ -152,7 +168,7 @@ Splits the same message and processes each part in parallel...
 #General:
 collection: #[payload]
 Timeout: 
-Max concurrency: 4 | 
+Max concurrency: 4  
 Target:
 Target value: #[payload]
 
@@ -160,7 +176,7 @@ Target value: #[payload]
 1. processing intensive tasks(Max concurrency):
 number of threads <= number of cores 
 2. processing blocking tasks(Max concurrency):
-number of threads <= number of cores / (1 - blocking factor)
+number of threads <= number of cores ./. (1 - blocking factor)
 0 < blocking factor < 1
 --------------------------------------------------------------------------------
 //Differences between For Each and Parallel For Each Scopes:

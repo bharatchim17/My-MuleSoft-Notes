@@ -23,7 +23,28 @@ Docker applications run in containers that can be used on any system: a develope
 laptop, systems on premises, or in the cloud. (it runs the same)..
 Containers share the host operating system's kernel, but they have their own isolated 
 file system, processes, and networking..
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+//Dockerfile write following code: 
+
+FROM openjdk:8
+RUN rm -rf app
+RUN mkdir app
+ADD mule-ee-distribution-standalone-3.9.5-20230823.zip /app
+WORKDIR /app
+RUN unzip  mule-ee-distribution-standalone-3.9.5-20230823.zip && \
+mv mule-enterprise-standalone-3.9.5-20230823 mule4 && \
+rm mule-ee-distribution-standalone-3.9.5-20230823.zip
+
+VOLUME [ "/app/mule4/logs" , "/app/mule4/apps" , "/app/mule4/domains" , "/app/mule4/conf"]
+#http
+EXPOSE 8081-8091
+EXPOSE 9000
+EXPOSE 9082
+EXPOSE 1098
+EXPOSE 7777
+EXPOSE 5701-5703
+EXPOSE 54327
+------------------------------------------------------------------------------------------
 //Docker command:
 docker -v ---> Version of the docker
 docker search ubuntu ---> searching for ubuntu 
@@ -36,9 +57,24 @@ docker container ls      ---> list the running container
 docker container ls -a   ---> list the all container
 docker start  ---> run (start) the exited container 
 docker start  ---> Exit(stop) the exited container 
-docker exec -it containerName bash ---> for going inside container -it mean interact 
+docker exec -it containerName | containerId bash ---> for going inside container -it mean interact 
 mkdir floderName
 ctr + D ---> to exit
 docker run -it -p 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port
+example:  docker run -it -p 8087:8081 -i  mulestandalone
 docker run -it -p -e key=value 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port
-------------------------------------------------------------------------------
+docker build -t imageName.js|.java  .
+
+docker-compose -f docker-compose.yml up -d  <----------- for Installation | for running 
+docker images
+docker ps
+docker exec -it acc10e768e66 /bin/sh
+ls
+//install node js:
+npm init ---> enter <---- for intialization
+npm -i express <---- to install express
+cat fileName --> example:  cat main.js <---- to see code
+docker build -t imageName -f Dockerfile . <------- To build image
+docker pull mulesoft/flex-gateway:latest  <------ to install mulesoft gateway
+
+-------------------------------------------------------------------------------------------------------

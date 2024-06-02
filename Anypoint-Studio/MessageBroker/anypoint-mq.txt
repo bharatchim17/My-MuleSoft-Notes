@@ -1,13 +1,17 @@
+
+--------------------------------------------------------------------------------------
+//What is anypoint MQ..?
+Anypoint MQ is Mulesoft's Cloud Messaging platform. This can be used by other applications
+not just Mule. It can also be used across multiple Mule apps regardless of domains or 
+cluster, well suited for Cloudhub applications. 
 --------------------------------------------------------------------------------------
 //Anypoint MQ:
 Client Apps + Name: give name ---> save changes
-we get:
+We get:
 Client App ID:
 Client Secret:
-
 Destinations:  
 region:
-
 ----------------------------------------------------------------------------------
 #Global Element:
 Anypoint mq config:
@@ -20,17 +24,16 @@ On error types:
 Error threshold:
 Trip timeout:
 Trip timeout unit:
-
-------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 //Destinations:
 1. Queue
 2. Exchange
 3. FIFO(First In First Out) Queue 
 
 //Where sequence of processing of the message is important we use FIFO Queue. The
-sequence , you push the message into Queue will be sequence when you consume the message..
+sequence , we push the message into Queue will be sequence when we consume the message..
 ------------------------------------------------------------------------------------
-we need enterprize version for 
+//We need enterprize version for 
 The Anypoint-MQ connector provides publish-subscribe messaging to Mule apps using 
 Anypoint-MQ cloud service..
 Anypoint MQ also , has REST API for publishing or consuming messages using frameworks 
@@ -60,7 +63,7 @@ Executes an Acknowledgement indicating that the message has been consumed correc
 and deletes the message from In Flight status...
 
 #General:
-Ack token: #[vars.ackToken]  <----- This is ackToken variable
+Ack token: #[vars.ackToken]   <----- This is ackToken variable
 In set variable Transformer    -----> Name: ackToken  | value: attributes.ackToken
 ------------------------------------------------------------------------------------
 3. Nack:
@@ -134,7 +137,7 @@ If we are assigning DLQ for FIFO queue then DLQ should also be FIFO queue..
 Dead Letter Queue Name: 
 Delivery attepts before resource: 10 (Default)
 
-//when the delivery attepts got exceeded , message will be removed to DLQ and 
+//When the delivery attepts got exceeded , message will be removed to DLQ and 
 will be removed from actual queue..
 -----------------------------------------------------------------------------
 //Exchange:

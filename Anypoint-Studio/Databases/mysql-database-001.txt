@@ -4,9 +4,7 @@ USE db_name;
 SHOW tables ;
 DESCRIBE table_name ;
 SELECT * FROM table_name ;
-command line client:  \! cls for clearing screen
-
-
+command line client:  \! cls <----- for clearing screen
 --------------------------------------------------------------------------------------
 //Database related queries:-
 
@@ -17,8 +15,6 @@ create DATABASE IF NOT EXISTS db_name ;
 
 DROP DATABASE db_name;
 DROP DATABASE IF EXISTS db_name;
-
-
 -------------------------------------------------------------------------------------
 //Table related Queries:-
 
@@ -54,7 +50,7 @@ There can be multiple FKs.
 FKs can have duplicate & null values. 
 it prevent actions that would destroy links between tables..
 
-//Default:- Sets the default value of column..
+//Default:- Set the default value of column..
 //Check:-  It can limit the values allowed in column.. 
 ---------------------------------------------------------------------------------------------
 //Constraints:-
@@ -63,14 +59,13 @@ NOT NULL    ---> columns can't have null value      ---> example:- column1 int N
 UNIQUE      ---> all values in column are different ---> example:- column2 int UNIQUE 
 PRIMARY KEY ---> makes column unique & not null but used only for one..
 ----------------------------------------------------------------------------------------------------
-
 //Select
 syntax:-
 SELECT column_name1 , column_name2 FROM table_name ;
 WHERE conditions;
 SELECT * FROM table_name;
 SELECT DISTINCT column_name FROM table_name ;
-DISTINCT mean unique ;
+DISTINCT; <--- mean unique 
 ----------------------------------------------------------------------------------
 //Where Clause
 Arithmetic Operators:- 
@@ -151,13 +146,11 @@ WHERE condition ;
 Cascading for FK:-
 
 //On Delete Cascade 
-When we create foreign key using this option , it deletes the referencing rows in the 
-child table when the referenced row is deleted in the parent table which 
-has Primary key..
+
 
 //On Update Cascade
-when we create foreign key using UPDATE CASCADE the refrencing rows are updated in 
-child table when referenced row is updated in parent table which has Primary key..
+
+What is cascade for foreign key..?
 --------------------------------------------------------------------------------------
 //Alter (to change the schema)
 
@@ -169,7 +162,7 @@ Drop Column
 ALTER TABLE table_name 
 DROP COLUMN column_name ;
 
-RENAME Table
+Change Table (RENAME Table)
 ALTER TABLE table_name 
 RENAME TO new_table_name ;
 
@@ -177,7 +170,7 @@ CHANGE Column(rename)
 ALTER TABLE table_name
 CHANGE COLUMN old_name new_name new_datatype new_constraint;
 
-MODIFY Column(modify datatype/constraint) 
+MODIFY Column(modify datatype|constraint) 
 ALTER TABLE table_name
 MODIFY column_name new_datatype new_constraint;
  
@@ -193,7 +186,7 @@ Returns records that have matching values in both tables..
 syntax
 SELECT column
 FROM TableA
-INNER/LEFT/RIGHT JOIN tableB
+INNER|LEFT|RIGHT JOIN tableB
 ON tableA.column_name = tableB.column_name ;
 
 //Full Join (LEFT <--UNION--> RIGHT)
@@ -229,26 +222,15 @@ To use it:
 TO DISK = 'filepath';
 WITH DIFFERENTIAL;
 
-Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.
-A differential back up only backs up the parts of the database that have changed since the last full database backup.
+Always back up the database to a different drive than the actual database. Then, if 
+you get a disk crash, you will not lose your backup file along with the database.
+A differential back up only backs up the parts of the database that have changed 
+since the last full database backup.
 
-
-//CREATE TABLE table_name (
-    column1 datatype,
-    column2 datatype,
-    column3 datatype,
-   ....
-);
-
-
-//The SELECT statement is used to select data from a database.
-
-SELECT column1, column2, ...
-FROM table_name;
 ----------------------------------------------------------------------------------------------
 SOQL (Salesforce Object Query Language) is query language used in Salesforce to retrieve data from
-the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) queries but are specifically
-designed for querying Salesforce Objects.
+the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) 
+queries but are specifically designed for querying Salesforce Objects.
 Query syntax:-
 SELECT <List Of Fields> FROM <Object API Name> WHERE <Filter Condition>
 ---------------------------------------------------------------------------------------------

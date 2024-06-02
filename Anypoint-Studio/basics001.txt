@@ -72,14 +72,16 @@ Benefits:-
  - API Management
 
  //Mule has two version community and enterprise.
+
+ //How we manage API also ,  what is cloud enablement..?
 ---------------------------------------------------------------------------------------------
  //Integration:- The process of making data transfer between multiple systems is known
  as integration.
 
  //Integration ways/Types of integration :-
- 1. JMS (PUB SUB model)
+ 1. JMS | AMQP (PUB SUB model)
  2. Webservices (REST & SOAP)
- 3. SFTP
+ 3. SFTP(Secure File Transfer Protocol)
  4. Database
  5. System based connectors (Saleforce , SAP , Amezon etc)
 
@@ -90,7 +92,7 @@ Benefits:-
 src/main/mule   ---> Contain mule configuration file .xml
 src/test/munit  ---> contain M-unit test cases of src/main/mule 
 
-src/main/resources ---> contain log4j2.xml , wsdl file , ssl file & API
+src/main/resources ---> contain log4j2.xml , wsdl file , SSL file & API
         - log4j2   ---> contain login for log component
         -  API     ---> contain RAML files
 
@@ -100,7 +102,7 @@ src/test/java   ---> contain test of java file in src/main/java
 src/main/resource --->  under example or schema  folder we get , payload for inbounds/Outbound  
 src/test/resource ---> contain test of the file in src/main/resource
 
--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 
 //Web Services:-
 A web service is program which runs in server and whose results are shareable over network/integration
@@ -115,15 +117,18 @@ are running together in one Applications or in one server.
 //Export file ---> Right click on file  ---> Export ---> Mule ---> Deployable Archive..
 //Import file ---> File --->  Package mule Application (.jar) 
 
-----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 //ESB integration tool :-
 
 Integration tool called as ESB tool when it provides below features:-
 
-  - Components to orchestrate integrations (Drag and Drop components.)
-  - transformations (Transform done by components and dataweave logic.)
-  - Enrichments (process of concatenation of data with each other.)
------------------------------------------------------------------------------------
+  - Components to orchestrate integrations (Drag and Drop components)
+  - transformations (Transform done by components and dataweave logic)
+  - Enrichments (process of concatenation of data with each other)
+
+  //Orchestration:
+Is process of co-ordinting with multiple applications and getting desired work done..
+-----------------------------------------------------------------------------------------------------
 //Mule flows has three types:-   Main | Sub-flow | Private-flow
 
 
@@ -180,7 +185,7 @@ it has:-
     |   Error_Handling
     |
 -------------------------------------------------------------------------------------------------
-//Asynchronous flows:- execute in parallel to the calling flow; i.e., they are processed asynchronously.
+//Asynchronous flows:- execute in parallel to the calling flow; i.e. they are processed asynchronously.
 We can do this by wrapping the flow reference component in an async component.
 It means it will run in Background it will not wait for response Synchronous flow is 
 similar to sub flow This type of flow process the message with in single  thread
@@ -193,17 +198,22 @@ flow...
 
 ----------------------------------------------------------------------------------------
 //Streaming API
-Streaming API enables Streaming of events using push technology and provides subscription mechanism for receiving events in near real time..
-The Streaming API subscription mechanism supports multiple types of events , including PushTopic events , generic events , platform events and change Data capture events.. 
+Streaming API enables Streaming of events using push technology and provides subscription mechanism for 
+receiving events in near real time..
+The Streaming API subscription mechanism supports multiple types of events , including PushTopic events , 
+generic events , platform events and change Data capture events.. 
 
-//Push technology , also called the publish/subscribe model , transfers information that is initiated from server to client..
+//Push technology , also called the publish/subscribe model , transfers information that is initiated from 
+server to client..
 --------------------------------------------------------------------------------------------
 //When http listner source receives an http request , source triggers flow by using request data.
-//Host:- indicates where request are received , host can be hostname such as localhost , www.mulesoft.com  or ip address such as 175.0.0.1.
+//Host:- indicates where request are received , host can be hostname such as localhost , www.mulesoft.com 
+or ip address such as 175.0.0.1.
 //Port:- indicates where request are listened/received.
 //Protocols:- indicates protocols for communication example:- http/https/TLS. 
 
-//Schedular component enables us to trigger flow when time-based condition is met. it use same timezone as machine on which mule is running.
+//Schedular component enables us to trigger flow when time-based condition is met. it use same timezone as 
+machine on which mule is running.
 if application running in cloudHub then schedular conforms to UTC timezone.
 1. Frequency:- at which schedular triggers flow.
 2. Start delay:- is ammount of time to wait before triggering flow..
@@ -256,23 +266,27 @@ how integration drives digital transformation..
 //When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
 http://<host>:<port>/api/resource
 -------------------------------------------------------------------------------------------
-//Mule Expression Language MEL:- is lightweight mule-specific expression language that you can access and evaluate data in payload , 
-properties and variables. #[payload| vars | attributes]
+//Mule Expression Language MEL:- is lightweight mule-specific expression language that you can access and 
+evaluate data in payload , properties and variables.
+ #[payload| vars | attributes]
 
 #['\n'] --->  Give us new line
-#[payload] ---> To print payload without fx
+#[payload] ---> To print payload without expression modee(fx)
 
 ----------------------------------------------------------------------------------------
 // We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
-  The correlationID can find multiple logs and transactionID will find exact transaction log.
+The correlationID can find multiple logs and transactionID will find exact transaction log.
 
-The correlation-ID : Client chosen value can be duplicate among the request but , that should be value from the input.. 
- if Client send correlationID over the header assign it to variable otherwise , default it to one of the field from incoming payload.
+The correlation-ID : Client chosen value can be duplicate among the request but , that should be value from the
+ input.. 
+ if Client send correlationID over the header assign it to variable otherwise , default it to one of the field 
+from incoming payload.
 syntax to fetch :-
 attributes.headers.'x-correlation-id' default ""
 
-The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to correlationID
- Whereas mulesoft can able to generate its its own transaction ID it will maintain in each log.
+The transaction-ID : Will be the unique ID that can be transfer over the Applications. we can assign it to 
+correlationID
+Whereas mulesoft can able to generate  its own transaction ID it will maintain in each log...
 // uuid() :- is mulesoft function that will , generate unique ID .
 syntax to fetch :-
 attributes.headers.'x-transaction-id' default uuid()

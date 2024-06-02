@@ -5,13 +5,13 @@ validate of smallest unit of code to verify as it works as expected..
 //Munit:-
 Munit is Mule application testing framework that allows us to easily build automated 
 tests for our integrations and APIs. it provides a full suite of integration and unit 
-test capabilites and is fully integrated with Maven surefire for integration with your 
+test capabilites and is fully integrated with Maven surefire for integration with our 
 continuous deployment environment...
 Munit framework provides full suite of integration and unit test capabilites , and is
 fully integrated with Maven for continuous deployment environment..
 -------------------------------------------------------------------------------------
 //Munit is divided in two main sub modules:
-1. Munit (has two categories 1. Operations , Scope and Routers) 
+1. Munit (has two categories 1. Operations 2. Scope and Routers) 
 2. Munit Tools
 
 //Munit Operations:
@@ -48,8 +48,8 @@ fully integrated with Maven for continuous deployment environment..
 2. Execution
 3. Validation
 ----------------------------------------------------------------------------
-With Munit you can:
-- Create your test by writing mule code
+With Munit we can:
+- Create our test by writing mule code
 - Mock processors
 - spy any processor 
 - verify processor calls
@@ -73,8 +73,8 @@ expected: #[50 as Number]  |  #["Welcome to mule Bharat Chim" As String]
 -----------------------------------------------------------------------
 //Assert That:
 Assert that: contains below matcher function to do assertions..
-The Assert That event processor allows you to run assertions to validate the state of 
-Mule event's content. You can use the Assert that processor to validate the mule event after 
+The Assert That event processor allows us to run assertions to validate the state of 
+Mule event's content. we can use the Assert that processor to validate the mule event after 
 the production code runs..
 Assert that processor uses set of dataweave function called Munit matchers to define assertion conditions 
 for any value in an expression.. https://docs.mulesoft.com/munit/latest/munit-matchers
@@ -99,7 +99,7 @@ normally used at the beginning of an MUnit test, to define the first message to 
 to the flow being tested...
 #attributes:
 value: #[{
-	queryParams:{param1: 20 , param2: "30"}  <------- Here , param1 is key & 20 is value...
+	queryParams:{param1: 20 , param2: 30}  <------- Here , param1 is key & 20 is value...
         }]
 
         #[{
@@ -117,21 +117,23 @@ payload, a variable, a list of attributes, or an error...
 value:
 #[%dw 2.0 output application/json
 ---
-fx{
+{
  
-  }
+}
 ]
 #Error:
 Typeid: HTTP:CONNECTIVITY
 
 #payload:
 value: ${reqResPayload}  <---- in ${} is parameter Name: 
-global Config Element--- value: #[ %dw 2.0 output application/json --- readUrl("classpath://folderName/fileName.json")]
+global Config Element--- value: #[ %dw 2.0 output application/json --- 
+readUrl("classpath://folderName/fileName.json")]
+
 Media Type: application/json
 Encoding: UTF-8
 -----------------------------------------------------------------
 //A parameterized test suite runs same test with different inputs.. 
-when we have choise-based routing or conditional based input routing then we may 
+when we have choice-based routing or conditional based input routing then we may 
 need to write multiple test cases to satisfy each route...
 //Parameterization from File:
 Steps:
@@ -194,7 +196,7 @@ Along with flows we also develop error handling , we need cover test case for er
 handling too...
 //Mocking errors: 
 During execution of flow , system-based calls may throw errors which 
-might be expected for use case being tested.. in these cases , you want to specify that
+might be expected for use case being tested.. in these cases , we want to specify that
 test expects particular error type or exception...
 //Without mocking errors: 
 During the execution of flow , logic or validations may throw error which might be 

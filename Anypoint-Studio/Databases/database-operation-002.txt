@@ -9,8 +9,11 @@ Schema:
 User:
 Password:
 Role: ACCOUNTADMIN
+
+//What is schema in Database..?
 ------------------------------------------------------------------------------------
 //How to store all value from payload to one array..?
+payload save in variable name as inputPayload
 
 Set Variable:
 #General:
@@ -24,6 +27,19 @@ Name: inpPayload
 Value: 
 #[ 
     %dw 2.0 output application/json --- vars.inpPayload << payload
+]
+
+----------or--------------
+In set variable transformer:
+Name: inpPayload
+value:
+#[
+%dw 2.0
+output application/json
+var inp = []
+---
+inp << payload 
+reduce ((item, accumulator) -> item )
 ]
 --------------------------------------------------------------------------------------
 //Snowflake operations:
@@ -42,7 +58,7 @@ Value:
 13. Insert
 14. Insert multi table 
 15. Merge 
-16. On Table Row 
+16. On Table Row (Source) <--- schedular
 17. Select 
 18. Store procedure 
 19. Update 
@@ -105,6 +121,7 @@ Allows executing one update statement various times using different parameter bi
 This happens using one single Database statement, which has performance advantages 
 compared to executing one single update operation various times...
 
+//Explain in wich scenario we use bulk , operations like BULK Delete and BULK insert..?
 -------------------------------------------------------------------------
 8. On table row:
 Returns all rows of a table based on a watermark..

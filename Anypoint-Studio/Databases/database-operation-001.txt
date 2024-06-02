@@ -7,14 +7,14 @@
 5. Execute DDL
 6. Execute Script 
 7. Insert
-8. On Table Row (source)
+8. On Table Row (source) <--- schedular
 9. Query Single
 10. Select
 11. Store procedure
 12. update
 -------------------------------------------------------------------------------------
 1. Bulk delete:
-Allows executing one delete statement various times using different parameter bindings. 
+Allows executing delete statement various times using different parameter bindings. 
 using one single Database statement, which has performance advantages compared to 
 executing one single delete operation various times...
 #General:
@@ -47,11 +47,12 @@ Input parameters:
 5. Select:
 Selects data from a database. Streaming is automatically applied to avoid preemptive 
 consumption of such results, which may lead to performance and memory issues...
+//What is preemptive consumption in select operation..?
 
 6. Query Single:
 Selects single result from a database. If the indicated SQL query returns more than 
 one record, only the first one is returned. Streaming is not used for this operation, 
-which means that you must be careful because all selected fields will be loaded to 
+which means that we must be careful because all selected fields will be loaded to 
 memory...
 
 7. update:
@@ -78,7 +79,7 @@ Auto generated keys = true | Auto generated key columnNames = edit inline
 evaluate: write(payload , "application/json")
 
  2. We can write a stored procedures which will take all fields as input and insert 
- nto the database , then return us generated case_id..
+ into the database , then return us generated case_id..
 Database(stored-procedure) 
 #General: 
 inout parameters : none 
@@ -90,6 +91,7 @@ can come multiple times so , we need to give max(case_id here case id is primary
 to DB which will give us the latest case id.. 
 we use select operation in anypoint studio for this task write in select query-text:- 
  use max function.. 
+ //How to write max-function in sql..?
 ----------------- --------------------------------------------------------------------
 10. Execute DDL: 
 Enables execution of DDL queries against a database...
@@ -101,6 +103,7 @@ SQL query Text:
                             quantity INT,
                             price DECIMAL(18,2)
                         );
+//What is DDL..?
 -----------------------------------------------------------------------------------
 6. Execute Script:
 Executes a SQL script in one single Database statement. The script is executed as 
@@ -129,10 +132,14 @@ in flow or save payload as variable..
 ---------------------------------------------------------------------------------------
 // To point any value or expression dynamically over SQL query text :-  
 #["$(vars.Dynamic_Query)"]
+
+//What is dynamically means here..?
 ----------------------------------------------------------------------------------------
-To apply connection pulling:- 
+To apply connection poolling:- 
 --goto--> 
-Global-configuration-element ---> Database-config ---> Advance Tab --set--> pooling profile : Edit inline
+Global Element ---> Database-config ---> 
+Advance Tab --set--> pooling profile : Edit inline
 --configure--> Max pool size: | Min pool size:  | Acquire increment: ---> Ok & Save...
 
+//In which scenario we need to use connection pooling..?
 ------------------------------------------------------------------------------------------- 

@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 //Error handling:-
 The process of handling errors in flow and responding back user friendly messages 
 instead of system error messages is known as error handling...
@@ -10,8 +10,7 @@ Selector Expressions for Mule Errors:-
 4. #[error.cause]
 5. #[error.errorMessage]
 6. #[error.childErrors]
-
----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 //Error types:-
 
 Any and Critical
@@ -28,28 +27,28 @@ Critical:-
 1. fatal
 2. overload
 
-//Error type is combination of : name_space: identifier
+//Error type is combination of ---> name_space: identifier
 
 ------------------------------------------------------------------------------------------------------
 // in java there is try catch statement when error occure in try statement it will be 
-catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in --> try scope)..
+catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in -->
+ try scope)..
 
 //every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
 
-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 Error Handling Operations:
 1. On Error Continue
 2. On Error Propagate
 3. Raise Error
 4. Error Handler
------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 1. On Error Continue: 
-Considers the request transaction as Success-response and response back to the 
-response section (success response) of listner..
+Considers the request transaction as Success-response and response back to the response section 
+(success response) of listner..
 
 2. On Error Propagate: 
-Considers the request transaction as Error-response and response back to the error 
-response section of listner..
+Considers the request transaction as Error-response and response back to the error response section of listner..
 
 //Raise Error:
 Is used to intentionally throw an exception or error within flow..
@@ -68,11 +67,11 @@ allows you to define a centralized error handling strategy that applies to all f
 
 attributes.headers.'x-correlation-id' default "" save in variable name as correlationId..
 attributes.headers.'x-transaction-id' default uuid() save in  variable name as transactionId..
-payload save in variable name as inputPayload
 
-//set code as variable in transform message:
+
+//set code as variable in transform message mention it as statusCode:
 Example:
-error code 400 | 200
+error-code: 400 | success-code: 200
 save in  variable name as statusCode now mention it in 
 http listner 
 #response fx: vars.statusCode 
@@ -91,23 +90,27 @@ output application/json
 }
 
 
-//Where as 500 is internal server error , set as default error..
+//200 ok :- Standard response for successful HTTP requests. The actual response will
+ depend on the request method used. In a GET request, the response will contain an 
+ entity corresponding to the requested resource. In a POST request the response will 
+ contain an entity describing or containing the result of the action.
+//Where as 500 is internal server error , set as default error:
+ A generic error message, given when no more specific message is suitable.
 Default response in http listner Success response: 200 , error response: 500 ...
-go to httpListener's Response ---> Body: payload | status code: vars.statusCode default 200 to success response
--------------------------------------------------------------------------------------------
+go to httpListener's Response ---> Body: payload | status code: vars.statusCode default 200 (to success response)
+--------------------------------------------------------------------------------------------------------------
 //Custom error:-
 error mapping ---> choose error ---> namespace: CUSTOM | identifier: CONNECTION_FAILED
 Now in ---on error propogate --choose-->  CUSTOM:CONNECTION_FAILED
 
 //Raise error:-
-General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server has not found anything matching the Request-URI  
+General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server has not found anything matching 
+the Request-URI  
 Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND 
 
 //We can use Raise error connectors to handle custom connectors.. 
----------------------------------------------------------------------------------------
-Note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
+--------------------------------------------------------------------------------------------------
 
-//try scope: allow us to error handling on group of event processor individually..
 --------------------------------------------------------------------------------------
 //Setting global error handler:-
 1.Create configuration file name as global-error-handler and add error to it by using 
@@ -122,10 +125,14 @@ statusCode: vars.statusCode
 Click-On-->Error Handling--->Reference: --choose-->global-error-handler
 Global-configuration--->configuration--default error handler--->choose file
 --------------------------------------------------------------------------------------
-//Solution to solve conflict b/w global  vs local & connector level error handlers
+//Solution to solve conflict b/w global (application) vs local(flow) & connector(process) level error handlers
 1. use private flow refer it by flow reference or API kit router and add error 
 in error handling don't refer it to global..
 2. refer error handler in main flow instead of private flow...
+
+Note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
+
+//try scope: allow us to error handling on group of event processor individually..
 --------------------------------------------------------------------------------------
 //We can know exact error sometimes by ---> error.exception.message..
 
@@ -168,7 +175,7 @@ issues. There might be multiple reasons why server is refuses the request will b
 shown as part of response payload... 
  
 8. HTTP: CLIENT_SECURITY: 
-This block indicates an external entity (e.g., calling an external endpoint) produced a security error. 
+This block indicates an external entity (e.g. calling an external endpoint) produced a security error. 
  
 9. HTTP: CONNETIVITY: 
 This block executes when upstream is not available to handle the requests... 

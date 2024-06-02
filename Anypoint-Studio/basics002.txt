@@ -96,4 +96,10 @@ Firewall is important to large organizations..
 Types:
 1. Host-based firewall..
 2. Network-based firewall..
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+Within enterprise organization lot of applications like 1.security 2.thread 3.transaction 4.pool 
+management
+Any bus framwork which provides these services declaritively(here it means no need ofcode) we can call 
+it enterprise service bus..
+------------------------------------------------------------------------------------
+
