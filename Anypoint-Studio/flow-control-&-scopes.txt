@@ -46,6 +46,8 @@ Expression: #[payload.affectedRows >= 1]
 Expression: #[payload.WRONGPIN == 3]
 Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String == "active"]
 Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String != "active"]
+Expression: #[attributes.queryParams.'age' < 15 as Number]
+
 
 ---------------------------------------------------------------------------------------
 //Scopes:

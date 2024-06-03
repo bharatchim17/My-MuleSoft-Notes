@@ -67,6 +67,13 @@ SQL query Text:
 Input parameters:
 In out parameters: None | Edit inline | Expression
 output parameters: None | Edit inline ✅ | Expression
+
+#General:
+SQL query text:
+{call insert_covid_master(:source, :case_type, :first_name, :last_name, :phone, :email, :date_of_birth, 
+:national_id, :national_id_type, :street_address, :city, :state, :postal)}
+
+
 -----------------------------------------------------------------------------------------
 //After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
  to avoide this there are two ways:
@@ -131,7 +138,20 @@ after going to DB ---> to solve this we need to set variable component
 in flow or save payload as variable..
 ---------------------------------------------------------------------------------------
 // To point any value or expression dynamically over SQL query text :-  
-#["$(vars.Dynamic_Query)"]
+In Set varible:
+#General:
+Name: reportsDynamicQuery
+value:
+#[
+if(!isEmpty(attributes.queryParams.state)) (
+	"select count(*) as count, case_type, state from cvd_case_master where upper(state) = " ++ 
+    upper(attributes.queryParams.state) ++ "' group by case_type, state"
+) else (
+	"select count(*) as count, case_type, state from cvd_case_master group by case_type, state"
+)]
+
+In Selet query:
+query text:  #["$(vars.Dynamic_Query)"]
 
 //What is dynamically means here..?
 ----------------------------------------------------------------------------------------

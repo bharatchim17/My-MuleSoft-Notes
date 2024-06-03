@@ -137,7 +137,7 @@ value:
 }
 ]
 #Error:
-Typeid: HTTP:CONNECTIVITY
+Typeid: HTTP:CONNECTIVITY | DB:CONNECTIVITY
 
 #payload:
 value: ${reqResPayload}  <---- in ${} is parameter Name..
@@ -171,9 +171,9 @@ Encoding: UTF-8
 //The Verify call:
 Event processor allows you to verify if a processor was called or not... 
 #Processor: Pick processor
-#Comparison: <-------- The attributes times, atLeast, atMost are mutually exclusive...
+#Comparison: <-------- The attributes times, atLeast, atMost , is equal to are mutually exclusive...
 #value: 1 
-----------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 //The Spy Processor:
 Enables you to spy on what happens before and after an event processor is called..
 Setting a spy processor tells MUnit to run a set of instructions (usually assertions 

@@ -52,6 +52,9 @@ Considers the request transaction as Error-response and response back to the err
 
 //Raise Error:
 Is used to intentionally throw an exception or error within flow..
+#General:
+Type: CUSTOM:INVALID_AGE | CUSTOM:CASE_NOT_FOUND
+Description: Student age must be greater than 15
 
 //Error Handler:
 This component executes when an error is raised and routes it to the first matching 
