@@ -70,6 +70,14 @@ production code runs.
 #General:
 Actual: #[payload.message | payload]
 expected: #[50 as Number]  |  #["Welcome to mule Bharat Chim" As String]
+
+-------------------------------------------------------------------------------
+//Assert equals:
+Check if an expression is equal to a value...
+#General:
+Actual: #[attributes.statusCode]  | #[payload]
+Expected: #[200]   |  #[readUrl('classpath://testResources/assert_get_emp_response.json')]
+Message: #["The HTTP status code is invalid"]
 -----------------------------------------------------------------------
 //Assert That:
 Assert that: contains below matcher function to do assertions..
@@ -87,12 +95,18 @@ The Assert expression processor allows you to evaluate Dataweave expression that
 of Mule Event's content..This processor can be used to validate mule event after production code runs , 
 using Dataweave assertion library..
 #General:
-Expression: payload. |
-                import * from dw::test::Asserts 
-                ---
-                payload must notBeNull() 
+Expression: 
+import * from dw::test::Asserts  
+---
+payload must notBeNull() 
 
--------------------------------------------------------------------------------
+      in validations    ------>         %dw 2.0
+                                        import folderName::fileName
+                                        ---
+                                        fileName::main({payload:payload, attributes:attributes, vars:vars})
+
+
+---------------------------------------------------------------------------------------------
 //Set Event:
 The Set Event Processor allows you to define a Mule Event. This message processor is 
 normally used at the beginning of an MUnit test, to define the first message to send 
@@ -125,13 +139,14 @@ value:
 Typeid: HTTP:CONNECTIVITY
 
 #payload:
-value: ${reqResPayload}  <---- in ${} is parameter Name: 
-global Config Element--- value: #[ %dw 2.0 output application/json --- 
+value: ${reqResPayload}  <---- in ${} is parameter Name..
+
+value: #[ %dw 2.0 output application/json --- 
 readUrl("classpath://folderName/fileName.json")]
 
 Media Type: application/json
 Encoding: UTF-8
------------------------------------------------------------------
+---------------------------------------------------------------------------------
 //A parameterized test suite runs same test with different inputs.. 
 when we have choice-based routing or conditional based input routing then we may 
 need to write multiple test cases to satisfy each route...
@@ -211,4 +226,4 @@ If we call flow using flow reference in test case then flow call will not contin
 since on-error propagate used..
 We need to surround the flow reference call with try on-error continue combination to
 continue further assertions..
-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------

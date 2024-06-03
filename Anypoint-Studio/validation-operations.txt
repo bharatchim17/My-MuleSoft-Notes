@@ -5,4 +5,19 @@ using RAML while , Designing API's... we use required as true...
 Validation :
 Validation component will verify the content of message whether it matches the specified criteria.
 ------------------------------------------------------------------------------------------
+//Validation Operations:
+1. Is IP
+2. Is URL 
+3. is allowed ip 
+4. is bank string 
+5. is email 
+6. all
+7. Any
+8. Is number
+------------------------------------------------------------------------------------------
+//Is number:
+value: #[attributes.uriParams.empId ]
+number type:  INTEGER ✅ | NUMBER | LONG | SHORT | DOUBLE | EMPTY
+message: #["EmpID Parameter Must be a Number"]
+------------------------------------------------------------------------------------
 

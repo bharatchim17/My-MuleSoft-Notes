@@ -75,7 +75,7 @@ Netstat command in cmd prompt:
 netstat -n
 netstat
 netstat -a
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 //Hypervisor allows one machine to run multiple virtual machines , each virtual machine
 will have their own operating system..
 virtual machine consume lot of disk space , RAM and CPU power from the server..
@@ -88,7 +88,7 @@ Advantage:
 - considered light weight..
 - Lightning fast..
 - Consume less RAM and CPU power..
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 //What is firewall..?
 firewall is an system that is designed to prevent unauthorized access from entering
 private network , It creates safety barrier between private network and public internet..
@@ -96,10 +96,12 @@ Firewall is important to large organizations..
 Types:
 1. Host-based firewall..
 2. Network-based firewall..
-------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 Within enterprise organization lot of applications like 1.security 2.thread 3.transaction 4.pool 
 management
 Any bus framwork which provides these services declaritively(here it means no need ofcode) we can call 
 it enterprise service bus..
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+//How SSL Certificate works..?
+
 

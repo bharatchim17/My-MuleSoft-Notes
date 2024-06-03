@@ -41,7 +41,10 @@ path: /{value1}/{value2}
 
 #General:
 path: /path?
-#[{
+#[
+	output application/java
+          ---
+{
 	query_name1 :  attributes.queryParams.Drillsdown,
 	query_name2 : attributes.queryParams.measure
 }]

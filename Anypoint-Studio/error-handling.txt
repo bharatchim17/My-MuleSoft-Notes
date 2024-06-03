@@ -90,7 +90,7 @@ output application/json
 }
 
 
-//200 ok :- Standard response for successful HTTP requests. The actual response will
+//200 Ok :- Standard response for successful HTTP requests. The actual response will
  depend on the request method used. In a GET request, the response will contain an 
  entity corresponding to the requested resource. In a POST request the response will 
  contain an entity describing or containing the result of the action.
@@ -109,7 +109,6 @@ the Request-URI
 Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND 
 
 //We can use Raise error connectors to handle custom connectors.. 
---------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------
 //Setting global error handler:-
@@ -121,10 +120,11 @@ error handler connector..
 Body: payload
 statusCode: vars.statusCode 
 
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 Click-On-->Error Handling--->Reference: --choose-->global-error-handler
-Global-configuration--->configuration--default error handler--->choose file
---------------------------------------------------------------------------------------
+Global-configuration---> --search--->configuration--> default error handler: handleHTTPErrors <--- is flowName
+
+-------------------------------------------------------------------------------------------------------------
 //Solution to solve conflict b/w global (application) vs local(flow) & connector(process) level error handlers
 1. use private flow refer it by flow reference or API kit router and add error 
 in error handling don't refer it to global..
