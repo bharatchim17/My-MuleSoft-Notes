@@ -96,9 +96,10 @@ of Mule Event's content..This processor can be used to validate mule event after
 using Dataweave assertion library..
 #General:
 Expression: 
-import * from dw::test::Asserts  
+import * from dw::test::Asserts       <------ in .dwl file
 ---
 payload must notBeNull() 
+
 
       in validations    ------>         %dw 2.0
                                         import folderName::fileName
@@ -146,17 +147,18 @@ readUrl("classpath://folderName/fileName.json")]
 
 Media Type: application/json
 Encoding: UTF-8
----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 //A parameterized test suite runs same test with different inputs.. 
 when we have choice-based routing or conditional based input routing then we may 
 need to write multiple test cases to satisfy each route...
 //Parameterization from File:
 Steps:
-Create file: parameterizations.yaml
+Global element:  Munit configuration  <------  search 
 paramID2:         <---- Parameterization 
 		userID: "2"   <---- Here Parameterization Name is userID & value is 2
         reqResPayload: "{https://www.freeformatter.com/json-escape.html#before-output}"
-    
+
+Create file: parameterizations.yaml
 #payload:
 value:  #[Mule::p('reqResPayload')]  <---- reqResPayload is parameter Name: 
 in global tab choose file: ***.yaml
@@ -164,7 +166,7 @@ Media Type: application/json
 Encoding: UTF-8
 
 ----------------------------------------------------------------------------------------
-//---Right-click---src/test/munit---->Munit--->Run Test
+//---Right-click---src/test/munit----> Munit ---> Run Test
 ----------------------------------------------------------------------------------------
 //The Verify call:
 Event processor allows you to verify if a processor was called or not... 

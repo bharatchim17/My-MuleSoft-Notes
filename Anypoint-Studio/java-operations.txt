@@ -1,4 +1,4 @@
-------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 https://docs.mulesoft.com/scripting-module/latest/scripting-module-xml-maven
 
 http://www.mulesoft.org/schema/mule/scripting-module
