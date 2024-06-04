@@ -21,12 +21,18 @@ Directory path: \basic <---------this directory we wann Create
 Working Directory:  D:\sample\xxx3  <------- Sub folder
 #General:
 Directory: D:\sample\xxx3\inbound   <------- Sub folder
-Scheduling Stratergy: Fixed Frequency
+Recursive: 
+Matcher: None | Edit inline | Global Reference
+Watermark mode: Modified_Timestamp | Create_Timestamp | Disabled (Default)
+Scheduling Stratergy: Fixed Frequency | corn
 Frequency: 10
 Start delay: 0
 Time unit: Second
 Auto Delete: True
 Move to directory:  D:\Downloads\xxx3\archive   <------- Sub folder
+Rename to: 
+Apply post action when failed:  true (Default) | false | Expression | Empty
+Overwrite: false (Default) | true | Expression | Empty
 #MIME Type: 
 MIME Type: application/csv
 Key:  header ✅ | separator| escape | streaming | bodyStartlineNumber | qoute | ignoreEmptyLine | 
@@ -49,8 +55,17 @@ Reconnection Attempts: 2
 connector configuration: Create folder and link it..
 path: fileOperation/Abstract.txt <----- directory/file
 content(fx):
-Create parent directories: True
-write Mode(fx): OVER_WRITE 
+Create parent directories: True (Default) | False | Empty | Expression
+write Mode(fx): OVER_WRITE (Default) | Append | create_New 
+
+-----------------------------------------------------------------------------------------------------
+10. List:
+List all the files from given directory..
+#General:
+ Directory path:
+ Recursive: False (Default) | true | Expression | Empty
+ File Matching Rules: None | Expression | Edit inline | Global Reference
+
 -----------------------------------------------------------------------------------------------------
 
 //File Transfer Protocol(FTP):

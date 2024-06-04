@@ -37,10 +37,13 @@ SELECT id, Name from PushTopic  <--- command to view topic
 //Saleforce Operations: 
 
 1. Create
-Adds one or more new records to your organization's data...
+Adds one or more new records to your organization's data. When you map your objects to
+the input of this message processor, they must match the expected type of the object 
+at Salesforce...
 #General:
 Type: search custom_object here  <------ sometimes custom object remove automatically we need
 to fetch it again an again ..
+Records: #[payload]
 -------------------------------------------------------------------------------------
 2. Query: 
 Use SOQL query..

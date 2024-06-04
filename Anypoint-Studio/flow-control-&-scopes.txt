@@ -209,7 +209,7 @@ is used to create the responses returned by the caching strategy.
 #General:
 caching strategy reference:
 1. Use default caching strategy ✅
-2. Reference to strategy: key expression: #[attributes.uriParams.empId]
+2. Reference to strategy: ---> key expression: #[attributes.uriParams.empId]
 
 Default caching saves or keeps data into memory(heap space of RAM memory i.e. In-memory: RAM)..
 Persistent is hard disck kind memory , so it need to perform I/O operations internally ,

@@ -27,23 +27,28 @@ Removes all the contents in the store...
 Returns whether the key is present or not..
 #General:
 key: #[attributes.queryParams.key]  | key:  keyName 
+object Store: choose objectStore
 --------------------------------------------------------------------------------
 3. Retrieve:
 Retrieves the value stored for the given key..
 #General:
 key: #[vars.variableName] | key: keyName 
-default value: #[payload]
+default value: #[payload] | ""
+object Store: choose objectStore
 -----------------------------------------------------------------------
 4. Retrieve all:
 Retrieves all the key value pairs in the object store...
 ---------------------------------------------------------------------------
 5. Retrieve all keys:
 Returns a List containing all keys that the objectStore currently holds values for...
+#General:
+object Store: choose objectStore
 -----------------------------------------------------------------------------
 6. Remove:
 Removes the value associated to the given key...
 #General:
-key: #[attributes.queryParams.key]  | key:  keyName 
+key:  keyName 
+object Store: choose objectStore
 ------------------------------------------------------------------------------
 7. Store:
 Stores the given value using the given key..
@@ -52,6 +57,7 @@ key: keyName
 Value: #[payload]
 Fall if present: False(default) | True | expression | Empty
 Fall on null value: True(default) | False | expression | Empty
+object Store: choose objectStore
 -----------------------------------------------------------------------------
 //Marking specific id called water marking , There are two types of marking Automatic
 & manual..
@@ -61,3 +67,12 @@ use of the object store...
 use persistent storage when we use Watermarking also, when we have two primary key 
 one is alphabetic other is numeric then choose numeric one for operations...
 ------------------------------------------------------------------------------
+//Global element:
+search object store ---> #General
+Name: Non-Persistance-Object_store
+Object store: Persistance ✅
+Entry ttl: 0
+Entry ttl unit:  Seconds (default)
+Expiration interval:
+Expiration interval unit: Minutes (default)
+

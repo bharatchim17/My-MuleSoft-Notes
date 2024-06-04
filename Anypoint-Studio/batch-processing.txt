@@ -49,7 +49,7 @@ A batch step uses two attributes to filter records:
 Batch Aggregator:
 1. Fixed size batch Aggregator
 2. Streaming
------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 On Complete Phase:
 - During this phase , we can optionally configured the runtime to create a report
 or summary of the records it processed for the particular batch job instance..
@@ -118,12 +118,5 @@ Accept Policy:  All | NO_Failures(default) | Only_Failures
 #General:
 Aggregator Size: 4 
 -------------------------------------------------------------------------------
-4. create:
-Adds one or more new records to your organization's data. When you map your objects to
-the input of this message processor, they must match the expected type of the object 
-at Salesforce...
-#General:
-Type: fetch object here...
-Records: #[payload]
--------------------------------------------------------------------------------
+
  
