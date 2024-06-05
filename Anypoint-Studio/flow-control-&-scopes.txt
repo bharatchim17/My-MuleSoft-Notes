@@ -1,14 +1,15 @@
 ------------------------------------------------------------------------------------
-//Flow control:
+//Flow control | router:
 
 1. Scatter-Gather
 2. Round Robin
 3. first Successful
 4. Choise
+
+//What is router in mulesoft..?
 ------------------------------------------------------------------------------------
 1. The Scatter-Gather:
-Component executes each It will enable multi-threading will make the parallel call , 
-not sequentially...
+Component executes each It will enable multi-threading will make the parallel call..
 Parallel execution of routes can greatly increase the efficiency of your Mule
 application and may provide more information than sequential processing...
 Output payload is combination of all targets. And each target output has payload + 
@@ -20,10 +21,12 @@ it with Try-Block with On-Error-Continue , So that we can handle the errors and
 complete the process successfully..
 When max concurrency = 1 , then at time one route exceutes it means , it work 
 sequentially...
+
+//What is max concurrency..?
 ------------------------------------------------------------------------------------
 2. Round Robin:
-is a Mule component that contains two or more processing routes and executes only one 
-of the routes each time the flow executes the component.
+is a Mule component that contains two or more than two processing routes and executes only one 
+of the routes each time the flow executes the Round Robin component..
 Round Robin keeps track of the previously selected route and never selects the same
 route consecutively. For example, the first time Round Robin executes, the 
 component selects the first route. The next time, it selects the second route. 
@@ -31,7 +34,10 @@ If the previously selected route is the last route, Round Robin executes the fir
 route...
 -------------------------------------------------------------------------------------
 3. first Successful:
-Sends a message to a list of message processors until one processes it successfully..
+The first successful router iterates through list of configured processing routes until ,
+one of the routes execute successfully.. If any processing route fails execution (throws an error)
+the router execute next configured route..If none of the configured routes execute
+successfully , the first successfull router throws an error..
 --------------------------------------------------------------------------------------
 4. Choice:
 The Choice router adds conditional processing to a flow, similar to an if/then/else 
@@ -39,6 +45,7 @@ code block in most programming languages. The Choice router dynamically routes
 messages to different portions of a flow according to a set of DataWeave expressions
 that evaluate message content. Each expression is associated with a different routing option, 
 and the Default case executes when no other expressions match...
+
 #When
 Expression: #[payload.ip == "161.185.160.99"]
 Expression: #[sizeOf(payload) >= 1]
@@ -47,8 +54,6 @@ Expression: #[payload.WRONGPIN == 3]
 Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String == "active"]
 Expression: #[sizeOf(payload) >= 1 and payload.ACCOUNTSTATUS[0] as String != "active"]
 Expression: #[attributes.queryParams.'age' < 15 as Number]
-
-
 ---------------------------------------------------------------------------------------
 //Scopes:
 1. Async
@@ -61,16 +66,16 @@ Expression: #[attributes.queryParams.'age' < 15 as Number]
 8. Until Successfull
 ---------------------------------------------------------------------------------------
 //Target Scope:
-Flow Reference component we can set as below  
-
-#Target: payload
-#Target value : #[payload] (default)
 
 #Advanced ---> output
 Target variable:  variableName 
 Target value:  #[payload] (default)
+
+Flow Reference component we can set as below.. 
+#Target: payload
+#Target value : #[payload] (default)
 ------------------------------------------------------------------------------------
-//Supose we have payload we want to save it into variable how can we do it ...?
+//Supose we have  payload we want to save it into variable how can we do it ...?
 --->
 We can use target variable for it:
 #Advanced
@@ -80,11 +85,13 @@ Target value: #[payload]
 In set payload transformer:
 #[vars.saveMe]
 
+//Supose we have  payload we want to save it into variable how can we do it ...?
 Set Variable:
 #General:
 DisplayName: Empty List
 Name: inpPayload
 Value: #[ [] ]
+
 
 Set Variable:
 #General:
@@ -108,41 +115,44 @@ var inp = []
 inp << payload 
 reduce ((item, accumulator) -> item )
 ]
+
+//What is reduce function..?
 -------------------------------------------------------------------------------------
 //Async scope:
-The Async scope executes simultaneously with the main flow. The main flow continues to
-execute while it initiates and processes the Async scope. The flow does not have to 
-pause until the last message processor embedded in the asynchronous flow has completed 
-its task...
-Async scope processes the nested list of message processors asynchronously using a thread pool, 
+The Async scope perform exactly the same time with the main flow. The flow does not 
+have to pause until the last message processor attached within the asynchronous flow 
+has completed its task...
+Async scope processes the nested list of message processors asynchronously using a 
+thread pool, 
 Async can be useful for executing time-consuming operations that do not require us to 
 send a response back to the initiating flow (such as printing a file or connecting to 
 a mail server)...
 
  //Async , Foreach & try scope with (+) on-error-Continue works as localScope..
- but ,
- if we save variable inside foreach it remain after scope 
- but , 
- in case of async try + on-error-Continue it will vanish..
- 
+
+ If we save variable inside foreach it remain after scope but , 
+ in case of async try + on-error-Continue it will vanish..async can even vanish
+ variable too..
  -------------------------------------------------------------------------------------
 //try scope:
 The Try scope catches and handles errors that occur when executing any of the 
-components which placed inside it.. The components inside the Try scope can also be configured 
+components which placed inside it..The components inside the Try scope can also be 
+configured 
 as a Transaction via the "Transactional Action" property, in which case they will 
 never be partially executed. Every operation within the scope of a transaction is 
 executed in the same thread, and errors should lead to either a rollback or a commit...
 -------------------------------------------------------------------------------------------
 //The Until Successful scope:
-Until Successful runs synchronously , If any processor within the scope fails to 
-connect or to produce a successful result , Until Successful retries all the processors
-within it, including the one that failed , until all configured retries are exhausted...
+Until Successful runs synchronously(exactly same time) , If any processor within the 
+scope fails to connect or to produce a successful result , Until Successful retries 
+all the processors within it, including the one that failed , until all configured 
+retries are exhausted...
 If  the  final  retry  does  not succeed, Until Successful produces an error. The 
 error Type for this Until-successful is MULE:RETRY_EXHAUSTED.. 
 
 #Generic:
 Max Retries: 3        <-----(here , 3 times + 1 normal call = 4 retries)
-Mili-Second between Retries: 60000(default)    1000
+Mili-Second between Retries: 60000(default) |   1000
 
 //Use this Until scope in asynchronous flow also , when we use scheduler and mq...
 --------------------------------------------------------------------------------------
@@ -165,14 +175,29 @@ Then we must use “Try” block and use “On-Error-Continue” to handle indiv
 and process to next record....
 --------------------------------------------------------------------------------------
 //Parallel For Each Scopes: 
-Splits the same message and processes each part in parallel...
+The Parallel For Each scope enables you to process a collection of messages by 
+splitting(divide into smaller groups) the collection into parts that are 
+simultaneously(happening exactly the same time) processed in separate 
+routes within the scope of any limitation configured for concurrent-processing. 
+After all messages are processed, the results are aggregated following the same order 
+they were in before the split, and then the flow continues...
+
+
 
 #General:
 collection: #[payload]
-Timeout: 
+Timeout: set time out in milisecond | No Timeout (default)
 Max concurrency: 4  
 Target:
 Target value: #[payload]
+
+//Aggregated means gathered together or collected into a whole from various sources. 
+It involves compiling individual elements, pieces of data, or smaller components into 
+a single, larger unit or group...
+
+//maxConcurrency decides how many threads can execute parallelly at the same time, 
+Let's say if it is set to 2 and total records to be processed are 10 then remaining 8 
+will be queued...
 
 //calculating parallelism:
 1. processing intensive tasks(Max concurrency):
@@ -190,10 +215,10 @@ while Parallel For Each processes every route before invoking the Error Handler 
 a MULE:COMPOSITE_ROUTE error type. For Each does not modify the payload, while the 
 Parallel For Each outputs a collection of the output messages from each iteration...
 
-//For each mule process one or more record at time in sequential way but parallel for each
-mule component process multiple records at time in parallel way..
-For each mule processor do single threaded processing but , parallel for each do multi threaded
-processing...
+//For each mule process one or more record at time in sequential way but parallel for 
+each mule component process multiple records at time in parallel way..
+For each mule processor do single threaded processing but , parallel for each do 
+multi-threaded processing...
 --------------------------------------------------------------------------------------
 //Cache scope:
 Is for storing and reusing frequently called data. We can use cache scope to reduce
@@ -201,17 +226,19 @@ the processing load on Mule instance and to increase speed of message processing
 within flow..
 Caching strategy can also reference these customizations:
 1. Event Key for the ObjectStore, which is a DataWeave expression or Java object used 
-to create the key to use for storing the payload in the ObjectStore.
-2. Response Generator for your strategy, which is a reference to a Java object that 
-is used to create the responses returned by the caching strategy.
+to create the key to use for storing the payload in the ObjectStore...
+2. Response Generator for our strategy, which is a reference to a Java object that 
+is used to create the responses returned by the caching strategy..
 3. Event Copy Strategy for mutable or immutable data....
 
 #General:
 caching strategy reference:
 1. Use default caching strategy ✅
-2. Reference to strategy: ---> key expression: #[attributes.uriParams.empId]
+2. Reference to strategy: ---> Event key: Default | key Expression✅ | key generator
+key expression: #[attributes.uriParams.empId]
 
-Default caching saves or keeps data into memory(heap space of RAM memory i.e. In-memory: RAM)..
+Default caching saves or keeps data into memory(heap space of RAM memory i.e. 
+In-memory: RAM)..
 Persistent is hard disck kind memory , so it need to perform I/O operations internally ,
 if we need huge amount of data need to be cached , then go with persistent memory..
 

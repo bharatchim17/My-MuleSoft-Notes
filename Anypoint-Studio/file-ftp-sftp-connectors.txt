@@ -18,7 +18,7 @@ Directory path: \basic <---------this directory we wann Create
 --------------------------------------------------------------------------------------------
 6. On New or Updated File:
 #Global Elemet: 
-Working Directory:  D:\sample\xxx3  <------- Sub folder
+Working Directory:  D:\sample\xxx3  <------- Main folder
 #General:
 Directory: D:\sample\xxx3\inbound   <------- Sub folder
 Recursive: 
@@ -49,15 +49,15 @@ Frequency(ms): 2000 (miliSeconds)
 Reconnection Attempts: 2
 
 //What is Reconnection stratergy..?
+//What is Reconnection Recursive..?
 ----------------------------------------------------------------------------------------------------------
 9. Write:
 #General:
 connector configuration: Create folder and link it..
 path: fileOperation/Abstract.txt <----- directory/file
-content(fx):
+Content(fx):
 Create parent directories: True (Default) | False | Empty | Expression
 write Mode(fx): OVER_WRITE (Default) | Append | create_New 
-
 -----------------------------------------------------------------------------------------------------
 10. List:
 List all the files from given directory..
@@ -67,7 +67,6 @@ List all the files from given directory..
  File Matching Rules: None | Expression | Edit inline | Global Reference
 
 -----------------------------------------------------------------------------------------------------
-
 //File Transfer Protocol(FTP):
 - Transmits files from one host to another..
 - Can be used for downloading the files to computer from other server..
@@ -84,7 +83,7 @@ Default port for SFTP = 22
 File Transfer Protocol Secure File Transfer Protocol. is used to transfer file between
 server(website) and client(local machine)..FTP is the language that computers use to 
 transfer files over TCP/IP network...SFTP(secure file transfer protocol) Data encrypted 
-using SSH (secure shell)..
+using SSH (secure shell) ..
 SFTP & FTP both use TCP for file transfer...
 TFTP(Trival File Transfer Protocol) its not used to transfer files over internet..
 mainly use for transfering files within local area network , is connectionless protocol
@@ -112,7 +111,7 @@ IPv4 Address: 192.168.176.1
 //in path of file explorer: 
 ftp://192.168.176.1
 
-//If we can't see file in folder:
+//If we can't see file in folder in FileZila:
 #Configure:
 FTP over TLS(FTPS)
 select pasive mode:

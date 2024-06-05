@@ -5,9 +5,8 @@ Scheduler:
  used a fixed frequency scheduling of 1 second...
  #General:
  scheduling strategy: Fixed Frequency✅ | Cron
- Frequency:
- Start dealy:
- Time unit:
+ Frequency: <--- is polling frequency by default 1000 ms i.e. 1 second
+ Start dealy:  and Time unit:
 scheduling strategy: Fixed Frequency | Cron ✅
 Expression: 0 0/2 * 1/1 * ? * <------------- (here 0=second ; 15=minute ; 10=hours)
 Time Zone: 
@@ -16,10 +15,22 @@ Time Zone:
 
  http://www.cronmaker.com/ 
  
+ https://freeformatter.com/cron-expression-generator-quartz.html#crongenerator
 
 https://docs.mulesoft.com/mule-runtime/latest/scheduler-concept
+
+
+//Periodic execution refers to the process of running a task or a piece of code at 
+regular intervals. This is often(many times; frequently) used in various applications 
+such as monitoring systems, data collection, scheduled maintenance, and automated 
+testing...
+
+//Polling frequency refers to how often a system checks for certain conditions or 
+retrieves data from a source. The appropriate polling frequency depends on the 
+specific requirements of the task, balancing between responsiveness and resource usage...
 -----------------------------------------------------------------------------------
 //http Request:
+Consumes an HTTP service...
 
 1.URI Parameter
 
@@ -40,6 +51,7 @@ path: /{value1}/{value2}
 2.QUERY Parameter
 
 #General:
+
 path: /path?
 #[
 	output application/java
@@ -51,7 +63,6 @@ path: /path?
 
 
 3. Headers
-
 Create variable in Transform message or in set variable:
 
 1. correlation-id
@@ -72,22 +83,22 @@ http-Request
 
 #Response:
 Response Timeout: 50000
-Response validator: Failure Status Code  | Success Status Code 
+Response validator: Failure Status Code  | Success Status Code | Expression or bean 
+reference | Expression response validator
 Value: 400 | 200 
 
-//All   Attributes and Payload just before Http Request  are overridden by attributes and 
-Payload  that we received from external web-service via Http Request...
+//All Attributes and Payload just before Http Request are overridden by attributes 
+and Payload  that we received from external web-service via Http Request...
 Status code coming form Http Request : #[attributes.statusCode]
 
 //To save existing payload just before HTTP Request , we can give Target Variable Name
  which is in Advance Tab of Http Request.. 
 -------------------------------------------------------------------------------------
 //http listner:
-
-Before going to learn about rules. We must not forget that , RAML based generated Http 
-Listener has Error Response Body as #[payload] as Default but manually dragged and drop 
-Http Listeners has #[output text/plain --- error.description] as default. So change 
-accordingly to our business requirements..
+ RAML based generated Http Listener has Error Response Body as #[payload] as Default 
+ but manually dragged and drop Http Listeners has Error Response Body as 
+ #[output text/plain --- error.description] as default. So change accordingly to our 
+ business requirements..
 -------------------------------------------------------------------------------------
 //Web socket is persistent connection between client and server , it's bi-directional 
 full duplex connection..
@@ -98,20 +109,41 @@ Switching Protocol Request" and then handshake is completed..
 //http:
 1. stateless
 2. unidirectional 
-3. half-duplex
+3. half-duplex (example: it work like Walkie-talkie)
 
 //web socket:
 1. statefull
 2. bi-directional
-3. full-duplex
+3. full-duplex  (example: it work like mobile , Telephone conversation)
 
 //HTTP is primarily designed as a request-response protocol, where a client sends a 
 request to a server, and the server responds with the requested resource. 
 there are technologies built on top of HTTP that support full-duplex communication...
 
+//stateless: A system that does not maintain any state information between requests. Each request
+from a client is independent and contains all the information needed for the server 
+to understand and process it..
+
+//Stateful: A system that maintains state information across multiple requests or 
+transactions. The state is stored either on the server or in a database, and it is 
+used to track the context of interactions...
+
+//Persistent(enduring or lasting) Connection: A network connection that remains open for multiple 
+requests/responses rather than being closed after a single transaction.
 
 //What is full-duplex , half duplex , statefull and stateless..?
 -----------------------------------------------------------------------------------------------
+One-way-SSL: where client will authentific server..
+
+Two-way-SSL or Mutual authentification: Client and server will authentificate each 
+other..
+
+//Type of stores:
+Trust store: 
+Where public key of the partner will be stored..  
+Key store:
+Where our keys(private and public key) will be stored..
+
 
 
 

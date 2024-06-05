@@ -1,5 +1,3 @@
-
-
 --------------------------------------------------------------------------------------------
 //Manual deployment:- right click on project ---> Anypoint platform ---> choose environment 
 --give Project_Name--> deploy application
@@ -129,20 +127,3 @@ key: enc.key    value: abcdef0123456789
                                                 ]
                                                 }
 ---------------------------------------------------------------------------------------------------------------------------
-//http listner:
-The following ports are assigned on the Mule worker:
- gogle it : private port in cloudhub + mulesoft
-
-http.port is set to 8081
-https.port is set to 8082
-
-https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide
---------------------------------------------------------------------------------------
-//http request:
-Port 80 vs. Port 443 – The main difference between Port 80 and Port 443 is strong 
-security. Port 80 provides an unencrypted connection, whereas Port 443 supports an 
-encrypted connection...
-http.port: 80
-htts.port: 443
-https://www.clickssl.net/blog/port-80-http-vs-port-443-https
----------------------------------------------------------------------------------------

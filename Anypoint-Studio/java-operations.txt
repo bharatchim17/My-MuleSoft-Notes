@@ -11,10 +11,10 @@ http://www.mulesoft.org/schema/mule/scripting-module/current/mule-scripting-modu
 4. Validate type
 --------------------------------------------------------------------------------------------
 1. Invoke:
-Operation that allows the user to invoke methods with the provided arguments on the given 
-instance. The identifier of the Method to be invoked includes the class and method 
-names, being the method a full description of its signature including the types of 
-each parameter. 
+Operation that allows the user to invoke(To call on) methods with the provided 
+arguments on the given instance. The identifier of the Method to be invoked includes 
+the class and method names, being the method a full description of its signature 
+including the types of each parameter..
 #General
 Instance: #[vars.taxCalculator]  <------------- instance includes in Invoke 
 
@@ -30,7 +30,8 @@ Method: fetch methods
 2. Invoke static:
 Operation that allows the user to invoke static methods with the provided arguments. 
 The identifier of the Method to be invoked includes the class and method names, 
-being the method a full description of its signature including the types of each parameter.
+being the method a full description of its signature including the types of each 
+parameter.
 
 #General
 Args: #[{
@@ -45,9 +46,10 @@ Target Variable: totalTax
 Target Value: #[payload] (default)
 --------------------------------------------------------------------------------------------
 3. New:
-Operation that allows the user to create a new instance of the given class The identifier
-of the Constructor to be used includes the class and constructor names, being the 
-constructor a full description of its signature including the types of each parameter.
+Operation that allows the user to create a new instance of the given class The 
+identifier of the Constructor to be used includes the class and constructor names, 
+being the constructor a full description of its signature including the types of each 
+parameter.
 
 #General
 Arg: fx
@@ -56,10 +58,10 @@ Constructor:  fetch constructor
 
 #Advanced
 Target Variable: taxCalculator
-Target Value: #payload
+Target Value: #[payload]
 --------------------------------------------------------------------------------------------
 4. Validate type:
-Operation that allows the user to validate that a given instance is an instanceof 
+Operation that allows the user to validate that a given instance is an instance of 
 the specified class.
 #General
 Class: Add(+) | search

@@ -102,6 +102,67 @@ management
 Any bus framwork which provides these services declaritively(here it means no need ofcode) we can call 
 it enterprise service bus..
 --------------------------------------------------------------------------------------------------------
-//How SSL Certificate works..?
+//SSL is protocol for establishing secure links between networked computers , SSL provides confidentiality ,
+authentification and data integrity in internet communication..
+An SSL certificate is bit of code on our web server that provides security for online communications..
+SSL also , called as TLS..
 
+- Secure sockert layer developed by Netscape in 1995..
+- Security protocol to provide security and privacy..
+- Used to encrypt information between client and server..
+- SSL layer works between the Application layer and Transport Layer when encrypting the information
+between client and server..
+
+//Steps in SSL handshake phase: 1
+- Client & server get acquainted with hello signal each..
+- Client sends SSL , version , cipher suite , session ID etc..
+- Server returns common encryption algorithm chosen from the cipher suite and compression algorithm...
+
+
+//Steps in SSL handshake phase: 2
+- Server sends its own authentification Certificate and requests for client authentification..
+- Server also , send its own public encryption key..
+- The phase with a "server hello done" message..
+
+//Steps in SSL handshake phase: 3
+- Client sends its own authentification Certificate after verifying server with respective certificate 
+authorities (CAs)..
+- Client also , send a secret private key encrypted using the server's previously received public key..
+
+//Steps in SSL handshake phase: 4
+- Client sends the status of the cipher function along with a "finished" message to end the handshake
+from its side..
+- Server also , sends status of the cipher algorithms and ends with a "finished" signal...
+- The data is encrypted with symetric key client sent in ph3
+
+//Transport Layer Security(TLS) is Successor to SSL protocol...
+
+//Which layer is the data passed to after being encrypted in SSL..?
+//How SSL Certificate works..?
+-------------------------------------------------------------------------------------------------
+//SSL architecure 
+
+1. SSL handshake protocol: is for connection establishment..
+2. SSL change spec protocol: use of required cipher techaniques for data encryption..
+3. SSL alert protocol: alert (warning , error if any) generation..
+4. SSL record protocol: encrypted data Transmition and encapsulation of the data sent by the higher 
+layer Protocols..
+------------------------------------------------------------------------------------------------------
+//http listner:
+The following ports are assigned on the Mule worker:
+ gogle it : private port in cloudhub + mulesoft
+
+http.port is set to 8081
+https.port is set to 8082
+
+https://docs.mulesoft.com/cloudhub/cloudhub-networking-guide
+--------------------------------------------------------------------------------------
+//http request:
+Port 80 vs. Port 443 – The main difference between Port 80 and Port 443 is strong 
+security. Port 80 provides an unencrypted connection, whereas Port 443 supports an 
+encrypted connection...
+http.port: 80
+htts.port: 443
+https://www.clickssl.net/blog/port-80-http-vs-port-443-https
+---------------------------------------------------------------------------------------
 

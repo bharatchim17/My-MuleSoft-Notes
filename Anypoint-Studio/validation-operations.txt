@@ -9,7 +9,7 @@ Validation component will verify the content of message whether it matches the s
 1. Is IP
 2. Is URL 
 3. is allowed ip 
-4. is bank string 
+4. is blank string 
 5. is email 
 6. all
 7. Any
