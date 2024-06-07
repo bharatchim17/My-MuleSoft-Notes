@@ -23,8 +23,7 @@ code management and need not to touch applications on configurations property ch
           basePath: "/learnmulesoft" 
 
   
-2. Create "configuration properties" global element.
----> load the file
+2. In global element: Search "configuration properties".. ---> load the file
 
 
 3/4. Use ${key} expression extract the Property from Property file or yaml file..
@@ -39,11 +38,10 @@ code management and need not to touch applications on configurations property ch
 
 
 
-4/3. Use Mule::p('key') or p('key') dataweave script to extract in dataweave(--click--> fx)
- we use p('db.port') only if we have placeholder #[] for MEL.
+4/3. Use Mule::p('key') or p('key') dataweave script to extract in dataweave(On the expression mode:fx)
+ we use p('db.port') only if we have placeholder #[] for MEL...
 -------------------------------------------------------------------------------------
 //Secure configuration properties:-
-
 
 1. Create property(.properties) file or yaml_file(.yaml) in src/main/resources.
             OracleDatabase:
@@ -75,8 +73,7 @@ https://secure-properties-api.us-e1.cloudhub.io/
 
 
 5/4. Use Mule::p('secure::key') dataweave script to extract in dataweave(--Click--> fx)
-
- //Mule::p('secure::MySQLDatabase.password') is for descrypt value during runtime
+//Mule::p('secure::MySQLDatabase.password') is for decrypt value during runtime..
 
 --------------------------------------------------------------------------------------
 //Environment:-
@@ -86,38 +83,38 @@ https://secure-properties-api.us-e1.cloudhub.io/
             UAT
 //Load property files dynamically by environment:-
 
-global element tab ---> secure properties config ---> file: /${env}.yaml  key: ${enc.key}  <--------\------/-------
-global property ---> name: env |  value: dev  
+Global element tab ---> secure properties config ---> file: /${env}-config.yaml  key: ${enc.key}  <--------\------/-------
+Global property ---> name: env |  value: dev  
 
---right_click-on_project/Config_file---> Run As / Debug As ---> Mule Application (configure) ---> Arguments--->
+Right_click-on_project or .xml Config_file ---> Run As | Debug As ---> Mule Application 
+configure , Arguments as below:
 program Arguments:
--Denv=dev/test
--Denc.key=paste_key_here
-----------------------------------------------------------------------------------
+-Denv = dev | test
+-Denc.key = paste_key_here
+------------------------------------------------------------------------------------
 //Runtime to cloudHub 1.0
 
-Right_click on project ---> deploy to cloudHub ---> deploy to cloudHub
+Right_click on project ---> deploy to cloudHub 
 
-//worker size:- is memory example --> 0.2 vCores 1GB memory..
+//worker size:- is memory example for example 0.2 vCores has 1GB memory..
 The process of increasing this worker size from one value to higher is called as vertical
 scaling..
 //worker :-  example--> 1 , 2 , 3
-The process of increasing this worker size from one value to higher is called as horizontal
-scaling...
+The process of increasing this worker(number of worker) from one value to higher is
+ called as horizontal scaling...
 
 //In properties:-
 key: env        value: dev/test/uat
 key: enc.key    value: abcdef0123456789
 
-//In Logging:- choose info/debug etc
-
-//In insight we know , How much time process taking for each transaction..
+//In insight of runtime manager we know , How much time process taking for each 
+transaction..
 
 //How to make alerts..?
+//What is horizontal scaling and vertical scaling..?
 -----------------------------------------------------------------------------------------
-
-//Hiding fields in runtime manager property section
---example--> In mule-artifact.json write "secureProperties" : ["enc.key"]
+//Hiding fields in runtime manager property section:
+Example--> In mule-artifact.json write "secureProperties" : ["keyName"]
                                                 {
                                                 "minMuleVersion": "4.6.0" , 
                                                 "secureProperties":
@@ -126,4 +123,4 @@ key: enc.key    value: abcdef0123456789
                                                 "anypoint.platform.client_id"  
                                                 ]
                                                 }
----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------

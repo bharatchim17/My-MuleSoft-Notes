@@ -7,9 +7,14 @@ design for:
 -Storing user information.
 Additionally, Mule Runtime uses Object Stores to support some of its own components, 
 for example:
--The Cache module uses an Object Store to maintain all of the cached data.
+-The Cache module(scope) uses an Object Store to maintain all of the cached data.
 -The OAuth module (and every OAuth enabled connector) uses Object Stores to store the 
 access and refresh tokens...
+
+
+//Periodic synchronization refers to the regular and recurring process of aligning 
+the state of different systems, databases, or processes to ensure consistency and 
+accuracy.
 -------------------------------------------------------------------------------------
 //ObjectStore Operations:
 1. Clear
@@ -66,7 +71,8 @@ synchronization should resume the next time it’s executed. Watermarking is a c
 use of the object store...
 use persistent storage when we use Watermarking also, when we have two primary key 
 one is alphabetic other is numeric then choose numeric one for operations...
-------------------------------------------------------------------------------
+ 
+-------------------------------------------------------------------------------------
 //Global element:
 search object store ---> #General
 Name: Non-Persistance-Object_store
@@ -75,4 +81,4 @@ Entry ttl: 0
 Entry ttl unit:  Seconds (default)
 Expiration interval:
 Expiration interval unit: Minutes (default)
--------------------------------------------------------------------
+-------------------------------------------------------------------------------------

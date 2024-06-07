@@ -14,21 +14,22 @@ API subcription mechanism supports multiple types of event:
 2. Generic events..
 3. platform events..
 4. Change data capture events..
+
 //Explain  mulesoft event streaming with saleforce..?
 ---------------------------------------------------------------------------------------
-//How can you identify what event happens in Streaming..?
+//How can we identify what event happens in Streaming..?
 saleforce can fetch the object events and it's reflect in attributes of mule.. 
-attributes.'type' == "created" | "updated" | "deleted"..
+attributes.'type' == "created" | "updated" | "deleted"
 ---------------------------------------------------------------------------------------
 //Crete custom object in 2 ways: 
 1. setting:Setup ---> Object ---> Object manager ---> create custom object + Add fields
 2. setting:Setup ---> Object manager ---> New object + Add fields
 
 //Create tab:
-Setup --> tab ---> custom_object tab ---> create new tab ---> Reset my security token
+Setup --> tab ---> custom_object tab ---> create new tab 
 
 //Security token:
-setting:Setup ---> My setting ---> 
+setting:Setup ---> My setting ---> Reset my security token
 
 //View pushTopic.ApiVersion = 60.0;      
 Setup --> Integrations ---> api ---> generate enterprise wsdl 
@@ -37,12 +38,12 @@ SELECT id, Name from PushTopic  <--- command to view topic
 //Saleforce Operations: 
 
 1. Create
-Adds one or more new records to your organization's data. When you map your objects to
+Adds one or more new records to organization's data. When we map objects to
 the input of this message processor, they must match the expected type of the object 
 at Salesforce...
 #General:
-Type: search custom_object here  <------ sometimes custom object remove automatically we need
-to fetch it again an again ..
+Type: search custom_object here  <------ sometimes custom object remove automatically 
+we need to fetch it again an again...
 Records: #[payload]
 -------------------------------------------------------------------------------------
 2. Query: 
@@ -60,8 +61,8 @@ Parameter:
 Creates a topic representing a query, which is used to notify listeners when changes 
 are made to records in an organization...
 #General:
-Topic name fx: payload.topic
-Query fx: payload.query
+Topic name : #[payload.topic]
+Query : #[payload.query]
 //In postman we can send
             {
             "topic": "empprofile" ,
@@ -69,13 +70,11 @@ Query fx: payload.query
             }
 
 
-//Need to create topic either we can create in studio by using publish topic operations or as following
-below:
+//Need to create topic either we can create in studio by using publish topic 
+operations or as following below:
 https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/code_sample_java_create_pushtopic.htm
 
 In saleforce : ---> Developer console ---> Debug ---> open execute Anonymous window(ctrl + e)..
-
-
 PushTopic pushTopic = new PushTopic();
 pushTopic.Name = 'retrievestudentInformationTopic';
 pushTopic.Query = 'SELECT Id, StudentName__c, StudentID__c, StudentLocation__c, StudentSemester__c FROM studentinformation__c';
@@ -86,40 +85,46 @@ pushTopic.NotifyForOperationUndelete = true;
 pushTopic.NotifyForOperationDelete = true;
 pushTopic.NotifyForFields = 'Referenced';
 insert pushTopic;
-
 -----------------------------------------------------------------------------------
 4. Subscribe topic listner:
-First the topic must be published and after that a subscription to that topic created... 
-      Attention: Salesforce won't send you notifications after the topic is created...
+First the topic must be published and after that a subscription to that topic created. 
+Attention: Salesforce won't send notifications after the topic is created...
 #General:
 Topic: Fetch topic here..
 -----------------------------------------------------------------------------------
 5. Upsert:
 upsert = insert + update..
 Upserts a homogeneous list of objects: creates new records and updates existing 
-records, using a custom field to determine the presence of existing records. In most 
+records, using a custom field (to store information specific to the needs of the user 
+or the application) to determine the presence of existing records. In most 
 cases, prefer upsert over create, to avoid creating unwanted duplicate records....
 #General:
-Object type: fetch created object here..
-External id field Name:  external id from object.. 
-Type: here fetch object 
+Object type: 
+External id field Name: 
+Type: 
+
+//A homogeneous list of objects is a collection where all the items are of the same 
+type or class. This concept is fundamental in programming and data structures, 
+ensuring that each element in the list adheres(follow) to the same structure and 
+behavior, allowing for consistent operations on all elements...
 -------------------------------------------------------------------------------------
 6. Update: 
-Updates one or more existing records in your organization's data.
+Updates one or more existing records in organization's data...
 #General:
-Type: here fetch the object 
+Type: <--- here fetch the object 
 
 //Error Occure:
-Error id is not specified in an update call on update or upsert..
+Error , id is not specified in an update call on update or upsert..
 solution: 
-Each existing record in saleforce is assigned unique saleforce record Id.. in order to
-update existing record's must need to specify records Id and map containing record id.. 
+Each existing record in saleforce is assigned unique saleforce record Id.. in order 
+to update existing record's must need to specify records Id and map containing record 
+id.. 
 -----------------------------------------------------------------------------------
 7.Query all:
 Retrieves data from specified objects, whether or not they have been deleted.
 #General:
 Saleforce query:     SELECT Id, StudentSemester__c , StudentID__c FROM 
-studentinformation__c   where StudentID__c = :studentID
+studentinformation__c   where StudentID__c = ':studentID'
 
 Parameter:
 #[
@@ -132,7 +137,7 @@ Parameter:
 8. Delete:
 Deletes one or more records from object..
 #General:
-Records to delete Id fx:    payload.Id
+Records to delete Id: #[payload.Id]
 -----------------------------------------------------------------------------------
 
 

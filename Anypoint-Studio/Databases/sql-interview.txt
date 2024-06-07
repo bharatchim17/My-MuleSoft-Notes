@@ -1,0 +1,1 @@
+//What is differece between Delete and Truncate statements..?

@@ -1,6 +1,7 @@
-////////////////////////////////////////////////////////////////////////////////////////
+--------------------------------------------------------------------------------------
 Version control systems (VCS) categorized into two main types:-
-centralized version control systems (CVCS) and distributed version control systems (DVCS).
+Centralized version control systems (CVCS) and distributed version control systems 
+(DVCS)...
 
 Centralized Version Control System (CVCS):
 Developers check out files from this central repository, make changes locally, and then commit their changes back to the central server. 
@@ -8,26 +9,23 @@ Examples of centralized version control systems include CVS (Concurrent Versions
 Single point of failure (if the central server goes down, it can disrupt collaboration).
 
 Distributed Version Control System (DVCS):
-In a DVCS, each developer has their own complete copy (clone) of the repository, including the entire version history. 
-Changes can be made locally and committed to the local repository without needing a constant connection to a central server. 
+In a DVCS, each developer has their own complete copy (clone) of the repository, 
+including the entire version history. Changes can be made locally and committed to the
+local repository without needing a constant connection to a central server. 
 Developers can later synchronize their changes with others by pushing and pulling from remote repositories. 
-Git is the most widely used distributed version control system.
-
-/////////////////////////////////////////////////////////////////////////////////////////
-
+Git is the most widely used distributed version control system...
+-----------------------------------------------------------------------------------
 //Git and GitHub:-
 
 Working repositery --add to track--> staging/index Area --commit to save--> Git local repositery --push to send--> GitHub Remote repositery .
-GitHub Remote repositery --clone to pull--> working repositery .
+GitHub Remote repositery --clone to pull--> working repositery.
 
 
 // Git commands:-
-
 Git configuration:- 
 git config --global.email "bharatchim17@gmail.com"
 git config --global.name "bharatchim17"
 -------------------------------------------------------------------------------------------------
-
 pwd --> current project location
 git init --> Initialized empty Git repository in Drive:/folder/.git/
 git status --> show track , untrack and commit files
@@ -52,7 +50,6 @@ git diff --staged HEAD file_Name
 git log --online ------> showing file in local repository i.e. files which is commited
 git diff commit_id file_Name 
 git diff --staged commit_id
-
 --------------------------------------------------------------------------------------- 
  a/index.txt  --> Represent Source 
  b/index.txt  --> Represent destination 
@@ -76,7 +73,7 @@ ls --> show files in working directory
 git ls-files --> show files in staging Area
 git log --online ------> showing file in local repository i.e. files which is commited
 git reset --mixed acb9d2c  <---- is previous commit id..
-git ls-files
+
 
 1. reset with --mixed mode:
 it's default mode to discard commits in local repository (local repository come after we commit)
@@ -100,7 +97,8 @@ we can use checkout command to discard unstaged changes in tracked files of work
 directory...
 git checkout -- file_name  ---> will undo changes...
 -----------------------------------------------------------------------------------------
-//Git Branching commands
+//Git Branching commands:
+
 1. To view available branches
 git branch
 git status
@@ -114,20 +112,12 @@ git checkout branch_Name
 2 + 3. Creating and switching to branch
 git checkout -b branch_Name
 
-git push origin branch_Name
+git clone paste_link -b branch_Name
 
 //To Delete branch:
 git branch -d branch_Name
 
 git push --set-upstream origin branch_Name
+git push origin branch_Name <--- to push to remote repo..
 
-git clone link -b branch_Name
-
-////////////////////////////////////////////////////////////////////////////////////////
-
-Windows command shell:
-code . <---- open vs code or any coding tool
-mkdir <--- to make folder
-ctr + D ---> to exit
-ls ----> list
-ls -lrt 
+-----------------------------------------------------------------------------

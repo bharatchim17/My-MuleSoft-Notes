@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------------------------------------------------------------
-//Jenkins is web-Application written in java , Jenkins is continuous integration tool that allows continuous development , test and 
-deployment of newly created codes...
+//Jenkins is web-Application written in java , Jenkins is continuous integration tool 
+that allows continuous development , test and deployment of newly created codes...
 
 //continuous Integration Tools:-
 1.Bamboo 
@@ -19,7 +19,8 @@ deployment of newly created codes...
 5.Distributed 
 
 //Jenkins Pipeline :- continuous integration and continuous Delivery (CI-CD)
-development --> code commit --> Build --> Test --> Release --> Deploy/Deliver --> Production.
+development --> code commit --> Build --> Test --> Release --> Deploy/Deliver 
+--> Production.
 
 Jenkins Master (Server)
         |
@@ -56,7 +57,8 @@ payload url: https://paste_hoste_here/github-webhooks/
 Add webhook
 
 In jenkin project
-Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm polling..
+Build trigger: select ---when we wann webhooks---> github hook trigger for GITScm 
+polling..
 
 //NG-Rok:
 ngrok.exe --version
@@ -65,7 +67,7 @@ ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306
 ngrok http http://localhost:8080 
 forwanding:    <------- from ngrok and save it
 
-----------------------
+-------------------------------------------------------------
 //In github repository settings
  Webhooks
  Add webhooks: paste path of ngrok here /github-webhook
@@ -95,7 +97,7 @@ Manage plugins ---> Available ---> Maven integration plugin download it
 Manage jenkins ---> Global Tool configuration ---> Maven: set installation and version
 
 #Build
-                                    Root POM: paste pom.xml path here  <--- is optional
+                   Root POM: paste pom.xml path here  <--- is optional
 Goals and options:
  clean deploy -PSandbox -DmuleDeploy
 -------------------------------------------------------------------------------------
@@ -144,6 +146,7 @@ By two ways we can access private repository:
 2. SSH Keys
 
 1. Personal Access Token:
+In github
 click on profile ---> settings ----> Developer settings ---> Personal access Token
 --select--> Tokens(classic) ---get help by authentification mobile app---> Note: PAT_jenkins
 
@@ -153,4 +156,3 @@ username: github userName |  password: paste token | ID: paste token id
 Add build step: Invoke Top level maven target ----> Goals: clean deploy -P -DmuleDeploy
 
 ----------------------------------------------------------------------------------------
-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

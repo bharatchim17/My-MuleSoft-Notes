@@ -1,9 +1,10 @@
 --------------------------------------------------------------------------------------------
-// We can do validation in two ways :- By using validation module connectors and by 
-using RAML while , Designing API's... we use required as true...
+// We can do validation in two ways :- By using validation module connectors in studio 
+and by using RAML while , Designing API's. We use required as true...
 
-Validation :
-Validation component will verify the content of message whether it matches the specified criteria.
+Validation:
+Validation component will verify the content of message whether it matches the 
+specified criteria...
 ------------------------------------------------------------------------------------------
 //Validation Operations:
 1. Is IP

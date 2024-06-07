@@ -1,19 +1,18 @@
 ----------------------------------------------------------------------------------
 //Error Occure:
-web Service Consumer throws a WSC:BAD_REQUEST error.What is the next step to fix this 
+Web Service Consumer throws a WSC:BAD_REQUEST error. What is the next step to fix this 
 error ?
 Solution: Set SOAP payload before the consume operation that contains destination 
 query parameters..
------------------------------------------------------------------------------
-//SOAP – Simple Object Access Protocol – is probably the better known of the two 
-models. SOAP relies heavily on XML, and together with schemas, defines a very strongly 
-typed messaging framework...
-- SOAP is an application communication protocol
-- SOAP is a format for sending and receiving messages
-- SOAP is platform independent
+---------------------------------------------------------------------------------
+//Simple Object Access Protocol(SOAP): Is probably the better known of the two 
+models. SOAP relies heavily on XML, and together with schemas, defines a very 
+strongly typed messaging framework...
+- SOAP is an application communication protocol..
+- SOAP is a format for sending and receiving messages..
+- SOAP is platform independent..
 - SOAP is based on XML..
 
 //WSDL stands for Web Services Description Language , WSDL is used to describe web 
 services WSDL is written in XML.. we can save it as .wsdl
-
 ------------------------------------------------------------------------------------

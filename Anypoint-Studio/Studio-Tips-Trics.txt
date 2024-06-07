@@ -1,9 +1,9 @@
 ------------------------------------------------------------------------------------------------------
 //To externalize console:
-Run as---> Run/Debug configurations ---> Common ---> Check Allocate console (necessary for input)
----> Check Output File: console.log / console or any other name ---> Apply
+Run as---> Run | Debug configurations ---> Common ---> Check ✅ Allocate console (necessary for input)
+---> Check ✅ Output File: console.log , console or any other name ---> Apply
 
-Type ---> powershell in the address bar and hit Enter.
+Type ---> powershell in the address bar of pom and hit Enter.
 Get-Content console -Wait
 
 //To run studio smoothly change AnypointStudio configurations as:
@@ -13,12 +13,12 @@ Get-Content console -Wait
 //Anypoint studio shortcuts:
 
 shift + ctrl + l <------- for more shrtcuts
-shift + alt + n  (use regularly😎)
-shift + alt + r <------rename
-shift + alt + w <------Show in
+shift + alt + n (use regularly😎)
+shift + alt + r <----- rename
+shift + alt + w <----- Show in
 shift + alt + Q <----- Show view
 ctrl + F4       <----- closing the tab
-alt + enter    <--- system explorer (Location)
+alt + enter     <----- system explorer (Location)
 ctrl + /       <--- Comment out dataweave in canvas(message flow) |  in vs-code
 ctrl + shift + /     <--- Comment out in configuration xml
 ---------------------------------------------------------------------------------------

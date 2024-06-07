@@ -1,6 +1,5 @@
-Access mangement ---> Connected app ---> type: App acts on its own behalf (client credentials)
-Add scope ---> Select scopes to add to the app : server & view ----> manage server ✅ read 
+//Access mangement ---> Connected app ---> type: App acts on its own behalf (client credentials)
+Select scopes to add to the app : server & view ----> manage server ✅ read 
 server ✅ view organization ✅
-
 
 https://docs.mulesoft.com/gateway/latest/flex-architecture-basic-deployments

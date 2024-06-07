@@ -25,13 +25,13 @@ Containers share the host operating system's kernel, but they have their own iso
 file system, processes, and networking..
 -------------------------------------------------------------------------------------------
 //Dockerfile write following code: 
-
 FROM openjdk:8
 RUN rm -rf app
 RUN mkdir app
 ADD mule-ee-distribution-standalone-3.9.5-20230823.zip /app
 WORKDIR /app
-RUN unzip  mule-ee-distribution-standalone-3.9.5-20230823.zip && \
+RUN 
+unzip  mule-ee-distribution-standalone-3.9.5-20230823.zip && \
 mv mule-enterprise-standalone-3.9.5-20230823 mule4 && \
 rm mule-ee-distribution-standalone-3.9.5-20230823.zip
 
@@ -57,9 +57,11 @@ docker container ls      ---> list the running container
 docker container ls -a   ---> list the all container
 docker start  ---> run (start) the exited container 
 docker start  ---> Exit(stop) the exited container 
-docker exec -it containerName | containerId bash ---> for going inside container -it mean interact 
+docker exec -it containerName | containerId bash ---> for going inside container -it 
+mean interact 
+
 mkdir floderName
-ctr + D ---> to exit
+ctrl + D ---> to exit
 docker run -it -p 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port
 example:  docker run -it -p 8087:8081 -i  mulestandalone
 docker run -it -p -e key=value 8025:8012 imageName <------here 8025 is external port and 8015 is (docker port)internal port

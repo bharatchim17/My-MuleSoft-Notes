@@ -139,10 +139,44 @@ Two-way-SSL or Mutual authentification: Client and server will authentificate ea
 other..
 
 //Type of stores:
+
 Trust store: 
-Where public key of the partner will be stored..  
+Signed certificate issued by Certificate Authority , Where public key of the partner will 
+be stored..  
+
 Key store:
+Usually a JKS (Java Keystore) file created using Keystore explorer which is not signed ,
 Where our keys(private and public key) will be stored..
+
+------------------------------------------------------------------------------
+In java jdk path ---> cmd
+
+//Server Keystore
+
+keytool -genkey -alias mule-server -keyalg RSA -keystore C:\certs\server-keystore.jks
+
+//Extract public key from Keystore
+
+keytool -export -alias mule-server -keyalg RSA -keystore C:\certs\server-keystore.jks -file C:\certs\server_trust.crt
+
+//create trust store for client
+
+keytool -import -alias mule-server -keyalg RSA -keystore C:\certs\client-truststore.jks -file C:\certs\server_trust.crt
+
+==========================================================================================
+//Client Keystore
+
+keytool -genkey -alias mule-client -keyalg RSA -keystore C:\certs\client-keystore.jks
+
+//Extract public key from client Keystore
+
+keytool -export -alias mule-client -keyalg RSA -keystore C:\certs\client-keystore.jks -file C:\certs\client_trust.crt
+
+//create trust store for server
+
+keytool -import -alias mule-client -keyalg RSA -keystore C:\certs\server-truststore.jks -file C:\certs\client_trust.crt
+
+***************************************************************************************
 
 
 
