@@ -96,12 +96,15 @@ program Arguments:
 
 Right_click on project ---> deploy to cloudHub 
 
-//worker size:- is memory example for example 0.2 vCores has 1GB memory..
-The process of increasing this worker size from one value to higher is called as vertical
-scaling..
-//worker :-  example--> 1 , 2 , 3
+//worker size (vCore):- Worker Size or vCore is Max Memory assigned to a Worker , for 
+example 0.2 vCores has 1GB memory..
+The process of increasing this worker size from one value to higher is called as 
+vertical scaling..
+//worker :-  
+Worker is a Virtual Mule Server Instance, where Application will be deployed 
+example: 1 , 2 , 3
 The process of increasing this worker(number of worker) from one value to higher is
- called as horizontal scaling...
+called as horizontal scaling...
 
 //In properties:-
 key: env        value: dev/test/uat

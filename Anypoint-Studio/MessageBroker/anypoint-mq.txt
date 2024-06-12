@@ -151,3 +151,8 @@ message exchange..
 //When we create an exchange we can also , bind queues(standard) , so we can broadcast
 message to all these queues..
 -------------------------------------------------------------------------------
+//WHAT IS THE UNDERLYING COMPONENT WHICH 
+USED BY ANYPOINT MQ? 
+It uses Amazon’s Simple Queue service (SQS).
+The configuration associated with the destinations (queues) and exchange patterns related to Anypoint MQ are 
+stored in Dynamo Database.

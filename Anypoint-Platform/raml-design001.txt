@@ -29,7 +29,7 @@ types:
 Key_Name(example_File_Name): !include copy_path of file which is in example_folder..
 
 //mention as 
-type : Key_Name  <----- We can remove type also , as body: Key_Name because type: object | item written in example fragments
+type: Key_Name  <----- We can remove type also , as body: Key_Name because type: object | item written in example fragments
 
 //We can directly mention(.json file in example folder):
 
@@ -54,7 +54,7 @@ examples:
     example2: !include copy_path of file which is in example_folder 
 
 ------------------------------------------------------------------------------------------------
-3. Resource-type:-  here you can paste Methods like get , post
+3. Resource-type:-  here we can paste Methods like get , post
 
 //Resource-type folder fragment:
 
@@ -129,7 +129,7 @@ is:
 
 //In Library fragment:-
 
-//usage: write Tittle_for usage of root_file
+//usage: write tittle_for usage of root_file
 types: | resourceTypes: | traits:
 datatype-Name: | resourceTypes-Name: | traits-Name:
 
@@ -177,7 +177,7 @@ https://docs.mulesoft.com/api-manager/latest/about-configure-api-for-oauth
 securedBy: [basic|oAuth2.0]  //here basic or oAuth2.0 is Key_Name
 
                                                                     securitySchemes:
-                                                                    basicAuth: !include /securitySchemes/basic-Auth.raml
+                                                                    basicAuth: !include/securitySchemes/basic-Auth.raml
                                                                     securedBy:
                                                                     - basic
 
@@ -235,7 +235,7 @@ securitySchemes:
                                                             client-id-enforcement: !include /securitySchemes/client-id-enforcement.raml
 
 //mention under methods As:
-securedBy: [basic/oAuth2.0]  //here basic or oAuth2.0 is Key_Name..
+securedBy: [basic|oAuth2.0]  //here basic or oAuth2.0 is Key_Name..
 
                                                                     securitySchemes:
                                                                     basicAuth: !include /securitySchemes/basic-Auth.raml

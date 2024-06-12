@@ -40,12 +40,12 @@ SHOW tables ;
 DROP table table_name ;
 --------------------------------------------------------------------------------------------
 //Primary Key:-
-It is a column (or set of columns) in table that uniquely identifies each row..(unique id)
-There is only 1 PK & it should be NOT null.. 
+It is a column (or set of columns) in table that uniquely identifies each row..
+(unique id)There is only 1 PK & it should be NOT null.. 
 
 //Foreign Key:-
-A foreign key is column (or set of columns) in a table that refers to the Primary key of 
-another table.. 
+A foreign key is column (or set of columns) in a table that refers to the Primary key 
+of another table.. 
 There can be multiple FKs.
 FKs can have duplicate & null values. 
 it prevent actions that would destroy links between tables..
@@ -105,7 +105,7 @@ Aggregare functions perform calculation on set of values , and return single val
         - SUM()
         - AVG()
 
-SELECT max/avg(column_name)
+SELECT max|avg(column_name)
 FROM table_name ;
 ---------------------------------------------------------------------------------------
 //Group By Clause
@@ -123,7 +123,7 @@ FROM table_name
 WHERE condition
 GROUP BY column
 HAVING condition
-ORDER BY column asc/desc ;
+ORDER BY column asc|desc ;
 -----------------------------------------------------------------------------------
 //Table related Queries:-
 update (to update existing rows)
@@ -162,15 +162,15 @@ Drop Column
 ALTER TABLE table_name 
 DROP COLUMN column_name ;
 
-Change Table (RENAME Table)
+//Change Table (RENAME Table)
 ALTER TABLE table_name 
 RENAME TO new_table_name ;
 
-CHANGE Column(rename)
+//CHANGE Column(rename)
 ALTER TABLE table_name
 CHANGE COLUMN old_name new_name new_datatype new_constraint;
 
-MODIFY Column(modify datatype|constraint) 
+//MODIFY Column(modify datatype|constraint) 
 ALTER TABLE table_name
 MODIFY column_name new_datatype new_constraint;
  
@@ -217,19 +217,17 @@ To use it:
  // A view is virtual table based on the result-set of an SQL statement.. 
 
 -----------------------------------------------------------------------------------
-
 //BACKUP DATABASE databasename
 TO DISK = 'filepath';
 WITH DIFFERENTIAL;
 
 Always back up the database to a different drive than the actual database. Then, if 
-you get a disk crash, you will not lose your backup file along with the database.
+we get a disk crash, we will not lose our backup file along with the database.
 A differential back up only backs up the parts of the database that have changed 
-since the last full database backup.
-
+since the last full database backup..
 ----------------------------------------------------------------------------------------------
-SOQL (Salesforce Object Query Language) is query language used in Salesforce to retrieve data from
-the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) 
+SOQL (Salesforce Object Query Language) is query language used in Salesforce to 
+retrieve data from the Salesforce database. SOQL queries are Similar to SQL (Structure Query Language) 
 queries but are specifically designed for querying Salesforce Objects.
 Query syntax:-
 SELECT <List Of Fields> FROM <Object API Name> WHERE <Filter Condition>

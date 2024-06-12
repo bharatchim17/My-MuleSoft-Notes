@@ -56,15 +56,14 @@ Delete
 Idempotent methods are HTTP methods that have the same effect on the server, 
 regardless of how many times they are executed. For example, GET, PUT, and DELETE are 
 idempotent methods, because they always return the same resources , update the same 
-resource, or remove the same resource, respectively...
+resource, or remove the same resource respectively...
 
 Idompotent:      --------> example:- Get|Put|Delete is Idompotent
 Non-Idompotent:  --------> example: Post 
 ---------------------------------------------------------------------------------------
 //RAML is a language for the definition of HTTP-based APIs that embody most or all 
 of the principles of Representational State Transfer (REST).
-RAML is a human & machine-readable language for the definition of a RESTful 
-application programming interface (API).
+RAML is a human & machine-readable language..
 
 This document is organized as follows:-
 -Basic Information
@@ -77,7 +76,6 @@ This document is organized as follows:-
 -Annotations
 -Includes, Libraries, Overlays, and Extensions
 ------------------------------------------------------------------------------------------------
-
 //A template URI refers to a URI parameter, which is a variable element, enclosed 
 in curly brackets ({}) inside a relative URI of a resource.
 
@@ -94,7 +92,6 @@ in curly brackets ({}) inside a relative URI of a resource.
 
 //mediaType: [ application/json , application/xml ]  | application/json  (it's Default Media Types)
 
-
 //traits:- A trait, like a method, can provide method-level nodes such as a description,
  headers, query string parameters, and responses...
 
@@ -103,15 +100,14 @@ in curly brackets ({}) inside a relative URI of a resource.
 can be used...
 
 (annotationName):-  An annotation is a map having a key that wrap in parentheses() 
-is the annotation name, and the value is an instance of that annotation.
+is the annotation name, and the value is an instance(example) of that annotation.
 
-//securitySchemes:- Most REST APIs have one or more mechanisms to secure data access, 
-identify requests, and determine access level and data visibility.
+//securitySchemes:- 
 Whenever we develop a REST_service we apply Security on top of rest APIs.
-Security can achieve in several ways, among that we use cofigure SQL certificates on mobile ,
-applications or either individually through application or through muleSoft runtime dedicated load
-balancer , so that those services will be exposed as HTTPS services.
-Apart from that, we also apply security policies on top of these APIs.
+Security can achieve in several ways, among that we use cofigure SQL certificates on 
+mobile , applications or either individually through application or through muleSoft 
+runtime dedicated load balancer , so that those services will be exposed as HTTPS 
+services. Apart from that , we also apply security policies on top of these APIs.
 Those are like basic authentification, client ID enforcement(injected through headers)
 and oAuth security policies.
 
@@ -122,7 +118,6 @@ Basic Authentication
 Digest Authentication	
 Pass Through	
 x-{other}
-
 
 securedBy:- The value assigned to the securedBy node MUST be a list of any of the 
 security schemes previously defined in the securitySchemes.
@@ -136,7 +131,8 @@ root of the API definition or a child of a resource node. For example, /users an
 
 //description:- Human-friendly description of the API.
 
-//schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 , always use types..
+//schemas:-  An alias for the equivalent "types" node for compatibility with RAML 0.8 ,
+ always use types..
 -------------------------------------------------------------------------------------------------
 //What are fragments in RAML?
 fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
@@ -151,13 +147,12 @@ API Fragments:- has two types
 //What is datatype..?
 A data type describes the data expected in an API or returned by the API..
 Datatype describes data in an API and add rules to validate data against type 
-declaration..there are two types of datatype 1. built-in datatype  2. custom data types..
+declaration..
+there are two types of datatype 1. built-in datatype  2. custom data types..
 -------------------------------------------------------------------------------------------
 //What are facets in RAML?
-Types can define two types of members: properties and facets. Both are inherited. 
-Properties are regular, object oriented properties. Facets are special configurations.
-You specialize types based on characteristics of facet values. use for adding some 
-constraints/special configuration..
+Types can define two types of member we can specialize types based on characteristics 
+of facet values. use for adding some constraints/special configuration..
 
 Common facets for all type declarations:
 -  default , description , enum , example
@@ -186,15 +181,23 @@ Templates.
 - Nouns
 it's resource based rather than action based (that's why not to write it like getBus , getHotel etc)
 resources has two types:  1.Collection(plural)  2.Nested(singular)..
-//what is differece between collection resource and Nested resource ?
-In collection resource delete methode avoided in majority projects , in nested method
-delete methode use in uri parameter
+
+//What is differece between collection resource and Nested resource ?
+In collection resource delete method avoided in majority projects , in nested method
+delete methode use in uri parameter..
 
 resource representation can be in different formats - XML , JSON etc , representations
 exchanged between consumer and provider..
 
 //MediaType has two types:  1. Default  2. explicit 
 --------------------------------------------------------------------------------------------
+//Hypermedia as the engine of application state (HATEOAS) is a constraint of the REST 
+application architecture.
+With HATEOAS, a client interacts with a network application whose application servers 
+provide information dynamically through hypermedia. A REST client needs little to no 
+prior knowledge about how to interact with an application or server beyond a generic 
+understanding of hypermedia.
+
 //What is HATEOS?
 
 //Q. What is Representational ?

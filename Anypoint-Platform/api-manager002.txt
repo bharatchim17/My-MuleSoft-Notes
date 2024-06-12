@@ -1,10 +1,32 @@
 -----------------------------------------------------------------------------------------
 //Policy types:-
-1. Quality of service
+1. Quality of service:
+  - HTTP Caching
+  - Rate limiting SLA based policy
+  - Rate limiting
+  - Spike Control
+
 2. Security
+  - OAuth 2.0 Access Token Enforcement using Mule OAuth Provider
+  - XML Threat Protection
+  - Json Threat Protection
+  - IP Allowlist
+  - Basic Authentication-Simple
+  - Basic Authentication-LDAP
+  - IP Blocklist
+  - JWT Validation
+
 3. Troubleshooting
+  - Message Logging
+
 4. Transformation
+  - Header Removal
+  - Header Injection
+
 5. Compliance
+  - Cross-Origin Resource Sharing
+  - Client ID Enforcement
+
 --------------------------------------------------------------------------------------
 //Quality of service:
 
@@ -16,29 +38,29 @@ does not change often. This policy uses a cache, which enables a faster service 
 data requests...
 
 2. Rate limiting SLA based policy:
-The Rate Limiting policy enables you to limit the number of requests that an API can
+The Rate Limiting policy enables us to limit the number of requests that an API can
 accept within a time window. The API rejects any request that exceeds this limit. 
-SLA-based policiesImpose a limit specified by the level of access granted to the 
-requesting application. The Rate Limiting policy is SLA-based...
-(The rate limiting policy is combination of rate limiting and client id enforcement that enables you to 
-limit the number of request specified by the level of access granted to the requesting application)..
+SLA-based policies Impose a limit specified by the level of access granted to the 
+requesting application. The Rate Limiting policy is SLA-based..
+(The rate limiting policy is combination of rate limiting and client id enforcement 
+that enables us to limit the number of request specified by the level of access 
+granted to the requesting application)..
  
- //steps:
- 1. Add SLA tiers
- 2. Create client Applications
- 3. Apply rate limiting SLA based policy 
+ //Steps:
+ 1. Add SLA tiers..
+ 2. Create client Applications..
+ 3. Apply rate limiting SLA based policy..
 
 
 3. Rate limiting: 
-The Rate Limiting policy enables you to limit the number of requests that an API 
+The Rate Limiting policy enables us to limit the number of requests that an API 
 can accept within a time window. The API rejects any request that exceeds this limit. 
-You can configure multiple limits with window sizes ranging from milliseconds to years.
+we can configure multiple limits with window sizes ranging from milliseconds to years.
 We can Apply configuration to all API method & resources or we can Apply specific 
-API method & resources.
-
+API method & resources..
 
 4. Spike Control:
-The Spike Control policy enables you to manage API traffic.The policy ensures that 
+The Spike Control policy enables us to manage API traffic. The policy ensures that 
 within any given period of time, no more than the maximum configured requests are 
 processed Spike control uses a sliding window algorithm. Over time, the window adjusts
 to retain only the processed information that fits within the window time span..
@@ -46,7 +68,7 @@ to retain only the processed information that fits within the window time span..
 //Security:
 
 1. OAuth 2.0 Access Token Enforcement using Mule OAuth Provider:
-The Mule OAuth 2.0 Provider policy enables you to alternatively use the OAuth 2.0 
+The Mule OAuth 2.0 Provider policy enables us to alternatively use the OAuth 2.0 
 authentication, designed by Mulesoft, which is an open standard for token-based 
 authentication over the internet. Mule OAuth authenticates consumers and service 
 providers using tokens instead of passwords...
@@ -55,54 +77,54 @@ providers using tokens instead of passwords...
 XML requests are susceptible to attacks characterized by unusual inflation of 
 elements, attributes, and nesting levels. Attackers use recursive techniques to 
 consume memory resources. Dramatic swings in the size of the application data often 
-signal a security problem The XML Threat Protection policy enables you to protect your
-applications from such intrusions....
+signal a security problem The XML Threat Protection policy enables us to protect 
+our applications from such intrusions..
 
 3. Json Threat Protection:
 JSON requests are susceptible to attacks characterized by unusual inflation of 
 elements and nesting levels. Attackers use recursive techniques to consume memory 
 resources. Dramatic swings in the size of the application data often signal a security
-problem. The JSON threat Protection policy enables you to protect your applications 
+problem. The JSON threat Protection policy enables us to protect our applications 
 from such intrusions...
 
 4. IP Allowlist:
-The IP Allowlist policy enables you to allow a list or range of IP addresses to access
+The IP Allowlist policy enables us to allow a list or range of IP addresses to access
 and interact with a configured API endpoint. This policy behaves in a manner opposite 
-to that of the IP Blocklist policy. You can allowlist addresses for your API endpoints
+to that of the IP Blocklist policy. we can allowlist addresses for our API endpoints
 based on the: 
 1. IP address of the request
 2. Origin IP address of the x-Forwarded-For header..
 
 5. Basic Authentication-Simple:
-The Simple authentication policy enables you to enforce security for the APIs by 
+The Simple authentication policy enables us to enforce security for the APIs by 
 requiring applications to provide a username and password when making a request...
 
 6. Basic Authentication-LDAP:
-The Lightweight Directory Access Protocol (LDAP) authentication policy enables you to 
+The Lightweight Directory Access Protocol (LDAP) authentication policy enables us to 
 establish the configuration details for an Open LDAP or Active Directory LDAP that 
-you set up for your enterprise...
+we set up for our enterprise...
 
 7. IP Blocklist
-The IP Blocklist policy enables you to restrict a list or range of IP addresses from 
-accessing and interacting with a configured API endpoint. You can blocklist addresses 
-for your API based on the:
-1. IP address of the request, and
-2. Origin IP address of the x-Forwarded-For header
+The IP Blocklist policy enables us to restrict a list or range of IP addresses from 
+accessing and interacting with a configured API endpoint. we can blocklist addresses 
+for our API based on the:
+1. IP address of the request..
+2. Origin IP address of the x-Forwarded-For header..
 
 8. JWT Validation:
-You can use a JSON Web Token (JWT) to transfer information between parties as a JSON 
-object. Because the token is signed, you can trust the information and its emitter.
-The JWT Validation policy enables you to validate incoming requests using a JWT with 
+we can use a JSON Web Token (JWT) to transfer information between parties as a JSON 
+object. Because the token is signed, we can trust the information and its emitter.
+The JWT Validation policy enables us to validate incoming requests using a JWT with 
 JWS format. The policy verifies the signature of the token and asserts the values of 
 the claims...
 -------------------------------------------------------------------------------------
 //Troubleshooting:
 
-1.Message Logging:
-The Message Logging policy enables you to log a custom message with the information 
+1. Message Logging:
+The Message Logging policy enables us to log a custom message with the information 
 available from policies, a proxy, or the backend, at any point of the execution.This 
 policy works with both log4j and log4j2...
-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 //Transformation:
 
 1. Header Removal:
@@ -111,11 +133,12 @@ The content-type and content-length headers of a request can be filtered using t
 policy...
 
 2. Header Injection:
-The Header Injection policy enables you to add headers to the request and response 
+The Header Injection policy enables us to add headers to the request and response 
 of a message. If the injected header already exists in the message attributes, the 
 policy creates a new header, without overriding the value of the existing one. This 
 action creates two headers with the same name...
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+
 //Compliance:
 
 1. Cross-Origin Resource Sharing:
@@ -124,7 +147,7 @@ another domain using a web application. For example, browsers rely on this stand
 for allowing cross-origin requests...
 
 2. Client ID Enforcement:
-The Client ID Enforcement policy enables you to restrict access to a protected 
+The Client ID Enforcement policy enables us to restrict access to a protected 
 resource. Only HTTP requests specifying client application credentials that are 
 already registered with target APIs are approved. The policy validates the Client ID 
 and Client Secret of a client application created within an Anypoint Platform 
@@ -132,14 +155,15 @@ organization. This policy does not validate client application credentials that 
 generated outside of Anypoint Platform...
 1. register client application on API in exchange.
 2. specifies from where in the request to extract values..
-  - HTTP Basic Authentification Header: Requires credentials as part of the authorization header.
+  - HTTP Basic Authentification Header: Requires credentials as part of the 
+authorization header.
  The application consuming the API must use the basic Authentification scheme to send the 
  credentials in the requests.
   - Custom Expression: Accepts an expression each for client_id and client_secret in the headers,
-  indicating where to extract the credentials from request.
+indicating where to extract the credentials from request.
 ---------------------------------------------------------------------------------------
 Note:- If our API is not showing ACTIVE in API Manager, that means , either the api ID 
-is mismatched that our have given in our code and the value in API Manager, or The 
+is mismatched that we have given in our code and the value in API Manager, or The 
 Anypoint platform credentials are wrong. When Status is “Un Registered “ That means , 
 our policies are not appended. But still application works without having Policies appended...
 -------------------------------------------------------------------------------------

@@ -3,22 +3,22 @@
 1. Bulk delete
 2. Bulk insert
 3. Bulk update
-4. Delete
-5. Execute DDL
-6. Execute Script 
-7. Insert
+4. Select
+5. Insert
+6. update
+7. Delete
 8. On Table Row (source) <--- schedular
 9. Query Single
-10. Select
-11. Store procedure
-12. update
+10. Store procedure
+11. Execute DDL
+12. Execute Script
 -------------------------------------------------------------------------------------
-1. Bulk delete:
-Allows executing delete statement various times using different parameter bindings. 
+1. Bulk delete: 
 using one single Database statement, which has performance advantages compared to 
 executing one single delete operation various times...
 #General:
 Input parameters: #[payload]  (default)
+
 SQL query Text: 
 
 2. Bulk insert:
@@ -46,7 +46,10 @@ Input parameters:
 
 5. Select:
 Selects data from a database. Streaming is automatically applied to avoid preemptive 
+(If something is pre-emptive, it is done before other people can act, especially to 
+prevent them from doing something)
 consumption of such results, which may lead to performance and memory issues...
+
 //What is preemptive consumption in select operation..?
 
 6. Query Single:
@@ -70,18 +73,22 @@ output parameters: None | Edit inline ✅ | Expression
 
 #General:
 SQL query text:
-{call insert_covid_master(:source, :case_type, :first_name, :last_name, :phone, :email, :date_of_birth, 
-:national_id, :national_id_type, :street_address, :city, :state, :postal)}
+#[{
+    call insert_covid_master(:source, :case_type, :first_name, :last_name, :phone, 
+    :email, :date_of_birth , 
+:national_id, :national_id_type, :street_address, :city, :state, :postal)
+}]
 
 
 -----------------------------------------------------------------------------------------
-//After inserting record to generated case_id one more record generated (i.e. one more DB call generated),
- to avoide this there are two ways:
+
 
  1. We can make use of auto generated keys features on top of database...
 Database(Insert-operation) component ---> Advance ---> 
-Auto generated keys = true | Auto generated key columnNames = edit inline 
----> + --provide--> columnNames = Value: case_ID
+Auto generated keys = true✅| false (default) | Expression 
+Auto generated key columnNames  = edit inline✅|Expression or Bean reference | none
+ + --provide--> columnNames as case_ID Value: case_ID
+
 //To read payload in java-stream objects ---> 
 evaluate: write(payload , "application/json")
 
@@ -89,8 +96,8 @@ evaluate: write(payload , "application/json")
  into the database , then return us generated case_id..
 Database(stored-procedure) 
 #General: 
-inout parameters : none 
-output parameters : edit inline
+inout parameters: none 
+output parameters: edit inline
 + provide --->  output parameters = key: case_id & type: Integer
 
 // In database case ID is of auto generated  which is primary key. but , same payload 
@@ -98,7 +105,10 @@ can come multiple times so , we need to give max(case_id here case id is primary
 to DB which will give us the latest case id.. 
 we use select operation in anypoint studio for this task write in select query-text:- 
  use max function.. 
+ 
  //How to write max-function in sql..?
+ //After inserting record to generated case_id one more record generated (i.e. one more
+ DB call generated), to avoide this there are two ways:
 ----------------- --------------------------------------------------------------------
 10. Execute DDL: 
 Enables execution of DDL queries against a database...
@@ -128,7 +138,7 @@ Frequency:
 Start delay:
 Time unit: 
 Table: <--- fetch table
-Watermark column: <--- fetch column we select  Watermark to primarykey
+Watermark column: <--- fetch column we select  Watermark to primary key
 Id column: <--- fetch id column
 Since:
 
@@ -137,7 +147,7 @@ Since:
 after going to DB ---> to solve this we need to set variable component
 in flow or save payload as variable..
 ---------------------------------------------------------------------------------------
-// To point any value or expression dynamically over SQL query text :-  
+// To point any value or expression dynamically over SQL query text:-  
 In Set varible:
 #General:
 Name: reportsDynamicQuery
@@ -156,10 +166,11 @@ query text:  #["$(vars.Dynamic_Query)"]
 //What is dynamically means here..?
 ----------------------------------------------------------------------------------------
 To apply connection poolling:- 
---goto--> 
-Global Element ---> Database-config ---> 
-Advance Tab --set--> pooling profile : Edit inline
---configure--> Max pool size: | Min pool size:  | Acquire increment: ---> Ok & Save...
+
+Global Element ---> search: Database-config 
+Advance Tab    ---> pooling profile : Edit inline ✅ | None| Bean reference
+Configure      ---> Max pool size: | Min pool size:   | Acquire increment:
+ ---> Ok & Save...
 
 //In which scenario we need to use connection pooling..?
 ------------------------------------------------------------------------------------------- 
