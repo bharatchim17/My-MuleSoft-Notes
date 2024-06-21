@@ -1,10 +1,10 @@
 --------------------------------------------------------------------------------------------
-//Manual deployment:- right click on project ---> Anypoint platform ---> choose environment 
---give Project_Name--> deploy application
+//Manual deployment:- right click on project ---> Anypoint platform ---> choose 
+environment --give Project_Name --> deploy application
 ---------------------------------------------------------------------------------------
 //Mule Properties management:-
- Externalizing Properties from mule configuration help us in better
-code management and need not to touch applications on configurations property changes.
+ Externalizing Properties from mule configuration help us in better code management 
+ and need not to touch applications on configurations property changes.
 
 
 1. Create property(.properties) file or yaml_file(.yaml) in src/main/resources.
@@ -36,9 +36,8 @@ code management and need not to touch applications on configurations property ch
             service name = ${OracleDatabase.serviceName}
   
 
-
-
-4/3. Use Mule::p('key') or p('key') dataweave script to extract in dataweave(On the expression mode:fx)
+4/3. Use Mule::p('key') or p('key') dataweave script to extract in dataweave(On the 
+expression mode:fx)
  we use p('db.port') only if we have placeholder #[] for MEL...
 -------------------------------------------------------------------------------------
 //Secure configuration properties:-
@@ -56,12 +55,13 @@ code management and need not to touch applications on configurations property ch
 https://secure-properties-api.us-e1.cloudhub.io/
 
    - Choose 16 digits encryption key:-  abcdef0123456789
-   - Use alogorithm and mode to encrypt password using above key
+   - Use alogorithm and mode to encrypt password using above key..
 
 3. Create "Mule secure configuration property" global element.
 --->  file: load the file   key: paste_here
 
-4/5. Use ${secure::key} expression extract the Property from Property file or yaml file..
+4/5. Use ${secure::key} expression extract the Property from Property file or yaml 
+file..
 
  //In Database config:
  
@@ -83,7 +83,8 @@ https://secure-properties-api.us-e1.cloudhub.io/
             UAT
 //Load property files dynamically by environment:-
 
-Global element tab ---> secure properties config ---> file: /${env}-config.yaml  key: ${enc.key}  <--------\------/-------
+Global element tab ---> secure properties config ---> file: /${env}-config.yaml  
+key: ${enc.key}  <--------\------/-------
 Global property ---> name: env |  value: dev  
 
 Right_click-on_project or .xml Config_file ---> Run As | Debug As ---> Mule Application 
@@ -100,6 +101,7 @@ Right_click on project ---> deploy to cloudHub
 example 0.2 vCores has 1GB memory..
 The process of increasing this worker size from one value to higher is called as 
 vertical scaling..
+
 //worker :-  
 Worker is a Virtual Mule Server Instance, where Application will be deployed 
 example: 1 , 2 , 3

@@ -7,7 +7,8 @@ In integration world after webservices , the JMS publish subscribe model used mo
 to make asynchronous integrations..
 We usually create Queues and Topics in JMS server to publish the message.. 
 
-//Queue & Topic is pipeline where we can publish the payload so , it can be subscribed by clients
+//Queue & Topic is pipeline where we can publish the payload so , it can be subscribed
+by clients...
  
 
 1. JMS Queue:  Publisher ---> Queue ---> Subscribe 
@@ -21,13 +22,15 @@ receive the message (publish & subscriber i.e. PubSub model: 1 to many)..
 
 //Addvantages:
 1. Asynchronous: 
-To receive the message, client is not required to send request. Message will arrive automatically to the client. 
+To receive the message, client is not required to send request. Message will arrive 
+automatically to the client...
 2. Reliable: 
 It provides assurance that message is delivered...
-3. it easy to develop enterprise applications that asynchronously send and receive business data and events...
+3. it easy to develop enterprise applications that asynchronously send and receive 
+business data and events...
 --------------------------------------------------------------------------------------
 ActiveMQ is a popular open source messaging service that is built on top of Java.
-It works as a message-oriented middleware (MoM).
+It works as a message-oriented middleware (MoM)..
   
 apache-activemq-5.17.6\bin\win64 <---- in this path type cmd & give command activemq.bat strat
 localhost: 8161 is default port of ActiveMQ
@@ -51,9 +54,8 @@ Connection: there are 3 types of Connection
 3. Generic Connection
 
 Conection Factory: Edit inline  
-broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd or in activeMq.xml)..
-
-
+broker url: tcp://localhost:61616 | tcp://0.0.0.0:61616 (we can find it in cmd or 
+in activeMq.xml)..
 -----------------------------------------------------------------------------------
 //JMS Operations
 

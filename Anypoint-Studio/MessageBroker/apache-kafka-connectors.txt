@@ -10,7 +10,7 @@ database have high storage but low throughput that's why , Operation Per Second 
 Whereas kafka has high throughput and low storage...
 
 Apache kafka is like communication system that helps different parts of computer system
-exchange data by publishing and subscribing to topics..
+exchange data by publishing and subscribing to topics..?
 //Why apache kafka..?
 1. High throughput
 2. Fault Tolerance(replication)..
@@ -19,24 +19,26 @@ Apache kafka is an event streaming platform What does that mean..?
 Kafka combines three key capabilities so we can implement use case for event streaming
 end-to-end with single battle-tested solution:
 1. To publish(write) and subscribe to (read) streams of events , including continues
-import|export of your data from other system..
+import|export of our data from other system..
 2. To store streams of events durably and reliably for as long as we want..
-3. To process streams of event as they ocure retrospectively..
+3. To process streams of event as they ocure retrospectively(being conscious of what 
+happened previously)..
 
 //What is Fault tolerence (replication)..?
+Fault Tolerance is defined as the ability of the system to function properly even in 
+the presence of any failure..
 ----------------------------------------------------------------------------------------
  //Kafka architecture:
+
+Kafka Cluster has broker and broker contains topic (topic contains partitions).. 
+with help of offset message store in the partition of the topic...
+
  producer ---> kafka ---> consumer
  kafka ecosystem contains: 1.kafka cluster   2.zookeeper
-Kafka Cluster has broker and broker contains topic(topic contains partitions).. 
-with help of offset message store in the partition of the topic...
--------------------------------------------------------------------------------
-//What is message..? message is small to medium size piece of data:
-
 1. Producer: is an application that sends data to kafka server...
 2. Consumer: an application that receive data from kafka sever..
-3. Broker: is kafka server
-4. Cluster: group of broker
+3. Broker: is kafka server..
+4. Cluster: group of broker..
 
 5. Topic: is unique name for kafka it contains name related data , they are Link
 tables in database , producer produce message into topic (ultimetly to partition in 
@@ -52,6 +54,8 @@ its offset value..
 
 8. Consumer groups: group of consumers acting as single logic unit..
 
+//What is message..? message is small to medium size piece of data..
+
 E:\Mule-Soft\Message-Broker\kafka-3.7.0-src\bin\windows <---- add this path in 
 environment variable...
 
@@ -66,9 +70,10 @@ from all the partitions at the same time..
 Is position of consumer in specific partition of topic , it represents latest message,
 consumer has to read..
 When consumer groups reads message from topic , each memeber of the group maintains
-its , own offset and updates it as it consumes messages that's  bookmark called consumer offset..
-Consumer offset is built-in topic in Apache kafka that keeps track of latest offset committed for 
-each partition of each consumer group..
+its , own offset and updates it as it consumes messages that's  bookmark called 
+consumer offset..
+Consumer offset is built-in topic in Apache kafka that keeps track of latest offset 
+committed for each partition of each consumer group..
 -------------------------------------------------------------------------------------
 
 //kafka random commands:
@@ -84,14 +89,18 @@ kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --r
 
 kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
 
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic 
+--from-beginning
 ----------------------------------------------------------------------------------------------------
 //Create data folder in path: kafka-3.7.0-src
 In data floder create folder: broker & zookeeper
 1. zookeeper: 
-In config zookeeper.properties dataDir = paste path with forward slash (/) of zookeeper folder 
+In config zookeeper.properties dataDir = paste path with forward slash (/) of 
+zookeeper folder..
+
 2. broker: 
-In config server.properties  log.dirs= paste path with forward slash (/) here of broker folder 
+In config server.properties  log.dirs = paste path with forward slash (/) here of 
+broker folder... 
 
                         ------- or metion directly without creating folder -------
 
@@ -128,7 +137,7 @@ value: Topic_Name
 3. Consume:
 This operation allows receiving messages from one or more Kafka topics, it works very 
 similarly to the Message Listener source, so all the operations that apply to that, 
-will apply to this operation as well.
+will apply to this operation as well..
 Note: The consume operation works only in IMMEDIATE mode. The consume operation does 
 not return the consumerCommitKey...
 #General:
@@ -138,8 +147,8 @@ Acknowledgement mode:
 --------------------------------------------------------------------------------
 4. Commit:
 Commits the offsets associated to a message or batch of messages consumed in a 
-Message Listener. This would be a List or a single message consumed in the 
-BatchMessageListenerSource..
+Message Listener. This would be a List or a single message consumed in the Message 
+listener or BatchMessageListenerSource ..
 #General:
 Consumer commit key:
 -----------------------------------------------------------------------------------
@@ -157,7 +166,7 @@ Headers:
 Bootstrap server: Edit inline ✅ + | Bean Reference
 Bootstrap server
 Value : localhost:9092
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 6. Seek:
 Sets the current offset value for the given topic, partition and consumer group of 
 the listener..
@@ -168,14 +177,15 @@ Offset:
 ------------------------------------------------------------------------------------
 //Error Occure:
 Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'
-Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-classpath-is-empty-cf7c31d9c787
+Solution: https://medium.com/@praveenkumarsingh/confluent-kafka-on-windows-how-to-fix-
+classpath-is-empty-cf7c31d9c787
 
 //Error Occure:
-wmic' is not recognized as an internal or external command,
-operable program or batch file...
+'wmic' is not recognized as an internal or external command, operable program or batch 
+file...
 
 //Error Occure:
-Classpath is empty. Please build the project first e.g. by running 'gradlew jarAll'..
+Classpath is empty , Please build the project first e.g. by running 'gradlew jarAll'..
 Solution: 
 ---------------------------------------------------------------------------------------
 Apache kafka with docker..
@@ -191,7 +201,7 @@ ls
 cd opt 
 ls
 cd bitnami
-cd kafka <---------- common  java  kafka  licenses  scripts
+cd kafka <---------- common java kafka licenses scripts
 cd bin 
 
 kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --Partitions

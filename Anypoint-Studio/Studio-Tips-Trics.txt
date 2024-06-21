@@ -1,6 +1,7 @@
 ------------------------------------------------------------------------------------------------------
 //To externalize console:
-Run as---> Run | Debug configurations ---> Common ---> Check ✅ Allocate console (necessary for input)
+Run as---> Run | Debug configurations ---> Common ---> Check ✅ Allocate 
+console (necessary for input)
 ---> Check ✅ Output File: console.log , console or any other name ---> Apply
 
 Type ---> powershell in the address bar of pom and hit Enter.

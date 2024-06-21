@@ -1,1 +1,9 @@
 //What is differece between Delete and Truncate statements..?
+
+
+//Dynamic and parameterized query in DB connector, how to execute and how to execute 
+stored procedure in mule? 
+We used parameterized query in DB operations to avoid SQL injection. Dynamic queries 
+lead to SQL injections. SQL injections is vulnerable thing and used to attack data 
+driven applications and to hack database application. We can call store procedure from
+database connector in Mule..

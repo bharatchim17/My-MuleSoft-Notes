@@ -10,7 +10,7 @@
 ------------------------------------------------------------------------------------
 1. The Scatter-Gather:
 Component executes each It will enable multi-threading will make the parallel call..
-Parallel execution of routes can greatly increase the efficiency of your Mule
+Parallel execution of routes can greatly increase the efficiency of our Mule
 application and may provide more information than sequential processing...
 Output payload is combination of all targets. And each target output has payload + 
 attributes... 
@@ -25,8 +25,8 @@ sequentially...
 //What is max concurrency..?
 ------------------------------------------------------------------------------------
 2. Round Robin:
-is a Mule component that contains two or more than two processing routes and executes only one 
-of the routes each time the flow executes the Round Robin component..
+is mule component that contains two or more than two processing routes and executes 
+only one of the routes each time the flow executes the Round Robin component..
 Round Robin keeps track of the previously selected route and never selects the same
 route consecutively. For example, the first time Round Robin executes, the 
 component selects the first route. The next time, it selects the second route. 
@@ -35,16 +35,16 @@ route...
 -------------------------------------------------------------------------------------
 3. first Successful:
 The first successful router iterates through list of configured processing routes until ,
-one of the routes execute successfully.. If any processing route fails execution (throws an error)
-the router execute next configured route..If none of the configured routes execute
-successfully , the first successfull router throws an error..
+one of the routes execute successfully.. If any processing route fails execution 
+(throws an error) the router execute next configured route..If none of the configured 
+routes execute successfully , the first successfull router throws an error..
 --------------------------------------------------------------------------------------
 4. Choice:
 The Choice router adds conditional processing to a flow, similar to an if/then/else 
 code block in most programming languages. The Choice router dynamically routes 
 messages to different portions of a flow according to a set of DataWeave expressions
-that evaluate message content. Each expression is associated with a different routing option, 
-and the Default case executes when no other expressions match...
+that evaluate message content. Each expression is associated with a different routing 
+option, and the Default case executes when no other expressions match...
 
 #When
 Expression: #[payload.ip == "161.185.160.99"]
@@ -71,21 +71,22 @@ Expression: #[attributes.queryParams.'age' < 15 as Number]
 Target variable:  variableName 
 Target value:  #[payload] (default)
 
-Flow Reference component we can set as below.. 
+'Flow Reference' component we can set as below.. 
 #Target: payload
 #Target value : #[payload] (default)
 ------------------------------------------------------------------------------------
-//Supose we have  payload we want to save it into variable how can we do it ...?
+//Supose we have payload we want to save it into variable how can we do it ...?
 --->
 We can use target variable for it:
 #Advanced
 Target variable: saveMe
 Target value: #[payload]
 
-In set payload transformer:
+In 'set payload' transformer:
 #[vars.saveMe]
 
 //Supose we have  payload we want to save it into variable how can we do it ...?
+
 Set Variable:
 #General:
 DisplayName: Empty List
@@ -104,7 +105,7 @@ Value:
 
 ----------or--------------
 
-In set variable transformer:
+In 'set variable' transformer:
 Name: inpPayload
 value:
 #[
@@ -128,11 +129,11 @@ Async can be useful for executing time-consuming operations that do not require 
 send a response back to the initiating flow (such as printing a file or connecting to 
 a mail server)...
 
- //Async , Foreach & try scope with (+) on-error-Continue works as localScope..
+ //Async , Foreach with on-error-Continue(in try scope) works as localScope..
 
  If we save variable inside foreach it remain after scope but , 
- in case of async try + on-error-Continue it will vanish..async can even vanish
- variable too..
+ in case of async with on-error-Continue(in try scope) it will vanish..async can even 
+ vanish variable too..
  -------------------------------------------------------------------------------------
 //try scope:
 The Try scope catches and handles errors that occur when executing any of the 
@@ -143,11 +144,11 @@ never be partially executed. Every operation within the scope of a transaction i
 executed in the same thread, and errors should lead to either a rollback or a commit...
 -------------------------------------------------------------------------------------------
 //The Until Successful scope:
-Until Successful runs synchronously(exactly same time) , If any processor within the 
+'Until Successful' runs synchronously(exactly same time) , If any processor within the 
 scope fails to connect or to produce a successful result , Until Successful retries 
 all the processors within it, including the one that failed , until all configured 
 retries are exhausted...
-If  the  final  retry  does  not succeed, Until Successful produces an error. The 
+If  the  final  retry  does  not succeed, 'Until Successful' produces an error. The 
 error Type for this Until-successful is MULE:RETRY_EXHAUSTED.. 
 
 #Generic:
@@ -162,6 +163,7 @@ as input a "collection" (a list or array from a payload with any kind of content
 iterates over the items in the collection, passing each one through the components 
 placed inside the For Each scope. If a particular item in a collection throws an
 exception, the For Each scope will stop processing it and invoke an error handler..
+
 //Remember: Input collection for For-each must be always an Arrays...
 
 #General:
@@ -175,14 +177,12 @@ Then we must use “Try” block and use “On-Error-Continue” to handle indiv
 and process to next record....
 --------------------------------------------------------------------------------------
 //Parallel For Each Scopes: 
-The Parallel For Each scope enables you to process a collection of messages by 
-splitting(divide into smaller groups) the collection into parts that are 
-simultaneously(happening exactly the same time) processed in separate 
+The Parallel For Each scope enables to process a collection of messages by 
+splitting (divide into smaller groups) the collection into parts that are 
+simultaneously (happening exactly the same time) processed in separate 
 routes within the scope of any limitation configured for concurrent-processing. 
-After all messages are processed, the results are aggregated following the same order 
+After all messages are processed, the results are aggregated  the same order 
 they were in before the split, and then the flow continues...
-
-
 
 #General:
 collection: #[payload]

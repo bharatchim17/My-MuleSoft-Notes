@@ -1,14 +1,14 @@
 ---------------------------------------------------------------------------------------
 developer.saleforce.com    <--- log in here          
 dataloader.io              <--- To quickly and securely import, export and delete 
-unlimited amounts of data for your enterprise also , use for intelligent data mapping...
+unlimited amounts of data for enterprise also , use for intelligent data mapping...
 dataloader                 <---- Is software
 --------------------------------------------------------------------------------------
 // UnderscoreC (_C) is the custom_object..
 
 //Streaming is the process of synchronizing data between one target with other target..
-streaming API enables streaming of events using push technology and provides a subscription
-mechanism for receiving events..
+streaming API enables streaming of events using push technology and provides a 
+subscription mechanism for receiving events..
 API subcription mechanism supports multiple types of event:
 1. PushTopic events..
 2. Generic events..
@@ -17,9 +17,9 @@ API subcription mechanism supports multiple types of event:
 
 //Explain  mulesoft event streaming with saleforce..?
 ---------------------------------------------------------------------------------------
-//How can we identify what event happens in Streaming..?
 saleforce can fetch the object events and it's reflect in attributes of mule.. 
 attributes.'type' == "created" | "updated" | "deleted"
+//How can we identify what event happens in Streaming..?
 ---------------------------------------------------------------------------------------
 //Crete custom object in 2 ways: 
 1. setting:Setup ---> Object ---> Object manager ---> create custom object + Add fields

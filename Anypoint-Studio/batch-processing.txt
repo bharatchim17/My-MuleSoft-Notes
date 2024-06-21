@@ -2,8 +2,8 @@
 //Batch processing:-
 Components are designed for reliable, asynchronous processing of larger-than-memory 
 data sets. The components are the Batch Job, Batch Step, and Batch Aggregator...
-Batch processing: The process of transferring huge amount of data as sets/batches between
-systems..
+Batch processing: The process of transferring huge amount of data as sets/batches 
+between systems..
 
 https://docs.mulesoft.com/mule-runtime/latest/_images/mruntime-batch-job-overview.png
 
@@ -41,7 +41,7 @@ record in each subsequent batch step..
 --------------------------------------------------------------------------------------------------
 //Refining Batch Steps Processing:
 Batch filters:
-you can set filters upon batch steps to only accept some records for processing..
+we can set filters upon batch steps to only accept some records for processing..
 A batch step uses two attributes to filter records:
 1. AcceptExpression
 2. AcceptPolicy
@@ -93,10 +93,8 @@ Max Failed Records: -1
 //Batch Processing foreach vs batch job:
 
 1. Batch processing using foreach:
-- process/commit record by record at a time..
 - process/commit batch records at time using batch option..
 2. Batch processing using batch job:
-- process/commit record by record at time..
 - process/commit batch records at time using batch Aggregator..
 
 //Foreach is single threaded and BatchJob is multi-threaded...
@@ -118,5 +116,10 @@ Accept Policy:  All | NO_Failures(default) | Only_Failures
 #General:
 Aggregator Size: 4 
 -------------------------------------------------------------------------------
-
- 
+//Why we use Batch Aggregator scope..?
+Batch Aggregator scope is used to accumulate a subset of records from a batch step and process them to external 
+source or service for example rather than processing single record to target system 
+we can use batch aggregate to process all the records at once. we can also configure 
+batch aggregator scope to process fixed size groups of records inside a batch 
+aggregator scope...
+-------------------------------------------------------------------------------------

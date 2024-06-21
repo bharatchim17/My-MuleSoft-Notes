@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------------
 //Error handling:-
 The process of handling errors in flow and responding back user friendly messages 
-instead of system error messages is known as error handling...
+instead of system error messages , is known as error handling...
 
 Selector Expressions for Mule Errors:-
 1. #[error.description] *
@@ -30,28 +30,29 @@ Critical:-
 //Error type is combination of ---> name_space: identifier
 
 ------------------------------------------------------------------------------------------------------
-// in java there is try catch statement when error occure in try statement it will be 
-catch it in catch statement , like these function anypoint studio provided try scope(by right click wrap in -->
- try scope)..
+// In java there is try catch statement when error occure in try statement it will be 
+catch it in catch statement , like these function anypoint studio provided try 
+scope(by right click wrap in --> try scope)..
 
-//every handler (except the last one) within an error-handler must be specify 'when' or 'type' attributes..
-
+//every handler (except the last one) within an error-handler must be specify 'when' 
+or 'type' attributes..
 -------------------------------------------------------------------------------------------------------
-Error Handling Operations:
+//Error Handling Operations:
 1. On Error Continue
 2. On Error Propagate
 3. Raise Error
 4. Error Handler
 ------------------------------------------------------------------------------------------------------
 1. On Error Continue: 
-Considers the request transaction as Success-response and response back to the response section 
-(success response) of listner..
+Considers the request transaction as Success-response and response back to the 
+response section (success response) of listner..
 
 2. On Error Propagate: 
-Considers the request transaction as Error-response and response back to the error response section of listner..
+Considers the request transaction as Error-response and response back to the error 
+response section of listner..
 
 //Raise Error:
-Is used to intentionally throw an exception or error within flow..
+Is used intentionally throw an exception or error within flow..
 #General:
 Type: CUSTOM:INVALID_AGE | CUSTOM:CASE_NOT_FOUND
 Description: Student age must be greater than 15
@@ -62,9 +63,10 @@ handler. It can contain any number of internal handlers (for example On Error
 Continue and On Error Propagate) and supports handler matching by error type or with 
 a DataWeave expression. The raised error is stored as an inspectable object so the 
 handlers can execute and act accordingly...
-//Global error handler, also known as global exception strategy , is an error handling mechanism that
-allows you to define a centralized error handling strategy that applies to all flows within Mule application.. 
 
+//Global error handler, also known as global exception strategy , is an error handling
+mechanism that allows us to define a centralized error handling strategy that applies 
+to all flows within Mule application.. 
 ---------------------------------------------------------------------------------------------------
 //Set in variable of transform message of flow:
 
@@ -77,7 +79,7 @@ Example:
 error-code: 400 | success-code: 200
 save in  variable name as statusCode now mention it in 
 http listner 
-#response fx: vars.statusCode 
+#response: #[vars.statusCode] 
 
 //set in payload of transform message of Error_Handling:
 
@@ -96,18 +98,22 @@ output application/json
 //200 Ok :- Standard response for successful HTTP requests. The actual response will
  depend on the request method used. In a GET request, the response will contain an 
  entity corresponding to the requested resource. In a POST request the response will 
- contain an entity describing or containing the result of the action.
+ contain an entity describing or containing the result of the action..
+
 //Where as 500 is internal server error , set as default error:
  A generic error message, given when no more specific message is suitable.
 Default response in http listner Success response: 200 , error response: 500 ...
-go to httpListener's Response ---> Body: payload | status code: vars.statusCode default 200 (to success response)
+go to httpListener's Response ---> Body: payload | status code: vars.statusCode 
+default 200 (to success response)
 --------------------------------------------------------------------------------------------------------------
 //Custom error:-
 error mapping ---> choose error ---> namespace: CUSTOM | identifier: CONNECTION_FAILED
 Now in ---on error propogate --choose-->  CUSTOM:CONNECTION_FAILED
 
 //Raise error:-
-General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server has not found anything matching 
+General ---Settings---> Type: CUSTOM:CASE_NOT_FOUND  | Description: The server has not
+found anything matching 
+
 the Request-URI  
 Now in ---on error propogate --paste-->  Type: CUSTOM:CASE_NOT_FOUND 
 
@@ -122,22 +128,27 @@ error handler connector..
 4. --goto--> http listener ---> responses ---> error response--->
 Body: payload
 statusCode: vars.statusCode 
-
 -------------------------------------------------------------------------------------------------------
-Click-On-->Error Handling--->Reference: --choose-->global-error-handler
-Global-configuration---> --search--->configuration--> default error handler: handleHTTPErrors <--- is flowName
+Click-On--> Error Handling ---> Reference: --choose--> global-error-handler
+
+Global-configuration---> --search---> Configuration--> default error handler: 
+handleHTTPErrors <--- is flowName
 
 -------------------------------------------------------------------------------------------------------------
-//Solution to solve conflict b/w global (application) vs local(flow) & connector(process) level error handlers
-1. use private flow refer it by flow reference or API kit router and add error 
+//Solution to solve conflict b/w global (application level) vs local(flow level) & 
+connector (process) level error handlers..
+
+1. Use private flow refer it by flow reference or API kit router and add error 
 in error handling don't refer it to global..
+
 2. refer error handler in main flow instead of private flow...
 
-Note:- use Private flow for error handling instead of subflow in subflow we use try block for error handling..
+Note:- Use Private flow for error handling instead of subflow in subflow we use try 
+block for error handling..
 
 //try scope: allow us to error handling on group of event processor individually..
 --------------------------------------------------------------------------------------
-//We can know exact error sometimes by ---> error.exception.message..
+//We can know exact error sometimes by ---> error.exception.message
 
 //If any branch fails in scatter-gather it gives MULE:COMPOSITE_ROUTING exception..
 error.errorMessage.payload.failures
@@ -147,22 +158,23 @@ error.errorMessage.payload.results
 
 1. APIKIT: BAD_REQUEST: 
 This error type usually generated by API based project but moved the same to global 
-error handler to maintain it as unique , This handles bad request over request i.e. it executes when invalid 
-request payload sent over http request. API Kit Router can able 
-validate the request against to RAML.... 
+error handler to maintain it as unique , This handles bad request over request i.e. 
+it executes when invalid request payload sent over http request. API Kit Router can 
+able to validate the request against RAML.... 
 
 2. APIKIT: METHOD_NOT_ALLOWED:  
-This error type usually generated by API based project but moved the same to global error 
-handler to maintain it as unique.. 
+This error type usually generated by API based project but moved the same to global 
+error handler to maintain it as unique.. 
 It executes when invalid method has sent over http request. API Kit Router can able 
-validate the request against to generated flow method...
+to validate the request against generated flow method...
 
 3. APIKIT: NOT_ACCEPTABLE: 
-This block handles when The resource identified by the request is not capable of generating 
-response entities according to the request accept headers...
+This block handles when The resource identified by the request is not capable of 
+generating response entities according to the request accept headers...
  
 4. APIKIT: NOT_FOUND: 
-This block will execute if the server not found anything that matching to the request URI... 
+This block will execute if the server not found anything that matching to the request 
+URI... 
  
 5. APIKIT: UNSUPPORTED_MEDIA_TYPE: 
 This block will execute when the given request is not supported in any of predefined 
@@ -178,7 +190,8 @@ issues. There might be multiple reasons why server is refuses the request will b
 shown as part of response payload... 
  
 8. HTTP: CLIENT_SECURITY: 
-This block indicates an external entity (e.g. calling an external endpoint) produced a security error. 
+This block indicates an external entity (e.g. calling an external endpoint) produced 
+a security error. 
  
 9. HTTP: CONNETIVITY: 
 This block executes when upstream is not available to handle the requests... 
@@ -209,7 +222,7 @@ This block handles when The request is unable to interact with external applicat
 and exhausted the given retries to connect to external application... 
  
 16. HTTP: SECURITY: 
-This block indicates a security error occurred, like invalid credentials being 
+This block indicates a security error occurred , like invalid credentials being 
 received or an expired token being used... 
  
 17. HTTP: TIMEOUT: 
@@ -217,8 +230,8 @@ This block will execute when the given request for external application is not
 responded in given interval of time timeout exceptions will occurred... 
  
 18. HTTP: TOO_MANY_REQUESTS: 
-This block will execute when request throws 429 response status code indicates the user has sent 
-too many requests in a given amount of time... 
+This block will execute when request throws 429 response status code indicates the 
+user has sent too many requests in a given amount of time... 
  
 19. HTTP: UNAUTHORIZED: 
 This block will execute that the request has not been applied because it lacks valid 
@@ -241,7 +254,7 @@ exhausted...
  
 24. CONNECTIVITY: 
 This block indicates that there was a problem establishing a connection. This could 
-occur while using a connector, for example, an HTTP requester.. 
+occur while using a connector , for example, an HTTP requester.. 
  
 25. TIMEOUT: 
 This block indicates timeout occurred while processing a message... 

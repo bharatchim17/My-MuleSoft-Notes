@@ -14,8 +14,8 @@ hexadecimal use both number and alphabets in address..
 Protocols:
 1.Secure Socket Layer(SSL)..
 2.Transport Layer security(TLS)..
-Protocol is used to ensure security on internet it, uses public key encryption to secure
-data and authentificates te server , client and encrypt data..
+Protocol is used to ensure security on internet it, uses public key encryption to 
+secure data and authentificates server , client and encrypt data..
 TLS is cryptographic protocol and Successor to SSL..
 ----------------------------------------------------------------------------------------
 Transmition Control Protocol (TCP):
@@ -35,11 +35,12 @@ Can communicate in both direction at a time..
 Port forwarding:
 Allows computer over the internet to connect to specific computer or services
 within private network..
-port is logical connection that is used by programs and services to exchange information..
+port is logical connection that is used by programs and services to exchange 
+information..
 port is always associated with an I.P. address..
 ---------------------------------------------------------------------------------------
 proxy server:
-retrieves data on the internet on behalf of user as act like gentelman😅..
+retrieves data on the internet on behalf of user (as act like gentelman😅..)
 proxy benefits:
 1. privacy:
 Allows you to surf internet anonymously with using proxy , our public address isn't
@@ -59,8 +60,8 @@ A port is NOT physical connection ..
 - It's logical connection that's used by programs and services to exchange information..
 - It specifically determine which programs or service on computer or server that is 
 going to be used..
-- a port is always associated with an IP address & IP address determine location of that
-server.. 
+- a port is always associated with an IP address & IP address determine location of 
+that server.. 
 
 Port number 0 - 1023 are called system or well-known ports..    <--- use by server
 Port number 1024 - 49151 are called user or registered ports..  <--- use by server
@@ -97,7 +98,7 @@ Types:
 1. Host-based firewall..
 2. Network-based firewall..
 -----------------------------------------------------------------------------------------------------
-Within enterprise organization lot of applications like 1.security 2.thread 3.transaction 4.pool 
+//Within enterprise organization lot of applications like 1.security 2.thread 3.transaction 4.pool 
 management
 Any bus framwork which provides these services declaritively(here it means no need ofcode) we can call 
 it enterprise service bus..
@@ -106,7 +107,6 @@ it enterprise service bus..
 authentification and data integrity in internet communication..
 An SSL certificate is bit of code on our web server that provides security for online communications..
 SSL also , called as TLS..
-
 - Secure sockert layer developed by Netscape in 1995..
 - Security protocol to provide security and privacy..
 - Used to encrypt information between client and server..

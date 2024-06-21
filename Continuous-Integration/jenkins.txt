@@ -19,7 +19,7 @@ that allows continuous development , test and deployment of newly created codes.
 5.Distributed 
 
 //Jenkins Pipeline :- continuous integration and continuous Delivery (CI-CD)
-development --> code commit --> Build --> Test --> Release --> Deploy/Deliver 
+development --> code commit --> Build --> Test --> Release --> Deploy|Deliver 
 --> Production.
 
 Jenkins Master (Server)
@@ -51,7 +51,7 @@ configure pipeline to build , execute Munit test and deploy..
 *1. Push notification: 
 
 //go to repository settings of github ---> Webhooks
-payload url: https://paste_hoste_here/github-webhooks/
+payload url: https://paste_host_here/github-webhooks/
 
 #just push event (active)
 Add webhook
@@ -65,7 +65,7 @@ ngrok.exe --version
 ngrok config add-authtoken 2esDlb <-- it's token
 ngrok.exe http:8080 <---- paste_port_here  | ngrok tcp :3306
 ngrok http http://localhost:8080 
-forwanding:    <------- from ngrok and save it
+forwarding:    <------- from ngrok and save it
 
 -------------------------------------------------------------
 //In github repository settings
@@ -76,13 +76,14 @@ Select events: pushes
               2. Polling: 
               //In jenkin project
               Build trigger: select build perodically  (use cron expression generator)
+
               https://crontab.cronhub.io/
 
 //Always use Push notification
 -----------------------------------------------------------------------------------------
 //Freestyle project
 #source code management
-Git
+#Git
 Repository URL:  paste git repo url paste_here
 Credentials: 
 Add 
@@ -94,11 +95,11 @@ Goals: clean deploy -Penvironment -DmuleDeploy
 -------------------------------------------------------------------------------------
 //Maven project
 Manage plugins ---> Available ---> Maven integration plugin download it 
-Manage jenkins ---> Global Tool configuration ---> Maven: set installation and version
+Manage jenkins ---> Global Tool configuration ---> Maven: set installation and 
+version
 
 #Build
-                   Root POM: paste pom.xml path here  <--- is optional
-Goals and options:
+                   Root POM: paste pom.xml path here  <--- is optional Goals and options:
  clean deploy -PSandbox -DmuleDeploy
 -------------------------------------------------------------------------------------
 
@@ -130,15 +131,16 @@ Script path: Jenkinsfile  (create file in studio)
       </executions>
     </plugin>
 
- MUnit provides a Maven plugin that enables you to run your MUnit tests as part of
-  your continuous integration environment...
+ MUnit provides a Maven plugin that enables us to run our MUnit tests as part of
+our continuous integration environment...
 
 //Step4: Download maven plugin in jenkins tool..
 //step5: Add  Mulesoft enterprise Repository in settings.xml
 ---------------------------------------------------------------------------------------
 //Step1: Choose pipeline
 Defination: Pipeline script 
-Script : write groovy script in editor.. add stage as Scripted pipeline for git repositories
+Script : write groovy script in editor.. add stage as Scripted pipeline for git 
+repositories...
 ----------------------------------------------------------------------------------------------
 //Github with jenkins
 By two ways we can access private repository:
@@ -148,11 +150,13 @@ By two ways we can access private repository:
 1. Personal Access Token:
 In github
 click on profile ---> settings ----> Developer settings ---> Personal access Token
---select--> Tokens(classic) ---get help by authentification mobile app---> Note: PAT_jenkins
+--select--> Tokens(classic) ---get help by authentification mobile app---> 
+Note: PAT_jenkins
 
 Jenkins---> credentials + Add --->Domain: global---> kind: userName & password |
 username: github userName |  password: paste token | ID: paste token id
 
-Add build step: Invoke Top level maven target ----> Goals: clean deploy -P -DmuleDeploy
+Add build step: Invoke Top level maven target ----> Goals: clean deploy -P 
+-DmuleDeploy
 
 ----------------------------------------------------------------------------------------

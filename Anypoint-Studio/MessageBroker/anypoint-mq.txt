@@ -1,4 +1,3 @@
-
 --------------------------------------------------------------------------------------
 //What is anypoint MQ..?
 Anypoint MQ is Mulesoft's Cloud Messaging platform. This can be used by other applications
@@ -118,11 +117,12 @@ so , message returned to Queue for redelivery..
 ------------------------------------------------------------------------------------
 //What is AnyPoint MQ ..?
 Any point MQ is multi-tenat , cloud messaging service that enables customers to Perform
-advanced asynchronous messaging scenarios between their applications... Anypoint MQ is fully integrated
-with Anypoint Platform , offering role-based access control , client managemant and connectors..
+advanced asynchronous messaging scenarios between their applications... Anypoint MQ is
+fully integrated with Anypoint Platform , offering role-based access control , client managemant 
+and connectors..
 we can use any point MQ URL , client App id , secret to connect Queue or Exchange queues..
 //Message Exchange:
-With message exchanges you can distribute single message to multiple consumers..
+With message exchanges we can distribute single message to multiple consumers..
 ----------------------------------------------------------------------------------------
 //What is DLQ and why we use DLQ..?
 is service implementation to store message that fail to deliver that means it receive 
@@ -151,8 +151,8 @@ message exchange..
 //When we create an exchange we can also , bind queues(standard) , so we can broadcast
 message to all these queues..
 -------------------------------------------------------------------------------
-//WHAT IS THE UNDERLYING COMPONENT WHICH 
-USED BY ANYPOINT MQ? 
+//WHAT IS THE UNDERLYING COMPONENT WHICH USED BY ANYPOINT MQ? 
 It uses Amazon’s Simple Queue service (SQS).
-The configuration associated with the destinations (queues) and exchange patterns related to Anypoint MQ are 
-stored in Dynamo Database.
+The configuration associated with the destinations (queues) and exchange  
+related to Anypoint MQ are stored in Dynamo Database.
+-------------------------------------------------------------------------------

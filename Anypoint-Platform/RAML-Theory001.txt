@@ -211,3 +211,8 @@ understanding of hypermedia.
 WebClient(browser)--->request(product/1)----->WebServer
 WebServer---->response{product1: milk}----->WebClient
 ---------------------------------------------------------------------------------------
+What is Anypoint platform? 
+Anypoint Platform is a complete solution for API-led connectivity that helps companies
+build application networks of apps, data, and devices, both on-premises and in the 
+cloud.This hybrid integration platform includes iPaaS, ESB, and a unified solution for 
+API management, design, and publishing... 

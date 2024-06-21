@@ -1,6 +1,8 @@
 
 ------------------------------------------------------------------------------------------------
-//Error Ocure :- java.lang.RuntimeException: Attempted to send invalid data through http response.
+//Error Ocure :- java.lang.RuntimeException: Attempted to send invalid data through 
+http response.
+
 Solution:-
 
 You need to set the below code in the listener component's response.
@@ -18,12 +20,11 @@ Solution:-
 3. Remove empty spaces in postman's URL and payload..
 4. Re-run or debug again
 
-Error:- "Illegal processing instruction target ("xml"); xml (case insensitive) is reserved by the specs.
+Error:- "Illegal processing instruction target ("xml"); xml (case insensitive) is 
+reserved by the specs...
 solution:- Clear blank spaces..
-
 -------------------------------------------------------------------------------------------------
 #//Database
-
 
 //Error Ocure :-  Mule Agent REST service is not available..
 
@@ -45,7 +46,8 @@ Solution:-
 2. Global element  ---> http configuration ---> delete read-TimeOut ---> save
 
 -----------------------------------------------------------------------------------------
-//Error occure:- Parameter 'key' was not bound for query 'insert into Table(key_1, key_2) values(:key1 , :key2)
+//Error occure:- Parameter 'key' was not bound for query 'insert into 
+Table(key_1, key_2) values(:key1 , :key2)
 
 Solution:-
 1. Check Database table by select * from TABLE ;
@@ -62,7 +64,6 @@ input parameter:-
 }
 
 ----------------------------------------------------------------------------------------
-
 //Error Ocure:- ORA-00904: "key": invalid identifier
 Solution:-
 check : Key in queries is equal to key in input parameters
@@ -71,7 +72,6 @@ query text --->  :key  (:key is placeholder for input parameter key:)
 input  parameter ---> key: payload.key_1
 
 --------------------------------------------------------------------------------------
-
 //Error Ocure :- java.sql.SQLSyntaxErrorException.
 ORA-00942: table or view does not exist..
 Solution:-
@@ -111,13 +111,15 @@ increase response TimeOut.
 -----------------------------------------------------------------------------------------
 //Error Ocure:-
 You called the function 'Value Selector' with these arguments: 
-  1: Binary "" as Binary {base: "64"} as Binary {encoding: "UTF-8", mediaType: "*/*; char...}
+  1: Binary "" as Binary {base: "64"} as Binary {encoding: "UTF-8", mediaType: "*/*; 
+  char...}
 
 Solution:- By mapping , Transform JSON input to XML output..
           Inbound  = json payload ,
           Outbound = xml payload
 
-In postman:- Body --> raw --> json and POST/PUT payload (ENSURE , payload in postman and Inbound will be same)
+In postman:- Body --> raw --> json and POST/PUT payload (ENSURE , payload in postman 
+and Inbound will be same)
 
 --------------------------------------------------------------------------------------
 

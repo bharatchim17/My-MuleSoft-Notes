@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------------
 //Rabbit MQ
-Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based on
-erlang language..
+Messaging broker that implements Advanced Message Queuing Protocol(AMQP) its , based 
+on erlang language..
 Producer ---> Exchange ---> Queue ---> Consumer
 Open RabbitMQ command prompt and run below commands:
 - rabbitmq-plugins.bat list
@@ -15,12 +15,13 @@ password: guest
 - It based on AMQP(Advanced Message Queing Protocol)..
 - It support multiple Protocols..
 - It Enable loosely coupled messaging based integration
-- It equipped with fault tolerence(FA) , high availability(HA) , scalability features..
+- It equipped with fault tolerence(FA) , high availability(HA) , scalability..
 
 //What is loosely coupled (Dcopled)..?
-Loose coupling is an approach to interconnecting the components in a system, network 
-or software application so that those components, also called elements,reducing the 
-risk that changes within one module will create unanticipated changes within other modules... 
+Loose coupling is an approach to interconnecting the components: in a system , network 
+or software application so that those components, also called elements, reducing the 
+risk that changes within one module will create unanticipated(not expected or not predicted) 
+changes within other modules... 
 
 //RabitMQ core concepts:
 - Message
@@ -49,7 +50,8 @@ risk that changes within one module will create unanticipated changes within oth
 5. Publish consume
 6. Reject
 -------------------------------------------------------------------------------------
-1. Ack: Operation that acks a message with the delivery tag..
+1. Ack: 
+Operation that acks a message with the delivery tag..
 #General
 Ack id : #[vars.ackId]  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId
@@ -65,8 +67,7 @@ Inbound Content-Type: application/json
 Ack Mode: IMMEDIATE | EMPTY | MANUAL | AUTO
 -----------------------------------------------------------------------------
 4. Publish: Operation that allows the user to publish a single AmqpMessage to a given 
-exchange Read more about configuring connectors and building flows in the Mule 4 
-documentation...
+exchange...
 #General:
 Exchange Name:  
 Routing keys: Edit inline ✅ | Expression or bean reference | None
@@ -77,7 +78,8 @@ Operation that allows the user to send a message to a AMQP Exchange and waits fo
 response either to the provided replyTo destination or to a temporary destination 
 created dynamically...
 --------------------------------------------------------------------------------
-6. Reject: Operation that allows the user to reject a delivered AmqpMessage.
+6. Reject: 
+Operation that allows the user to reject a delivered AmqpMessage.
 #General
 Ack id : #[vars.ackId]  <----- This is ack_id connector
 In set variable component Name: ackId  | value: attributes.ackId

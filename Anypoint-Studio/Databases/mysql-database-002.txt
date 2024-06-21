@@ -23,7 +23,6 @@ TCL(Transaction Control Language): start Transaction , commit , rollback ,
 save point etc.
 --------------------------------------------------------------------------------
 //SQL Datatypes:-
-
 CHAR
 VARCHAR
 BLOB

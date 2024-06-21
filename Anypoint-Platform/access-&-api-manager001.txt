@@ -69,3 +69,8 @@ Access Manager:
 //Create environment ---> buisness Groups ---> Environment
 //Invite user ---> Users ---> Email address:  @gmail.com  | Roles: ---> send invitation
 -----------------------------------------------------------------------------------
+What is API proxy and API gateway. 
+API proxy: API proxy is proxy URL which is used to secure API by avoid accessing original URL. Proxy URL is 
+generated from API manager in Anypoint platform.. 
+API gateway: API gateway restricts the unwanted malicious attacks from the hackers and the security policies applies on 
+API gateway...

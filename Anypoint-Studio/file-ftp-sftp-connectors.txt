@@ -10,7 +10,6 @@
 8. Rename
 9. Write 
 -------------------------------------------------------------------------------------------------
-
 2. Create directory:
 #General:
 connector configuration: Create main folder and link it..
@@ -35,8 +34,8 @@ Apply post action when failed:  true (Default) | false | Expression | Empty
 Overwrite: false (Default) | true | Expression | Empty
 #MIME Type: 
 MIME Type: application/csv
-Key:  header ✅ | separator| escape | streaming | bodyStartlineNumber | qoute | ignoreEmptyLine | 
-headerLineNumber
+Key:  header ✅ | separator| escape | streaming | bodyStartlineNumber | qoute | 
+ignoreEmptyLine | headerLineNumber
 
 Value: true
 
@@ -55,9 +54,9 @@ Reconnection Attempts: 2
 #General:
 connector configuration: Create folder and link it..
 path: fileOperation/Abstract.txt <----- directory/file
-Content(fx):
+Content:
 Create parent directories: True (Default) | False | Empty | Expression
-write Mode(fx): OVER_WRITE (Default) | Append | create_New 
+write Mode: OVER_WRITE (Default) | Append | create_New 
 -----------------------------------------------------------------------------------------------------
 10. List:
 List all the files from given directory..
@@ -74,7 +73,6 @@ List all the files from given directory..
 //How FTP work..?
 Client <---- control connection & Data connection ----> Server
 ---------------------------------------------------------------------------------
-
 //FileZila , FileZila pro: is FTP , SFTP client..
 Default port for FTP = 21
 Default port for SFTP = 22

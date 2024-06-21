@@ -18,16 +18,16 @@ Difference between Apache kafka & Apache pulsuar..?
 
 -------------------------------------------------------------------------------------------------
 //Diff between Anypoint MQ connector vs JMS Connector vs VM connector?
-Virtual Machine (VM Connector) is Mule's internal transport for messaging/queueing. The VM transport is for 
-intra-JVM communication between Mule flows. So, that means when we use a VM in our 
-flow, we can communicate between different flows in the application. It can only be 
-used by Mule applications. When creaing a VM queue it can only be accessed by the Mule 
-application that creates it (Cloudhub for example) OR it can be reused by same Mule 
-apps running in a domain project or cluster. No existing broker infrastructure needs 
-to be setup. Supports persistent and transient...
+Virtual Machine (VM Connector) is Mule's internal transport for messaging/queueing. 
+The VM transport is for intra-JVM communication between Mule flows. So, that means 
+when we use a VM in our flow, we can communicate between different flows in the 
+application. It can only be used by Mule applications. When creaing a VM queue it can 
+only be accessed by the Mule application that creates it (Cloudhub for example) OR it 
+can be reused by same Mule apps running in a domain project or cluster. No existing 
+broker infrastructure needs to be setup. Supports persistent and transient...
 
-Anypoint MQ is Mulesoft's Cloud Messaging platform. This can be used by other applications
-not just Mule. It can also be used across multiple Mule apps regardless of domains or 
+Anypoint MQ is Mulesoft's Cloud Messaging platform. This can be used by other 
+applications not just Mule. It can also be used across multiple Mule apps regardless of domains or 
 cluster, well suited for Cloudhub applications. 
 
 JMS uses the Java Messaging Service protocol and requires an external JMS broker such 

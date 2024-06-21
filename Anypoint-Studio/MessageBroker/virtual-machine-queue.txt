@@ -5,6 +5,13 @@ either transient or persistent asynchronous queues..
 Transient queues are faster than persistent queues , but they are not reliable if
 system crashes..
 persistent Queue are slower but reliable..
+
+VM endpoints enable message redelivery strategies to be configured in your exception 
+handling blocks – this is not possible with flow-refs.  VMs can do this because they 
+internally use a queue to hold messages while flow-refs are like simple method calls..
+
+Note: the prefix intra- means "within" (as in happening within a single thing), while 
+the prefix inter- means "between" (as in happening between two things)..
 ------------------------------------------------------------------------------
 #Global Element:
 VM config:
@@ -21,8 +28,6 @@ Queue type: Transient (Default) | Persistent
 1. Consume:
 Pull one message from a queue. If a message is not immediately available, it will wait 
 up to the configured queueTimeout, after which a VM:QUEUE_TIMEOUT error will be thrown.
-The queue on which the content is published has to be one for which a doesn't exists. 
-Consuming from queues on which a exists is not allowed..
 
 #General:
 Queue name: fetch queue name here
@@ -54,8 +59,8 @@ response is received or the timeout expires. The queue on which the content is
 published has to be one for which a doesn't exists. Consuming from queues on which a 
 exists is not allowed. If the flow that receives and processed the message fails, 
 then that error is propagated and re-thrown by this operation. Notice that such error 
-type will not be predictable by this operation and could be anything. You need to be 
-mindful of the listening flow when writing your error handlers...
+type will not be predictable by this operation and could be anything. we need to be 
+mindful of the listening flow when writing our error handlers...
 
 #General:
 Content: #[payload] (Default)
@@ -65,7 +70,30 @@ Queue name: fetch queue name here
 Timeout: 5 (Default)
 Timeout unit:
 -----------------------------------------------------------------------------------
-
-
+Why we use VM transport? 
+You can use the Java Virtual Machine (VM) transport for intra-JVM communication between Mule flows .This 
+transport 
+by default uses in-memory queues but can optionally be configured to use persistent queues(persistent queues are 
+use to help prevent data loss). Note: VM file persistency does not work on clusters. The VM transport has often been 
+used to implement complex integrations made up of multiple applications. 
+VM is still useful in certain situations. Suppose, for instance, that most of the parts of your solution are local, but 
+some 
+need to be decoupled for testing, or because some need to be made remote. You can use Flow References to directly 
+reference one flow from another without a transport in the middle.use VM 
+transports if you need redelivery of messages, this won’t be possible in private flow and flow ref because for 
+rollback exception strategy even if we define that no internal queue exists. 
+_____________________________________________________________________________________________________ 
+//What Is Vm Transport In Mule ? 
+The VM transport is a special kind of transport that you’ll use to send messages via 
+memory. These messages never leave the JVM the Mule instance is running in...
+--------------------------------------------------------------------------------------
+//What is the difference between Throttling and Rate Limiting? 
+Rate Limiting and Throttling are the API Policies available in MuleSoft, you can apply these policies through API 
+Manager. 
+Rate Limiting: The Rate Limiting policy limits the number of requests an API accepts within a window of time. 
+The API rejects requests that exceed the limit 
+Throttling: The Throttling policy queues requests that exceed limits for possible processing in a subsequent 
+window. The API eventually rejects the request if processing cannot occur after a certain number of attempts. 
+You can configure a delay between retries, as well as limit the number of retries..
 
 

@@ -47,7 +47,8 @@ To address: Expression or Bean reference ✅
 #[vars.saveMe.MAILID[0]]
 ---------------------------------------------------------------------------------------
 //Error Ocure :-
-"Error while sending email: 530-5.7.0 Must issue a STARTTLS command first. For more information, go to
+"Error while sending email: 530-5.7.0 Must issue a STARTTLS command first. For more 
+information, go to
 530-5.7.0  https://support.google.com/a/answer/3221692 and review RFC 3207
 530 5.7.0 specifications. d9443c01a7336-1ef0c264479sm68671665ad.292 - gsmtp"..
 Solution:- 

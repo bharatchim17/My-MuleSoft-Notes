@@ -14,9 +14,8 @@ it's used for project build , dependancy and documentation..
 - repositories
 - plugin repositories
 -----------------------------------------------------------------------------------------
-
-//Maven pom.xml deals with remote repository and local repositery and when ever we install 
-custom jar that will be install to local repositery (.m2)..
+//Maven pom.xml deals with remote repository and local repositery and when ever we 
+install custom jar that will be install to local repositery (.m2)..
 ----------------------------------------------------------------------------------------------------
 Download Nexus-sonatype:-
 
@@ -51,14 +50,14 @@ nexus.exe /run
 
 //Step004:  restart studio
 -------------------------------------------------------------------------------------------
-//Configure cloudHub deployment stratergy in your projects pom.xml file so we can 
+//Configure cloudHub deployment stratergy in our projects pom.xml file so we can 
 deploy, re-deploy our mule applicattion using mule maven plugin... 
 
                       https://docs.mulesoft.com/mule-runtime/latest/deploy-to-cloudhub
 
 
-Before you can deploy to CloudHub using the Mule Maven plugin
-If you are using the HTTP Listener as source for our flow, we need to set it's host 
+Before we can deploy to CloudHub using the Mule Maven plugin
+If we are using the HTTP Listener as source for our flow, we need to set it's host 
 to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
 
 //add in plugin:
@@ -96,7 +95,7 @@ to 0.0.0.0 and it's port to ${http.port} or ${httpListner.port}
 
                       https://help.mulesoft.com/s/question/0D52T00004tGTeYSAW/adding-business-group-using-mule-maven-plugin-for-cloudhubdeployment
 ---------------------------------------------------------------------------------------------------------------------
-To use Monitoring and Visualizer with this version, we may need to enable the agent 
+//To use Monitoring and Visualizer with this version, we may need to enable the agent 
 after deploying:
 
 https://docs.mulesoft.com/monitoring/configure-monitoring-cloudhub#enable-monitoring-using-the-ui
@@ -107,7 +106,9 @@ anypoint.platform.config.analytics.agent.enabled=true  <-------- In properties s
 ---------------------------------------------------------------------------------------------------
 //In pom.xml folder pathType_cmd:
 Base command line for build:  mvn clean package -nsu -DskipMunitTests
-To deploy:      mvn clean package deploy -DmuleDeploy  |  mvn clean package deploy -P(environment) -Dusername -Dpassword -DmuleDeploy
+To deploy:      mvn clean package deploy -DmuleDeploy  |  mvn clean package deploy 
+-P(environment) -Dusername -Dpassword -DmuleDeploy
+
 To un-deploy:   mvn mule:undeploy   | mvn mule:undeploy -PSandbox
 
 
@@ -184,7 +185,8 @@ make profiles in between </properties> &  <build>
 </settingsSecurity>
 
 4. mvn --encrypt-password <yourAnypointPlatformPassword>
-5. Add your encrypted Anypoint Platform password to your settings.xml file in the <server> section:
+5. Add your encrypted Anypoint Platform password to your settings.xml file in the 
+<server> section:
    
 <server>
       <id>my.anypoint.credentials</id>
@@ -213,11 +215,12 @@ These tests should not require the code be packaged or deployed..
 such as a JAR...
 5. Integration-test: process and deploy the package if necessary into an environment 
 where integration tests can be run...
+
 6. verify: run any checks to verify the package is valid and meets quality criteria..
 
 7. install: install the package into the local repository, for use as a dependency 
 in other projects locally...
-
+ 
 8. deploy: done in an integration or release environment, copies the final package to 
 the remote repository for sharing with other developers and projects...
 

@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------------
 //Unit Testing:-
-validate smallest unit of code to verify  it works as expected..
+validate smallest unit of code to verify it works as expected..
 
 //Munit:-
 Munit is Mule application testing framework that allows us to easily build automated 
@@ -64,9 +64,9 @@ Munit is divided in two Sub-modules:
 ------------------------------------------------------------------------------
 //Assert Equals: 
 Use to do equals assertions..Check if an expression is equal to a value
-The Assert Equals processor allows you to run assertions in order to validate the state 
-of Mule Event's content. This is processor can be used to validate Mule Event after 
-production code runs. 
+The Assert Equals processor allows us to run assertions in order to validate the 
+state of Mule Event's content. This is processor can be used to validate Mule Event 
+after production code runs. 
 #General:
 Actual: #[payload.message | payload]
 expected: #[50 as Number]  |  #["Welcome to mule Bharat Chim" As String]
@@ -78,7 +78,7 @@ Expected: #[200]   |  #[readUrl('classpath://folderName/fileName.json')]
 Message: #["The HTTP status code is invalid"]
 -----------------------------------------------------------------------
 //Assert That:
-processor allows you to run assertions in order to validate the state of Mule Event's
+processor allows to run assertions in order to validate the state of Mule Event's
 content. This is processor can be used to validate Mule Event after production code 
 runs. 
 Assert that processor uses set of dataweave function called Munit matchers to define 
@@ -89,7 +89,7 @@ Expression: #[payload]
 is: #[MunitTools::withMediaType('application/json')] <--- #[MunitTools:: ctrl + space]
 --------------------------------------------------------------------------------------
 //Assert Expression:
-The Assert expression processor allows you to evaluate Dataweave expression that 
+The Assert expression processor allows to evaluate Dataweave expression that 
 asserts state of Mule Event's content..This processor can be used to validate mule 
 event after production code runs , using Dataweave assertion library..
 #General:
@@ -107,10 +107,9 @@ payload must notBeNull()
 
 ---------------------------------------------------------------------------------------------
 //Set Event: 
-Set a mule event for testing
-The Set Event Processor allows you to define a Mule Event. This message processor is 
-normally used at the beginning of an MUnit test, to define the  message send 
-to the flow being tested...
+Set a mule event for testing The Set Event Processor allows us to define a Mule Event. This message processor is 
+normally used at the beginning of an MUnit test, to define the  message send to the 
+flow being tested...
 #attributes:
 value: #[{
 	queryParams:{param1: 20 , param2: 30}  <------- Here , param1 is key & 20 is value...
@@ -121,7 +120,7 @@ value: #[{
         }]
 ----------------------------------------------------------------------------------
 //The Mock When:
-processor enables you to mock an event processor  we can configure a then-return 
+processor enables us to mock an event processor  we can configure then-return 
 element to define the type of response the mocked processor returns. It can be a
 payload, a variable, a list of attributes, or an error...
 
@@ -168,16 +167,16 @@ Encoding: UTF-8
 //---Right-click---src/test/munit----> Munit ---> Run Test
 ----------------------------------------------------------------------------------------
 //The Verify call:
-Event processor allows you to verify if a processor was called or not... 
+Event processor allows us to verify if a processor was called or not... 
 #Processor: Pick processor
 #Comparison: <-------- is atLeast | is atMost | is equal to 
 #value: 1 
 ------------------------------------------------------------------------------------------
 //The Spy Processor:
-Enables you to spy on what happens before and after an event processor is called..
+Enables us to spy on what happens before and after an event processor is called..
 Setting a spy processor tells MUnit to run a set of instructions (usually assertions 
 or verifications) before and/or after the execution of the spied event processor...
-#Processor: Pick processor
+#Processor: Pick processor..
 ------------------------------------------------------------------------------------------
 //Flow Sources:
  Element within the MUnit test tells MUnit which flow sources to load and execute for 
@@ -186,11 +185,11 @@ or verifications) before and/or after the execution of the spied event processor
  and it calls event processor..
  On API's we can also use, HTTP request connector to consume API then we can validate
  response attributes and response payload..
- Since mule test case doesn't deal with event sources by default , we need to enable flow
- sources which are consumed in that test case..
+ Since mule test case doesn't deal with event sources by default , we need to enable 
+ flow sources which are consumed in that test case..
 
-#Enable Flow Sources: click on test ---> supply event source flow and flow which want to
-run....
+#Enable Flow Sources: click on test ---> supply event source flow and flow which want 
+to run....
 -------------------------------------------------------------------------------------------------
 //Test Recorder in Studio:
 It's enables us to record processing flow and then configure unit test based on 
@@ -224,9 +223,8 @@ On-error continue:
 If we call flow using flow reference in test case then flow call will be continued 
 further since On-error continue used...
 On-error propagate:
-If we call flow using flow reference in test case then flow call will not continue further
-since on-error propagate used..
+If we call flow using flow reference in test case then flow call will not continue 
+further  since on-error propagate used..
 We need to surround the flow reference call with try on-error continue combination to
 continue further assertions..
 ---------------------------------------------------------------------------------------------
-befine set event above

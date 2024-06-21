@@ -75,7 +75,7 @@ attributes.headers.'x-transaction-id' default uuid()
 http-Request
 #General:
 #[{
-	"Correlation-id":  vars.correlation-id,
+	"Correlation-id":  vars.correlation-id ,
 	"Transaction-id": vars.transaction-id ,
 	"Content-type": "application/json"
 }]
@@ -120,16 +120,16 @@ Switching Protocol Request" and then handshake is completed..
 request to a server, and the server responds with the requested resource. 
 there are technologies built on top of HTTP that support full-duplex communication...
 
-//stateless: A system that does not maintain any state information between requests. Each request
-from a client is independent and contains all the information needed for the server 
-to understand and process it..
+//stateless: A system that does not maintain any state information between requests. 
+Each request from a client is independent and contains all the information needed for 
+the server to understand and process it..
 
 //Stateful: A system that maintains state information across multiple requests or 
 transactions. The state is stored either on the server or in a database, and it is 
 used to track the context of interactions...
 
-//Persistent(enduring or lasting) Connection: A network connection that remains open for multiple 
-requests/responses rather than being closed after a single transaction.
+//Persistent(enduring or lasting) Connection: A network connection that remains open 
+for multiple requests/responses rather than being closed after a single transaction.
 
 //What is full-duplex , half duplex , statefull and stateless..?
 -----------------------------------------------------------------------------------------------
@@ -141,8 +141,8 @@ other..
 //Type of stores:
 
 Trust store: 
-Signed certificate issued by Certificate Authority , Where public key of the partner will 
-be stored..  
+Signed certificate issued by Certificate Authority , Where public key of the partner 
+will be stored..  
 
 Key store:
 Usually a JKS (Java Keystore) file created using Keystore explorer which is not signed ,
@@ -152,28 +152,22 @@ Where our keys(private and public key) will be stored..
 In java jdk path ---> cmd
 
 //Server Keystore
-
 keytool -genkey -alias mule-server -keyalg RSA -keystore C:\certs\server-keystore.jks
 
 //Extract public key from Keystore
-
 keytool -export -alias mule-server -keyalg RSA -keystore C:\certs\server-keystore.jks -file C:\certs\server_trust.crt
 
 //create trust store for client
-
 keytool -import -alias mule-server -keyalg RSA -keystore C:\certs\client-truststore.jks -file C:\certs\server_trust.crt
 
 ==========================================================================================
 //Client Keystore
-
 keytool -genkey -alias mule-client -keyalg RSA -keystore C:\certs\client-keystore.jks
 
 //Extract public key from client Keystore
-
 keytool -export -alias mule-client -keyalg RSA -keystore C:\certs\client-keystore.jks -file C:\certs\client_trust.crt
 
 //create trust store for server
-
 keytool -import -alias mule-client -keyalg RSA -keystore C:\certs\server-truststore.jks -file C:\certs\client_trust.crt
 
 ***************************************************************************************

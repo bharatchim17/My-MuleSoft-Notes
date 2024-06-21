@@ -31,7 +31,7 @@ request body:
  - XML  payload
 
 
- Mule event contin messages structure :- Request headers goes into attributes & request body goes into payload.. 
+Mule event contin messages structure :- Request headers goes into attributes & request body goes into payload.. 
 
                                    |
                                    |   
@@ -42,17 +42,22 @@ request body:
                                 
 
 
-//Mule event:- is immutable , so every changes to an instance of mule events result in creation of new instance. also , 
-it contains core information processed by runtime and it follows configured application logic.
-Mule event contains:-
+//Mule event:- 
+is immutable , so every changes to an instance of mule events result in creation of 
+new instance. also , it contains core information processed by runtime and it follows 
+configured application logic..
 
-1.mule message:- contains message i.e. payload(message.payload) and attributes(message.attributes)   
+Mule event contains:-
+1.mule message:- contains message i.e. payload(message.payload) and 
+attributes(message.attributes)   
 
 //attributes contains queries (attributes.queryparams.key) , uri parameters also known as
 resource parameters (attributes.uriparams.key) and we put placeholder {key} in sub-path..
 headers (attributes.headers.'content-type')..to fetch ID attributes of payload.@id  
-1.1. payload: It contains body of the message , for example content of file , record from
-database or response from rest or web service..
+
+1.1. payload: 
+It contains body of the message , for example content of file , record from database 
+or response from rest or web service..
 
 2.variables:- are Mule event metadata that use in flow. 
 
@@ -61,9 +66,9 @@ database or response from rest or web service..
 // Root element is optional in Json where as, in XML is mandatory and in CSV is not 
 required..
 -------------------------------------------------------------------------------------------------------------------------
-// Mule ESB is a lightweight java-based enterprise service bus (ESB) and integration platform
-that allows developers to connect Applications together quickly and easily , enabling them to 
-exchange data .
+// Mule ESB is a lightweight java-based enterprise service bus (ESB) and integration 
+platform that allows developers to connect Applications together quickly and easily , 
+enabling them to exchange data...
 
 Benefits:-
  - Reduced development time
@@ -99,14 +104,15 @@ src/main/resources ---> contain log4j2.xml , wsdl file , SSL file & API
 src/main/java   ---> contain mule java file
 src/test/java   ---> contain test of java file in src/main/java
 
-src/main/resource --->  under example or schema  folder we get , payload for inbounds/Outbound  
+src/main/resource --->  under example or schema  folder we get , payload for 
+inbounds/Outbound  
 src/test/resource ---> contain test of the file in src/main/resource
 
 --------------------------------------------------------------------------------------------------
-
 //Web Services:-
-A web service is program which runs in server and whose results are shareable over network/integration
-to make data transfer between Applications. Examples:SOAP(development:3%) & REST(development:94%)..
+A web service is program which runs in server and whose results are shareable over 
+network/integration to make data transfer between Applications. 
+Examples:SOAP(development:3%) & REST(development:94%)..
 
 // Uniform.Resource.Locator:-
 http/https-protocol://host:port/base-path/sub-path
@@ -126,13 +132,12 @@ Integration tool called as ESB tool when it provides below features:-
   - transformations (Transform done by components and dataweave logic)
   - Enrichments (process of concatenation of data with each other)
 
-  //Orchestration:
+//Orchestration:
 Is process of co-ordinting with multiple applications and getting desired work done..
 -----------------------------------------------------------------------------------------------------
 //Mule flows has three types:-   Main | Sub-flow | Private-flow
 
-
- //Main flow:-
+//Main flow:-
 it has:- 
        - event source
        - event processors
@@ -168,7 +173,8 @@ it has:-
 
  - The flow has  only event processors called as sub flow we can add Error_Handling to it
  by wrap it in try scope..
- - Subflows are processed synchronously; that is, execution of the calling flow halts until the subflow is complete.
+ - Subflows are processed synchronously; that is, execution of the calling flow halts 
+ until the subflow is complete.
 
 ----------------------------------------------------------------------------------------------
 
@@ -185,36 +191,37 @@ it has:-
     |   Error_Handling
     |
 -------------------------------------------------------------------------------------------------
-//Asynchronous flows:- execute in parallel to the calling flow; i.e. they are processed asynchronously.
+//Asynchronous flows:- 
+execute in parallel to the calling flow; i.e. they are processed asynchronously.
 We can do this by wrapping the flow reference component in an async component.
-It means it will run in Background it will not wait for response Synchronous flow is 
-similar to sub flow This type of flow process the message with in single  thread
-It will process the message parallel..
 
-//synchronous flows:- is also processed synchronously , We add synchronous flows to our Mule application by adding 
-regular flows; there is no “synchronous flow” component. 
-It Doesn’t inherit the processing strategies  and exception strategies of the calling 
-flow...
+//Synchronous flows:- is also processed synchronously , We add synchronous flows to 
+our Mule application by adding regular flows; there is no “synchronous flow” component. 
+It Doesn’t inherit(to take or receive) the processing strategies  and exception 
+strategies of the calling flow...
 
 ----------------------------------------------------------------------------------------
 //Streaming API
-Streaming API enables Streaming of events using push technology and provides subscription mechanism for 
-receiving events in near real time..
-The Streaming API subscription mechanism supports multiple types of events , including PushTopic events , 
-generic events , platform events and change Data capture events.. 
+Streaming API enables Streaming of events using push technology and provides 
+subscription mechanism for receiving events in near real time..
+The Streaming API subscription mechanism supports multiple types of events , 
+including PushTopic events , generic events , platform events and change Data capture 
+events.. 
 
-//Push technology , also called the publish/subscribe model , transfers information that is initiated from 
-server to client..
+//Push technology , also called the publish/subscribe model , transfers information 
+that is initiated from server to client..
 --------------------------------------------------------------------------------------------
-//When http listner source receives an http request , source triggers flow by using request data.
-//Host:- indicates where request are received , host can be hostname such as localhost , www.mulesoft.com 
+//When http listner source receives an http request , source triggers flow by using 
+request data.
+//Host:- indicates where request are received , host can be hostname such as localhost , 
+www.mulesoft.com 
 or ip address such as 175.0.0.1.
 //Port:- indicates where request are listened/received.
 //Protocols:- indicates protocols for communication example:- http/https/TLS. 
 
-//Schedular component enables us to trigger flow when time-based condition is met. it use same timezone as 
-machine on which mule is running.
-if application running in cloudHub then schedular conforms to UTC timezone.
+//Schedular component enables us to trigger flow when time-based condition is met. it 
+use same timezone as machine on which mule is running , if application running in 
+cloudHub then schedular conforms to UTC timezone.
 1. Frequency:- at which schedular triggers flow.
 2. Start delay:- is ammount of time to wait before triggering flow..
 3. Time Unit :- for values of Frequency and Start Delay. values are: second , minute , days , hours.
@@ -224,14 +231,15 @@ API stands for application programming interface . it's set of rule and protocol
 different software applications to communicate and interact with each other..
 
 //SOAP APIs: These APIs use simple object Access protocol. client and server exchange
-Messages using XML. this is less flexible API that was more popular in past.
+Messages using XML. this is less flexible API that was more popular in past...
+
 //REST API: These are most popular and flexible in term of data format and can support 
 various media types. the client sends request to server as data.. the server uses this
 client input to start internal function and return output data back to client..
 - HTTP methods: GET,POST,PUT,DELETE 
 - Stateless: does not store information of client 
-- Resources: REST APIs are built around resources , which represent entities or object 
-being exposed by API...
+- Resources: REST APIs are built around resources , which represent entities or object
+ being exposed by API...
 ----------------------------------------------------------------------------------------
 //What is mulesoft ?
 mulesoft is software company that provides an integration platform called anypoint 
@@ -239,8 +247,8 @@ platform.
 mulesoft provides anypoint platform to take an API through its complete Development
 lifecycle.
 mulesoft anypoint platforms offers a range of tools and capabilities to support
-integration efforts for example: design centre , exchange , anypoint studio , runtime manager,
-api manager , anypoint monitoring etc..
+integration efforts for example: design centre , exchange , anypoint studio , 
+runtime manager, api manager , anypoint monitoring etc..
 -----------------------------------------------------------------------------------
 //What is API integration..?
 integration is process of combining two or more things to create a whole..
@@ -263,24 +271,27 @@ how integration drives digital transformation..
 ---------------------------------------------------------------------------------------
 //we can use https protocols also , but we have to encrypt communication using TLS configuration..
 /* is symbol of wild-card , it use in path..
-//When we have API kit router with HTTP listner , we should use /* at the end of sub-path..
+//When we have API kit router with HTTP listner , we should use /* at the end of 
+sub-path..
 http://<host>:<port>/api/resource
 -------------------------------------------------------------------------------------------
-//Mule Expression Language MEL:- is lightweight mule-specific expression language that you can access and 
-evaluate data in payload , properties and variables.
- #[payload| vars | attributes]
+//Mule Expression Language MEL:- is lightweight mule-specific expression language 
+that you can access and evaluate data in payload , properties and variables.
+ #[payload | vars | attributes]
 
 #['\n'] --->  Give us new line
-#[payload] ---> To print payload without expression modee(fx)
+#[payload] ---> To print payload without expression mode(fx)
 
 ----------------------------------------------------------------------------------------
-// We Always ask clients to send a correlation-ID and transaction-ID so , we can use in logging..
-The correlationID can find multiple logs and transactionID will find exact transaction log.
+// We Always ask clients to send a correlation-ID and transaction-ID so , we can use 
+in logging..
+The correlationID can find multiple logs and transactionID will find exact 
+transaction log.
 
-The correlation-ID : Client chosen value can be duplicate among the request but , that should be value from the
- input.. 
- if Client send correlationID over the header assign it to variable otherwise , default it to one of the field 
-from incoming payload.
+The correlation-ID : Client chosen value can be duplicate among the request but , 
+that should be value from the input.. 
+ if Client send correlationID over the header assign it to variable otherwise , 
+ default it to one of the field from incoming payload.
 syntax to fetch :-
 attributes.headers.'x-correlation-id' default ""
 
@@ -291,4 +302,16 @@ Whereas mulesoft can able to generate  its own transaction ID it will maintain i
 syntax to fetch :-
 attributes.headers.'x-transaction-id' default uuid()
 --------------------------------------------------------------------------------------------------------
-
+Which HTTP method is safest? 
+Safe methods are methods that can be cached, prefetched without any impact on the resource. 
+An idempotent HTTP method is a HTTP method that can be called many times without different 
+outcomes... 
+ 
+OPTIONS: Idempotent & Safe..
+GET: Idempotent & Safe..
+HEAD: Idempotent & Safe..
+PUT: Idempotent but , it's Not Safe...
+POST Not Idempotent and it's Not Safe..
+DELETE Idempotent but , Not Safe..
+PATCH: Not Idempotent also , Not Safe..
+--------------------------------------------------------------------------------------------------------
