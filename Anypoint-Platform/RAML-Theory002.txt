@@ -7,7 +7,7 @@
         - query_parameters
 
 //request body must be required in post , put and patch method it not required in get 
-and delete methode..
+and delete method..
 
 //Response contains:
         - HTTP status code
@@ -15,7 +15,7 @@ and delete methode..
         - body
         
 //response body not required in post , put and patch method it's required in get 
-and delete methode but we can use anyway..
+and delete method but we can use anyway..
 ----------------------------------------------------------------------------------------------
 https://testfully.io/blog/http-methods/
 
@@ -44,9 +44,11 @@ method...
 4xx client-error:  (400–499)
     - 400 bad request | request validation error (The server could not understand the 
 request. The request needs to be modified before re-sending it)..
-    - 401 unauthorized | Access denay (The request’s authentication is either missing or incorrect)
+    - 401 unauthorized | Access denay (The request’s authentication is either missing 
+or incorrect)
     - 402 payment required
-    - 403 forbidden(The request’s authentication succeeded, but the user does not have access to the resource)
+    - 403 forbidden(The request’s authentication succeeded, but the user does not have
+ access to the resource)
     - 404 resource not found 
     - 405 method not found|allowed
 
@@ -78,7 +80,8 @@ request. The request needs to be modified before re-sending it)..
 • 503 Service Unavailable
 • 504 Gateway Timeout
 ----------------------------------------------------------------------------------------
-//Below requirement we use Error-response as content-type in project * as per requirement
+//Below requirement we use Error-response as content-type in project * as per 
+requirement
 //Request Headers has two types:
 1. Accept       ---e.g.-->  GET(collection and nested resources) |DELETE(nested resources)
 2. Content-type ---e.g.-->  POST(collection resources) | PATCH(nested resources)

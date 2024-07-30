@@ -9,7 +9,7 @@ there are two types of Client graphical mode (GUI) e.g. SQLdeveloper &
 command line interface(CLI)e.g. SQLplus
 2.Server (is storage area , remote machine) 
 ---------------------------------------------------------------------------------
-//In oracle ; at the end of line is mandatory
+//In oracle semicolon(;) at the end of line is mandatory
 //In mysql database also called schema
 ---------------------------------------------------------------------------------
 //Types of SQL Commands..?

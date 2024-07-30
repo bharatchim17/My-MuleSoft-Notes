@@ -133,7 +133,7 @@ SET column_name1 = Value1 ,
 SET column_name2 = Value2
 WHERE condition ; 
 ---------------------------------------------------------------------------------------
-//Error Code:- 1175. You are using safe update mode and you tried to update a table 
+//Error Code:- 1175. we are using safe update mode and you tried to update a table 
 without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in
  Preferences -> SQL Editor and reconnect.
 Solution:-  SET SQL_SAFE_UPDATES = 0 ;

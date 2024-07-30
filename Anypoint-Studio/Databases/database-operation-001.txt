@@ -18,7 +18,6 @@ using one single Database statement, which has performance advantages compared t
 executing one single delete operation various times...
 #General:
 Input parameters: #[payload]  (default)
-
 SQL query Text: 
 
 2. Bulk insert:
@@ -107,8 +106,7 @@ we use select operation in anypoint studio for this task write in select query-t
  use max function.. 
  
  //How to write max-function in sql..?
- //After inserting record to generated case_id one more record generated (i.e. one more
- DB call generated), to avoide this there are two ways:
+ 
 ----------------- --------------------------------------------------------------------
 10. Execute DDL: 
 Enables execution of DDL queries against a database...

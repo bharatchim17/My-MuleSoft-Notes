@@ -135,7 +135,8 @@ root of the API definition or a child of a resource node. For example, /users an
  always use types..
 -------------------------------------------------------------------------------------------------
 //What are fragments in RAML?
-fragment is part of root_file itself isn't a complete RAML specification just part(branch) of it..
+fragment is part of root_file itself isn't a complete RAML specification just 
+part(branch) of it..
 These fragments can be data types, traits, resource categories, and many others.
 API fragments are reusable components of RAML to make the Design and build of reusable 
 API even quicker and easier.
@@ -163,7 +164,7 @@ Some are specific to type:
 - String:  pattern , minlength , maxlength 
 - integer: minimum , maximum , format , multipleOf
 
-//enum facet used to specify the possible values for the room type..
+//enum facet used to specify the possible values for type..
 ---------------------------------------------------------------------------------------
 //Mocking service:-
 Is for to simulate behavior of API specification and explore API, tested by using test
@@ -216,3 +217,4 @@ Anypoint Platform is a complete solution for API-led connectivity that helps com
 build application networks of apps, data, and devices, both on-premises and in the 
 cloud.This hybrid integration platform includes iPaaS, ESB, and a unified solution for 
 API management, design, and publishing... 
+---------------------------------------------------------------------------------------

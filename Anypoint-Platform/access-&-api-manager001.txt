@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------
 //Mule API management:-
 Is the process of designing , publishing , documenting , analyzing , versioning ,
-securing and managing API users,traffic,SLAs.
+securing and managing API users , traffic , SLAs.. 
 Mulesoft has provided API management in two areas:
 1. Mule Gateway API management (use to deploy application on cloudHub | cloudHub 2.0)
  - Mule Gateway
@@ -24,20 +24,23 @@ select api from exchange | create new api
 
 ------------------------------------------------------------------------------------------
 //Proxy API:-
-proxy API is a wrapper on actual application , we can go proxy API's in below scenarios.
-  - When we would like to expose wrapper/proxy API on external services with own API management..
+proxy API is a wrapper on actual application , we can go proxy API's in below 
+scenarios...
+  - When we would like to expose wrapper/proxy API on external services with own API 
+  management..
   - When we would like to expose with different end point on our mule applications..
   - When we would like to apply set of other policies on same services..
 
 
-//Basically your implementation url is your actual endpoint and Consumer endpoint is 
+//Basically our implementation url is our actual endpoint and Consumer endpoint is 
 Proxy endpoint...
  --------------------------------------------------------------------------------------------
  //Auto discovery:-
 
- We use API Autodiscovery to pair an API in API Manager to its deployed Mule application.
- Is the process of allowing API manager application to discover the application is running in
- the runtime using instance , ID is known as auto discovery..
+ We use API Autodiscovery to pair an API in API Manager to its deployed Mule 
+ application.
+ Is the process of allowing API manager application to discover the application is 
+ running in the runtime using instance , ID is known as auto discovery..
  To enable auto discovery follow below steps:
  1. Create api autodiscovery global element using API instance id & select main flow 
  of API kit router..
@@ -45,7 +48,7 @@ Proxy endpoint...
   - Organization buisness group client_id
   - Organization buisness group client_secret
  
-global element----> API Autodiscovery---> api id: provide instance here | You can also
+global element----> API Autodiscovery---> api id: provide instance here | we can also
 Choose to use the ${apiId} value and reference it from a config.yaml file.
 flow Name: API kit router flow i.e. Main flow not xml file
 
@@ -70,7 +73,8 @@ Access Manager:
 //Invite user ---> Users ---> Email address:  @gmail.com  | Roles: ---> send invitation
 -----------------------------------------------------------------------------------
 What is API proxy and API gateway. 
-API proxy: API proxy is proxy URL which is used to secure API by avoid accessing original URL. Proxy URL is 
-generated from API manager in Anypoint platform.. 
+API proxy: API proxy is proxy URL which is used to secure API by avoid accessing 
+original URL. Proxy URL is generated from API manager in Anypoint platform.. 
 API gateway: API gateway restricts the unwanted malicious attacks from the hackers and the security policies applies on 
 API gateway...
+-----------------------------------------------------------------------------------

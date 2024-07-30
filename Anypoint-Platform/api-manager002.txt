@@ -157,8 +157,8 @@ generated outside of Anypoint Platform...
 2. specifies from where in the request to extract values..
   - HTTP Basic Authentification Header: Requires credentials as part of the 
 authorization header.
- The application consuming the API must use the basic Authentification scheme to send the 
- credentials in the requests.
+The application consuming the API must use the basic Authentification scheme to send 
+the credentials in the requests.
   - Custom Expression: Accepts an expression each for client_id and client_secret in the headers,
 indicating where to extract the credentials from request.
 ---------------------------------------------------------------------------------------
